@@ -1,0 +1,20 @@
+install! 'cocoapods', :deterministic_uuids => false
+
+platform :ios, "8.0"
+
+inhibit_all_warnings!
+
+target 'TTSDKDemo' do
+  pod 'TTSDK', :path => '../'
+  pod 'Masonry'
+  pod 'ReactiveCocoa', '2.5'
+  pod 'FLEX'
+  pod 'Toast', '~> 4.0.0'
+  pod 'YYCategories'
+  pod 'AFNetworking'
+  pod 'SDWebImage'
+  pod 'MJExtension'
+  pod 'IQKeyboardManager'
+  pod 'CocoaAsyncSocket'
+  pod 'RangersAppLog', '~> 3.2.9', :subspecs => ['Core'], :source => 'https://github.com/CocoaPods/Specs.git'
+end

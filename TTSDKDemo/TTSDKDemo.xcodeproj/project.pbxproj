@@ -1,0 +1,1165 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */; };
+		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
+		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
+		831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378F23D017E600A9F7A9 /* LiveHelper.m */; };
+		831E379523D017E700A9F7A9 /* TTLogerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379023D017E600A9F7A9 /* TTLogerHelper.m */; };
+		831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379823D0180E00A9F7A9 /* SettingsViewController.m */; };
+		831E379D23D0180E00A9F7A9 /* StreamConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379923D0180E00A9F7A9 /* StreamConfigurationModel.m */; };
+		831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831E379B23D0180E00A9F7A9 /* SettingsViewController.xib */; };
+		831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E37A023D01B8400A9F7A9 /* StreamingViewController.m */; };
+		831E37A423D01BE800A9F7A9 /* LSCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E37A323D01BE800A9F7A9 /* LSCamera.m */; };
+		831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831E37E223D0530C00A9F7A9 /* Accelerate.framework */; };
+		8378B5C023C4860F0075E05C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8378B5BF23C4860F0075E05C /* AppDelegate.m */; };
+		8378B5C923C4860F0075E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8378B5C723C4860F0075E05C /* Main.storyboard */; };
+		8378B5CB23C486100075E05C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8378B5CA23C486100075E05C /* Assets.xcassets */; };
+		8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8378B5CC23C486100075E05C /* LaunchScreen.storyboard */; };
+		8378B5D123C486100075E05C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8378B5D023C486100075E05C /* main.m */; };
+		83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEC23E2C92F00E87A4A /* TTControlsBox.m */; };
+		83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */; };
+		83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */; };
+		83C443B5243E492A00081EA1 /* BEEffectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C4439F243E492A00081EA1 /* BEEffectManager.mm */; };
+		83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */; };
+		83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A2243E492A00081EA1 /* BEStudioConstants.m */; };
+		83C443B8243E492A00081EA1 /* BEResourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A3243E492A00081EA1 /* BEResourceHelper.m */; };
+		83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A5243E492A00081EA1 /* BERenderHelper.m */; };
+		83C443BA243E492A00081EA1 /* BERender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C443AA243E492A00081EA1 /* BERender.mm */; };
+		83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AC243E492A00081EA1 /* ModelResource.bundle */; };
+		83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */; };
+		83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */; };
+		83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AF243E492A00081EA1 /* BeautyResource.bundle */; };
+		83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B0243E492A00081EA1 /* ReshapeResource.bundle */; };
+		83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B1243E492A00081EA1 /* StickerResource.bundle */; };
+		83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B2243E492A00081EA1 /* LicenseBag.bundle */; };
+		83C443C2243E492A00081EA1 /* FilterResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B3243E492A00081EA1 /* FilterResource.bundle */; };
+		83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C4439C243E492A00081EA1 /* libeffect-sdk.a */; };
+		83C44462243F8E2B00081EA1 /* LivePlaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */; };
+		83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C443E2243F8E2A00081EA1 /* LogViewController.xib */; };
+		83C44464243F8E2B00081EA1 /* ConfiguringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */; };
+		83C44465243F8E2B00081EA1 /* PlayConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443E5243F8E2A00081EA1 /* PlayConfiguration.m */; };
+		83C44466243F8E2B00081EA1 /* LivePlaySettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C443E6243F8E2A00081EA1 /* LivePlaySettingsViewController.xib */; };
+		83C44467243F8E2B00081EA1 /* PreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C443E7243F8E2A00081EA1 /* PreferencesViewController.xib */; };
+		83C44468243F8E2B00081EA1 /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443EC243F8E2A00081EA1 /* LogViewController.m */; };
+		83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C443ED243F8E2A00081EA1 /* ConfiguringViewController.xib */; };
+		83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443EE243F8E2A00081EA1 /* PreferencesViewController.m */; };
+		83C4446B243F8E2B00081EA1 /* LivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443EF243F8E2A00081EA1 /* LivePlayViewController.m */; };
+		83C4446C243F8E2B00081EA1 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443F0243F8E2A00081EA1 /* UIColor+Hex.m */; };
+		83C4446D243F8E2B00081EA1 /* UIView+TTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443F8243F8E2A00081EA1 /* UIView+TTVideo.m */; };
+		83C4446E243F8E2B00081EA1 /* TTVideoPreloaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443FB243F8E2A00081EA1 /* TTVideoPreloaderHelper.m */; };
+		83C4446F243F8E2B00081EA1 /* TTVideoCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443FC243F8E2A00081EA1 /* TTVideoCellFactory.m */; };
+		83C44470243F8E2B00081EA1 /* TTVideoFetchDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443FD243F8E2A00081EA1 /* TTVideoFetchDataHelper.m */; };
+		83C44471243F8E2B00081EA1 /* TTVideoAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443FF243F8E2A00081EA1 /* TTVideoAudioSession.m */; };
+		83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44402243F8E2A00081EA1 /* UIImageView+TTVideo.m */; };
+		83C44473243F8E2B00081EA1 /* NSString+TTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44404243F8E2A00081EA1 /* NSString+TTVideo.m */; };
+		83C44474243F8E2B00081EA1 /* TTVideoDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44407243F8E2A00081EA1 /* TTVideoDownloadModel.m */; };
+		83C44475243F8E2B00081EA1 /* BaseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44408243F8E2A00081EA1 /* BaseListModel.m */; };
+		83C44476243F8E2B00081EA1 /* TTVideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4440B243F8E2A00081EA1 /* TTVideoListModel.m */; };
+		83C44477243F8E2B00081EA1 /* TTVideoHistoryURLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4440D243F8E2A00081EA1 /* TTVideoHistoryURLModel.m */; };
+		83C44478243F8E2B00081EA1 /* TTVideoHistoryVidModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4440F243F8E2A00081EA1 /* TTVideoHistoryVidModel.m */; };
+		83C44479243F8E2B00081EA1 /* TTVideoLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44411243F8E2A00081EA1 /* TTVideoLogModel.m */; };
+		83C4447A243F8E2B00081EA1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44414243F8E2A00081EA1 /* HomeViewController.m */; };
+		83C4447B243F8E2B00081EA1 /* TTVideoURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44416243F8E2A00081EA1 /* TTVideoURLController.m */; };
+		83C4447C243F8E2B00081EA1 /* TTVideoPlaySourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44418243F8E2A00081EA1 /* TTVideoPlaySourceController.m */; };
+		83C4447D243F8E2B00081EA1 /* TTVideoVidController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44419243F8E2A00081EA1 /* TTVideoVidController.m */; };
+		83C4447E243F8E2B00081EA1 /* TTVideoHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4441A243F8E2A00081EA1 /* TTVideoHistoryController.m */; };
+		83C4447F243F8E2B00081EA1 /* TTVideoPlayerFullScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4441F243F8E2A00081EA1 /* TTVideoPlayerFullScreenManager.m */; };
+		83C44480243F8E2B00081EA1 /* TTVideoContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44422243F8E2A00081EA1 /* TTVideoContainerController.m */; };
+		83C44481243F8E2B00081EA1 /* TTVideoDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44424243F8E2A00081EA1 /* TTVideoDownloadController.m */; };
+		83C44482243F8E2B00081EA1 /* TTVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44426243F8E2A00081EA1 /* TTVideoListController.m */; };
+		83C44483243F8E2B00081EA1 /* VodDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44427243F8E2A00081EA1 /* VodDemoViewController.m */; };
+		83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44429243F8E2A00081EA1 /* TTVideoLogController.m */; };
+		83C44485243F8E2B00081EA1 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4442E243F8E2A00081EA1 /* BaseTableViewController.m */; };
+		83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4442F243F8E2A00081EA1 /* BaseViewController.m */; };
+		83C44487243F8E2B00081EA1 /* BaseContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44433243F8E2A00081EA1 /* BaseContainerViewController.m */; };
+		83C44488243F8E2B00081EA1 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44435243F8E2A00081EA1 /* NavigationViewController.m */; };
+		83C44489243F8E2B00081EA1 /* TTVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44437243F8E2A00081EA1 /* TTVideoPlayerController.m */; };
+		83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44438243F8E2A00081EA1 /* TTVideoPlayerControlsController.m */; };
+		83C4448B243F8E2B00081EA1 /* TTVideoResolutionOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4443C243F8E2A00081EA1 /* TTVideoResolutionOptionsView.m */; };
+		83C4448C243F8E2B00081EA1 /* TTVideoDownloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4443E243F8E2A00081EA1 /* TTVideoDownloadCell.m */; };
+		83C4448D243F8E2B00081EA1 /* TTVideoLogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44443243F8E2A00081EA1 /* TTVideoLogCell.m */; };
+		83C4448E243F8E2B00081EA1 /* TTVideoHistoryURLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44444243F8E2A00081EA1 /* TTVideoHistoryURLCell.m */; };
+		83C4448F243F8E2B00081EA1 /* TTVideoHistoryVidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44446243F8E2A00081EA1 /* TTVideoHistoryVidCell.m */; };
+		83C44490243F8E2B00081EA1 /* TTVideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44447243F8E2A00081EA1 /* TTVideoListCell.m */; };
+		83C44491243F8E2B00081EA1 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44449243F8E2A00081EA1 /* BaseTableViewCell.m */; };
+		83C44492243F8E2B00081EA1 /* TTVideoTabIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4444B243F8E2A00081EA1 /* TTVideoTabIndexView.m */; };
+		83C44493243F8E2B00081EA1 /* TTVideoSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4444C243F8E2A00081EA1 /* TTVideoSwitch.m */; };
+		83C44494243F8E2B00081EA1 /* TTVideoSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4444D243F8E2A00081EA1 /* TTVideoSettingView.m */; };
+		83C44495243F8E2B00081EA1 /* TTVideoActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4444E243F8E2A00081EA1 /* TTVideoActivityIndicator.m */; };
+		83C44496243F8E2B00081EA1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44455243F8E2A00081EA1 /* BaseView.m */; };
+		83C44497243F8E2B00081EA1 /* TTVideoPlayerSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44458243F8E2A00081EA1 /* TTVideoPlayerSliderView.m */; };
+		83C44498243F8E2B00081EA1 /* TTVideoPlayerControlTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445A243F8E2A00081EA1 /* TTVideoPlayerControlTopView.m */; };
+		83C44499243F8E2B00081EA1 /* TTVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445C243F8E2B00081EA1 /* TTVideoPlayerControlView.m */; };
+		83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */; };
+		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
+		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
+		831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSDKDemo.pch; sourceTree = "<group>"; };
+		831E378523D0177B00A9F7A9 /* LSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainViewController.m; sourceTree = "<group>"; };
+		831E378623D0177B00A9F7A9 /* LSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSMainViewController.h; sourceTree = "<group>"; };
+		831E378D23D017E600A9F7A9 /* LiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveHelper.h; sourceTree = "<group>"; };
+		831E378E23D017E600A9F7A9 /* TTLogerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTLogerHelper.h; sourceTree = "<group>"; };
+		831E378F23D017E600A9F7A9 /* LiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveHelper.m; sourceTree = "<group>"; };
+		831E379023D017E600A9F7A9 /* TTLogerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTLogerHelper.m; sourceTree = "<group>"; };
+		831E379723D0180E00A9F7A9 /* StreamConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamConfigurationModel.h; sourceTree = "<group>"; };
+		831E379823D0180E00A9F7A9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		831E379923D0180E00A9F7A9 /* StreamConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamConfigurationModel.m; sourceTree = "<group>"; };
+		831E379A23D0180E00A9F7A9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		831E379B23D0180E00A9F7A9 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		831E379F23D01B8400A9F7A9 /* StreamingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingViewController.h; sourceTree = "<group>"; };
+		831E37A023D01B8400A9F7A9 /* StreamingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingViewController.m; sourceTree = "<group>"; };
+		831E37A223D01BE800A9F7A9 /* LSCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCamera.h; sourceTree = "<group>"; };
+		831E37A323D01BE800A9F7A9 /* LSCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCamera.m; sourceTree = "<group>"; };
+		831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libeffect-sdk.a"; path = "../extern/EffectSDK/libeffect-sdk.a"; sourceTree = "<group>"; };
+		831E37E223D0530C00A9F7A9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8378B5BB23C4860F0075E05C /* Pandora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pandora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8378B5BE23C4860F0075E05C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8378B5BF23C4860F0075E05C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8378B5C823C4860F0075E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8378B5CA23C486100075E05C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8378B5CD23C486100075E05C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8378B5CF23C486100075E05C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8378B5D023C486100075E05C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		83795AEB23E2C92F00E87A4A /* TTControlsBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTControlsBox.h; sourceTree = "<group>"; };
+		83795AEC23E2C92F00E87A4A /* TTControlsBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTControlsBox.m; sourceTree = "<group>"; };
+		83795AEE23E2CA1000E87A4A /* TTEffectsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEffectsModel.h; sourceTree = "<group>"; };
+		83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsModel.m; sourceTree = "<group>"; };
+		83795AF123E2CBCE00E87A4A /* TTEffectsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEffectsViewModel.h; sourceTree = "<group>"; };
+		83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsViewModel.m; sourceTree = "<group>"; };
+		83C44397243E492A00081EA1 /* bef_effect_ai_public_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_public_define.h; sourceTree = "<group>"; };
+		83C44398243E492A00081EA1 /* bef_effect_ai_yuv_process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_yuv_process.h; sourceTree = "<group>"; };
+		83C44399243E492A00081EA1 /* byted_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = byted_effect.h; sourceTree = "<group>"; };
+		83C4439A243E492A00081EA1 /* bef_effect_ai_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_api.h; sourceTree = "<group>"; };
+		83C4439B243E492A00081EA1 /* bef_effect_ai_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_version.h; sourceTree = "<group>"; };
+		83C4439C243E492A00081EA1 /* libeffect-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libeffect-sdk.a"; sourceTree = "<group>"; };
+		83C4439E243E492A00081EA1 /* BERenderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BERenderHelper.h; sourceTree = "<group>"; };
+		83C4439F243E492A00081EA1 /* BEEffectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BEEffectManager.mm; sourceTree = "<group>"; };
+		83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BEFrameProcessor.mm; sourceTree = "<group>"; };
+		83C443A1243E492A00081EA1 /* BEFrameProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEFrameProcessor.h; sourceTree = "<group>"; };
+		83C443A2243E492A00081EA1 /* BEStudioConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEStudioConstants.m; sourceTree = "<group>"; };
+		83C443A3243E492A00081EA1 /* BEResourceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEResourceHelper.m; sourceTree = "<group>"; };
+		83C443A4243E492A00081EA1 /* BEMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMacro.h; sourceTree = "<group>"; };
+		83C443A5243E492A00081EA1 /* BERenderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BERenderHelper.m; sourceTree = "<group>"; };
+		83C443A6243E492A00081EA1 /* BEEffectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEEffectManager.h; sourceTree = "<group>"; };
+		83C443A7243E492A00081EA1 /* BERender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BERender.h; sourceTree = "<group>"; };
+		83C443A8243E492A00081EA1 /* BEResourceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEResourceHelper.h; sourceTree = "<group>"; };
+		83C443A9243E492A00081EA1 /* BEStudioConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEStudioConstants.h; sourceTree = "<group>"; };
+		83C443AA243E492A00081EA1 /* BERender.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BERender.mm; sourceTree = "<group>"; };
+		83C443AC243E492A00081EA1 /* ModelResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ModelResource.bundle; sourceTree = "<group>"; };
+		83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BuildinMakeup.bundle; sourceTree = "<group>"; };
+		83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ComposeMakeup.bundle; sourceTree = "<group>"; };
+		83C443AF243E492A00081EA1 /* BeautyResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BeautyResource.bundle; sourceTree = "<group>"; };
+		83C443B0243E492A00081EA1 /* ReshapeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ReshapeResource.bundle; sourceTree = "<group>"; };
+		83C443B1243E492A00081EA1 /* StickerResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StickerResource.bundle; sourceTree = "<group>"; };
+		83C443B2243E492A00081EA1 /* LicenseBag.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LicenseBag.bundle; sourceTree = "<group>"; };
+		83C443B3243E492A00081EA1 /* FilterResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FilterResource.bundle; sourceTree = "<group>"; };
+		83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaySettingsViewController.m; sourceTree = "<group>"; };
+		83C443E2243F8E2A00081EA1 /* LogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogViewController.xib; sourceTree = "<group>"; };
+		83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfiguringViewController.m; sourceTree = "<group>"; };
+		83C443E4243F8E2A00081EA1 /* LogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogViewController.h; sourceTree = "<group>"; };
+		83C443E5243F8E2A00081EA1 /* PlayConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayConfiguration.m; sourceTree = "<group>"; };
+		83C443E6243F8E2A00081EA1 /* LivePlaySettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivePlaySettingsViewController.xib; sourceTree = "<group>"; };
+		83C443E7243F8E2A00081EA1 /* PreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesViewController.xib; sourceTree = "<group>"; };
+		83C443E8243F8E2A00081EA1 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		83C443E9243F8E2A00081EA1 /* LivePlaySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlaySettingsViewController.h; sourceTree = "<group>"; };
+		83C443EA243F8E2A00081EA1 /* ConfiguringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfiguringViewController.h; sourceTree = "<group>"; };
+		83C443EB243F8E2A00081EA1 /* PlayConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayConfiguration.h; sourceTree = "<group>"; };
+		83C443EC243F8E2A00081EA1 /* LogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogViewController.m; sourceTree = "<group>"; };
+		83C443ED243F8E2A00081EA1 /* ConfiguringViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfiguringViewController.xib; sourceTree = "<group>"; };
+		83C443EE243F8E2A00081EA1 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		83C443EF243F8E2A00081EA1 /* LivePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlayViewController.m; sourceTree = "<group>"; };
+		83C443F0243F8E2A00081EA1 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		83C443F1243F8E2A00081EA1 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		83C443F2243F8E2A00081EA1 /* LivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePlayViewController.h; sourceTree = "<group>"; };
+		83C443F5243F8E2A00081EA1 /* TTVideoFetchDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoFetchDataHelper.h; sourceTree = "<group>"; };
+		83C443F6243F8E2A00081EA1 /* TTVideoCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoCellFactory.h; sourceTree = "<group>"; };
+		83C443F7243F8E2A00081EA1 /* TTVideoAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoAudioSession.h; sourceTree = "<group>"; };
+		83C443F8243F8E2A00081EA1 /* UIView+TTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TTVideo.m"; sourceTree = "<group>"; };
+		83C443F9243F8E2A00081EA1 /* UIImageView+TTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TTVideo.h"; sourceTree = "<group>"; };
+		83C443FA243F8E2A00081EA1 /* NSString+TTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TTVideo.h"; sourceTree = "<group>"; };
+		83C443FB243F8E2A00081EA1 /* TTVideoPreloaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPreloaderHelper.m; sourceTree = "<group>"; };
+		83C443FC243F8E2A00081EA1 /* TTVideoCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoCellFactory.m; sourceTree = "<group>"; };
+		83C443FD243F8E2A00081EA1 /* TTVideoFetchDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoFetchDataHelper.m; sourceTree = "<group>"; };
+		83C443FE243F8E2A00081EA1 /* UIView+TTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TTVideo.h"; sourceTree = "<group>"; };
+		83C443FF243F8E2A00081EA1 /* TTVideoAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoAudioSession.m; sourceTree = "<group>"; };
+		83C44400243F8E2A00081EA1 /* TTVideoPlayerDemoPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerDemoPrefixHeader.pch; sourceTree = "<group>"; };
+		83C44401243F8E2A00081EA1 /* TTVideoPlayerDemoDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerDemoDefine.h; sourceTree = "<group>"; };
+		83C44402243F8E2A00081EA1 /* UIImageView+TTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TTVideo.m"; sourceTree = "<group>"; };
+		83C44403243F8E2A00081EA1 /* TTVideoPreloaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPreloaderHelper.h; sourceTree = "<group>"; };
+		83C44404243F8E2A00081EA1 /* NSString+TTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TTVideo.m"; sourceTree = "<group>"; };
+		83C44406243F8E2A00081EA1 /* TTVideoHistoryURLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoHistoryURLModel.h; sourceTree = "<group>"; };
+		83C44407243F8E2A00081EA1 /* TTVideoDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoDownloadModel.m; sourceTree = "<group>"; };
+		83C44408243F8E2A00081EA1 /* BaseListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseListModel.m; sourceTree = "<group>"; };
+		83C44409243F8E2A00081EA1 /* TTVideoHistoryVidModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoHistoryVidModel.h; sourceTree = "<group>"; };
+		83C4440A243F8E2A00081EA1 /* BaseListModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseListModelProtocol.h; sourceTree = "<group>"; };
+		83C4440B243F8E2A00081EA1 /* TTVideoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoListModel.m; sourceTree = "<group>"; };
+		83C4440C243F8E2A00081EA1 /* TTVideoLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoLogModel.h; sourceTree = "<group>"; };
+		83C4440D243F8E2A00081EA1 /* TTVideoHistoryURLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoHistoryURLModel.m; sourceTree = "<group>"; };
+		83C4440E243F8E2A00081EA1 /* TTVideoDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoDownloadModel.h; sourceTree = "<group>"; };
+		83C4440F243F8E2A00081EA1 /* TTVideoHistoryVidModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoHistoryVidModel.m; sourceTree = "<group>"; };
+		83C44410243F8E2A00081EA1 /* BaseListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseListModel.h; sourceTree = "<group>"; };
+		83C44411243F8E2A00081EA1 /* TTVideoLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoLogModel.m; sourceTree = "<group>"; };
+		83C44412243F8E2A00081EA1 /* TTVideoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoListModel.h; sourceTree = "<group>"; };
+		83C44414243F8E2A00081EA1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		83C44416243F8E2A00081EA1 /* TTVideoURLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoURLController.m; sourceTree = "<group>"; };
+		83C44417243F8E2A00081EA1 /* SourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceViewController.h; sourceTree = "<group>"; };
+		83C44418243F8E2A00081EA1 /* TTVideoPlaySourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlaySourceController.m; sourceTree = "<group>"; };
+		83C44419243F8E2A00081EA1 /* TTVideoVidController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoVidController.m; sourceTree = "<group>"; };
+		83C4441A243F8E2A00081EA1 /* TTVideoHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoHistoryController.m; sourceTree = "<group>"; };
+		83C4441B243F8E2A00081EA1 /* TTVideoURLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoURLController.h; sourceTree = "<group>"; };
+		83C4441C243F8E2A00081EA1 /* TTVideoPlaySourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlaySourceController.h; sourceTree = "<group>"; };
+		83C4441D243F8E2A00081EA1 /* TTVideoHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoHistoryController.h; sourceTree = "<group>"; };
+		83C4441E243F8E2A00081EA1 /* TTVideoVidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoVidController.h; sourceTree = "<group>"; };
+		83C4441F243F8E2A00081EA1 /* TTVideoPlayerFullScreenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerFullScreenManager.m; sourceTree = "<group>"; };
+		83C44420243F8E2A00081EA1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		83C44422243F8E2A00081EA1 /* TTVideoContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoContainerController.m; sourceTree = "<group>"; };
+		83C44423243F8E2A00081EA1 /* TTVideoLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoLogController.h; sourceTree = "<group>"; };
+		83C44424243F8E2A00081EA1 /* TTVideoDownloadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoDownloadController.m; sourceTree = "<group>"; };
+		83C44425243F8E2A00081EA1 /* VodDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VodDemoViewController.h; sourceTree = "<group>"; };
+		83C44426243F8E2A00081EA1 /* TTVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoListController.m; sourceTree = "<group>"; };
+		83C44427243F8E2A00081EA1 /* VodDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VodDemoViewController.m; sourceTree = "<group>"; };
+		83C44428243F8E2A00081EA1 /* TTVideoDownloadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoDownloadController.h; sourceTree = "<group>"; };
+		83C44429243F8E2A00081EA1 /* TTVideoLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoLogController.m; sourceTree = "<group>"; };
+		83C4442A243F8E2A00081EA1 /* TTVideoContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoContainerController.h; sourceTree = "<group>"; };
+		83C4442B243F8E2A00081EA1 /* TTVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoListController.h; sourceTree = "<group>"; };
+		83C4442C243F8E2A00081EA1 /* TTVideoPlayerFullScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerFullScreenManager.h; sourceTree = "<group>"; };
+		83C4442E243F8E2A00081EA1 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		83C4442F243F8E2A00081EA1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		83C44430243F8E2A00081EA1 /* BaseContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseContainerViewController.h; sourceTree = "<group>"; };
+		83C44431243F8E2A00081EA1 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		83C44432243F8E2A00081EA1 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		83C44433243F8E2A00081EA1 /* BaseContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseContainerViewController.m; sourceTree = "<group>"; };
+		83C44434243F8E2A00081EA1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		83C44435243F8E2A00081EA1 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		83C44437243F8E2A00081EA1 /* TTVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerController.m; sourceTree = "<group>"; };
+		83C44438243F8E2A00081EA1 /* TTVideoPlayerControlsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerControlsController.m; sourceTree = "<group>"; };
+		83C44439243F8E2A00081EA1 /* TTVideoPlayerControlsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlsController.h; sourceTree = "<group>"; };
+		83C4443A243F8E2A00081EA1 /* TTVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerController.h; sourceTree = "<group>"; };
+		83C4443C243F8E2A00081EA1 /* TTVideoResolutionOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoResolutionOptionsView.m; sourceTree = "<group>"; };
+		83C4443E243F8E2A00081EA1 /* TTVideoDownloadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoDownloadCell.m; sourceTree = "<group>"; };
+		83C4443F243F8E2A00081EA1 /* TTVideoHistoryURLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoHistoryURLCell.h; sourceTree = "<group>"; };
+		83C44440243F8E2A00081EA1 /* TTVideoLogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoLogCell.h; sourceTree = "<group>"; };
+		83C44441243F8E2A00081EA1 /* TTVideoHistoryVidCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoHistoryVidCell.h; sourceTree = "<group>"; };
+		83C44442243F8E2A00081EA1 /* TTVideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoListCell.h; sourceTree = "<group>"; };
+		83C44443243F8E2A00081EA1 /* TTVideoLogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoLogCell.m; sourceTree = "<group>"; };
+		83C44444243F8E2A00081EA1 /* TTVideoHistoryURLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoHistoryURLCell.m; sourceTree = "<group>"; };
+		83C44445243F8E2A00081EA1 /* TTVideoDownloadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoDownloadCell.h; sourceTree = "<group>"; };
+		83C44446243F8E2A00081EA1 /* TTVideoHistoryVidCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoHistoryVidCell.m; sourceTree = "<group>"; };
+		83C44447243F8E2A00081EA1 /* TTVideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoListCell.m; sourceTree = "<group>"; };
+		83C44449243F8E2A00081EA1 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		83C4444A243F8E2A00081EA1 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		83C4444B243F8E2A00081EA1 /* TTVideoTabIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoTabIndexView.m; sourceTree = "<group>"; };
+		83C4444C243F8E2A00081EA1 /* TTVideoSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoSwitch.m; sourceTree = "<group>"; };
+		83C4444D243F8E2A00081EA1 /* TTVideoSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoSettingView.m; sourceTree = "<group>"; };
+		83C4444E243F8E2A00081EA1 /* TTVideoActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoActivityIndicator.m; sourceTree = "<group>"; };
+		83C4444F243F8E2A00081EA1 /* TTVideoResolutionOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoResolutionOptionsView.h; sourceTree = "<group>"; };
+		83C44450243F8E2A00081EA1 /* TTVideoSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoSettingView.h; sourceTree = "<group>"; };
+		83C44451243F8E2A00081EA1 /* TTVideoSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoSwitch.h; sourceTree = "<group>"; };
+		83C44452243F8E2A00081EA1 /* TTVideoTabIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoTabIndexView.h; sourceTree = "<group>"; };
+		83C44453243F8E2A00081EA1 /* TTVideoActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoActivityIndicator.h; sourceTree = "<group>"; };
+		83C44455243F8E2A00081EA1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		83C44456243F8E2A00081EA1 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		83C44458243F8E2A00081EA1 /* TTVideoPlayerSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerSliderView.m; sourceTree = "<group>"; };
+		83C44459243F8E2A00081EA1 /* TTVideoPlayerLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerLoadingView.h; sourceTree = "<group>"; };
+		83C4445A243F8E2A00081EA1 /* TTVideoPlayerControlTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerControlTopView.m; sourceTree = "<group>"; };
+		83C4445B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlBottomView.h; sourceTree = "<group>"; };
+		83C4445C243F8E2B00081EA1 /* TTVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerControlView.m; sourceTree = "<group>"; };
+		83C4445D243F8E2B00081EA1 /* TTVideoPlayerSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerSliderView.h; sourceTree = "<group>"; };
+		83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerLoadingView.m; sourceTree = "<group>"; };
+		83C4445F243F8E2B00081EA1 /* TTVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlView.h; sourceTree = "<group>"; };
+		83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerControlBottomView.m; sourceTree = "<group>"; };
+		83C44461243F8E2B00081EA1 /* TTVideoPlayerControlTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlTopView.h; sourceTree = "<group>"; };
+		83C8CF80242F29550078C7EA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		83C8CF82242F295F0078C7EA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		83C8CFB3242F2AE00078C7EA /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		83C8D053242F3F9D0078C7EA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		83CF2BAF23E7040A006F5174 /* TTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDK.framework; path = ../products/TTSDK.framework; sourceTree = "<group>"; };
+		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8378B5B823C4860F0075E05C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
+				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
+				18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		831E378423D0177B00A9F7A9 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				83795AEA23E2C92F00E87A4A /* Effects */,
+				831E37A223D01BE800A9F7A9 /* LSCamera.h */,
+				831E37A323D01BE800A9F7A9 /* LSCamera.m */,
+				831E379623D0180E00A9F7A9 /* SettingsViewController */,
+				831E378C23D017E600A9F7A9 /* Utils */,
+				831E378623D0177B00A9F7A9 /* LSMainViewController.h */,
+				831E378523D0177B00A9F7A9 /* LSMainViewController.m */,
+				831E379F23D01B8400A9F7A9 /* StreamingViewController.h */,
+				831E37A023D01B8400A9F7A9 /* StreamingViewController.m */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		831E378C23D017E600A9F7A9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				831E378D23D017E600A9F7A9 /* LiveHelper.h */,
+				831E378F23D017E600A9F7A9 /* LiveHelper.m */,
+				831E378E23D017E600A9F7A9 /* TTLogerHelper.h */,
+				831E379023D017E600A9F7A9 /* TTLogerHelper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		831E379623D0180E00A9F7A9 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				831E379A23D0180E00A9F7A9 /* SettingsViewController.h */,
+				831E379823D0180E00A9F7A9 /* SettingsViewController.m */,
+				831E379B23D0180E00A9F7A9 /* SettingsViewController.xib */,
+				831E379723D0180E00A9F7A9 /* StreamConfigurationModel.h */,
+				831E379923D0180E00A9F7A9 /* StreamConfigurationModel.m */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		8378B5B223C4860F0075E05C = {
+			isa = PBXGroup;
+			children = (
+				83C44393243E492A00081EA1 /* extern */,
+				8378B5BD23C4860F0075E05C /* TTSDKDemo */,
+				8378B5BC23C4860F0075E05C /* Products */,
+				8378B5D723C486230075E05C /* Frameworks */,
+				90767481DA3AF1EB0F6B2CAB /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		8378B5BC23C4860F0075E05C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8378B5BB23C4860F0075E05C /* Pandora.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				830EA318246940C1004DC739 /* ttsdkdemo.license */,
+				83C443DF243F8E2A00081EA1 /* Pull */,
+				83C443F3243F8E2A00081EA1 /* VOD */,
+				83C8D053242F3F9D0078C7EA /* test.mp4 */,
+				831E378423D0177B00A9F7A9 /* Push */,
+				8378B5BE23C4860F0075E05C /* AppDelegate.h */,
+				8378B5BF23C4860F0075E05C /* AppDelegate.m */,
+				8378B5C723C4860F0075E05C /* Main.storyboard */,
+				8378B5CA23C486100075E05C /* Assets.xcassets */,
+				8378B5CC23C486100075E05C /* LaunchScreen.storyboard */,
+				8378B5CF23C486100075E05C /* Info.plist */,
+				8378B5D023C486100075E05C /* main.m */,
+				831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */,
+			);
+			path = TTSDKDemo;
+			sourceTree = "<group>";
+		};
+		8378B5D723C486230075E05C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83C8CFB3242F2AE00078C7EA /* MetalKit.framework */,
+				83C8CF82242F295F0078C7EA /* VideoToolbox.framework */,
+				83C8CF80242F29550078C7EA /* OpenAL.framework */,
+				83CF2BAF23E7040A006F5174 /* TTSDK.framework */,
+				831E37E223D0530C00A9F7A9 /* Accelerate.framework */,
+				831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */,
+				03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83795AEA23E2C92F00E87A4A /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				83795AEB23E2C92F00E87A4A /* TTControlsBox.h */,
+				83795AEC23E2C92F00E87A4A /* TTControlsBox.m */,
+				83795AEE23E2CA1000E87A4A /* TTEffectsModel.h */,
+				83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */,
+				83795AF123E2CBCE00E87A4A /* TTEffectsViewModel.h */,
+				83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		83C44393243E492A00081EA1 /* extern */ = {
+			isa = PBXGroup;
+			children = (
+				83C44394243E492A00081EA1 /* EffectSDK */,
+			);
+			path = extern;
+			sourceTree = "<group>";
+		};
+		83C44394243E492A00081EA1 /* EffectSDK */ = {
+			isa = PBXGroup;
+			children = (
+				83C44395243E492A00081EA1 /* ios_c_sdk */,
+				83C4439D243E492A00081EA1 /* SDK */,
+				83C443AB243E492A00081EA1 /* Resource */,
+			);
+			path = EffectSDK;
+			sourceTree = "<group>";
+		};
+		83C44395243E492A00081EA1 /* ios_c_sdk */ = {
+			isa = PBXGroup;
+			children = (
+				83C44396243E492A00081EA1 /* include */,
+				83C4439C243E492A00081EA1 /* libeffect-sdk.a */,
+			);
+			path = ios_c_sdk;
+			sourceTree = "<group>";
+		};
+		83C44396243E492A00081EA1 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				83C44397243E492A00081EA1 /* bef_effect_ai_public_define.h */,
+				83C44398243E492A00081EA1 /* bef_effect_ai_yuv_process.h */,
+				83C44399243E492A00081EA1 /* byted_effect.h */,
+				83C4439A243E492A00081EA1 /* bef_effect_ai_api.h */,
+				83C4439B243E492A00081EA1 /* bef_effect_ai_version.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		83C4439D243E492A00081EA1 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				83C4439E243E492A00081EA1 /* BERenderHelper.h */,
+				83C4439F243E492A00081EA1 /* BEEffectManager.mm */,
+				83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */,
+				83C443A1243E492A00081EA1 /* BEFrameProcessor.h */,
+				83C443A2243E492A00081EA1 /* BEStudioConstants.m */,
+				83C443A3243E492A00081EA1 /* BEResourceHelper.m */,
+				83C443A4243E492A00081EA1 /* BEMacro.h */,
+				83C443A5243E492A00081EA1 /* BERenderHelper.m */,
+				83C443A6243E492A00081EA1 /* BEEffectManager.h */,
+				83C443A7243E492A00081EA1 /* BERender.h */,
+				83C443A8243E492A00081EA1 /* BEResourceHelper.h */,
+				83C443A9243E492A00081EA1 /* BEStudioConstants.h */,
+				83C443AA243E492A00081EA1 /* BERender.mm */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		83C443AB243E492A00081EA1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				83C443AC243E492A00081EA1 /* ModelResource.bundle */,
+				83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */,
+				83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */,
+				83C443AF243E492A00081EA1 /* BeautyResource.bundle */,
+				83C443B0243E492A00081EA1 /* ReshapeResource.bundle */,
+				83C443B1243E492A00081EA1 /* StickerResource.bundle */,
+				83C443B2243E492A00081EA1 /* LicenseBag.bundle */,
+				83C443B3243E492A00081EA1 /* FilterResource.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		83C443DF243F8E2A00081EA1 /* Pull */ = {
+			isa = PBXGroup;
+			children = (
+				83C443E0243F8E2A00081EA1 /* Settings */,
+				83C443EF243F8E2A00081EA1 /* LivePlayViewController.m */,
+				83C443F0243F8E2A00081EA1 /* UIColor+Hex.m */,
+				83C443F1243F8E2A00081EA1 /* UIColor+Hex.h */,
+				83C443F2243F8E2A00081EA1 /* LivePlayViewController.h */,
+			);
+			path = Pull;
+			sourceTree = "<group>";
+		};
+		83C443E0243F8E2A00081EA1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */,
+				83C443E2243F8E2A00081EA1 /* LogViewController.xib */,
+				83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */,
+				83C443E4243F8E2A00081EA1 /* LogViewController.h */,
+				83C443E5243F8E2A00081EA1 /* PlayConfiguration.m */,
+				83C443E6243F8E2A00081EA1 /* LivePlaySettingsViewController.xib */,
+				83C443E7243F8E2A00081EA1 /* PreferencesViewController.xib */,
+				83C443E8243F8E2A00081EA1 /* PreferencesViewController.h */,
+				83C443E9243F8E2A00081EA1 /* LivePlaySettingsViewController.h */,
+				83C443EA243F8E2A00081EA1 /* ConfiguringViewController.h */,
+				83C443EB243F8E2A00081EA1 /* PlayConfiguration.h */,
+				83C443EC243F8E2A00081EA1 /* LogViewController.m */,
+				83C443ED243F8E2A00081EA1 /* ConfiguringViewController.xib */,
+				83C443EE243F8E2A00081EA1 /* PreferencesViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		83C443F3243F8E2A00081EA1 /* VOD */ = {
+			isa = PBXGroup;
+			children = (
+				83C443F4243F8E2A00081EA1 /* Utils */,
+				83C44405243F8E2A00081EA1 /* Models */,
+				83C44413243F8E2A00081EA1 /* ViewControllers */,
+				83C4443B243F8E2A00081EA1 /* Views */,
+			);
+			path = VOD;
+			sourceTree = "<group>";
+		};
+		83C443F4243F8E2A00081EA1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				83C443F5243F8E2A00081EA1 /* TTVideoFetchDataHelper.h */,
+				83C443F6243F8E2A00081EA1 /* TTVideoCellFactory.h */,
+				83C443F7243F8E2A00081EA1 /* TTVideoAudioSession.h */,
+				83C443F8243F8E2A00081EA1 /* UIView+TTVideo.m */,
+				83C443F9243F8E2A00081EA1 /* UIImageView+TTVideo.h */,
+				83C443FA243F8E2A00081EA1 /* NSString+TTVideo.h */,
+				83C443FB243F8E2A00081EA1 /* TTVideoPreloaderHelper.m */,
+				83C443FC243F8E2A00081EA1 /* TTVideoCellFactory.m */,
+				83C443FD243F8E2A00081EA1 /* TTVideoFetchDataHelper.m */,
+				83C443FE243F8E2A00081EA1 /* UIView+TTVideo.h */,
+				83C443FF243F8E2A00081EA1 /* TTVideoAudioSession.m */,
+				83C44400243F8E2A00081EA1 /* TTVideoPlayerDemoPrefixHeader.pch */,
+				83C44401243F8E2A00081EA1 /* TTVideoPlayerDemoDefine.h */,
+				83C44402243F8E2A00081EA1 /* UIImageView+TTVideo.m */,
+				83C44403243F8E2A00081EA1 /* TTVideoPreloaderHelper.h */,
+				83C44404243F8E2A00081EA1 /* NSString+TTVideo.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		83C44405243F8E2A00081EA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83C44406243F8E2A00081EA1 /* TTVideoHistoryURLModel.h */,
+				83C44407243F8E2A00081EA1 /* TTVideoDownloadModel.m */,
+				83C44408243F8E2A00081EA1 /* BaseListModel.m */,
+				83C44409243F8E2A00081EA1 /* TTVideoHistoryVidModel.h */,
+				83C4440A243F8E2A00081EA1 /* BaseListModelProtocol.h */,
+				83C4440B243F8E2A00081EA1 /* TTVideoListModel.m */,
+				83C4440C243F8E2A00081EA1 /* TTVideoLogModel.h */,
+				83C4440D243F8E2A00081EA1 /* TTVideoHistoryURLModel.m */,
+				83C4440E243F8E2A00081EA1 /* TTVideoDownloadModel.h */,
+				83C4440F243F8E2A00081EA1 /* TTVideoHistoryVidModel.m */,
+				83C44410243F8E2A00081EA1 /* BaseListModel.h */,
+				83C44411243F8E2A00081EA1 /* TTVideoLogModel.m */,
+				83C44412243F8E2A00081EA1 /* TTVideoListModel.h */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		83C44413243F8E2A00081EA1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				83C44414243F8E2A00081EA1 /* HomeViewController.m */,
+				83C44415243F8E2A00081EA1 /* PlaySources */,
+				83C4441F243F8E2A00081EA1 /* TTVideoPlayerFullScreenManager.m */,
+				83C44420243F8E2A00081EA1 /* HomeViewController.h */,
+				83C44421243F8E2A00081EA1 /* VodHome */,
+				83C4442C243F8E2A00081EA1 /* TTVideoPlayerFullScreenManager.h */,
+				83C4442D243F8E2A00081EA1 /* Base */,
+				83C44436243F8E2A00081EA1 /* Player */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		83C44415243F8E2A00081EA1 /* PlaySources */ = {
+			isa = PBXGroup;
+			children = (
+				83C44416243F8E2A00081EA1 /* TTVideoURLController.m */,
+				83C44417243F8E2A00081EA1 /* SourceViewController.h */,
+				83C44418243F8E2A00081EA1 /* TTVideoPlaySourceController.m */,
+				83C44419243F8E2A00081EA1 /* TTVideoVidController.m */,
+				83C4441A243F8E2A00081EA1 /* TTVideoHistoryController.m */,
+				83C4441B243F8E2A00081EA1 /* TTVideoURLController.h */,
+				83C4441C243F8E2A00081EA1 /* TTVideoPlaySourceController.h */,
+				83C4441D243F8E2A00081EA1 /* TTVideoHistoryController.h */,
+				83C4441E243F8E2A00081EA1 /* TTVideoVidController.h */,
+			);
+			path = PlaySources;
+			sourceTree = "<group>";
+		};
+		83C44421243F8E2A00081EA1 /* VodHome */ = {
+			isa = PBXGroup;
+			children = (
+				83C44422243F8E2A00081EA1 /* TTVideoContainerController.m */,
+				83C44423243F8E2A00081EA1 /* TTVideoLogController.h */,
+				83C44424243F8E2A00081EA1 /* TTVideoDownloadController.m */,
+				83C44425243F8E2A00081EA1 /* VodDemoViewController.h */,
+				83C44426243F8E2A00081EA1 /* TTVideoListController.m */,
+				83C44427243F8E2A00081EA1 /* VodDemoViewController.m */,
+				83C44428243F8E2A00081EA1 /* TTVideoDownloadController.h */,
+				83C44429243F8E2A00081EA1 /* TTVideoLogController.m */,
+				83C4442A243F8E2A00081EA1 /* TTVideoContainerController.h */,
+				83C4442B243F8E2A00081EA1 /* TTVideoListController.h */,
+			);
+			path = VodHome;
+			sourceTree = "<group>";
+		};
+		83C4442D243F8E2A00081EA1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				83C4442E243F8E2A00081EA1 /* BaseTableViewController.m */,
+				83C4442F243F8E2A00081EA1 /* BaseViewController.m */,
+				83C44430243F8E2A00081EA1 /* BaseContainerViewController.h */,
+				83C44431243F8E2A00081EA1 /* NavigationViewController.h */,
+				83C44432243F8E2A00081EA1 /* BaseTableViewController.h */,
+				83C44433243F8E2A00081EA1 /* BaseContainerViewController.m */,
+				83C44434243F8E2A00081EA1 /* BaseViewController.h */,
+				83C44435243F8E2A00081EA1 /* NavigationViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		83C44436243F8E2A00081EA1 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				83C44437243F8E2A00081EA1 /* TTVideoPlayerController.m */,
+				83C44438243F8E2A00081EA1 /* TTVideoPlayerControlsController.m */,
+				83C44439243F8E2A00081EA1 /* TTVideoPlayerControlsController.h */,
+				83C4443A243F8E2A00081EA1 /* TTVideoPlayerController.h */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		83C4443B243F8E2A00081EA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83C4443C243F8E2A00081EA1 /* TTVideoResolutionOptionsView.m */,
+				83C4443D243F8E2A00081EA1 /* Cells */,
+				83C4444B243F8E2A00081EA1 /* TTVideoTabIndexView.m */,
+				83C4444C243F8E2A00081EA1 /* TTVideoSwitch.m */,
+				83C4444D243F8E2A00081EA1 /* TTVideoSettingView.m */,
+				83C4444E243F8E2A00081EA1 /* TTVideoActivityIndicator.m */,
+				83C4444F243F8E2A00081EA1 /* TTVideoResolutionOptionsView.h */,
+				83C44450243F8E2A00081EA1 /* TTVideoSettingView.h */,
+				83C44451243F8E2A00081EA1 /* TTVideoSwitch.h */,
+				83C44452243F8E2A00081EA1 /* TTVideoTabIndexView.h */,
+				83C44453243F8E2A00081EA1 /* TTVideoActivityIndicator.h */,
+				83C44454243F8E2A00081EA1 /* Base */,
+				83C44457243F8E2A00081EA1 /* Player */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83C4443D243F8E2A00081EA1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				83C4443E243F8E2A00081EA1 /* TTVideoDownloadCell.m */,
+				83C4443F243F8E2A00081EA1 /* TTVideoHistoryURLCell.h */,
+				83C44440243F8E2A00081EA1 /* TTVideoLogCell.h */,
+				83C44441243F8E2A00081EA1 /* TTVideoHistoryVidCell.h */,
+				83C44442243F8E2A00081EA1 /* TTVideoListCell.h */,
+				83C44443243F8E2A00081EA1 /* TTVideoLogCell.m */,
+				83C44444243F8E2A00081EA1 /* TTVideoHistoryURLCell.m */,
+				83C44445243F8E2A00081EA1 /* TTVideoDownloadCell.h */,
+				83C44446243F8E2A00081EA1 /* TTVideoHistoryVidCell.m */,
+				83C44447243F8E2A00081EA1 /* TTVideoListCell.m */,
+				83C44448243F8E2A00081EA1 /* Base */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		83C44448243F8E2A00081EA1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				83C44449243F8E2A00081EA1 /* BaseTableViewCell.m */,
+				83C4444A243F8E2A00081EA1 /* BaseTableViewCell.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		83C44454243F8E2A00081EA1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				83C44455243F8E2A00081EA1 /* BaseView.m */,
+				83C44456243F8E2A00081EA1 /* BaseView.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		83C44457243F8E2A00081EA1 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				83C44458243F8E2A00081EA1 /* TTVideoPlayerSliderView.m */,
+				83C44459243F8E2A00081EA1 /* TTVideoPlayerLoadingView.h */,
+				83C4445A243F8E2A00081EA1 /* TTVideoPlayerControlTopView.m */,
+				83C4445B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.h */,
+				83C4445C243F8E2B00081EA1 /* TTVideoPlayerControlView.m */,
+				83C4445D243F8E2B00081EA1 /* TTVideoPlayerSliderView.h */,
+				83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */,
+				83C4445F243F8E2B00081EA1 /* TTVideoPlayerControlView.h */,
+				83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */,
+				83C44461243F8E2B00081EA1 /* TTVideoPlayerControlTopView.h */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		90767481DA3AF1EB0F6B2CAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */,
+				AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8378B5BA23C4860F0075E05C /* TTSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8378B5D423C486100075E05C /* Build configuration list for PBXNativeTarget "TTSDKDemo" */;
+			buildPhases = (
+				9389C65C0396185FCC59ACF6 /* [CP] Check Pods Manifest.lock */,
+				8378B5B723C4860F0075E05C /* Sources */,
+				8378B5B823C4860F0075E05C /* Frameworks */,
+				8378B5B923C4860F0075E05C /* Resources */,
+				5A284159FFC998786881F294 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TTSDKDemo;
+			productName = TTSDKDemo;
+			productReference = 8378B5BB23C4860F0075E05C /* Pandora.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8378B5B323C4860F0075E05C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = ByteDance;
+				TargetAttributes = {
+					8378B5BA23C4860F0075E05C = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 8378B5B623C4860F0075E05C /* Build configuration list for PBXProject "TTSDKDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8378B5B223C4860F0075E05C;
+			productRefGroup = 8378B5BC23C4860F0075E05C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8378B5BA23C4860F0075E05C /* TTSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8378B5B923C4860F0075E05C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C443C2243E492A00081EA1 /* FilterResource.bundle in Resources */,
+				83C44466243F8E2B00081EA1 /* LivePlaySettingsViewController.xib in Resources */,
+				83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */,
+				8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */,
+				83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */,
+				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
+				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
+				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
+				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
+				8378B5CB23C486100075E05C /* Assets.xcassets in Resources */,
+				8378B5C923C4860F0075E05C /* Main.storyboard in Resources */,
+				83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */,
+				83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */,
+				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
+				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
+				830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */,
+				83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */,
+				83C44467243F8E2B00081EA1 /* PreferencesViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A284159FFC998786881F294 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh",
+				"${PODS_ROOT}/../../TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ttplayer.metallib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9389C65C0396185FCC59ACF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TTSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8378B5B723C4860F0075E05C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83C4446B243F8E2B00081EA1 /* LivePlayViewController.m in Sources */,
+				83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */,
+				83C44497243F8E2B00081EA1 /* TTVideoPlayerSliderView.m in Sources */,
+				83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */,
+				83C4448C243F8E2B00081EA1 /* TTVideoDownloadCell.m in Sources */,
+				83C44475243F8E2B00081EA1 /* BaseListModel.m in Sources */,
+				83C44492243F8E2B00081EA1 /* TTVideoTabIndexView.m in Sources */,
+				83C44465243F8E2B00081EA1 /* PlayConfiguration.m in Sources */,
+				83C44485243F8E2B00081EA1 /* BaseTableViewController.m in Sources */,
+				83C44488243F8E2B00081EA1 /* NavigationViewController.m in Sources */,
+				831E379D23D0180E00A9F7A9 /* StreamConfigurationModel.m in Sources */,
+				83C44481243F8E2B00081EA1 /* TTVideoDownloadController.m in Sources */,
+				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
+				831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */,
+				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
+				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
+				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
+				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
+				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
+				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
+				831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */,
+				83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */,
+				83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */,
+				83C443B8243E492A00081EA1 /* BEResourceHelper.m in Sources */,
+				83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */,
+				83C44487243F8E2B00081EA1 /* BaseContainerViewController.m in Sources */,
+				83C443B5243E492A00081EA1 /* BEEffectManager.mm in Sources */,
+				83C44474243F8E2B00081EA1 /* TTVideoDownloadModel.m in Sources */,
+				83C44462243F8E2B00081EA1 /* LivePlaySettingsViewController.m in Sources */,
+				83C44498243F8E2B00081EA1 /* TTVideoPlayerControlTopView.m in Sources */,
+				83C44473243F8E2B00081EA1 /* NSString+TTVideo.m in Sources */,
+				83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */,
+				83C4448F243F8E2B00081EA1 /* TTVideoHistoryVidCell.m in Sources */,
+				83C44499243F8E2B00081EA1 /* TTVideoPlayerControlView.m in Sources */,
+				83C4448D243F8E2B00081EA1 /* TTVideoLogCell.m in Sources */,
+				831E379523D017E700A9F7A9 /* TTLogerHelper.m in Sources */,
+				8378B5C023C4860F0075E05C /* AppDelegate.m in Sources */,
+				8378B5D123C486100075E05C /* main.m in Sources */,
+				831E37A423D01BE800A9F7A9 /* LSCamera.m in Sources */,
+				83C44464243F8E2B00081EA1 /* ConfiguringViewController.m in Sources */,
+				83C44477243F8E2B00081EA1 /* TTVideoHistoryURLModel.m in Sources */,
+				83C44490243F8E2B00081EA1 /* TTVideoListCell.m in Sources */,
+				83C4447D243F8E2B00081EA1 /* TTVideoVidController.m in Sources */,
+				83C4446E243F8E2B00081EA1 /* TTVideoPreloaderHelper.m in Sources */,
+				83C443BA243E492A00081EA1 /* BERender.mm in Sources */,
+				83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */,
+				83C4446C243F8E2B00081EA1 /* UIColor+Hex.m in Sources */,
+				831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */,
+				83C44483243F8E2B00081EA1 /* VodDemoViewController.m in Sources */,
+				83C4447F243F8E2B00081EA1 /* TTVideoPlayerFullScreenManager.m in Sources */,
+				83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */,
+				83C44478243F8E2B00081EA1 /* TTVideoHistoryVidModel.m in Sources */,
+				83C4446D243F8E2B00081EA1 /* UIView+TTVideo.m in Sources */,
+				83C44482243F8E2B00081EA1 /* TTVideoListController.m in Sources */,
+				83C4448B243F8E2B00081EA1 /* TTVideoResolutionOptionsView.m in Sources */,
+				83C44476243F8E2B00081EA1 /* TTVideoListModel.m in Sources */,
+				83C4447E243F8E2B00081EA1 /* TTVideoHistoryController.m in Sources */,
+				83C4448E243F8E2B00081EA1 /* TTVideoHistoryURLCell.m in Sources */,
+				83C44495243F8E2B00081EA1 /* TTVideoActivityIndicator.m in Sources */,
+				83C4447C243F8E2B00081EA1 /* TTVideoPlaySourceController.m in Sources */,
+				83C44494243F8E2B00081EA1 /* TTVideoSettingView.m in Sources */,
+				83C4446F243F8E2B00081EA1 /* TTVideoCellFactory.m in Sources */,
+				83C44468243F8E2B00081EA1 /* LogViewController.m in Sources */,
+				83C44470243F8E2B00081EA1 /* TTVideoFetchDataHelper.m in Sources */,
+				83C44479243F8E2B00081EA1 /* TTVideoLogModel.m in Sources */,
+				83C44491243F8E2B00081EA1 /* BaseTableViewCell.m in Sources */,
+				83C44471243F8E2B00081EA1 /* TTVideoAudioSession.m in Sources */,
+				83C44493243F8E2B00081EA1 /* TTVideoSwitch.m in Sources */,
+				83C4447A243F8E2B00081EA1 /* HomeViewController.m in Sources */,
+				83C4447B243F8E2B00081EA1 /* TTVideoURLController.m in Sources */,
+				83C44489243F8E2B00081EA1 /* TTVideoPlayerController.m in Sources */,
+				83C44480243F8E2B00081EA1 /* TTVideoContainerController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8378B5C723C4860F0075E05C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8378B5C823C4860F0075E05C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8378B5CC23C486100075E05C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8378B5CD23C486100075E05C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8378B5D223C486100075E05C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8378B5D323C486100075E05C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8378B5D523C486100075E05C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREFIX_HEADER = "${SRCROOT}/TTSDKDemo/TTSDKDemo.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/extern",
+					"${SRCROOT}/extern/EffectSDK/SDK",
+				);
+				INFOPLIST_FILE = TTSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/extern/**",
+					"$(PROJECT_DIR)/extern/EffectSDK/ios_c_sdk",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
+				PRODUCT_NAME = Pandora;
+				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_J13DB8OW35;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8378B5D623C486100075E05C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREFIX_HEADER = "${SRCROOT}/TTSDKDemo/TTSDKDemo.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/extern",
+					"${SRCROOT}/extern/EffectSDK/SDK",
+				);
+				INFOPLIST_FILE = TTSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/extern/**",
+					"$(PROJECT_DIR)/extern/EffectSDK/ios_c_sdk",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
+				PRODUCT_NAME = Pandora;
+				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_J13DB8OW35;
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8378B5B623C4860F0075E05C /* Build configuration list for PBXProject "TTSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8378B5D223C486100075E05C /* Debug */,
+				8378B5D323C486100075E05C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8378B5D423C486100075E05C /* Build configuration list for PBXNativeTarget "TTSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8378B5D523C486100075E05C /* Debug */,
+				8378B5D623C486100075E05C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8378B5B323C4860F0075E05C /* Project object */;
+}
