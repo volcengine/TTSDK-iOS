@@ -2,19 +2,19 @@ Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
     spec.version      = "1.0.6.0"
-    spec.summary      = "A short description of TTSDK."
+    spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
-      A long description of TTSDK.
+      A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
                      DESC
   
     spec.homepage     = "https://github.com/volcengine/TTSDK-iOS"
   
-    spec.license      = "MIT"
+    spec.license      = { :type => 'MIT', :file => 'LICENSE' }
   
     spec.author       = { "chenzhaojie" => "chenzhaojie@bytedance.com" }
     spec.platform     = :ios, "8.0"
   
-    spec.source       = { :git => 'git@github.com:volcengine/TTSDK-iOS.git', :tag => "#{spec.version}" }
+    spec.source       = { :git => 'https://github.com/volcengine/TTSDK-iOS.git', :tag => "#{spec.version}" }
   
     spec.subspec 'Core' do |subspec|
       subspec.public_header_files = [
@@ -24,19 +24,11 @@ Pod::Spec.new do |spec|
         'TTSDK/VCloudPandora/**/*',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/VCloudPandora/**/*.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
         'TTSDK/TTVideoSetting/**/*.a',
       ]
-      subspec.frameworks = [
-        'CoreMotion',
-        'CoreMedia',
-        'MetalKit',
-        'OpenAL',
-        'VideoToolBox',
-        'AudioToolBox',
-        'AVFoundation',
-      ]
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+      subspec.dependency 'RangersAppLog', '>= 3.2.9'
+      subspec.libraries = 'stdc++'
     end
 
     spec.subspec 'PlayerCore' do |subspec|
@@ -54,6 +46,17 @@ Pod::Spec.new do |spec|
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
   
     spec.subspec 'LivePull' do |subspec|
@@ -65,8 +68,11 @@ Pod::Spec.new do |spec|
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/*.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
       ]
+      subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
   
     spec.subspec 'LivePush' do |subspec|
@@ -78,10 +84,18 @@ Pod::Spec.new do |spec|
       ]
       subspec.vendored_libraries = [
         'TTSDK/LiveStreamFramework/**/*.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePush_ios.a',
       ]
       subspec.frameworks = [
         'VideoToolBox',
+        'AudioToolBox',
+        'CoreMotion',
+        'CoreMedia',
+        'AVFoundation',
+        'SystemConfiguration',
       ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.libraries = 'stdc++'
     end
   
     spec.subspec 'Player' do |subspec|
@@ -99,6 +113,7 @@ Pod::Spec.new do |spec|
         'TTSDK/TTTopSignature/**/*.a',
         'TTSDK/MDLMediaDataLoader/**/*.a',
       ]
+      subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
     end
   

@@ -1,3 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/bytedance/cocoapods_sdk_source_repo.git'
+
 install! 'cocoapods', :deterministic_uuids => false
 
 platform :ios, "8.0"
@@ -16,5 +19,5 @@ target 'TTSDKDemo' do
   pod 'MJExtension'
   pod 'IQKeyboardManager'
   pod 'CocoaAsyncSocket'
-  pod 'RangersAppLog', '~> 3.2.9', :subspecs => ['Core'], :source => 'https://github.com/CocoaPods/Specs.git'
+  pod 'RangersAppLog', '~> 5.3.1', :subspecs => ['Core']
 end
