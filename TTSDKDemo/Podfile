@@ -8,7 +8,7 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 target 'TTSDKDemo' do
-  pod 'TTSDK', :path => '../'
+  pod 'TTSDK', '1.0.6.0'
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
   pod 'FLEX'

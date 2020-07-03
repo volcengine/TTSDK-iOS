@@ -13,7 +13,7 @@ static NSString *COMPOSER_PATH = @"ComposeMakeup";
 static NSString *FILTER_PATH = @"FilterResource";
 static NSString *STICKER_PATH = @"StickerResource";
 static NSString *MODEL_PATH = @"ModelResource";
-static NSString *LICENSE_NAME = @"/labcv_test_20200327_20200630_com.bytedance.videoarch.pandora.demo_labcv_test_v3.8.2.licbag";
+static NSString *LICENSE_NAME = @"/labcv_test_20200701_20201231_com.bytedance.videoarch.pandora.demo_labcv_test_v3.9.2.licbag";
 
 static NSString *BUNDLE = @"bundle";
 

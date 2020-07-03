@@ -76,12 +76,13 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK (from `../`)
+  - TTSDK (= 1.0.6.0)
   - YYCategories
 
 SPEC REPOS:
   https://github.com/bytedance/cocoapods_sdk_source_repo.git:
     - RangersAppLog
+    - TTSDK
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CocoaAsyncSocket
@@ -94,10 +95,6 @@ SPEC REPOS:
     - Toast
     - YYCategories
 
-EXTERNAL SOURCES:
-  TTSDK:
-    :path: "../"
-
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
@@ -109,9 +106,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: fd1ec4cb15437f6ad9ef5a6d79e662b934f2a097
+  TTSDK: d5c05313454a06e2c0a1aff02552449f3cc325f0
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: ae49ae7c8e42fcf76676bd284003ba9d6fef64ef
+PODFILE CHECKSUM: 00b309817d181b3a9c0cde7b4d699f2efc773d5a
 
 COCOAPODS: 1.6.1
