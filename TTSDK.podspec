@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.0.11.0"
+    spec.version      = "1.0.11.1"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -42,6 +42,7 @@ Pod::Spec.new do |spec|
         'TTSDK/TTPlayerSDK/**/*.a',
         'TTSDK/audiosdk/**/*.a',
         'TTSDK/boringssl/**/*.a',
+        'TTSDK/TTFFmpeg/**/*.a',
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',

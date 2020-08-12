@@ -56,7 +56,8 @@
 @property (nonatomic, assign, readonly) BOOL isPlaying;
 
 /**
- SDK provides DNS resolution and caching， and you can choose to use it or not. Default is YES.
+ SDK provides DNS resolution and caching, and you can choose to use it or not.
+ This strategy is well supported with HTTP streaming, but might failed with RTMP because not all media sever supports IP direct access. Default is YES.
  */
 @property (nonatomic, assign) BOOL shouldUseLiveDNS;
 

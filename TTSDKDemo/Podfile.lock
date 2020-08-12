@@ -43,24 +43,24 @@ PODS:
     - SDWebImage/Core (= 5.7.4)
   - SDWebImage/Core (5.7.4)
   - Toast (4.0.0)
-  - TTSDK (1.0.6.0):
-    - TTSDK/Core (= 1.0.6.0)
-    - TTSDK/LivePull (= 1.0.6.0)
-    - TTSDK/LivePush (= 1.0.6.0)
-    - TTSDK/Player (= 1.0.6.0)
-    - TTSDK/PlayerCore (= 1.0.6.0)
-  - TTSDK/Core (1.0.6.0):
-    - RangersAppLog (>= 3.2.9)
-  - TTSDK/LivePull (1.0.6.0):
+  - TTSDK (1.0.11.0):
+    - TTSDK/Core (= 1.0.11.0)
+    - TTSDK/LivePull (= 1.0.11.0)
+    - TTSDK/LivePush (= 1.0.11.0)
+    - TTSDK/Player (= 1.0.11.0)
+    - TTSDK/PlayerCore (= 1.0.11.0)
+  - TTSDK/Core (1.0.11.0):
+    - RangersAppLog (>= 3.2.5)
+  - TTSDK/LivePull (1.0.11.0):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.0.6.0):
+  - TTSDK/LivePush (1.0.11.0):
     - TTSDK/Core
-  - TTSDK/Player (1.0.6.0):
+  - TTSDK/Player (1.0.11.0):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.0.6.0)
+  - TTSDK/PlayerCore (1.0.11.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -76,13 +76,12 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK (= 1.0.6.0)
+  - TTSDK (from `../`)
   - YYCategories
 
 SPEC REPOS:
   https://github.com/bytedance/cocoapods_sdk_source_repo.git:
     - RangersAppLog
-    - TTSDK
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CocoaAsyncSocket
@@ -95,6 +94,10 @@ SPEC REPOS:
     - Toast
     - YYCategories
 
+EXTERNAL SOURCES:
+  TTSDK:
+    :path: "../"
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
@@ -106,9 +109,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: d5c05313454a06e2c0a1aff02552449f3cc325f0
+  TTSDK: a03c4e4015ed592b4a8fb7cca71aed04a2eacd41
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 00b309817d181b3a9c0cde7b4d699f2efc773d5a
+PODFILE CHECKSUM: b52d461c2c96ba1b0eb5d8ad61b3a4f0f47046f0
 
 COCOAPODS: 1.6.1
