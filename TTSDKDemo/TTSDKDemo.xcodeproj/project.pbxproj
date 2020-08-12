@@ -818,7 +818,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RangersAppLog/RangersAppLog.bundle",
-				"${PODS_ROOT}/TTSDK/TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
+				"${PODS_ROOT}/../../TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
@@ -1075,7 +1075,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
+				DEVELOPMENT_TEAM = 72TFJYDP24;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "${SRCROOT}/TTSDKDemo/TTSDKDemo.pch";
@@ -1098,7 +1098,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_J13DB8OW35;
+				PROVISIONING_PROFILE_SPECIFIER = Dian_Xiong_3_Wildcard_EKBMF7AWCG;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1111,7 +1111,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
+				DEVELOPMENT_TEAM = 72TFJYDP24;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "${SRCROOT}/TTSDKDemo/TTSDKDemo.pch";
@@ -1134,7 +1134,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_J13DB8OW35;
+				PROVISIONING_PROFILE_SPECIFIER = Dian_Xiong_3_Wildcard_EKBMF7AWCG;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
