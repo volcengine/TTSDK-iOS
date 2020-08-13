@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGSize)ttvideoengine_sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 
-- (NSNumber*)ttvideoengine_stringToNSNumber;
-
 - (NSString *)ttvideoengine_base64DecodedString;
 
 @end
