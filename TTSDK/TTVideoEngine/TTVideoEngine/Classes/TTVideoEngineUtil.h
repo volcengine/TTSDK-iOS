@@ -179,5 +179,6 @@ TTVideo_EXTERN NSString* TTVideoEngineMD5(NSString* oriString);
 TTVideo_EXTERN BOOL TTVideoEngineCheckHostNameIsIP(NSString *hostname);
 TTVideo_EXTERN NSString *TTVideoEngineGetDescrptKey(NSString *spade);
 TTVideo_EXTERN NSString *TTVideoEngineBuildBoeUrl(NSString* url);
+TTVideo_EXTERN NSNumber* TTVideoEngineStringToNSNumber(const NSString *string);
 
 
