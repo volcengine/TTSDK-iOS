@@ -43,24 +43,24 @@ PODS:
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
   - Toast (4.0.0)
-  - TTSDK (1.0.12.0):
-    - TTSDK/Core (= 1.0.12.0)
-    - TTSDK/LivePull (= 1.0.12.0)
-    - TTSDK/LivePush (= 1.0.12.0)
-    - TTSDK/Player (= 1.0.12.0)
-    - TTSDK/PlayerCore (= 1.0.12.0)
-  - TTSDK/Core (1.0.12.0):
+  - TTSDK (1.0.12.1):
+    - TTSDK/Core (= 1.0.12.1)
+    - TTSDK/LivePull (= 1.0.12.1)
+    - TTSDK/LivePush (= 1.0.12.1)
+    - TTSDK/Player (= 1.0.12.1)
+    - TTSDK/PlayerCore (= 1.0.12.1)
+  - TTSDK/Core (1.0.12.1):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/LivePull (1.0.12.0):
+  - TTSDK/LivePull (1.0.12.1):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.0.12.0):
+  - TTSDK/LivePush (1.0.12.1):
     - TTSDK/Core
-  - TTSDK/Player (1.0.12.0):
+  - TTSDK/Player (1.0.12.1):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.0.12.0)
+  - TTSDK/PlayerCore (1.0.12.1)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -109,7 +109,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: e64421e59a79616c01849cf954d6437086fb9dfe
+  TTSDK: a3cef444a925917325628c9e6a2497636ca0da04
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
 PODFILE CHECKSUM: b52d461c2c96ba1b0eb5d8ad61b3a4f0f47046f0
