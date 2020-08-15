@@ -818,14 +818,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RangersAppLog/RangersAppLog.bundle",
-				"${PODS_ROOT}/../../TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RangersAppLog.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ttplayer.metallib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
