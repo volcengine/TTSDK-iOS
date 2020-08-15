@@ -16,9 +16,9 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.6.4)
   - FLEX (3.0.0)
-  - IQKeyboardManager (6.5.5)
+  - IQKeyboardManager (6.5.6)
   - Masonry (1.1.0)
-  - MJExtension (3.2.1)
+  - MJExtension (3.2.2)
   - RangersAppLog (5.3.1):
     - RangersAppLog/Core (= 5.3.1)
     - RangersAppLog/Log (= 5.3.1)
@@ -39,28 +39,28 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (5.7.4):
-    - SDWebImage/Core (= 5.7.4)
-  - SDWebImage/Core (5.7.4)
+  - SDWebImage (5.8.4):
+    - SDWebImage/Core (= 5.8.4)
+  - SDWebImage/Core (5.8.4)
   - Toast (4.0.0)
-  - TTSDK (1.0.11.1):
-    - TTSDK/Core (= 1.0.11.1)
-    - TTSDK/LivePull (= 1.0.11.1)
-    - TTSDK/LivePush (= 1.0.11.1)
-    - TTSDK/Player (= 1.0.11.1)
-    - TTSDK/PlayerCore (= 1.0.11.1)
-  - TTSDK/Core (1.0.11.1):
+  - TTSDK (1.0.12.0):
+    - TTSDK/Core (= 1.0.12.0)
+    - TTSDK/LivePull (= 1.0.12.0)
+    - TTSDK/LivePush (= 1.0.12.0)
+    - TTSDK/Player (= 1.0.12.0)
+    - TTSDK/PlayerCore (= 1.0.12.0)
+  - TTSDK/Core (1.0.12.0):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/LivePull (1.0.11.1):
+  - TTSDK/LivePull (1.0.12.0):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.0.11.1):
+  - TTSDK/LivePush (1.0.12.0):
     - TTSDK/Core
-  - TTSDK/Player (1.0.11.1):
+  - TTSDK/Player (1.0.12.0):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.0.11.1)
+  - TTSDK/PlayerCore (1.0.12.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -102,14 +102,14 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
-  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
+  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 29bc05a22032f842e3a647ef5bc2e855d75c62ea
+  TTSDK: e64421e59a79616c01849cf954d6437086fb9dfe
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
 PODFILE CHECKSUM: b52d461c2c96ba1b0eb5d8ad61b3a4f0f47046f0

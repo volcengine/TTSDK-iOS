@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.0.12.0"
+    spec.version      = "1.0.12.1"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
     spec.author       = { "chenzhaojie" => "chenzhaojie@bytedance.com" }
     spec.platform     = :ios, "8.0"
   
-    spec.source       = { :git => 'https://github.com/volcengine/TTSDK-iOS.git', :tag => "#{spec.version}" }
+    spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
   
     spec.subspec 'Core' do |subspec|
       subspec.public_header_files = [
