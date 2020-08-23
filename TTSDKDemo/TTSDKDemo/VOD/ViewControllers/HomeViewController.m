@@ -10,12 +10,14 @@
 #import "TTVideoFetchDataHelper.h"
 #import "SettingsViewController.h"
 #import "LivePlaySettingsViewController.h"
+#import "BDRootViewController.h"
 #import <TTSDK/TTVideoEngineHeader.h>
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIButton  *vodBtn;
 @property (nonatomic, strong) UIButton  *pushBtn;
 @property (nonatomic, strong) UIButton  *pullBtn;
+@property (nonatomic, strong) UIButton  *imageBtn;
 @end
 
 @implementation HomeViewController
@@ -51,6 +53,14 @@
     [_pullBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
     [_pullBtn addTarget:self action:@selector(_enterLivePlayDemoViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_pullBtn];
+    
+    _imageBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
+    _imageBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
+    _imageBtn.titleLabel.font = TT_FONT(15);
+    [_imageBtn setTitle:@"WebImage" forState:UIControlStateNormal];
+    [_imageBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [_imageBtn addTarget:self action:@selector(_enterImageDemoViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_imageBtn];
 }
 
 - (void)buildUI {
@@ -72,6 +82,9 @@
     
     _pullBtn.left = _vodBtn.left;
     _pullBtn.top = TT_BASE_375(30) + _pushBtn.bottom;
+    
+    _imageBtn.left = _vodBtn.left;
+    _imageBtn.top = TT_BASE_375(30) + _pullBtn.bottom;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,6 +94,11 @@
 }
 
 /// MARK: - Private method
+
+- (void)_enterImageDemoViewController {
+    BDRootViewController *vc = [[BDRootViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)_enterVodDemoViewController {
     VodDemoViewController *vodDemoVC = [[VodDemoViewController alloc] init];

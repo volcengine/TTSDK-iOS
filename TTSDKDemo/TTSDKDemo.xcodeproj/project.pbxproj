@@ -26,6 +26,26 @@
 		83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEC23E2C92F00E87A4A /* TTControlsBox.m */; };
 		83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */; };
 		83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */; };
+		83C2068A24F2BFD8003A345B /* BDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2067024F2BFD8003A345B /* BDRootViewController.m */; };
+		83C2068B24F2BFD8003A345B /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067224F2BFD8003A345B /* play@3x.png */; };
+		83C2068C24F2BFD8003A345B /* 配置@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067324F2BFD8003A345B /* 配置@3x.png */; };
+		83C2068D24F2BFD8003A345B /* 永久循环.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067424F2BFD8003A345B /* 永久循环.png */; };
+		83C2068E24F2BFD8003A345B /* 自定循环.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067524F2BFD8003A345B /* 自定循环.png */; };
+		83C2068F24F2BFD8003A345B /* 配置@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067624F2BFD8003A345B /* 配置@2x.png */; };
+		83C2069024F2BFD8003A345B /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067724F2BFD8003A345B /* play@2x.png */; };
+		83C2069124F2BFD8003A345B /* 手动播放.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067824F2BFD8003A345B /* 手动播放.png */; };
+		83C2069224F2BFD8003A345B /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067924F2BFD8003A345B /* search.png */; };
+		83C2069324F2BFD9003A345B /* 手动暂停.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067A24F2BFD8003A345B /* 手动暂停.png */; };
+		83C2069424F2BFD9003A345B /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067B24F2BFD8003A345B /* stop@2x.png */; };
+		83C2069524F2BFD9003A345B /* stop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067C24F2BFD8003A345B /* stop@3x.png */; };
+		83C2069624F2BFD9003A345B /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067D24F2BFD8003A345B /* setting.png */; };
+		83C2069724F2BFD9003A345B /* loop@3x.webp in Resources */ = {isa = PBXBuildFile; fileRef = 83C2067E24F2BFD8003A345B /* loop@3x.webp */; };
+		83C2069824F2BFD9003A345B /* BDImageSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2067F24F2BFD8003A345B /* BDImageSettingModel.m */; };
+		83C2069924F2BFD9003A345B /* BDImageOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2068324F2BFD8003A345B /* BDImageOptionView.m */; };
+		83C2069A24F2BFD9003A345B /* BDImageAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2068424F2BFD8003A345B /* BDImageAdapter.m */; };
+		83C2069B24F2BFD9003A345B /* BDImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2068624F2BFD8003A345B /* BDImageDetailViewController.m */; };
+		83C2069C24F2BFD9003A345B /* BDImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2068824F2BFD8003A345B /* BDImageCollectionViewController.m */; };
+		83C2069D24F2BFD9003A345B /* BDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C2068924F2BFD8003A345B /* BDSettingsViewController.m */; };
 		83C443B5243E492A00081EA1 /* BEEffectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C4439F243E492A00081EA1 /* BEEffectManager.mm */; };
 		83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */; };
 		83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A2243E492A00081EA1 /* BEStudioConstants.m */; };
@@ -137,6 +157,33 @@
 		83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsModel.m; sourceTree = "<group>"; };
 		83795AF123E2CBCE00E87A4A /* TTEffectsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEffectsViewModel.h; sourceTree = "<group>"; };
 		83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsViewModel.m; sourceTree = "<group>"; };
+		83C2066E24F2BFD8003A345B /* BDImageAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageAdapter.h; sourceTree = "<group>"; };
+		83C2066F24F2BFD8003A345B /* BDImageOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageOptionView.h; sourceTree = "<group>"; };
+		83C2067024F2BFD8003A345B /* BDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDRootViewController.m; sourceTree = "<group>"; };
+		83C2067224F2BFD8003A345B /* play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@3x.png"; sourceTree = "<group>"; };
+		83C2067324F2BFD8003A345B /* 配置@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "配置@3x.png"; sourceTree = "<group>"; };
+		83C2067424F2BFD8003A345B /* 永久循环.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "永久循环.png"; sourceTree = "<group>"; };
+		83C2067524F2BFD8003A345B /* 自定循环.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "自定循环.png"; sourceTree = "<group>"; };
+		83C2067624F2BFD8003A345B /* 配置@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "配置@2x.png"; sourceTree = "<group>"; };
+		83C2067724F2BFD8003A345B /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		83C2067824F2BFD8003A345B /* 手动播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手动播放.png"; sourceTree = "<group>"; };
+		83C2067924F2BFD8003A345B /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		83C2067A24F2BFD8003A345B /* 手动暂停.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手动暂停.png"; sourceTree = "<group>"; };
+		83C2067B24F2BFD8003A345B /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
+		83C2067C24F2BFD8003A345B /* stop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@3x.png"; sourceTree = "<group>"; };
+		83C2067D24F2BFD8003A345B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		83C2067E24F2BFD8003A345B /* loop@3x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "loop@3x.webp"; sourceTree = "<group>"; };
+		83C2067F24F2BFD8003A345B /* BDImageSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageSettingModel.m; sourceTree = "<group>"; };
+		83C2068024F2BFD8003A345B /* BDImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageDetailViewController.h; sourceTree = "<group>"; };
+		83C2068124F2BFD8003A345B /* BDSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSettingsViewController.h; sourceTree = "<group>"; };
+		83C2068224F2BFD8003A345B /* BDImageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageCollectionViewController.h; sourceTree = "<group>"; };
+		83C2068324F2BFD8003A345B /* BDImageOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageOptionView.m; sourceTree = "<group>"; };
+		83C2068424F2BFD8003A345B /* BDImageAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageAdapter.m; sourceTree = "<group>"; };
+		83C2068524F2BFD8003A345B /* BDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRootViewController.h; sourceTree = "<group>"; };
+		83C2068624F2BFD8003A345B /* BDImageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageDetailViewController.m; sourceTree = "<group>"; };
+		83C2068724F2BFD8003A345B /* BDImageSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageSettingModel.h; sourceTree = "<group>"; };
+		83C2068824F2BFD8003A345B /* BDImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageCollectionViewController.m; sourceTree = "<group>"; };
+		83C2068924F2BFD8003A345B /* BDSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSettingsViewController.m; sourceTree = "<group>"; };
 		83C44397243E492A00081EA1 /* bef_effect_ai_public_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_public_define.h; sourceTree = "<group>"; };
 		83C44398243E492A00081EA1 /* bef_effect_ai_yuv_process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_yuv_process.h; sourceTree = "<group>"; };
 		83C44399243E492A00081EA1 /* byted_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = byted_effect.h; sourceTree = "<group>"; };
@@ -364,6 +411,7 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				83C2066D24F2BFD8003A345B /* Imagex */,
 				830EA318246940C1004DC739 /* ttsdkdemo.license */,
 				83C443DF243F8E2A00081EA1 /* Pull */,
 				83C443F3243F8E2A00081EA1 /* VOD */,
@@ -406,6 +454,48 @@
 				83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		83C2066D24F2BFD8003A345B /* Imagex */ = {
+			isa = PBXGroup;
+			children = (
+				83C2066E24F2BFD8003A345B /* BDImageAdapter.h */,
+				83C2066F24F2BFD8003A345B /* BDImageOptionView.h */,
+				83C2067024F2BFD8003A345B /* BDRootViewController.m */,
+				83C2067124F2BFD8003A345B /* images */,
+				83C2067F24F2BFD8003A345B /* BDImageSettingModel.m */,
+				83C2068024F2BFD8003A345B /* BDImageDetailViewController.h */,
+				83C2068124F2BFD8003A345B /* BDSettingsViewController.h */,
+				83C2068224F2BFD8003A345B /* BDImageCollectionViewController.h */,
+				83C2068324F2BFD8003A345B /* BDImageOptionView.m */,
+				83C2068424F2BFD8003A345B /* BDImageAdapter.m */,
+				83C2068524F2BFD8003A345B /* BDRootViewController.h */,
+				83C2068624F2BFD8003A345B /* BDImageDetailViewController.m */,
+				83C2068724F2BFD8003A345B /* BDImageSettingModel.h */,
+				83C2068824F2BFD8003A345B /* BDImageCollectionViewController.m */,
+				83C2068924F2BFD8003A345B /* BDSettingsViewController.m */,
+			);
+			path = Imagex;
+			sourceTree = "<group>";
+		};
+		83C2067124F2BFD8003A345B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				83C2067224F2BFD8003A345B /* play@3x.png */,
+				83C2067324F2BFD8003A345B /* 配置@3x.png */,
+				83C2067424F2BFD8003A345B /* 永久循环.png */,
+				83C2067524F2BFD8003A345B /* 自定循环.png */,
+				83C2067624F2BFD8003A345B /* 配置@2x.png */,
+				83C2067724F2BFD8003A345B /* play@2x.png */,
+				83C2067824F2BFD8003A345B /* 手动播放.png */,
+				83C2067924F2BFD8003A345B /* search.png */,
+				83C2067A24F2BFD8003A345B /* 手动暂停.png */,
+				83C2067B24F2BFD8003A345B /* stop@2x.png */,
+				83C2067C24F2BFD8003A345B /* stop@3x.png */,
+				83C2067D24F2BFD8003A345B /* setting.png */,
+				83C2067E24F2BFD8003A345B /* loop@3x.webp */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		83C44393243E492A00081EA1 /* extern */ = {
@@ -788,20 +878,33 @@
 				83C44466243F8E2B00081EA1 /* LivePlaySettingsViewController.xib in Resources */,
 				83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */,
 				8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */,
+				83C2069324F2BFD9003A345B /* 手动暂停.png in Resources */,
 				83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */,
+				83C2069424F2BFD9003A345B /* stop@2x.png in Resources */,
 				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
+				83C2069624F2BFD9003A345B /* setting.png in Resources */,
+				83C2068B24F2BFD8003A345B /* play@3x.png in Resources */,
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
 				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
 				8378B5CB23C486100075E05C /* Assets.xcassets in Resources */,
 				8378B5C923C4860F0075E05C /* Main.storyboard in Resources */,
+				83C2068E24F2BFD8003A345B /* 自定循环.png in Resources */,
 				83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */,
+				83C2069024F2BFD8003A345B /* play@2x.png in Resources */,
+				83C2069124F2BFD8003A345B /* 手动播放.png in Resources */,
+				83C2068F24F2BFD8003A345B /* 配置@2x.png in Resources */,
 				83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */,
+				83C2068C24F2BFD8003A345B /* 配置@3x.png in Resources */,
 				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
 				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
+				83C2069224F2BFD8003A345B /* search.png in Resources */,
 				830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */,
 				83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */,
+				83C2068D24F2BFD8003A345B /* 永久循环.png in Resources */,
 				83C44467243F8E2B00081EA1 /* PreferencesViewController.xib in Resources */,
+				83C2069524F2BFD9003A345B /* stop@3x.png in Resources */,
+				83C2069724F2BFD9003A345B /* loop@3x.webp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,12 +921,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RangersAppLog/RangersAppLog.bundle",
+				"${PODS_ROOT}/TTSDK/TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RangersAppLog.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ttplayer.metallib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -860,6 +965,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C4446B243F8E2B00081EA1 /* LivePlayViewController.m in Sources */,
+				83C2068A24F2BFD8003A345B /* BDRootViewController.m in Sources */,
 				83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */,
 				83C44497243F8E2B00081EA1 /* TTVideoPlayerSliderView.m in Sources */,
 				83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */,
@@ -878,7 +984,9 @@
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
 				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
+				83C2069924F2BFD9003A345B /* BDImageOptionView.m in Sources */,
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
+				83C2069B24F2BFD9003A345B /* BDImageDetailViewController.m in Sources */,
 				831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */,
 				83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */,
 				83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */,
@@ -890,6 +998,7 @@
 				83C44462243F8E2B00081EA1 /* LivePlaySettingsViewController.m in Sources */,
 				83C44498243F8E2B00081EA1 /* TTVideoPlayerControlTopView.m in Sources */,
 				83C44473243F8E2B00081EA1 /* NSString+TTVideo.m in Sources */,
+				83C2069824F2BFD9003A345B /* BDImageSettingModel.m in Sources */,
 				83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */,
 				83C4448F243F8E2B00081EA1 /* TTVideoHistoryVidCell.m in Sources */,
 				83C44499243F8E2B00081EA1 /* TTVideoPlayerControlView.m in Sources */,
@@ -905,6 +1014,7 @@
 				83C4446E243F8E2B00081EA1 /* TTVideoPreloaderHelper.m in Sources */,
 				83C443BA243E492A00081EA1 /* BERender.mm in Sources */,
 				83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */,
+				83C2069A24F2BFD9003A345B /* BDImageAdapter.m in Sources */,
 				83C4446C243F8E2B00081EA1 /* UIColor+Hex.m in Sources */,
 				831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */,
 				83C44483243F8E2B00081EA1 /* VodDemoViewController.m in Sources */,
@@ -926,8 +1036,10 @@
 				83C44479243F8E2B00081EA1 /* TTVideoLogModel.m in Sources */,
 				83C44491243F8E2B00081EA1 /* BaseTableViewCell.m in Sources */,
 				83C44471243F8E2B00081EA1 /* TTVideoAudioSession.m in Sources */,
+				83C2069C24F2BFD9003A345B /* BDImageCollectionViewController.m in Sources */,
 				83C44493243F8E2B00081EA1 /* TTVideoSwitch.m in Sources */,
 				83C4447A243F8E2B00081EA1 /* HomeViewController.m in Sources */,
+				83C2069D24F2BFD9003A345B /* BDSettingsViewController.m in Sources */,
 				83C4447B243F8E2B00081EA1 /* TTVideoURLController.m in Sources */,
 				83C44489243F8E2B00081EA1 /* TTVideoPlayerController.m in Sources */,
 				83C44480243F8E2B00081EA1 /* TTVideoContainerController.m in Sources */,
