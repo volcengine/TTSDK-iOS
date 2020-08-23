@@ -17,6 +17,15 @@ PODS:
   - CocoaAsyncSocket (7.6.4)
   - FLEX (3.0.0)
   - IQKeyboardManager (6.5.6)
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
   - RangersAppLog (5.3.1):
@@ -43,24 +52,27 @@ PODS:
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
   - Toast (4.0.0)
-  - TTSDK (1.0.12.1):
-    - TTSDK/Core (= 1.0.12.1)
-    - TTSDK/LivePull (= 1.0.12.1)
-    - TTSDK/LivePush (= 1.0.12.1)
-    - TTSDK/Player (= 1.0.12.1)
-    - TTSDK/PlayerCore (= 1.0.12.1)
-  - TTSDK/Core (1.0.12.1):
+  - TTSDK (1.1.0.2):
+    - TTSDK/Core (= 1.1.0.2)
+    - TTSDK/Image (= 1.1.0.2)
+    - TTSDK/LivePull (= 1.1.0.2)
+    - TTSDK/LivePush (= 1.1.0.2)
+    - TTSDK/Player (= 1.1.0.2)
+    - TTSDK/PlayerCore (= 1.1.0.2)
+  - TTSDK/Core (1.1.0.2):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/LivePull (1.0.12.1):
+  - TTSDK/Image (1.1.0.2):
+    - libwebp
+  - TTSDK/LivePull (1.1.0.2):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.0.12.1):
+  - TTSDK/LivePush (1.1.0.2):
     - TTSDK/Core
-  - TTSDK/Player (1.0.12.1):
+  - TTSDK/Player (1.1.0.2):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.0.12.1)
+  - TTSDK/PlayerCore (1.1.0.2)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -76,7 +88,7 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK (from `../`)
+  - TTSDK (= 1.1.0.2)
   - YYCategories
 
 SPEC REPOS:
@@ -87,31 +99,31 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - FLEX
     - IQKeyboardManager
+    - libwebp
     - Masonry
     - MJExtension
     - ReactiveCocoa
     - SDWebImage
     - Toast
     - YYCategories
-
-EXTERNAL SOURCES:
-  TTSDK:
-    :path: "../"
+  https://github.com/volcengine/volcengine-specs.git:
+    - TTSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: a3cef444a925917325628c9e6a2497636ca0da04
+  TTSDK: 8567ed7060a13cae480045543553bab50fc0b91c
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: b52d461c2c96ba1b0eb5d8ad61b3a4f0f47046f0
+PODFILE CHECKSUM: ec452b6f7427166b30726235397ecc69694da8fa
 
 COCOAPODS: 1.6.1

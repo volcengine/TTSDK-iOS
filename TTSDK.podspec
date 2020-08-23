@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.0.12.1"
+    spec.version      = "1.1.0.2"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -117,6 +117,19 @@ Pod::Spec.new do |spec|
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
     end
-  
+
+    spec.subspec 'Image' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/BDWebImageToB/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/BDWebImageToB/**/*',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/BDWebImageToB/**/*.a'
+      ]
+      subspec.dependency 'libwebp'
+    end
+
   end
   
