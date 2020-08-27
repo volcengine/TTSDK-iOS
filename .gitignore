@@ -6,4 +6,6 @@ project.xcworkspace/
 xcuserdata/
 UserInterface.xcuserstate
 TTSDKDemo/Pods
+TTSDKDemo/extern/FFmpeg
 .cocoapods-*-transform.flag
+TTSDK

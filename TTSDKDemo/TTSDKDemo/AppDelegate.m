@@ -10,11 +10,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "NavigationViewController.h"
 #import "HomeViewController.h"
-#import <TTSDK/TTSDKManager.h>
-#import <TTSDK/TTVideoEngineHeader.h>
-#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
 #import <RangersAppLog/RangersAppLogCore.h>
-#endif
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);

@@ -6,8 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TTSDK/TVLPlayerItem.h>
-#import <TTSDK/TVLConstDefine.h>
 
 @interface PlayConfiguration : NSObject
 

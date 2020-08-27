@@ -7,7 +7,6 @@
 //
 
 #import "TTVideoPlayerController.h"
-#import <TTSDK/TTVideoEngineHeader.h>
 #import "TTVideoPlayerControlsController.h"
 #import "TTVideoPlayerFullScreenManager.h"
 #import "SourceViewController.h"

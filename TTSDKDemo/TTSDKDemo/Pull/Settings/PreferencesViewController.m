@@ -6,7 +6,6 @@
 //
 
 #import "PreferencesViewController.h"
-#import <TTSDK/TVLPlayerItemPreferences.h>
 
 @interface PreferencesViewController ()
 

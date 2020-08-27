@@ -6,7 +6,6 @@
 
 #import <UIKit/UIKit.h>
 #import "StreamConfigurationModel.h"
-#import <TTSDK/LiveStreamLibrary.h>
 
 #if __has_include(<NodeProber/LiveNodeSortManager.h>)
 #   define LIVE_NODE_PROBER_TEST 1

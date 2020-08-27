@@ -7,7 +7,6 @@
 //
 
 #import "TTVideoPreloaderHelper.h"
-#import <TTSDK/TTVideoEngineHeader.h>
 #import "SourceViewController.h"
 
 @implementation TTVideoPreloaderHelper

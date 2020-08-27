@@ -9,6 +9,16 @@
 #ifndef TTSDKDemo_pch
 #define TTSDKDemo_pch
 
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKFramework/TTSDKFramework.h>
+#else
+#import <TTSDK/TTSDKManager.h>
+#import <TTSDK/TTVideoEngineHeader.h>
+#import <TTSDK/LiveStreamLibrary.h>
+#import <TTSDK/TTVideoLive.h>
+#import <TTSDK/BDWebImage.h>
+#endif
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "TTVideoPlayerDemoDefine.h"
