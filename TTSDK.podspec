@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.1.0.2"
+    spec.version      = "1.1.0.3"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -15,6 +15,8 @@ Pod::Spec.new do |spec|
     spec.platform     = :ios, "8.0"
   
     spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
+    
+    spec.default_subspecs = 'Core', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
   
     spec.subspec 'Core' do |subspec|
       subspec.public_header_files = [
@@ -31,6 +33,44 @@ Pod::Spec.new do |spec|
       subspec.libraries = 'stdc++'
     end
 
+    spec.subspec 'TTFFmpegFramework' do |subspec|
+      subspec.vendored_frameworks = [
+        'TTSDK/TTFFmpegFramework/TTFFmpegFramework.framework'
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/boringssl/**/*.a',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
+
+    spec.subspec 'TTFFmpeg' do |subspec|
+      subspec.vendored_libraries = [
+        'TTSDK/boringssl/**/*.a',
+        'TTSDK/TTFFmpeg/**/*.a',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
+
     spec.subspec 'PlayerCore' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
@@ -41,8 +81,6 @@ Pod::Spec.new do |spec|
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
         'TTSDK/audiosdk/**/*.a',
-        'TTSDK/boringssl/**/*.a',
-        'TTSDK/TTFFmpeg/**/*.a',
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',

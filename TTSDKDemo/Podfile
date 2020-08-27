@@ -9,7 +9,16 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 target 'TTSDKDemo' do
-  pod 'TTSDK', '1.1.0.2'
+  pod 'TTSDK', '1.1.0.3', :subspecs => [
+    'Core',
+#    'TTFFmpegFramework',
+    'TTFFmpeg',
+    'PlayerCore',
+    'LivePull',
+    'LivePush',
+    'Player',
+    'Image',
+  ]
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
   pod 'FLEX'
