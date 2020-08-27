@@ -7,5 +7,6 @@ xcuserdata/
 UserInterface.xcuserstate
 TTSDKDemo/Pods
 TTSDKDemo/extern/FFmpeg
+TTSDKDemo/LinkMap
 .cocoapods-*-transform.flag
 TTSDK
