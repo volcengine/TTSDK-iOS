@@ -11,7 +11,6 @@
 #import "SettingsViewController.h"
 #import "LivePlaySettingsViewController.h"
 #import "BDRootViewController.h"
-#import <TTSDK/TTVideoEngineHeader.h>
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIButton  *vodBtn;

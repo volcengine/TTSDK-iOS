@@ -7,7 +7,6 @@
 #import "BDImageCollectionViewController.h"
 #import "BDImageDetailViewController.h"
 #import "BDImageAdapter.h"
-#import <BDWebImage.h>
 #import <Masonry/Masonry.h>
 
 @interface BDImageCollectionViewCell : UICollectionViewCell

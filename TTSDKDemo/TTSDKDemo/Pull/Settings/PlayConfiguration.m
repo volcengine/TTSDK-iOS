@@ -6,7 +6,6 @@
 //
 
 #import "PlayConfiguration.h"
-#import <TTSDK/TVLSettingsManager.h>
 
 @implementation PlayConfiguration
 

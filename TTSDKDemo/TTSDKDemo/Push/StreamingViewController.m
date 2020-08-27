@@ -9,7 +9,6 @@
 #import "LiveHelper.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <TTSDK/LiveStreamLibrary.h>
 
 #import "BEEffectManager.h"
 #import "BEFrameProcessor.h"

@@ -9,10 +9,6 @@
 #import "LivePlayViewController.h"
 #import "PlayConfiguration.h"
 #import <AVFoundation/AVFoundation.h>
-#import <TTSDK/TVLManager.h>
-#import <TTSDK/TVLManager+Settings.h>
-#import <TTSDK/TVLSettingsManager.h>
-#import <TTSDK/TVLOption.h>
 #import <Masonry.h>
 #import <MediaPlayer/MPVolumeView.h>
 #import <UIView+Toast.h>

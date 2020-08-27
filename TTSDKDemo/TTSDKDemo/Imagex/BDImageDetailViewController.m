@@ -5,7 +5,6 @@
 //
 
 #import "BDImageDetailViewController.h"
-#import <BDWebImage.h>
 #import <Masonry/Masonry.h>
 
 @interface BDImageDetailViewController ()<UIPickerViewDataSource,UIPickerViewDelegate>
