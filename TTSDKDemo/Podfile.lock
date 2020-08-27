@@ -52,13 +52,6 @@ PODS:
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
   - Toast (4.0.0)
-  - TTSDK (1.1.0.2):
-    - TTSDK/Core (= 1.1.0.2)
-    - TTSDK/Image (= 1.1.0.2)
-    - TTSDK/LivePull (= 1.1.0.2)
-    - TTSDK/LivePush (= 1.1.0.2)
-    - TTSDK/Player (= 1.1.0.2)
-    - TTSDK/PlayerCore (= 1.1.0.2)
   - TTSDK/Core (1.1.0.2):
     - RangersAppLog (>= 3.2.5)
   - TTSDK/Image (1.1.0.2):
@@ -73,6 +66,7 @@ PODS:
     - TTSDK/Core
     - TTSDK/PlayerCore
   - TTSDK/PlayerCore (1.1.0.2)
+  - TTSDK/TTFFmpegFramework (1.1.0.2)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -88,7 +82,13 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK (= 1.1.0.2)
+  - TTSDK/Core (from `../`)
+  - TTSDK/Image (from `../`)
+  - TTSDK/LivePull (from `../`)
+  - TTSDK/LivePush (from `../`)
+  - TTSDK/Player (from `../`)
+  - TTSDK/PlayerCore (from `../`)
+  - TTSDK/TTFFmpegFramework (from `../`)
   - YYCategories
 
 SPEC REPOS:
@@ -106,8 +106,10 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - YYCategories
-  https://github.com/volcengine/volcengine-specs.git:
-    - TTSDK
+
+EXTERNAL SOURCES:
+  TTSDK:
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -121,9 +123,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 8567ed7060a13cae480045543553bab50fc0b91c
+  TTSDK: 4c53981724282e31716091e0c398bb502348c641
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: ec452b6f7427166b30726235397ecc69694da8fa
+PODFILE CHECKSUM: 41b89ad3e97f0cde985df43ce0eb7284c0e156e6
 
 COCOAPODS: 1.6.1
