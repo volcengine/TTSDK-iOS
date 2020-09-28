@@ -57,6 +57,7 @@ Pod::Spec.new do |spec|
       subspec.vendored_libraries = [
         'TTSDK/boringssl/**/*.a',
         'TTSDK/TTFFmpeg/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a',
       ]
       subspec.frameworks = [
         'CoreMotion',
@@ -73,10 +74,10 @@ Pod::Spec.new do |spec|
 
     spec.subspec 'PlayerCore' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/*.h',
       ]
       subspec.source_files = [
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/*.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
@@ -140,9 +141,15 @@ Pod::Spec.new do |spec|
     spec.subspec 'Player' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTVideoEngine/**/*.h',
+        'TTSDK/VCPreloadStrategy/**/*.h',
+        'TTSDK/TTNetworkPredict/**/*.h',
+        'TTSDK/ABRInterface/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoEngine/**/*',
+        'TTSDK/VCPreloadStrategy/**/*',
+        'TTSDK/TTNetworkPredict/**/*',
+        'TTSDK/ABRInterface/**/*',
       ]
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
@@ -151,6 +158,10 @@ Pod::Spec.new do |spec|
         'TTSDK/TTVideoEngine/**/*.a',
         'TTSDK/TTTopSignature/**/*.a',
         'TTSDK/MDLMediaDataLoader/**/*.a',
+        'TTSDK/VCPreloadStrategy/**/*.a',
+        'TTSDK/VCNVCloudNetwork/**/*.a',
+        'TTSDK/TTNetworkPredict/**/*.a',
+        'TTSDK/ABRInterface/**/*.a',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'

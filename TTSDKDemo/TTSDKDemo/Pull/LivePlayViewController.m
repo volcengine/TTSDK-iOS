@@ -18,6 +18,15 @@
 
 // TODO: 解耦V与VM
 
+typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
+    TVLLiveStatusUnknow,
+    TVLLiveStatusEnd,
+    TVLLiveStatusWaiting,
+    TVLLiveStatusOngoing,
+    TVLLiveStatusFail,
+    TVLLiveStatusPulling
+};
+
 @interface LivePlayViewController () <TVLDelegate, TVLSettingsManagerDataSource>
 
 @property (nonatomic, strong) UIButton *backButton;
@@ -228,7 +237,6 @@
     liveManager.clockSynchronizationEnabled = self.playConfiguration.isClockSynchronizationEnabled;
     liveManager.allowsResolutionDegrade = YES;
     [liveManager setMuted:self.isMuted];
-    [liveManager setOptionValue:@(TVLOptionH265CodecTypeJX) forIdentifier:@(TVLPlayerOptionH265CodecType)];
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -246,8 +254,6 @@
     [liveManager addObserver:self forKeyPath:NSStringFromSelector(@selector(playerLoadState)) options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
     self.liveManager = liveManager;
-    
-    NSLog(@"live_h264_hardware_decode_enable = %d, live_h265_hardware_decode_enable = %d", TVLSettingsManager.defaultManager.isH264HardwareDecodeEnabled, TVLSettingsManager.defaultManager.isH265HardwareDecodeEnabled);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

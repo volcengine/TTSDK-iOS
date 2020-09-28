@@ -52,8 +52,6 @@
     
     if ([preferences.videoCodecType isEqualToString:TVLVideoCodecTypeH264]) {
         [self.videoCodecTypeSegments setSelectedSegmentIndex:0];
-    } else if ([preferences.videoCodecType isEqualToString:TVLVideoCodecTypeH265]) {
-        [self.videoCodecTypeSegments setSelectedSegmentIndex:1];
     }
     
     if ([preferences.formatType isEqualToString:TVLMediaFormatTypeFLV]) {
