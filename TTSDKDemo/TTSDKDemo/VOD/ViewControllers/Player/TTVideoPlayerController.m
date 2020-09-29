@@ -26,6 +26,7 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
 @property (nonatomic, assign, getter=isMixWithOther) BOOL mixWithOther;
 @property (nonatomic, assign) CGFloat playbackSpeed;
 @property (nonatomic, assign) BOOL debugViewStatus;
+@property (nonatomic, strong) UILabel *toastView;
 
 @end
 
@@ -78,6 +79,8 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
             self.playerControls.fullScreen = fullScreen;
         });
     }];
+    
+    [[TTVideoEngineEventManager sharedManager] setDelegate:(id<TTVideoEngineEventManagerProtocol> _Nullable)self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,6 +116,9 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     
     NSString *url = params[SourceKeyURL];
     NSString *vid = params[SourceKeyVid];
+    BOOL dashEnable = [params[SourceKeyDash] boolValue];
+    BOOL hardWareEnable = (params[SourceKeyHardWare] != nil) ? [params[SourceKeyHardWare] boolValue] : YES;
+    BOOL byteVc1Enable = [params[SourceKeyByteVC1] boolValue];
     
     if (tt_valid_string(url)) {
         [self _resetEngine];
@@ -130,7 +136,7 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
 #if TARGET_IPHONE_SIMULATOR
     self.engine.hardwareDecode = NO;
 #else
-    self.engine.hardwareDecode = YES;
+    self.engine.hardwareDecode = hardWareEnable; /// 硬解开关, 需要打开
 #endif
 #if DEBUG
     [TTVideoEngine setLogEnabled:YES];
@@ -138,10 +144,14 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     [TTVideoEngine setLogEnabled:NO];
 #endif
     
-    self.engine.hardwareDecode = YES;
+    [self.engine setOptionForKey:VEKKeyPlayerDashEnabled_BOOL value:@(dashEnable)];
+    [self.engine setOptionForKey:VEKKeyPlayerBashEnabled_BOOL value:@(dashEnable)];
+    [self.engine setOptionForKey:VEKKeyPlayerByteVC1Enabled_BOOL value:@(byteVc1Enable)];
     // 控制循环播放，默认是 NO;
     self.engine.looping = NO;
+    /// 静音开关
     self.engine.muted = self.muted;
+    /// 播放速度的控制
     self.engine.playbackSpeed = self.playbackSpeed;
     // 开启 VideoModel 缓存
     [self.engine setOptionForKey:VEKKeyModelCacheVideoInfoEnable_BOOL value:@(YES)];
@@ -149,9 +159,9 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     self.engine.delegate = self;
     self.engine.dataSource = self;
     /// 上传播放器产生的日志
-    self.engine.reportLogEnable = YES;
+//    self.engine.reportLogEnable = YES; /// 仅播放器的日志信息
     /// 异步初始化播放器
-    /// [self.engine setOptions:@{VEKKEY(VEKKeyPlayerAsyncInit_BOOL):@(YES)}];
+     [self.engine setOptions:@{VEKKEY(VEKKeyPlayerAsyncInit_BOOL):@(YES)}];
     /// 开启 Metal 渲染
     [self.engine setOptions:@{VEKKEY(VEKKeyViewRenderEngine_ENUM):@(TTVideoEngineRenderEngineMetal)}];
     [self.engine setOptionForKey:VEKKeyLogTag_NSString value:@"普通视频"];
@@ -166,12 +176,12 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     
     /// 将播放器视图放在合适的视图层级上
     [self.view insertSubview:self.engine.playerView atIndex:0];
-    // Debug view. get only debug environment.
-    self.playerControls.debugView = self.engine.debugInfoView;
-    [self updateDebugViewStatus:self.debugViewStatus];
     
     [self _startPlay];
     self.playerControls.titleInfo = params[SourceKeyTitle]?:@"";
+    NSString *info = [NSString stringWithFormat:@" play start, 硬解: %d   byteVC1: %d  dash: %d",hardWareEnable,byteVc1Enable,dashEnable];
+    [self _showTost:info];
+    [self _throwLog:info];
 }
 
 /// MARK: - Private Method
@@ -197,8 +207,7 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
 - (void)_resetEngine {
     [self.engine.playerView removeFromSuperview];
     [self.engine.debugInfoView removeFromSuperview];
-    [self.engine stop];
-    [self.engine close];
+    [self.engine closeAysnc];
     [self.engine removeObserverBlocks];
     
     _engine = nil;
@@ -441,6 +450,15 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     return temarray.copy;
 }
 
+/// MARK: -
+- (void)eventManagerDidUpdate:(TTVideoEngineEventManager *)eventManager; {
+    NSDictionary *log = [[eventManager popAllEvents] lastObject];
+    dispatch_async_on_main_queue(^{
+        NSString *info = [NSString stringWithFormat:@"play end, hardward: %@, codec: %@, format: %@",log[@"hw"],log[@"codec"],log[@"format_type"]];
+        [self _throwLog:info];
+    });
+}
+
 /// MARK: - Getter
 
 - (TTVideoPlayerControlsController *)playerControls {
@@ -459,6 +477,29 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
         _fullScreenManager = [[TTVideoPlayerFullScreenManager alloc] initWithPlayerView:self.view];
     }
     return _fullScreenManager;
+}
+
+- (UILabel *)toastView {
+    if (_toastView == nil) {
+        _toastView = [[UILabel alloc] initWithFrame:CGRectMake(0,0,1,1)];
+        _toastView.textColor = [UIColor redColor];
+        _toastView.font = [UIFont systemFontOfSize:13];
+    }
+    return _toastView;
+}
+
+- (void)_showTost:(NSString *)message {
+    self.toastView.text = message;
+    [self.toastView sizeToFit];
+    
+    self.toastView.center = self.view.center;
+    [self.view addSubview:self.toastView];
+    [UIView animateWithDuration:1.0 delay:2.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+        self.toastView.alpha = 0.1;
+    } completion:^(BOOL finished) {
+        [self.toastView removeFromSuperview];
+        self.toastView.alpha = 1.0f;
+    }];
 }
 
 @end

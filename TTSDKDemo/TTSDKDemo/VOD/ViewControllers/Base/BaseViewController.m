@@ -32,6 +32,7 @@
     self.hidesBottomBarWhenPushed = YES;
     self.view.backgroundColor = TT_THEME_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
     
     [self setUpUI];
     [self buildUI];

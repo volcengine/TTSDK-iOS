@@ -19,6 +19,7 @@
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:TT_FONT(20)};
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.barTintColor = TT_THEME_COLOR;
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
 }
 
 /// MARK: - Autorotate

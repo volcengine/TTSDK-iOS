@@ -7,6 +7,7 @@
 
 #import "TTVideoVidController.h"
 #import "TTVideoHistoryVidModel.h"
+#import "TTVideoSwitch.h"
 
 @interface TTVideoVidController ()
 @property (nonatomic, strong) UILabel *vidLab;
@@ -16,6 +17,12 @@
 @property (nonatomic, strong) UILabel *ptokenLab;
 @property (nonatomic, strong) UITextField *ptokenTextFiled;
 @property (nonatomic, strong) NSMutableArray<TTVideoHistoryVidModel *> *historyDatas;
+
+@property (nonatomic, strong) TTVideoSwitch *dashSwitch;
+@property (nonatomic, strong) TTVideoSwitch *hardWareSwitch;
+@property (nonatomic, strong) TTVideoSwitch *byteVC1Switch;
+@property (nonatomic, strong) NSMutableDictionary<SourceKey,id> *settingValues;
+
 @end
 
 @implementation TTVideoVidController
@@ -23,6 +30,10 @@
 - (instancetype)init {
     if (self = [super init]) {
         _historyDatas = [NSMutableArray array];
+        _settingValues = [NSMutableDictionary dictionary];
+        [_settingValues setValue:@NO forKey:SourceKeyByteVC1];
+        [_settingValues setValue:@NO forKey:SourceKeyDash];
+        [_settingValues setValue:@NO forKey:SourceKeyHardWare];
     }
     return self;
 }
@@ -34,8 +45,13 @@
     [self.view addSubview:self.vidTextFiled];
     [self.view addSubview:self.authLab];
     [self.view addSubview:self.authTextFiled];
-    //[self.view addSubview:self.ptokenLab];
-    //[self.view addSubview:self.ptokenTextFiled];
+    [self.view addSubview:self.dashSwitch];
+    [self.view addSubview:self.hardWareSwitch];
+    [self.view addSubview:self.byteVC1Switch];
+    
+    [self.dashSwitch sizeToFit];
+    [self.hardWareSwitch sizeToFit];
+    [self.byteVC1Switch sizeToFit];
 }
 
 - (void)buildUI {
@@ -61,6 +77,15 @@
     _ptokenLab.top = _authTextFiled.bottom + TT_BASE_375(10.0);
     _ptokenTextFiled.left = _vidLab.left;
     _ptokenTextFiled.top = _ptokenLab.bottom + TT_BASE_375(10.0);
+    
+    _dashSwitch.left = _vidLab.left;
+    _dashSwitch.top = _authTextFiled.bottom + TT_BASE_375(10.0);
+    
+    _hardWareSwitch.left = _dashSwitch.right + TT_BASE_375(10.0);
+    _hardWareSwitch.top = _dashSwitch.top;
+    
+    _byteVC1Switch.left = _hardWareSwitch.right + TT_BASE_375(10.0);
+    _byteVC1Switch.top = _dashSwitch.top;
 }
 
 - (void)willDismiss {
@@ -82,8 +107,9 @@
     [self _saveHistoryDatas];
     
     NSDictionary *result = @{SourceKeyVid:vid,SourceKeyAuth:auth?:@"",SourceKeyPtoken:ptoken?:@""};
+    [self.settingValues addEntriesFromDictionary:result];
     if (self.delegate && [self.delegate respondsToSelector:@selector(dismiss:result:)]) {
-        [self.delegate dismiss:self result:result];
+        [self.delegate dismiss:self result:self.settingValues.copy];
     }
 }
 
@@ -216,6 +242,54 @@
         _ptokenTextFiled.font = TT_FONT(16.0);
     }
     return _ptokenTextFiled;
+}
+
+- (TTVideoSwitch *)dashSwitch {
+    if (_dashSwitch == nil) {
+        _dashSwitch = [TTVideoSwitch switchWithTitle:@"dash"];
+        @weakify(self);
+        [_dashSwitch setSwitchCall:^(ButtonClickType clickType) {
+            @strongify(self);
+            if (clickType == ButtonClickTypeOff) {
+                [self.settingValues setValue:@NO forKey:SourceKeyDash];
+            } else if (clickType == ButtonClickTypeOn){
+                [self.settingValues setValue:@YES forKey:SourceKeyDash];
+            }
+        }];
+    }
+    return _dashSwitch;
+}
+
+- (TTVideoSwitch *)hardWareSwitch {
+    if (_hardWareSwitch == nil) {
+        _hardWareSwitch = [TTVideoSwitch switchWithTitle:@"硬解"];
+        @weakify(self);
+        [_hardWareSwitch setSwitchCall:^(ButtonClickType clickType) {
+            @strongify(self);
+            if (clickType == ButtonClickTypeOff) {
+                [self.settingValues setValue:@NO forKey:SourceKeyHardWare];
+            } else if (clickType == ButtonClickTypeOn){
+                [self.settingValues setValue:@YES forKey:SourceKeyHardWare];
+            }
+        }];
+    }
+    return _hardWareSwitch;
+}
+
+- (TTVideoSwitch *)byteVC1Switch {
+    if (_byteVC1Switch == nil) {
+        _byteVC1Switch = [TTVideoSwitch switchWithTitle:@"ByteVC1"];
+        @weakify(self);
+        [_byteVC1Switch setSwitchCall:^(ButtonClickType clickType) {
+            @strongify(self);
+            if (clickType == ButtonClickTypeOff) {
+                [self.settingValues setValue:@NO forKey:SourceKeyByteVC1];
+            } else if (clickType == ButtonClickTypeOn){
+                [self.settingValues setValue:@YES forKey:SourceKeyByteVC1];
+            }
+        }];
+    }
+    return _byteVC1Switch;
 }
 
 @end
