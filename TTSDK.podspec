@@ -75,9 +75,11 @@ Pod::Spec.new do |spec|
     spec.subspec 'PlayerCore' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/*.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.source_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/*.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
