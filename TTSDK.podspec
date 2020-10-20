@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.1.0.5"
+    spec.version      = "1.1.0.5-alpha.0"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
     spec.author       = { "chenzhaojie" => "chenzhaojie@bytedance.com" }
     spec.platform     = :ios, "8.0"
   
-    spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
+    spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/1.1.0.5/TTSDK.zip" }
     
     spec.default_subspecs = 'Core', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
   
@@ -29,7 +29,6 @@ Pod::Spec.new do |spec|
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
         'TTSDK/TTVideoSetting/**/*.a',
       ]
-      subspec.dependency 'RangersAppLog', '>= 3.2.5'
       subspec.libraries = 'stdc++'
     end
 
