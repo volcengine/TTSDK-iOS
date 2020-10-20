@@ -11,6 +11,8 @@
 #import "NavigationViewController.h"
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
+#import <TTSDK/BDWebImageManager.h>
+#import "TTDemoSDKEnvironmentManager.h"
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -29,8 +31,10 @@ void uncaughtExceptionHandler(NSException*exception){
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
-    
+    // 配置 demo环境变量 模拟国内 海外测试环境
+    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorVA;
     [self initAppLog];
+    [self initBDImageManager];
 
     [self initTTSDK];
     
@@ -82,9 +86,9 @@ void uncaughtExceptionHandler(NSException*exception){
 }
 
 - (void)initTTSDK {
-    TTSDKConfiguration *configuration = [TTSDKConfiguration defaultConfigurationWithAppID:@"179132"];
-    configuration.appName = @"TTSDKDemo";
-    configuration.channel = @"test_channel";
+    TTSDKConfiguration *configuration = [TTSDKConfiguration defaultConfigurationWithAppID:[[TTDemoSDKEnvironmentManager shareEvnironment] appId]];
+    configuration.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
+    configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     configuration.bundleID = @"com.bytedance.videoarch.pandora.demo";
     configuration.licenseFilePath = [NSBundle.mainBundle pathForResource:@"ttsdkdemo.license" ofType:nil];
     [TTSDKManager setCurrentUserUniqueID:@"10352432926"];
@@ -96,10 +100,10 @@ void uncaughtExceptionHandler(NSException*exception){
 #if __has_include(<RangersAppLog/RangersAppLogCore.h>)
     BDAutoTrackConfig *config = [BDAutoTrackConfig new];
     // 必须配置
-    config.appID = @"179132";
-    config.appName = @"TTSDKDemo";
-    config.channel = @"test_channel";
-    config.serviceVendor = BDAutoTrackServiceVendorCN;
+    config.appID = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+    config.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
+    config.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
+    config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorVA;
     config.autoTrackEnabled = NO;
 #if DEBUG
     config.showDebugLog = YES;      // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES
@@ -115,6 +119,13 @@ void uncaughtExceptionHandler(NSException*exception){
     [BDAutoTrack setCurrentUserUniqueID:@"10352432926"];
     [BDAutoTrack startTrackWithConfig:config];
 #endif
+}
+
+- (void)initBDImageManager
+{
+    // 配置图片库AppID 是否是海外产品
+    [BDWebImageManager sharedManager].appId = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+    [BDWebImageManager sharedManager].serviceVendor = (TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor]) ? BDImageServiceVendorCN : BDImageServiceVendorVA;
 }
 
 - (void)startVideoServer {

@@ -28,6 +28,9 @@ PODS:
   - libwebp/webp (1.1.0)
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
+  - MMKV (1.1.2):
+    - MMKVCore (~> 1.1.2)
+  - MMKVCore (1.1.2)
   - RangersAppLog (5.3.1):
     - RangersAppLog/Core (= 5.3.1)
     - RangersAppLog/Log (= 5.3.1)
@@ -48,25 +51,26 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (5.8.4):
-    - SDWebImage/Core (= 5.8.4)
-  - SDWebImage/Core (5.8.4)
+  - SDWebImage (5.9.3):
+    - SDWebImage/Core (= 5.9.3)
+  - SDWebImage/Core (5.9.3)
   - Toast (4.0.0)
-  - TTSDK/Core (1.1.0.2):
+  - TTSDK/Core (1.1.0.6):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/Image (1.1.0.2):
+  - TTSDK/Image (1.1.0.6):
     - libwebp
-  - TTSDK/LivePull (1.1.0.2):
+    - MMKV
+  - TTSDK/LivePull (1.1.0.6):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.1.0.2):
+  - TTSDK/LivePush (1.1.0.6):
     - TTSDK/Core
-  - TTSDK/Player (1.1.0.2):
+  - TTSDK/Player (1.1.0.6):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.1.0.2)
-  - TTSDK/TTFFmpegFramework (1.1.0.2)
+  - TTSDK/PlayerCore (1.1.0.6)
+  - TTSDK/TTFFmpeg (1.1.0.6)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -88,7 +92,7 @@ DEPENDENCIES:
   - TTSDK/LivePush (from `../`)
   - TTSDK/Player (from `../`)
   - TTSDK/PlayerCore (from `../`)
-  - TTSDK/TTFFmpegFramework (from `../`)
+  - TTSDK/TTFFmpeg (from `../`)
   - YYCategories
 
 SPEC REPOS:
@@ -102,6 +106,8 @@ SPEC REPOS:
     - libwebp
     - Masonry
     - MJExtension
+    - MMKV
+    - MMKVCore
     - ReactiveCocoa
     - SDWebImage
     - Toast
@@ -119,13 +125,15 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
+  MMKV: 319aede3b690572ad00bada5831146c63da3d009
+  MMKVCore: ae976ab3f019a3e4448f884353e0557b324ff136
   RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
+  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 4c53981724282e31716091e0c398bb502348c641
+  TTSDK: 201bd9cb3ae46a30856be6b6f6815d403a60a6ec
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 41b89ad3e97f0cde985df43ce0eb7284c0e156e6
+PODFILE CHECKSUM: 6dc01de4c5b780e005d31d682028d6af58c1ad13
 
 COCOAPODS: 1.6.1

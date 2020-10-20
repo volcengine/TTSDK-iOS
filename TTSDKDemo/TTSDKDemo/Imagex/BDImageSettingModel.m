@@ -6,6 +6,7 @@
 
 #import "BDImageSettingModel.h"
 #import "BDImageAdapter.h"
+#import "TTDemoSDKEnvironmentManager.h"
 
 NSString *const kBDImageSettingAppID = @"kBDImageSettingAppID";
 
@@ -16,7 +17,7 @@ NSString *const kBDImageSettingAppID = @"kBDImageSettingAppID";
     [array addObject:({
         BDImageSettingModel *model = [BDImageSettingModel new];
         model.name = @"APPID";
-        model.info = @"179132";
+        model.info = [TTDemoSDKEnvironmentManager shareEvnironment].appId;
         model.type = BDImageSettingInfoType;
         model;
     })];

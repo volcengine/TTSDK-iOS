@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */; };
+		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
 		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
 		831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378F23D017E600A9F7A9 /* LiveHelper.m */; };
@@ -137,6 +138,8 @@
 
 /* Begin PBXFileReference section */
 		03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
+		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
 		831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSDKDemo.pch; sourceTree = "<group>"; };
 		831E378523D0177B00A9F7A9 /* LSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainViewController.m; sourceTree = "<group>"; };
@@ -365,6 +368,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B58E8B1253ECD6D00FB5892 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */,
+				2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */,
+			);
+			path = Env;
+			sourceTree = "<group>";
+		};
 		831E378423D0177B00A9F7A9 /* Push */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +438,7 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2B58E8B1253ECD6D00FB5892 /* Env */,
 				83A3047724F6AED600209D0A /* Imagex */,
 				830EA318246940C1004DC739 /* ttsdkdemo.license */,
 				83C443DF243F8E2A00081EA1 /* Pull */,
@@ -845,7 +858,6 @@
 				8378B5B923C4860F0075E05C /* Resources */,
 				83A3047624F6AD1100209D0A /* Embed Frameworks */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
-				A1217939654116AE43EAEC9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -976,28 +988,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A1217939654116AE43EAEC9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh",
-				"${PODS_ROOT}/../../TTSDK/TTFFmpegFramework/TTFFmpegFramework.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTFFmpegFramework.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1044,6 +1034,7 @@
 				83C4448F243F8E2B00081EA1 /* TTVideoHistoryVidCell.m in Sources */,
 				83C44499243F8E2B00081EA1 /* TTVideoPlayerControlView.m in Sources */,
 				83C4448D243F8E2B00081EA1 /* TTVideoLogCell.m in Sources */,
+				2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */,
 				831E379523D017E700A9F7A9 /* TTLogerHelper.m in Sources */,
 				8378B5C023C4860F0075E05C /* AppDelegate.m in Sources */,
 				8378B5D123C486100075E05C /* main.m in Sources */,
