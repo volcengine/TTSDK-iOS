@@ -124,8 +124,8 @@ void uncaughtExceptionHandler(NSException*exception){
 - (void)initBDImageManager
 {
     // 配置图片库AppID 是否是海外产品
-    [BDWebImageManager sharedManager].appId = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
     [BDWebImageManager sharedManager].serviceVendor = (TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor]) ? BDImageServiceVendorCN : BDImageServiceVendorVA;
+    [BDWebImageManager sharedManager].appId = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
 }
 
 - (void)startVideoServer {
