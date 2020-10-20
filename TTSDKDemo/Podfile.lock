@@ -86,13 +86,13 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK/Core (from `../`)
-  - TTSDK/Image (from `../`)
-  - TTSDK/LivePull (from `../`)
-  - TTSDK/LivePush (from `../`)
-  - TTSDK/Player (from `../`)
-  - TTSDK/PlayerCore (from `../`)
-  - TTSDK/TTFFmpeg (from `../`)
+  - TTSDK/Core (= 1.1.0.6)
+  - TTSDK/Image (= 1.1.0.6)
+  - TTSDK/LivePull (= 1.1.0.6)
+  - TTSDK/LivePush (= 1.1.0.6)
+  - TTSDK/Player (= 1.1.0.6)
+  - TTSDK/PlayerCore (= 1.1.0.6)
+  - TTSDK/TTFFmpeg (= 1.1.0.6)
   - YYCategories
 
 SPEC REPOS:
@@ -112,10 +112,8 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - YYCategories
-
-EXTERNAL SOURCES:
-  TTSDK:
-    :path: "../"
+  https://github.com/volcengine/volcengine-specs.git:
+    - TTSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -131,9 +129,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 201bd9cb3ae46a30856be6b6f6815d403a60a6ec
+  TTSDK: b0a2b1a4a231de7da8b66eec29b6a1ebe1575f79
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 6dc01de4c5b780e005d31d682028d6af58c1ad13
+PODFILE CHECKSUM: 43dc9504a726f136f61d4df1b938e19a37373ea8
 
 COCOAPODS: 1.6.1
