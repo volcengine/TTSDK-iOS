@@ -54,11 +54,9 @@ static NSInteger const kDefaultEnvironmentKey = 0;
 
         self.environmentMap = @{
             @(kDefaultEnvironmentKey) : env_for_cn,
-#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
             @(TTSDKServiceVendorCN) : env_for_cn,
             @(TTSDKServiceVendorSG) : env_for_oversea,
             @(TTSDKServiceVendorVA) : env_for_oversea
-#endif
         };
     }
     return self;
@@ -67,15 +65,13 @@ static NSInteger const kDefaultEnvironmentKey = 0;
 - (id<NSCopying>)environmentModelKey
 {
     NSNumber *environmentKey = @(kDefaultEnvironmentKey);
-    /// 如果引入了 RangersAppLogCore 就使用serviceVendor的值做key ， 否则就使用默认值0作为key
-#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
+    /// 获取当前服务环境 对应的环境变量的mapkey
     if ([self.environmentMap.allKeys containsObject:@(self.serviceVendor)]) {
         environmentKey = @(self.serviceVendor);
     }else
     {
         NSLog(@"bad serviceVendor that could not find environmentModel , now use default environment");
     }
-#endif
     return environmentKey;
 }
 
