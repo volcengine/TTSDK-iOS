@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RangersAppLog/RangersAppLogCore.h>
 
 @protocol TTDemoSDKEnvironmentDataProvider <NSObject>
 
@@ -22,10 +21,8 @@
 /// TTSDK demo 环境变量集合model
 @interface TTDemoSDKEnvironmentManager : NSObject <TTDemoSDKEnvironmentDataProvider>
 
-#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
 /// 日志上报地区属性 中国 新加坡 美东  这个属性应该在demo启动时 优先于appId及appName设置 默认 CN 中国
 @property (nonatomic , assign) TTSDKServiceVendor serviceVendor;
-#endif
 
 /// 全局唯一环境类
 + (instancetype)shareEvnironment;
