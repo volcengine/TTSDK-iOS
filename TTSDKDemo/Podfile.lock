@@ -51,9 +51,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (5.9.3):
-    - SDWebImage/Core (= 5.9.3)
-  - SDWebImage/Core (5.9.3)
+  - SDWebImage (5.9.4):
+    - SDWebImage/Core (= 5.9.4)
+  - SDWebImage/Core (5.9.4)
   - Toast (4.0.0)
   - TTSDK/Core (1.1.0.6):
     - RangersAppLog (>= 3.2.5)
@@ -69,7 +69,8 @@ PODS:
   - TTSDK/Player (1.1.0.6):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.1.0.6)
+  - TTSDK/PlayerCore (1.1.0.6):
+    - TTSDK/TTFFmpeg
   - TTSDK/TTFFmpeg (1.1.0.6)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -98,7 +99,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/bytedance/cocoapods_sdk_source_repo.git:
     - RangersAppLog
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CocoaAsyncSocket
     - FLEX
@@ -127,11 +128,11 @@ SPEC CHECKSUMS:
   MMKVCore: ae976ab3f019a3e4448f884353e0557b324ff136
   RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: b0a2b1a4a231de7da8b66eec29b6a1ebe1575f79
+  TTSDK: 863a94a2ea67904a72f6fd34a8d566021bbfb3f2
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
 PODFILE CHECKSUM: 43dc9504a726f136f61d4df1b938e19a37373ea8
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.1
