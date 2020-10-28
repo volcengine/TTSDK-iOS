@@ -13,6 +13,7 @@
 #import <RangersAppLog/RangersAppLogCore.h>
 #import <TTSDK/BDWebImageManager.h>
 #import "TTDemoSDKEnvironmentManager.h"
+#import <TTSDK/TTVideoUploadClienTop.h>
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
