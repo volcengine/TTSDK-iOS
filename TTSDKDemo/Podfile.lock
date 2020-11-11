@@ -69,7 +69,8 @@ PODS:
   - TTSDK/Player (1.1.0.6):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.1.0.6)
+  - TTSDK/PlayerCore (1.1.0.6):
+    - TTSDK/TTFFmpeg
   - TTSDK/TTFFmpeg (1.1.0.6)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -98,7 +99,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/bytedance/cocoapods_sdk_source_repo.git:
     - RangersAppLog
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CocoaAsyncSocket
     - FLEX
@@ -129,9 +130,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: b0a2b1a4a231de7da8b66eec29b6a1ebe1575f79
+  TTSDK: 863a94a2ea67904a72f6fd34a8d566021bbfb3f2
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 43dc9504a726f136f61d4df1b938e19a37373ea8
+PODFILE CHECKSUM: a76409139334ea720239a32e27cfdc1ec69fd98f
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.3
