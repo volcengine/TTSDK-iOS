@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.byted.org'
 
 gem 'cocoapods', '1.9.3'
 
