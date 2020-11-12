@@ -1255,9 +1255,9 @@
 			baseConfigurationReference = AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = WMQTYQAM6Q;
+				DEVELOPMENT_TEAM = X46375UBYG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1291,7 +1291,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = HotSoon_Wildcard_NO812YBONL;
+				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
