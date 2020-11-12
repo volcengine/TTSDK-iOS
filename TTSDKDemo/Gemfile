@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 
-gem 'cocoapods', '1.6.1'
-
-gem 'bd_pod_extentions'
+gem 'cocoapods', '1.9.3'
 
 gem "fastlane"
 
