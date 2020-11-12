@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem 'cocoapods', '1.6.1'
+
+gem 'bd_pod_extentions'
+
+gem "fastlane"
+
+gem "cocoapods-packager"
+
+gem "xcodeproj"
+
+gem "CFPropertyList"
