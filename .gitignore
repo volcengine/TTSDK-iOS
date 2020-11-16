@@ -10,3 +10,5 @@ TTSDKDemo/extern/FFmpeg
 TTSDKDemo/LinkMap
 .cocoapods-*-transform.flag
 TTSDK
+.bundle
+ruby
