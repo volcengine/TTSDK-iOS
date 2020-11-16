@@ -16,6 +16,15 @@
 #import "LogViewController.h"
 #import <ReactiveCocoa.h>
 
+typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
+    TVLLiveStatusUnknow,
+    TVLLiveStatusEnd,
+    TVLLiveStatusWaiting,
+    TVLLiveStatusOngoing,
+    TVLLiveStatusFail,
+    TVLLiveStatusPulling
+};
+
 // TODO: 解耦V与VM
 
 @interface LivePlayViewController () <TVLDelegate, TVLSettingsManagerDataSource>
@@ -228,7 +237,7 @@
     liveManager.clockSynchronizationEnabled = self.playConfiguration.isClockSynchronizationEnabled;
     liveManager.allowsResolutionDegrade = YES;
     [liveManager setMuted:self.isMuted];
-    [liveManager setOptionValue:@(TVLOptionH265CodecTypeJX) forIdentifier:@(TVLPlayerOptionH265CodecType)];
+    [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -247,7 +256,7 @@
     
     self.liveManager = liveManager;
     
-    NSLog(@"live_h264_hardware_decode_enable = %d, live_h265_hardware_decode_enable = %d", TVLSettingsManager.defaultManager.isH264HardwareDecodeEnabled, TVLSettingsManager.defaultManager.isH265HardwareDecodeEnabled);
+    NSLog(@"live_h264_hardware_decode_enable = %d, live_h265_hardware_decode_enable = %d", TVLSettingsManager.defaultManager.isH264HardwareDecodeEnabled, TVLSettingsManager.defaultManager.isByteVC1HardwareDecodeEnabled);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
