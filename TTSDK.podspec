@@ -1,23 +1,23 @@
-Pod::Spec.new do |spec|
+  Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.1.0.6"
+    spec.version      = "1.10.0.1"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
-                     DESC
-  
+                    DESC
+
     spec.homepage     = "https://github.com/volcengine/TTSDK-iOS"
-  
+
     spec.license      = { :type => 'MIT', :file => 'LICENSE' }
-  
+
     spec.author       = { "chenzhaojie" => "chenzhaojie@bytedance.com" }
     spec.platform     = :ios, "8.0"
-  
+
     spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
     
     spec.default_subspecs = 'Core', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
-  
+
     spec.static_framework = true
     
     spec.subspec 'Core' do |subspec|
@@ -56,9 +56,11 @@ Pod::Spec.new do |spec|
     spec.subspec 'PlayerCore' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.source_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
@@ -81,7 +83,7 @@ Pod::Spec.new do |spec|
       subspec.dependency 'TTSDK/TTFFmpeg'
 
     end
-  
+
     spec.subspec 'LivePull' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTVideoLive/**/*.h',
@@ -97,7 +99,7 @@ Pod::Spec.new do |spec|
       subspec.dependency 'TTSDK/PlayerCore'
       subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
-  
+
     spec.subspec 'LivePush' do |subspec|
       subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
@@ -120,13 +122,19 @@ Pod::Spec.new do |spec|
       subspec.dependency 'TTSDK/Core'
       subspec.libraries = 'stdc++'
     end
-  
+
     spec.subspec 'Player' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTVideoEngine/**/*.h',
+        'TTSDK/ABRInterface/**/*.h',
+        'TTSDK/VCPreloadStrategy/**/*.h',
+        'TTSDK/TTNetworkPredict/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoEngine/**/*',
+        'TTSDK/ABRInterface/**/*',
+        'TTSDK/VCPreloadStrategy/**/*',
+        'TTSDK/TTNetworkPredict/**/*',
       ]
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
@@ -135,6 +143,11 @@ Pod::Spec.new do |spec|
         'TTSDK/TTVideoEngine/**/*.a',
         'TTSDK/TTTopSignature/**/*.a',
         'TTSDK/MDLMediaDataLoader/**/*.a',
+        'TTSDK/VCNVCloudNetwork/**/*.a',
+        'TTSDK/VCPreloadStrategy/**/*.a',
+        'TTSDK/TTNetworkPredict/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a',
+        'TTSDK/ABRInterface/**/*.a',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
@@ -155,4 +168,4 @@ Pod::Spec.new do |spec|
     end
 
   end
-  
+
