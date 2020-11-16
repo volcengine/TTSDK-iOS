@@ -28,7 +28,7 @@
                                                                                             token:item[SourceKeyAuth]
                                                                                         reslution:TTVideoEngineResolutionTypeFullHD
                                                                                       preloadSize:s_preload_size
-                                                                                           isByteVC1:NO];
+                                                                                           isH265:NO];
             NSString *key = [NSString stringWithFormat:@"vid%@_resolution%@_h265%@_dash%@",vid,@(TTVideoEngineResolutionTypeFullHD),@(NO),@(NO)];
             [TTVideoEngine ls_addTask:key vidItem:vidItem];
             // [TTVideoEngine ls_addTaskWithVidItem:vidItem]；/// 建议使用该接口，但是没有自定义 key ,无法取消单个还未进行的 task,但是一般情况下会触发取消之前的所有预加载任务。
