@@ -2,7 +2,7 @@
 
     spec.name         = "TTSDK"
     spec.version      = "1.10.0.1"
-    spec.summary      = "A comprehensive multimedia SDK. test"
+    spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
                     DESC
