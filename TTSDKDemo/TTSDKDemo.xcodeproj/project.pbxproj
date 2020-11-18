@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */; };
+		2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */; };
+		2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB09254B0B72002CC02A /* uploadController.m */; };
+		2B44FB0E254C394E002CC02A /* UIBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB0D254C394E002CC02A /* UIBlockButton.m */; };
+		2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */; };
+		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
 		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
@@ -138,6 +143,16 @@
 
 /* Begin PBXFileReference section */
 		03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTFileUploadDemoUtil.m; sourceTree = "<group>"; };
+		2B44FB072549D066002CC02A /* TTFileUploadDemoUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTFileUploadDemoUtil.h; sourceTree = "<group>"; };
+		2B44FB09254B0B72002CC02A /* uploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadController.m; sourceTree = "<group>"; };
+		2B44FB0B254B0D67002CC02A /* uploadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uploadController.h; sourceTree = "<group>"; };
+		2B44FB0C254C3926002CC02A /* UIBlockButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBlockButton.h; sourceTree = "<group>"; };
+		2B44FB0D254C394E002CC02A /* UIBlockButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIBlockButton.m; sourceTree = "<group>"; };
+		2B44FB12254F3165002CC02A /* UIBlockSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBlockSegmentedControl.h; sourceTree = "<group>"; };
+		2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIBlockSegmentedControl.m; sourceTree = "<group>"; };
+		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
+		2B44FB992554195A002CC02A /* TTSDKDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TTSDKDemo copy-Info.plist"; path = "/Users/bytedance/workspace/TTSDKiosfix/Pandora/prj/iOS/TTSDK-iOS/TTSDKDemo/TTSDKDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
@@ -368,6 +383,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B44FB08254AFE7D002CC02A /* Uploader */ = {
+			isa = PBXGroup;
+			children = (
+				2B44FB09254B0B72002CC02A /* uploadController.m */,
+				2B44FB0B254B0D67002CC02A /* uploadController.h */,
+				2B44FB0C254C3926002CC02A /* UIBlockButton.h */,
+				2B44FB0D254C394E002CC02A /* UIBlockButton.m */,
+				2B44FB12254F3165002CC02A /* UIBlockSegmentedControl.h */,
+				2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */,
+				2B44FB072549D066002CC02A /* TTFileUploadDemoUtil.h */,
+				2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */,
+			);
+			path = Uploader;
+			sourceTree = "<group>";
+		};
 		2B58E8B1253ECD6D00FB5892 /* Env */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +454,7 @@
 				8378B5BC23C4860F0075E05C /* Products */,
 				8378B5D723C486230075E05C /* Frameworks */,
 				90767481DA3AF1EB0F6B2CAB /* Pods */,
+				2B44FB992554195A002CC02A /* TTSDKDemo copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -438,12 +469,14 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2B44FB08254AFE7D002CC02A /* Uploader */,
 				2B58E8B1253ECD6D00FB5892 /* Env */,
 				83A3047724F6AED600209D0A /* Imagex */,
 				830EA318246940C1004DC739 /* ttsdkdemo.license */,
 				83C443DF243F8E2A00081EA1 /* Pull */,
 				83C443F3243F8E2A00081EA1 /* VOD */,
 				83C8D053242F3F9D0078C7EA /* test.mp4 */,
+				2B44FB1525515BD9002CC02A /* test1.png */,
 				831E378423D0177B00A9F7A9 /* Push */,
 				8378B5BE23C4860F0075E05C /* AppDelegate.h */,
 				8378B5BF23C4860F0075E05C /* AppDelegate.m */,
@@ -918,6 +951,7 @@
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
 				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
+				2B44FB1625515BD9002CC02A /* test1.png in Resources */,
 				8378B5CB23C486100075E05C /* Assets.xcassets in Resources */,
 				8378B5C923C4860F0075E05C /* Main.storyboard in Resources */,
 				83A3049824F6AED600209D0A /* 自定循环.png in Resources */,
@@ -1012,6 +1046,7 @@
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
 				83A304A524F6AED600209D0A /* BDImageDetailViewController.m in Sources */,
 				831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */,
+				2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */,
 				83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */,
 				83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */,
 				83C443B8243E492A00081EA1 /* BEResourceHelper.m in Sources */,
@@ -1047,8 +1082,10 @@
 				83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */,
 				83C44478243F8E2B00081EA1 /* TTVideoHistoryVidModel.m in Sources */,
 				83C4446D243F8E2B00081EA1 /* UIView+TTVideo.m in Sources */,
+				2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */,
 				83C44482243F8E2B00081EA1 /* TTVideoListController.m in Sources */,
 				83C4448B243F8E2B00081EA1 /* TTVideoResolutionOptionsView.m in Sources */,
+				2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */,
 				83C44476243F8E2B00081EA1 /* TTVideoListModel.m in Sources */,
 				83C4447E243F8E2B00081EA1 /* TTVideoHistoryController.m in Sources */,
 				83C4448E243F8E2B00081EA1 /* TTVideoHistoryURLCell.m in Sources */,
@@ -1060,6 +1097,7 @@
 				83C44470243F8E2B00081EA1 /* TTVideoFetchDataHelper.m in Sources */,
 				83C44479243F8E2B00081EA1 /* TTVideoLogModel.m in Sources */,
 				83C44491243F8E2B00081EA1 /* BaseTableViewCell.m in Sources */,
+				2B44FB0E254C394E002CC02A /* UIBlockButton.m in Sources */,
 				83C44471243F8E2B00081EA1 /* TTVideoAudioSession.m in Sources */,
 				83A304A624F6AED600209D0A /* BDImageCollectionViewController.m in Sources */,
 				83C44493243F8E2B00081EA1 /* TTVideoSwitch.m in Sources */,
@@ -1125,6 +1163,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Bytedance Network Technology Co,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1183,6 +1223,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Bytedance Network Technology Co,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
