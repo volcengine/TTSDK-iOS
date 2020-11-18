@@ -9,7 +9,7 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 target 'TTSDKDemo' do
-  pod 'TTSDK', '1.1.0.6' ,:subspecs => [
+  pod 'TTSDK',:path=>'../',:subspecs => [
     'Core',
 #    'TTFFmpegFramework',
     'TTFFmpeg',
@@ -18,7 +18,9 @@ target 'TTSDKDemo' do
     'LivePush',
     'Player',
     'Image',
+    'Uploader',
   ] 
+  
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
   pod 'FLEX'
@@ -30,4 +32,5 @@ target 'TTSDKDemo' do
   pod 'IQKeyboardManager'
   pod 'CocoaAsyncSocket'
   pod 'RangersAppLog', '~> 5.3.1', :subspecs => ['Core']
+  pod 'MWPhotoBrowser'
 end
