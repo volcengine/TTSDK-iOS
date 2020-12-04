@@ -79,7 +79,7 @@
 }
 
 - (void)disableCodeSign {
-    [self.startStreamingButton setTitle:@"开始推流" forState:UIControlStateNormal];
+    [self.startStreamingButton setTitle:[NSString stringWithFormat:@"开始推流 %@" , [LiveStreamSession getSdkVersion]] forState:UIControlStateNormal];
     [self.startStreamingButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
