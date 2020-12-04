@@ -72,8 +72,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.lightGrayColor;
     self.navigationController.navigationBar.hidden = YES;
-    _pushURLTextField.text = @"rtmp://push-rtmp-l6-ixiguatest.ixigua.com/live/173?k=c4a82211fdb5553f&t=1579759243";
-    
+    _pushURLTextField.text = @"rtmp://push-rtmp-l6-ixiguatest.ixigua.com/live/test1234?k=9fc15aecbdcc69b1&t=1607345834";
+
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://bytedance.com"]] resume];
     [self disableCodeSign];
 }
