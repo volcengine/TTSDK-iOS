@@ -96,6 +96,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         _resultArray = [NSMutableArray arrayWithCapacity:10];
         _fileArray = [NSMutableArray arrayWithCapacity:10];
         _assets = [NSMutableArray arrayWithCapacity:1000];
+        [TTVideoUploadEventManager sharedManager].delegate = self;
         
         __weak typeof(self) weakSelf = self;
 
@@ -526,16 +527,6 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     }
     //NSLog(@"埋点日志:%@",)
     //NSLog(@"event log is :%@",[[TTVideoUploadEventManager sharedManager] popAllEvents]);
-    NSArray* logArrary = [[TTVideoUploadEventManager sharedManager] popAllEvents];
-    for (NSDictionary* log in logArrary) {
-        
-        NSString* string = [TTFileUploadDemoUtil dictionaryToJson:log];
-        for (NSString *line in [string componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]])
-        {
-            NSLog(@"++++++++++++:%@", line);
-        }
-    }
-    NSLog(@"++++++++++++++++++++++++++++");
     NSString *did;
     if(_videoUploadClientTop != nil){
         did = [_videoUploadClientTop getDeviceID];
@@ -563,6 +554,21 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     NSLog(@"视频进度:%ld",(long)progress);
 }
 
+#pragma -mark collectionDelegate
+- (void)eventManagerDidUpdate:(TTVideoUploadEventManager *)eventManager{
+    NSLog(@"++++++++++++++++++++++++++++");
+//    NSLog(@"event log is :%@",[[TTVideoUploadEventManager sharedManager] popAllEvents]);
+    NSArray* logArrary = [[TTVideoUploadEventManager sharedManager] popAllEvents];
+    for (NSDictionary* log in logArrary) {
+        
+        NSString* string = [TTFileUploadDemoUtil dictionaryToJson:log];
+        for (NSString *line in [string componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]])
+        {
+            NSLog(@"++++++++++++:%@", line);
+        }
+    }
+    NSLog(@"++++++++++++++++++++++++++++");
+}
 
 @end
 
