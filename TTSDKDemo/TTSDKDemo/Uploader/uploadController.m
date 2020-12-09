@@ -13,7 +13,6 @@
 #import <TTSDK/TTVideoUploadClientTop.h>
 #import <TTSDK/TTImageUploadClientTop.h>
 #import <TTSDK/TTFUConstDefination.h>
-#import <TTSDK/TTVideoDNS.h>
 #import <TTSDK/TTVideoUploadEventManager.h>
 #import <RangersAppLog/RangersAppLogCore.h>
 
