@@ -72,14 +72,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.lightGrayColor;
     self.navigationController.navigationBar.hidden = YES;
-    _pushURLTextField.text = @"rtmp://push-rtmp-l6-ixiguatest.ixigua.com/live/173?k=c4a82211fdb5553f&t=1579759243";
+    _pushURLTextField.text = @"rtmp://push-rtmp-l6-ixiguatest.ixigua.com/kslive/testabcs?k=0c52a6e0964a90cc&t=1608287377";
     
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"http://bytedance.com"]] resume];
     [self disableCodeSign];
 }
 
 - (void)disableCodeSign {
-    [self.startStreamingButton setTitle:[NSString stringWithFormat:@"开始推流 %@" , [LiveStreamSession getSdkVersion]] forState:UIControlStateNormal];
+    [self.startStreamingButton setTitle:@"开始推流" forState:UIControlStateNormal];
     [self.startStreamingButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
