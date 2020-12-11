@@ -102,7 +102,14 @@
 }
 
 - (void)dealloc {
+    
     NSLog(@"\n--------------stream view controller dealloc---------------");
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     if (self.liveSession) {
         [self stopStreaming];
     }
@@ -112,15 +119,27 @@
     [_capture applyEffect:@"" type:LSLiveEffectGroup];
     [_capture applyEffect:@"" type:LSLiveEffectFilter];
 #endif
+    if(self.capture){
+        [self.capture resetRecording];
+    }
     [_capture stopVideoCapture];
-    [LiveStreamCapture resetContext];
+//    [LiveStreamCapture resetContext];
     _capture = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
         NSLog(@"\n----------------setIdleTimerDisabled-");
     });
+    
+
+    _liveSession = nil;
+    _camera = nil;
+    
+    [self removeObservers];
+    
     NSLog(@"\n--------------stream view controller dealloced---------------");
+    [_timer invalidate];
+    _timer = nil;
 }
 
 - (void)viewDidLoad {
@@ -600,17 +619,6 @@
 }
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
-    
-    if(self.capture){
-        [self.capture resetRecording];
-    }
-    
-    _liveSession = nil;
-    _camera = nil;
-    [_timer invalidate];
-    _timer = nil;
-    
-    [self removeObservers];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
