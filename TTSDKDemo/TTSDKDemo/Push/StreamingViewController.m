@@ -102,7 +102,7 @@
 }
 
 - (void)dealloc {
-    
+    _liveSession = nil;
     NSLog(@"\n--------------stream view controller dealloc---------------");
 
 }
@@ -131,12 +131,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 
-    NSLog(@"\n--------------stream view controller dealloced--------------- running : %zd" , self.liveSession.isRunning);
+    NSLog(@"\n--------------stream view controller dealloced--------------- running");
 
     [_timer invalidate];
     _timer = nil;
     _liveSession.delegate = nil;
-    _liveSession = nil;
 
 }
 
@@ -207,14 +206,13 @@
     [_liveSession setLogLevel:LiveStreamLogLevelWarning];
     _liveSession.delegate = self;
     // 自动重连
-    _liveSession.reconnectTimeInterval = 1;
+    _liveSession.reconnectTimeInterval = NSIntegerMax;
     _liveSession.shouldAutoReconnect = NO;
-    _liveSession.reconnectCount = 1;
+    _liveSession.reconnectCount = 0;
     // 日志上报
     _liveSession.streamLogTimeInterval = 5;
     
     _liveSession.didCapturedAudioBufferList = nil;
-    
     _capture.session = _liveSession;
 #if ENABLE_LIVE_NODE_PROBER
     _liveSession.shouldUpdateOptimumIPAddress = ^(NSString *host) {
