@@ -10,7 +10,7 @@
 #import <AFHTTPSessionManager.h>
 #import "TTVideoListModel.h"
 
-static NSString *const s_kTestDataApiString = @"https://vod-sdk-playground.snssdk.com/api/v1/get_list_vids";
+static NSString *const s_kTestDataApiString = @"http://vod-sdk-playground.snssdk.com/api/v1/get_list_vids";
 // ErrorDomain
 static NSString *const _TTVideoErrorDomainTestListData = @"_TTVideoErrorDomainTestListData.implement";
 // ErrorCode

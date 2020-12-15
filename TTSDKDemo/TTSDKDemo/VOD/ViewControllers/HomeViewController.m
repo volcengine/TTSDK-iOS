@@ -11,12 +11,18 @@
 #import "SettingsViewController.h"
 #import "LivePlaySettingsViewController.h"
 #import "BDRootViewController.h"
+#import "TTFileUploadDemoUtil.h"
+#import <TTSDK/TTVideoUploadClientTop.h>
+#import <TTSDK/TTImageUploadClientTop.h>
+#import <TTSDK/TTFUConstDefination.h>
+#import "uploadController.h"
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIButton  *vodBtn;
 @property (nonatomic, strong) UIButton  *pushBtn;
 @property (nonatomic, strong) UIButton  *pullBtn;
 @property (nonatomic, strong) UIButton  *imageBtn;
+@property (nonatomic, strong) UIButton  *uploadBtn;
 @end
 
 @implementation HomeViewController
@@ -60,6 +66,15 @@
     [_imageBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
     [_imageBtn addTarget:self action:@selector(_enterImageDemoViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_imageBtn];
+    
+    _uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,TT_BASE_375(100),TT_BASE_375(60))];
+    _uploadBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
+    _uploadBtn.titleLabel.font = TT_FONT(15);
+    [_uploadBtn setTitle:@"上传测试" forState:UIControlStateNormal];
+    [_uploadBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [_uploadBtn addTarget:self action:@selector(_uploadDemoViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_uploadBtn];
+    
 }
 
 - (void)buildUI {
@@ -84,6 +99,9 @@
     
     _imageBtn.left = _vodBtn.left;
     _imageBtn.top = TT_BASE_375(30) + _pullBtn.bottom;
+    
+    _uploadBtn.left = _vodBtn.left;
+    _uploadBtn.top = TT_BASE_375(30) + _imageBtn.bottom;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -114,5 +132,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)_uploadDemoViewController {
+    uploadController *uploadvc = [[uploadController alloc] init];
+    [self.navigationController pushViewController:uploadvc animated:YES];
+}
+
+- (void)uploadDidFinish:(TTUploadImageInfoTop *)imageInfo error:(NSError *)error{
+    NSLog(@"uploadDidFinish:OK");
+}
 
 @end
