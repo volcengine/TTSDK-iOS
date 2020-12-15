@@ -102,7 +102,15 @@
 }
 
 - (void)dealloc {
+    _liveSession = nil;
     NSLog(@"\n--------------stream view controller dealloc---------------");
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
     if (self.liveSession) {
         [self stopStreaming];
     }
@@ -112,15 +120,23 @@
     [_capture applyEffect:@"" type:LSLiveEffectGroup];
     [_capture applyEffect:@"" type:LSLiveEffectFilter];
 #endif
+    
+    [_camera stopCameraCapture];
+    _camera = nil;
+    
+    [_capture resetRecording];
     [_capture stopVideoCapture];
-    [LiveStreamCapture resetContext];
     _capture = nil;
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-        NSLog(@"\n----------------setIdleTimerDisabled-");
-    });
-    NSLog(@"\n--------------stream view controller dealloced---------------");
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+
+    NSLog(@"\n--------------stream view controller dealloced--------------- running");
+
+    [_timer invalidate];
+    _timer = nil;
+    _liveSession.delegate = nil;
+
 }
 
 - (void)viewDidLoad {
@@ -190,14 +206,13 @@
     [_liveSession setLogLevel:LiveStreamLogLevelWarning];
     _liveSession.delegate = self;
     // 自动重连
-    _liveSession.reconnectTimeInterval = 1;
-    _liveSession.shouldAutoReconnect = YES;
-    _liveSession.reconnectCount = 10;
+    _liveSession.reconnectTimeInterval = NSIntegerMax;
+    _liveSession.shouldAutoReconnect = NO;
+    _liveSession.reconnectCount = 0;
     // 日志上报
     _liveSession.streamLogTimeInterval = 5;
     
     _liveSession.didCapturedAudioBufferList = nil;
-    
     _capture.session = _liveSession;
 #if ENABLE_LIVE_NODE_PROBER
     _liveSession.shouldUpdateOptimumIPAddress = ^(NSString *host) {
@@ -600,17 +615,6 @@
 }
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
-    
-    if(self.capture){
-        [self.capture resetRecording];
-    }
-    
-    _liveSession = nil;
-    _camera = nil;
-    [_timer invalidate];
-    _timer = nil;
-    
-    [self removeObservers];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -656,13 +660,13 @@
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecBaseAutoLevel;
             else
-                type = LiveEnCodecHEVCMainAutoLevel;
+                type = 901;//LiveEnCodecByteVC1MainAutoLevel
             break;            
         case 1:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecMainAutoLevel;
             else
-                type = LiveEnCodecHEVCMain10AutoLevel;
+                type = 902;//LiveEnCodecByteVC1Main10AutoLevel
             break;
         case 2:
             type = LiveEnCodecHighAutoLevel;
@@ -678,7 +682,7 @@
     LiveStreamAudioCodec aCodec = LiveStreamAudioCodec_FAAC_LC;
     switch (index) {
         case 0:
-            aCodec = LiveStreamAudioCodec_AT_AAC;
+            aCodec = 0;//LiveStreamAudioCodec_AT_AAC_LC
             break;
         case 1:
             aCodec = LiveStreamAudioCodec_FAAC_LC;
@@ -712,6 +716,7 @@
 //    LiveStreamStateStarted,
 //    LiveStreamStateEnded,
 //    LiveStreamStateError,
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         switch (state) {
             case LiveStreamSessionStateStarting:
@@ -723,14 +728,14 @@
                     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
                 }
                 
-                _stopButton.hidden = NO;
+                weakSelf.stopButton.hidden = NO;
                 break;
             case LiveStreamSessionStateEnded:
-                _startButton.hidden = NO;
+                weakSelf.startButton.hidden = NO;
                 break;
             case LiveStreamSessionStateError:
-                _startButton.hidden = NO;
-                _stopButton.hidden = YES;
+                weakSelf.startButton.hidden = NO;
+                weakSelf.stopButton.hidden = YES;
                 break;
             case LiveStreamSessionStateReconnecting:
                 NSLog(@"// reconnect // %@", [NSDate date]);
@@ -740,8 +745,8 @@
         }
     
         if (state == LiveStreamSessionStateEnded || state == LiveStreamSessionStateError) {
-            [_timer invalidate];
-            _infoView.text = [NSString stringWithFormat:@"Connection_ended %ld", (long)state];
+            [weakSelf.timer invalidate];
+            weakSelf.infoView.text = [NSString stringWithFormat:@"Connection_ended %ld", (long)state];
         }
     });
 

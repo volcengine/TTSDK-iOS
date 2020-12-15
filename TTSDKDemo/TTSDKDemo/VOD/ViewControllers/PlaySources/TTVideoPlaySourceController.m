@@ -17,6 +17,9 @@ SourceKey const SourceKeyAuth           = @"k_TTVideo_Auth";
 SourceKey const SourceKeyTitle          = @"k_TTVideo_Title";
 SourceKey const SourceKeyPtoken         = @"k_TTVideo_Ptoken";
 SourceKey const SourceKeyAuthWithHost   = @"k_TTVideo_Auth_with_host";
+SourceKey const SourceKeyDash           = @"k_TTVideo_Dash";
+SourceKey const SourceKeyHardWare       = @"k_TTVideo_HardWare";
+SourceKey const SourceKeyByteVC1        = @"k_TTVideo_ByteVC1";
 
 @interface TTVideoPlaySourceController ()<HistoryViewControllerDelegate>
 
