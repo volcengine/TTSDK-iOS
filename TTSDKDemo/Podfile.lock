@@ -14,36 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - CocoaAsyncSocket (7.6.4)
   - FLEX (3.0.0)
   - IQKeyboardManager (6.5.6)
-  - libwebp (1.1.0):
-    - libwebp/demux (= 1.1.0)
-    - libwebp/mux (= 1.1.0)
-    - libwebp/webp (= 1.1.0)
-  - libwebp/demux (1.1.0):
-    - libwebp/webp
-  - libwebp/mux (1.1.0):
-    - libwebp/demux
-  - libwebp/webp (1.1.0)
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
-  - MMKV (1.1.2):
-    - MMKVCore (~> 1.1.2)
-  - MMKVCore (1.1.2)
-  - RangersAppLog (5.3.1):
-    - RangersAppLog/Core (= 5.3.1)
-    - RangersAppLog/Log (= 5.3.1)
-    - RangersAppLog/Picker (= 5.3.1)
-    - RangersAppLog/UITracker (= 5.3.1)
   - RangersAppLog/Core (5.3.1)
-  - RangersAppLog/Log (5.3.1):
-    - RangersAppLog/Core
-  - RangersAppLog/Picker (5.3.1):
-    - RangersAppLog/Log
-    - RangersAppLog/UITracker
-  - RangersAppLog/UITracker (5.3.1):
-    - RangersAppLog/Core
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -51,33 +26,16 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (5.9.3):
-    - SDWebImage/Core (= 5.9.3)
-  - SDWebImage/Core (5.9.3)
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
   - Toast (4.0.0)
-  - TTSDK/Core (1.1.0.6):
-    - RangersAppLog (>= 3.2.5)
-  - TTSDK/Image (1.1.0.6):
-    - libwebp
-    - MMKV
-  - TTSDK/LivePull (1.1.0.6):
-    - CocoaAsyncSocket (~> 7.6.4)
-    - TTSDK/Core
-    - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.1.0.6):
-    - TTSDK/Core
-  - TTSDK/Player (1.1.0.6):
-    - TTSDK/Core
-    - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.1.0.6)
-  - TTSDK/TTFFmpeg (1.1.0.6)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking
-  - CocoaAsyncSocket
   - FLEX
   - IQKeyboardManager
   - Masonry
@@ -86,13 +44,6 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK/Core (= 1.1.0.6)
-  - TTSDK/Image (= 1.1.0.6)
-  - TTSDK/LivePull (= 1.1.0.6)
-  - TTSDK/LivePush (= 1.1.0.6)
-  - TTSDK/Player (= 1.1.0.6)
-  - TTSDK/PlayerCore (= 1.1.0.6)
-  - TTSDK/TTFFmpeg (= 1.1.0.6)
   - YYCategories
 
 SPEC REPOS:
@@ -100,38 +51,27 @@ SPEC REPOS:
     - RangersAppLog
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - CocoaAsyncSocket
     - FLEX
     - IQKeyboardManager
-    - libwebp
     - Masonry
     - MJExtension
-    - MMKV
-    - MMKVCore
     - ReactiveCocoa
     - SDWebImage
     - Toast
     - YYCategories
-  https://github.com/volcengine/volcengine-specs.git:
-    - TTSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
-  MMKV: 319aede3b690572ad00bada5831146c63da3d009
-  MMKVCore: ae976ab3f019a3e4448f884353e0557b324ff136
   RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: b0a2b1a4a231de7da8b66eec29b6a1ebe1575f79
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: 43dc9504a726f136f61d4df1b938e19a37373ea8
+PODFILE CHECKSUM: 69476234668d35ca9a46c24a6c70e42bf95195e5
 
 COCOAPODS: 1.6.1

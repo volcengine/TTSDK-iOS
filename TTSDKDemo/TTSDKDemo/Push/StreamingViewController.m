@@ -15,6 +15,8 @@
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
+#import <TTSDKFramework/LiveStreamSession.h>
+#import <TTSDKFramework/LiveStreamCapture.h>
 
 #define HAVE_EFFECT 0
 #define HAVE_AUDIO_EFFECT 0
@@ -656,13 +658,13 @@
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecBaseAutoLevel;
             else
-                type = LiveEnCodecHEVCMainAutoLevel;
+//                type = LiveEnCodecHEVCMainAutoLevel;
             break;            
         case 1:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecMainAutoLevel;
             else
-                type = LiveEnCodecHEVCMain10AutoLevel;
+//                type = LiveEnCodecHEVCMain10AutoLevel;
             break;
         case 2:
             type = LiveEnCodecHighAutoLevel;
@@ -678,7 +680,7 @@
     LiveStreamAudioCodec aCodec = LiveStreamAudioCodec_FAAC_LC;
     switch (index) {
         case 0:
-            aCodec = LiveStreamAudioCodec_AT_AAC;
+//            aCodec = LiveStreamAudioCodec_AT_AAC;
             break;
         case 1:
             aCodec = LiveStreamAudioCodec_FAAC_LC;

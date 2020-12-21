@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
+		2BA0467E258CA742002F6FC3 /* TTSDKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA04671258C9C0F002F6FC3 /* TTSDKFramework.framework */; };
+		2BA0467F258CA742002F6FC3 /* TTSDKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA04671258C9C0F002F6FC3 /* TTSDKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
 		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
 		831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378F23D017E600A9F7A9 /* LiveHelper.m */; };
@@ -130,6 +132,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2BA0467F258CA742002F6FC3 /* TTSDKFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +143,7 @@
 		03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
+		2BA04671258C9C0F002F6FC3 /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTSDKFramework.framework; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
 		831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSDKDemo.pch; sourceTree = "<group>"; };
 		831E378523D0177B00A9F7A9 /* LSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainViewController.m; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BA0467E258CA742002F6FC3 /* TTSDKFramework.framework in Frameworks */,
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
 				18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */,
@@ -531,6 +536,7 @@
 		83C44393243E492A00081EA1 /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				2BA04671258C9C0F002F6FC3 /* TTSDKFramework.framework */,
 				83C44394243E492A00081EA1 /* EffectSDK */,
 			);
 			path = extern;
@@ -857,7 +863,6 @@
 				8378B5B823C4860F0075E05C /* Frameworks */,
 				8378B5B923C4860F0075E05C /* Resources */,
 				83A3047624F6AD1100209D0A /* Embed Frameworks */,
-				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -942,30 +947,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RangersAppLog/RangersAppLog.bundle",
-				"${PODS_ROOT}/TTSDK/TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RangersAppLog.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ttplayer.metallib",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9389C65C0396185FCC59ACF6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1215,9 +1196,9 @@
 			baseConfigurationReference = D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46A29A7ADN;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = NS8X24V469;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1249,9 +1230,9 @@
 					"$(inherited)",
 					"-lbz2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.litianhao.pandora.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = Zhao_Jingxin_2_Wildcard_QBEJ781O3E;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1262,9 +1243,9 @@
 			baseConfigurationReference = AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 46A29A7ADN;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = X46375UBYG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1296,9 +1277,9 @@
 					"$(inherited)",
 					"-lbz2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.litianhao.pandora.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -11,6 +11,10 @@
 #import "TTVideoPlayerFullScreenManager.h"
 #import "SourceViewController.h"
 #import "TTVideoAudioSession.h"
+#import <TTSDKFramework/TTVideoEngine.h>
+#import <TTSDKFramework/TTVideoEngine+Preload.h>
+#import <TTSDKFramework/TTVideoEngine+Tracker.h>
+#import <TTSDKFramework/TTVideoEngine+Options.h>
 
 NSString *const kTTVideoEngineEventNotification = @"kTTVideoEngineEventNotification.implement";
 
@@ -153,7 +157,7 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     /// 异步初始化播放器
     /// [self.engine setOptions:@{VEKKEY(VEKKeyPlayerAsyncInit_BOOL):@(YES)}];
     /// 开启 Metal 渲染
-    [self.engine setOptions:@{VEKKEY(VEKKeyViewRenderEngine_ENUM):@(TTVideoEngineRenderEngineMetal)}];
+    [self.engine setOptions:@{VEKKEY(VEKKeyViewRenderEngine_ENUM):@(TTVideoEngineRenderEngineOpenGLES)}];
     [self.engine setOptionForKey:VEKKeyLogTag_NSString value:@"普通视频"];
     /// 设置 分辨率
     [self.engine configResolution:self.resolutionIndex];

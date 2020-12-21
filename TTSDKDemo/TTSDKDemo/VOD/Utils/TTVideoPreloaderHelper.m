@@ -8,7 +8,9 @@
 
 #import "TTVideoPreloaderHelper.h"
 #import "SourceViewController.h"
-
+#import <TTSDKFramework/TTVideoEngine.h>
+#import <TTSDKFramework/TTVideoEngine+Preload.h>
+#import <TTSDKFramework/TTVideoEngine+Tracker.h>
 @implementation TTVideoPreloaderHelper
 
 + (void)preloadItems:(NSArray<NSDictionary *> *)items {

@@ -9,16 +9,16 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 target 'TTSDKDemo' do
-  pod 'TTSDK', '1.1.0.6' ,:subspecs => [
-    'Core',
-#    'TTFFmpegFramework',
-    'TTFFmpeg',
-    'PlayerCore',
-    'LivePull',
-    'LivePush',
-    'Player',
-    'Image',
-  ] 
+#  pod 'TTSDK', '1.1.0.6-alpha.1' ,:subspecs => [
+#    'Core',
+##    'TTFFmpegFramework',
+#    'TTFFmpeg',
+#    'PlayerCore',
+#    'LivePull',
+#    'LivePush',
+#    'Player',
+#    'Image'
+#    ]
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
   pod 'FLEX'
@@ -28,6 +28,6 @@ target 'TTSDKDemo' do
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
-  pod 'CocoaAsyncSocket'
+#  pod 'CocoaAsyncSocket'
   pod 'RangersAppLog', '~> 5.3.1', :subspecs => ['Core']
 end

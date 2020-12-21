@@ -35,6 +35,7 @@
 
 @end
 
+
 @implementation LivePlaySettingsViewController
 
 - (void)viewDidLoad {
@@ -42,7 +43,7 @@
     self.navigationController.navigationBar.hidden = YES;
     self.config = [PlayConfiguration defaultConfiguration];
     
-    _playURLTextField.text = @"http://pull-flv-l1.douyincdn.com/stage/stream-682847493605556254.flv";
+    _playURLTextField.text = @"http://pull-l3.douyincdn.com/stage/stream-107929610798235730.flv";
 //    _playURLTextField.text = @"请输入或扫码获取播放地址";
     [self setupUIComponent];
 }
