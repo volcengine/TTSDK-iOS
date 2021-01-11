@@ -5,7 +5,7 @@
 //
 
 #import "BDImageAdapter.h"
-#import "BDSuperResolutionTransformer.h"
+#import <TTSDK/BDSuperResolutionTransformer.h>
 
 @interface BDImageAdapter ()
 

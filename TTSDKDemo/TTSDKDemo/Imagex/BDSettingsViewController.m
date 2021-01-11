@@ -6,7 +6,7 @@
 
 #import "BDSettingsViewController.h"
 #import "BDImageSettingModel.h"
-#import <BDWebImage.h>
+#import <TTSDK/BDWebImage.h>
 #import "BDImageAdapter.h"
 #import <Masonry/Masonry.h>
 
