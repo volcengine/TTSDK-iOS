@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
 #import <TTSDK/BDWebImageManager.h>
+#import <TTSDK/BDWebImageStartUpConfig.h>
 #import "TTDemoSDKEnvironmentManager.h"
 
 void uncaughtExceptionHandler(NSException*exception){
@@ -124,8 +125,10 @@ void uncaughtExceptionHandler(NSException*exception){
 - (void)initBDImageManager
 {
     // 配置图片库AppID 是否是海外产品
-    [BDWebImageManager sharedManager].serviceVendor = (TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor]) ? BDImageServiceVendorCN : BDImageServiceVendorVA;
-    [BDWebImageManager sharedManager].appId = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+    BDWebImageStartUpConfig * imageConfig = [BDWebImageStartUpConfig new];
+    imageConfig.appID = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+    imageConfig.serviceVendor = (TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor]) ? BDImageServiceVendorCN : BDImageServiceVendorVA;
+    [[BDWebImageManager sharedManager] startUpWithConfig:imageConfig];
 }
 
 - (void)startVideoServer {

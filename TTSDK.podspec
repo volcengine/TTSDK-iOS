@@ -161,6 +161,7 @@
         'TTSDK/BDWebImageToB/**/*',
       ]
       subspec.vendored_libraries = [
+        'TTSDK/lib_h_dec/**/*.a',
         'TTSDK/BDWebImageToB/**/*.a'
       ]
       subspec.dependency 'libwebp'

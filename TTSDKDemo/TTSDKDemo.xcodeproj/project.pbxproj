@@ -126,6 +126,21 @@
 		83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */; };
 		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
+		E5AAC4E025AB0CF000DA719E /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D025AB0CEF00DA719E /* play@3x.png */; };
+		E5AAC4E125AB0CF000DA719E /* 配置@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D125AB0CEF00DA719E /* 配置@3x.png */; };
+		E5AAC4E225AB0CF000DA719E /* 永久循环.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D225AB0CEF00DA719E /* 永久循环.png */; };
+		E5AAC4E325AB0CF000DA719E /* 自定循环.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D325AB0CEF00DA719E /* 自定循环.png */; };
+		E5AAC4E425AB0CF000DA719E /* 配置@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D425AB0CEF00DA719E /* 配置@2x.png */; };
+		E5AAC4E525AB0CF000DA719E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D525AB0CEF00DA719E /* play@2x.png */; };
+		E5AAC4E625AB0CF000DA719E /* 手动播放.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D625AB0CEF00DA719E /* 手动播放.png */; };
+		E5AAC4E725AB0CF000DA719E /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D725AB0CEF00DA719E /* search.png */; };
+		E5AAC4E825AB0CF000DA719E /* 手动暂停.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D825AB0CEF00DA719E /* 手动暂停.png */; };
+		E5AAC4E925AB0CF000DA719E /* timg.gif in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4D925AB0CEF00DA719E /* timg.gif */; };
+		E5AAC4EA25AB0CF000DA719E /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4DA25AB0CEF00DA719E /* stop@2x.png */; };
+		E5AAC4EB25AB0CF000DA719E /* stop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4DB25AB0CEF00DA719E /* stop@3x.png */; };
+		E5AAC4EC25AB0CF000DA719E /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4DC25AB0CEF00DA719E /* setting.png */; };
+		E5AAC4ED25AB0CF000DA719E /* loop@3x.webp in Resources */ = {isa = PBXBuildFile; fileRef = E5AAC4DD25AB0CEF00DA719E /* loop@3x.webp */; };
+		E5AAC4EE25AB0CF000DA719E /* BDSRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AAC4DE25AB0CEF00DA719E /* BDSRDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -367,6 +382,22 @@
 		83CF2BAF23E7040A006F5174 /* TTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDK.framework; path = ../products/TTSDK.framework; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E5AAC4D025AB0CEF00DA719E /* play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@3x.png"; sourceTree = "<group>"; };
+		E5AAC4D125AB0CEF00DA719E /* 配置@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "配置@3x.png"; sourceTree = "<group>"; };
+		E5AAC4D225AB0CEF00DA719E /* 永久循环.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "永久循环.png"; sourceTree = "<group>"; };
+		E5AAC4D325AB0CEF00DA719E /* 自定循环.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "自定循环.png"; sourceTree = "<group>"; };
+		E5AAC4D425AB0CEF00DA719E /* 配置@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "配置@2x.png"; sourceTree = "<group>"; };
+		E5AAC4D525AB0CEF00DA719E /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		E5AAC4D625AB0CEF00DA719E /* 手动播放.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手动播放.png"; sourceTree = "<group>"; };
+		E5AAC4D725AB0CEF00DA719E /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		E5AAC4D825AB0CEF00DA719E /* 手动暂停.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "手动暂停.png"; sourceTree = "<group>"; };
+		E5AAC4D925AB0CEF00DA719E /* timg.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timg.gif; sourceTree = "<group>"; };
+		E5AAC4DA25AB0CEF00DA719E /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
+		E5AAC4DB25AB0CEF00DA719E /* stop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@3x.png"; sourceTree = "<group>"; };
+		E5AAC4DC25AB0CEF00DA719E /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		E5AAC4DD25AB0CEF00DA719E /* loop@3x.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "loop@3x.webp"; sourceTree = "<group>"; };
+		E5AAC4DE25AB0CEF00DA719E /* BDSRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSRDetailViewController.m; sourceTree = "<group>"; };
+		E5AAC4DF25AB0CF000DA719E /* BDSRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSRDetailViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,21 +553,24 @@
 		83A3047724F6AED600209D0A /* Imagex */ = {
 			isa = PBXGroup;
 			children = (
+				E5AAC4DF25AB0CF000DA719E /* BDSRDetailViewController.h */,
+				E5AAC4DE25AB0CEF00DA719E /* BDSRDetailViewController.m */,
+				E5AAC4CF25AB0CEF00DA719E /* images */,
 				83A3047824F6AED600209D0A /* BDImageAdapter.h */,
-				83A3047924F6AED600209D0A /* BDImageOptionView.h */,
-				83A3047A24F6AED600209D0A /* BDRootViewController.m */,
-				83A3047B24F6AED600209D0A /* images */,
-				83A3048924F6AED600209D0A /* BDImageSettingModel.m */,
-				83A3048A24F6AED600209D0A /* BDImageDetailViewController.h */,
-				83A3048B24F6AED600209D0A /* BDSettingsViewController.h */,
-				83A3048C24F6AED600209D0A /* BDImageCollectionViewController.h */,
-				83A3048D24F6AED600209D0A /* BDImageOptionView.m */,
 				83A3048E24F6AED600209D0A /* BDImageAdapter.m */,
-				83A3048F24F6AED600209D0A /* BDRootViewController.h */,
-				83A3049024F6AED600209D0A /* BDImageDetailViewController.m */,
-				83A3049124F6AED600209D0A /* BDImageSettingModel.h */,
+				83A3048C24F6AED600209D0A /* BDImageCollectionViewController.h */,
 				83A3049224F6AED600209D0A /* BDImageCollectionViewController.m */,
+				83A3048A24F6AED600209D0A /* BDImageDetailViewController.h */,
+				83A3049024F6AED600209D0A /* BDImageDetailViewController.m */,
+				83A3047924F6AED600209D0A /* BDImageOptionView.h */,
+				83A3048D24F6AED600209D0A /* BDImageOptionView.m */,
+				83A3049124F6AED600209D0A /* BDImageSettingModel.h */,
+				83A3048924F6AED600209D0A /* BDImageSettingModel.m */,
+				83A3048F24F6AED600209D0A /* BDRootViewController.h */,
+				83A3047A24F6AED600209D0A /* BDRootViewController.m */,
+				83A3048B24F6AED600209D0A /* BDSettingsViewController.h */,
 				83A3049324F6AED600209D0A /* BDSettingsViewController.m */,
+				83A3047B24F6AED600209D0A /* images */,
 			);
 			path = Imagex;
 			sourceTree = "<group>";
@@ -878,6 +912,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E5AAC4CF25AB0CEF00DA719E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E5AAC4D025AB0CEF00DA719E /* play@3x.png */,
+				E5AAC4D125AB0CEF00DA719E /* 配置@3x.png */,
+				E5AAC4D225AB0CEF00DA719E /* 永久循环.png */,
+				E5AAC4D325AB0CEF00DA719E /* 自定循环.png */,
+				E5AAC4D425AB0CEF00DA719E /* 配置@2x.png */,
+				E5AAC4D525AB0CEF00DA719E /* play@2x.png */,
+				E5AAC4D625AB0CEF00DA719E /* 手动播放.png */,
+				E5AAC4D725AB0CEF00DA719E /* search.png */,
+				E5AAC4D825AB0CEF00DA719E /* 手动暂停.png */,
+				E5AAC4D925AB0CEF00DA719E /* timg.gif */,
+				E5AAC4DA25AB0CEF00DA719E /* stop@2x.png */,
+				E5AAC4DB25AB0CEF00DA719E /* stop@3x.png */,
+				E5AAC4DC25AB0CEF00DA719E /* setting.png */,
+				E5AAC4DD25AB0CEF00DA719E /* loop@3x.webp */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -942,13 +997,19 @@
 				83C44466243F8E2B00081EA1 /* LivePlaySettingsViewController.xib in Resources */,
 				83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */,
 				8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */,
+				E5AAC4E325AB0CF000DA719E /* 自定循环.png in Resources */,
+				E5AAC4ED25AB0CF000DA719E /* loop@3x.webp in Resources */,
 				83A3049D24F6AED600209D0A /* 手动暂停.png in Resources */,
+				E5AAC4E225AB0CF000DA719E /* 永久循环.png in Resources */,
 				83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */,
 				83A3049E24F6AED600209D0A /* stop@2x.png in Resources */,
 				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
 				83A304A024F6AED600209D0A /* setting.png in Resources */,
+				E5AAC4EB25AB0CF000DA719E /* stop@3x.png in Resources */,
 				83A3049524F6AED600209D0A /* play@3x.png in Resources */,
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
+				E5AAC4E625AB0CF000DA719E /* 手动播放.png in Resources */,
+				E5AAC4E025AB0CF000DA719E /* play@3x.png in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
 				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
 				2B44FB1625515BD9002CC02A /* test1.png in Resources */,
@@ -956,17 +1017,25 @@
 				8378B5C923C4860F0075E05C /* Main.storyboard in Resources */,
 				83A3049824F6AED600209D0A /* 自定循环.png in Resources */,
 				83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */,
+				E5AAC4EC25AB0CF000DA719E /* setting.png in Resources */,
 				83A3049A24F6AED600209D0A /* play@2x.png in Resources */,
 				83A3049B24F6AED600209D0A /* 手动播放.png in Resources */,
 				83A3049924F6AED600209D0A /* 配置@2x.png in Resources */,
+				E5AAC4E925AB0CF000DA719E /* timg.gif in Resources */,
 				83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */,
 				83A3049624F6AED600209D0A /* 配置@3x.png in Resources */,
 				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
 				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
+				E5AAC4E125AB0CF000DA719E /* 配置@3x.png in Resources */,
+				E5AAC4E425AB0CF000DA719E /* 配置@2x.png in Resources */,
 				83A3049C24F6AED600209D0A /* search.png in Resources */,
 				830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */,
+				E5AAC4E825AB0CF000DA719E /* 手动暂停.png in Resources */,
 				83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */,
 				83A3049724F6AED600209D0A /* 永久循环.png in Resources */,
+				E5AAC4E725AB0CF000DA719E /* search.png in Resources */,
+				E5AAC4E525AB0CF000DA719E /* play@2x.png in Resources */,
+				E5AAC4EA25AB0CF000DA719E /* stop@2x.png in Resources */,
 				83C44467243F8E2B00081EA1 /* PreferencesViewController.xib in Resources */,
 				83A3049F24F6AED600209D0A /* stop@3x.png in Resources */,
 				83A304A124F6AED600209D0A /* loop@3x.webp in Resources */,
@@ -1038,6 +1107,7 @@
 				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
 				831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */,
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
+				E5AAC4EE25AB0CF000DA719E /* BDSRDetailViewController.m in Sources */,
 				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
@@ -1250,9 +1320,9 @@
 			baseConfigurationReference = D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NS8X24V469;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YUW3H65B47;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1284,9 +1354,9 @@
 					"$(inherited)",
 					"-lbz2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo2;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = Zhao_Jingxin_2_Wildcard_QBEJ781O3E;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

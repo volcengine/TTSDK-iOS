@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <BDWebImage.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,9 @@ typedef void(^fetchCallback)(BOOL success);
 
 @property (nonatomic, assign) BDImageRequestOptions options;
 @property (atomic, strong) NSString *record;
+@property (nonatomic, assign) BOOL isInternational;
+@property (nonatomic, assign) BOOL isVerifySR;
+@property (nonatomic, strong) NSString *srImagesUrl;
 @property (nonatomic, assign) BOOL isPrefetch;
 @property (nonatomic, assign) BOOL isCyclePlayAnim;
 @property (nonatomic, assign) BOOL isRetry;
@@ -27,7 +31,7 @@ typedef void(^fetchCallback)(BOOL success);
 
 - (NSUInteger)cacheSize;
 
-- (void)fetchTestURLs:(NSString *)url Block:(fetchCallback)callback;
+- (void)fetchTestURLs:(NSString *)url key:(NSString *)key Block:(fetchCallback)callback;
 
 @end
 

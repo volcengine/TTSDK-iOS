@@ -5,6 +5,7 @@
 //
 
 #import "BDImageAdapter.h"
+#import "BDSuperResolutionTransformer.h"
 
 @interface BDImageAdapter ()
 
@@ -36,6 +37,8 @@
         self.isCyclePlayAnim = [[NSUserDefaults standardUserDefaults] boolForKey:@"image_cycle_play"];
         self.isRetry = [[NSUserDefaults standardUserDefaults] boolForKey:@"image_retry"];
         self.isDecodeForDisplay = [[NSUserDefaults standardUserDefaults] boolForKey:@"image_decode_for_display"];
+        self.isInternational = [[NSUserDefaults standardUserDefaults] boolForKey:@"image_sdk_is_international"];
+        self.isVerifySR = [[NSUserDefaults standardUserDefaults] boolForKey:@"image_is_verify_sr"];
         self.urls = [self loadUrls];
         self.record = @"";
     }
@@ -68,6 +71,18 @@
     [[NSUserDefaults standardUserDefaults] setBool:_isDecodeForDisplay forKey:@"image_decode_for_display"];
 }
 
+- (void)setIsInternational:(BOOL)isInternational {
+    _isInternational = isInternational;
+    [[NSUserDefaults standardUserDefaults] setBool:isInternational forKey:@"image_sdk_is_international"];
+}
+
+- (void)setSrImagesUrl:(NSString *)srImagesUrl {
+    if (srImagesUrl.length > 0) {
+        [self fetchTestURLs:srImagesUrl key:@"SR" Block:^(BOOL success) {}];
+        _srImagesUrl = srImagesUrl;
+    }
+}
+
 - (void)updateCacheSize {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.currentCacheSize = [BDImageCache sharedImageCache].diskCache.totalSize;
@@ -78,7 +93,7 @@
     return self.currentCacheSize;
 }
 
-- (void)fetchTestURLs:(NSString *)url Block:(fetchCallback)callback {
+- (void)fetchTestURLs:(NSString *)url key:(NSString *)key Block:(fetchCallback)callback {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
     [request setTimeoutInterval:15];
@@ -94,7 +109,11 @@
                 }
                 NSArray *result = [jsonObj componentsSeparatedByString:@"\n"];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.urls = @{@"全部": result};
+                    if (result.count > 0) {
+                        NSMutableDictionary *newUrls = [self.urls mutableCopy];
+                        [newUrls setObject:result forKey:key];
+                        self.urls = newUrls;
+                    }
                     callback(result.count > 0);
                 });
             }
@@ -103,7 +122,8 @@
 }
 
 - (NSDictionary *)loadUrls {
-    NSArray *all = @[@"http://p6-tt.byteimg.com/tos-cn-i-0000/7bc94ac9f7574a35b5a3fc5078172ddc~640x0.jpeg",
+    NSArray *all = @[@"http://p9-tt-ipv6.byteimg.com/user-avatar/e5b9530e8c6e39442d6d811c00a2ee9d~202x450.jpeg",
+    @"http://p6-tt.byteimg.com/tos-cn-i-0000/7bc94ac9f7574a35b5a3fc5078172ddc~640x0.jpeg",
     @"http://p29-tt.byteimg.com/tos-cn-p-0026/1727f479a6a8b8737f575637e06d7a2d~tplv-tt-cs0:960:540.webp",
     @"http://p6-tt.bytecdn.cn/list/tos-cn-i-0000/9df6665311654480847bcf090d5ee7dd",
     @"http://p9-tt-ipv6.byteimg.com/list/tos-cn-p-0026/52ca27eaf9b75914f4b06b7d851c4ab4",
@@ -3285,7 +3305,7 @@
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/9fa03905340d47d3a908049b925d8b83~tplv-n41c8j48qt-image.image",
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/326c95ab7772448fa22e6276828f370b~tplv-n41c8j48qt-image.image",
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/2276fa11788e44e9b8f9f33d7c71927e~tplv-n41c8j48qt-image.image"];
-    return @{@"全部": all, @"awebp": awebp, @"gif": gif, @"heif": heif};
+    return @{@"SR": all, @"awebp": awebp, @"gif": gif, @"heif": heif};
 }
 
 @end

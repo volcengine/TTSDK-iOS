@@ -6,7 +6,10 @@
 
 #import "BDImageCollectionViewController.h"
 #import "BDImageDetailViewController.h"
+#import "BDSRDetailViewController.h"
 #import "BDImageAdapter.h"
+#import <BDWebImage.h>
+#import "BDSuperResolutionTransformer.h"
 #import <Masonry/Masonry.h>
 
 @interface BDImageCollectionViewCell : UICollectionViewCell
@@ -105,8 +108,12 @@ static NSString * const reuseIdentifier = @"BDImageCell";
         cell.label.hidden = NO;
     }
     __weak BDImageCollectionViewCell *weakCell = cell;
-    [cell.imageView bd_setImageWithURL:url placeholder:nil options:[BDImageAdapter sharedAdapter].options completion:^(BDWebImageRequest *request, UIImage *image, NSData *data, NSError *error, BDWebImageResultFrom from) {
-        if (((BDImage *)image).isAnimateImage) {
+    BDBaseTransformer *transformer = nil;
+    if ([self.title isEqualToString:@"SR"]) {
+        transformer = [BDSuperResolutionTransformer new];
+    }
+    [cell.imageView bd_setImageWithURL:url placeholder:nil options:[BDImageAdapter sharedAdapter].options transformer:transformer progress:NULL completion:^(BDWebImageRequest *request, UIImage *image, NSData *data, NSError *error, BDWebImageResultFrom from) {
+        if ([image isKindOfClass:[BDImage class]] && ((BDImage *)image).isAnimateImage) {
             NSString *type = @"GIF";
             switch (((BDImage *)image).codeType) {
                 case BDImageCodeTypeWebP:
@@ -132,13 +139,20 @@ static NSString * const reuseIdentifier = @"BDImageCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    BDImageDetailType type = [self.animDict.allKeys containsObject:@(indexPath.row)] ? BDImageDetailTypeAnim : BDImageDetailTypeStatic;
-    
-    BDImageDetailViewController *vc = [BDImageDetailViewController new];
-    vc.navigationItem.title = @"图片详情";
-    vc.url = self.imageUrls[indexPath.row];
-    vc.showType = type;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([self.title isEqualToString:@"SR"]) {
+        BDSRDetailViewController *vc1 = [BDSRDetailViewController new];
+        vc1.navigationItem.title = @"超分图片详情(点击图片查看日志详情)";
+        vc1.url = self.imageUrls[indexPath.row];
+        [self.navigationController pushViewController:vc1 animated:YES];
+    } else {
+        BDImageDetailType type = [self.animDict.allKeys containsObject:@(indexPath.row)] ? BDImageDetailTypeAnim : BDImageDetailTypeStatic;
+        
+        BDImageDetailViewController *vc = [BDImageDetailViewController new];
+        vc.navigationItem.title = @"图片详情";
+        vc.url = self.imageUrls[indexPath.row];
+        vc.showType = type;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 }
 

@@ -109,7 +109,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/bytedance/cocoapods_sdk_source_repo.git:
     - RangersAppLog
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/CocoaPods/Specs:
     - AFNetworking
     - CocoaAsyncSocket
     - DACircularProgress
@@ -148,7 +148,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 27a042284e24e3339d8790a3265d37188e9103b0
+  TTSDK: 5f8efe9b4aabf613db1d4fb09a5a52f0fc02968e
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
 PODFILE CHECKSUM: d5249fe1250a1678e3a790a33fc376f2feecc6f0
