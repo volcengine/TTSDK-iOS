@@ -18,6 +18,9 @@ FOUNDATION_EXTERN SourceKey const SourceKeyAuth;
 FOUNDATION_EXTERN SourceKey const SourceKeyTitle;
 FOUNDATION_EXTERN SourceKey const SourceKeyPtoken;
 FOUNDATION_EXTERN SourceKey const SourceKeyAuthWithHost;
+FOUNDATION_EXTERN SourceKey const SourceKeyDash;
+FOUNDATION_EXTERN SourceKey const SourceKeyHardWare;
+FOUNDATION_EXTERN SourceKey const SourceKeyByteVC1;
 
 @protocol SourceViewController <NSObject>
 
