@@ -10,8 +10,10 @@
 #define TTSDKDemo_pch
 
 #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#define IS_METAL_ENABLED 0
 #import <TTSDKFramework/TTSDKFramework.h>
 #else
+#define IS_METAL_ENABLED 1
 #import <TTSDK/TTSDKManager.h>
 #import <TTSDK/TTVideoEngineHeader.h>
 #import <TTSDK/LiveStreamLibrary.h>

@@ -152,8 +152,10 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     self.engine.reportLogEnable = YES;
     /// 异步初始化播放器
     /// [self.engine setOptions:@{VEKKEY(VEKKeyPlayerAsyncInit_BOOL):@(YES)}];
+#if IS_METAL_ENABLED
     /// 开启 Metal 渲染
     [self.engine setOptions:@{VEKKEY(VEKKeyViewRenderEngine_ENUM):@(TTVideoEngineRenderEngineMetal)}];
+#endif
     [self.engine setOptionForKey:VEKKeyLogTag_NSString value:@"普通视频"];
     /// 设置 分辨率
     [self.engine configResolution:self.resolutionIndex];
