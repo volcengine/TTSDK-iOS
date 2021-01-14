@@ -11,7 +11,6 @@
 #import "NavigationViewController.h"
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
-#import <TTSDK/BDWebImageManager.h>
 #import "TTDemoSDKEnvironmentManager.h"
 
 void uncaughtExceptionHandler(NSException*exception){
@@ -32,7 +31,7 @@ void uncaughtExceptionHandler(NSException*exception){
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
     // 配置 demo环境变量 模拟国内 海外测试环境
-    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorVA;
+    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
     [self initAppLog];
     [self initBDImageManager];
 
