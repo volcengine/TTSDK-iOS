@@ -42,6 +42,8 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, assign) BOOL isfilePath;
 @property (nonatomic, assign) int i;
 @property (nonatomic, assign) int v;
+@property (nonatomic, assign) TTImageUploadActionType processType;
+@property (nonatomic, assign) TTVideoUploadActionType processTypeVideo;
 @property (nonatomic, copy) NSString* userName;
 @property (nonatomic, copy) NSString* authorization;
 //@property (nonatomic, copy) NSString* userNameEncryption;
@@ -84,7 +86,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         _userName = @"3413ace7e2a9a235a9d5807ad78d9bac";
         _authorization = @"HMAC-SHA1:1.0:2468203903:3413ace7e2a9a235a9d5807ad78d9bac:5ImkEneliRE+ItD3zzrehsaOnak=";
     
-        _hostName = @"imagex.bytedanceapi.com";
+        _hostName = @"imagex.volcengineapi.com";
         _isImageX = YES;
         _isProcessImage = NO;
         _isfilePath = YES;
@@ -195,7 +197,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     if (_isImageX) {
         url = @"http://vod-sdk-playground.snssdk.com/api/v1/get_image_upload_token?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&service_id=19tz3ytenx";
     }else {
-        url = @"http://vod-sdk-playground.snssdk.com/api/v1/get_top_upload_auth_token?ak=AKLTMGYwNjQ2M2I5YTRiNDUzNmJjMmFhOWNiNDcxNzYxZDY&sk=0gqzE0ULU1jhHwFlAJL9YsPYYBaAbRscDz4QBnboiBfjGVSdD%2bkXee4ksTfuYA2z&space=shanzha-video";
+        url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
     }
     
     [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(id  _Nullable jsonObject, NSError * _Nullable error) {
@@ -205,7 +207,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
             return ;
         }
         if (jsonObject) {
-
+            NSLog(@"json Objct:%@",jsonObject);
             NSString* result = jsonObject[@"token"];
             if (_authParameter == nil) {
                 _authParameter = result;
@@ -357,7 +359,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
             url = @"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expire=50000";
         }
         else{
-            url = @"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTYTUwMTZhNzFjNjBkNDdjNTg2ODE2NzVlNWI5YTNhNzk&sk=ziG3kug8Lw9c18J9ih3QK4A4f/WBHCjlvx0qYS1P128438wWuCNlzzyDZvlfxkq0&expire=50000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
             }
                 /* imageX账号信息*/
                 [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
@@ -371,14 +373,23 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         }
                         if (jsonObject) {
                             NSLog(@"json Objct:%@",jsonObject);
-                            NSDictionary* result = jsonObject[@"token"];
+                            NSDictionary* result;
+                            if(_isImageX){
+                                result = jsonObject[@"token"];
+                            }else{
+                                result = jsonObject[@"result"];
+                            }
                             if (result) {
                                 strongSelf.accessKey = nil;
                                 strongSelf.secretKey = nil;
                                 strongSelf.sessionToken = nil;
                                 strongSelf.expirationTime = nil;
                                 
-                                strongSelf.accessKey = result[@"AccessKeyId"];
+                                if(_isImageX){
+                                    strongSelf.accessKey = result[@"AccessKeyId"];
+                                }else{
+                                    strongSelf.accessKey = result[@"AccessKeyID"];
+                                }
                                 strongSelf.secretKey = result[@"SecretAccessKey"];
                                 strongSelf.sessionToken = result[@"SessionToken"];
                                 strongSelf.expirationTime = result[@"ExpiredTime"];
@@ -409,17 +420,22 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     _segmentContainView = containView;
     [self.view addSubview:containView];
     NSInteger tag = 101;
-    NSArray *netArray = @[@"imageX",@"vodImage"];
+    NSArray *netArray = @[@"imageX",@"imageXIM",@"VideoAPI2.0"];
     CGRect netFrame = CGRectMake(10,  40, 100, 40);
     UIBlockSegmentedControl* netWorkControll = [UIBlockSegmentedControl initSegMentFrame:netFrame item:netArray tag:++tag];
     [netWorkControll addActionBlock:^{
         if (netWorkControll.selectedSegmentIndex == 0) {
             _isImageX = YES;
-        }else if (netWorkControll.selectedSegmentIndex == 1){
+            _processType = TTImageUploadActionTypeNoProcess;
+        }
+        else if(netWorkControll.selectedSegmentIndex == 1){
+            _isImageX = YES;
+            _processType = TTImageUploadActionTypeEncrypt;
+        }else if(netWorkControll.selectedSegmentIndex == 2){
             _isImageX = NO;
+            _processTypeVideo = TTVideoUploadActionTypeEncrypt;
         }
         _authParameter = nil;
-        //[self getAuth];
         [self initUploader];
         [self requestSign];
         
