@@ -90,16 +90,16 @@
     TTVideoUploadClientTop* clientTop  = [[TTVideoUploadClientTop alloc] initWithFilePath:filePath];
     NSDictionary* requestParameter = @{/* TTFileUploadSpace:@"for-boe-test",*/
                                        TTFileUploadFileTypeStr:@"video",
-                                       TTFileUploadSpace:@"video-test-dx",
+                                       TTFileUploadSpace:@"store",
 
                                        };
     clientTop.delegate = delegate;
-    NSString* hostName = @"vod.bytedanceapi.com";
+    NSString* hostName = @"vod.volcengineapi.com";
     [clientTop setVideoHostName:hostName];
     [clientTop setRequestParameter: requestParameter];
     [clientTop setAuthorizationParameter:parameter];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
-    [clientTop setProcessActionType:TTFileUploadTopActionTypeGetMedia|TTFileUploadTopActionTypeSnapshot parameter:nil];
+    [clientTop setProcessActionType:TTVideoUploadActionTypeEncrypt parameter:nil];
     return clientTop;
 }
 
@@ -107,22 +107,15 @@
                                        delegate:(id)delegate
                                   authParameter:(NSString*)parameter isImageX:(BOOL)isImageX{
     TTImageUploadType type = isImageX ? TTImageUploadTypeImageX: TTImageUploadTypeImage;
-    TTImageUploadClientTop* clientTop = [[TTImageUploadClientTop alloc] initWithFilePaths:filePaths uploadType:type];
+    TTImageUploadClientTop* clientTop = [[TTImageUploadClientTop alloc] initWithFilePaths:filePaths];
     clientTop.delegate = delegate;
 
     NSString* hostName;
-    if(isImageX){
         //hostName = @"staging-openapi-boe.byted.org";
-        hostName = @"imagex.bytedanceapi.com";
-        [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
-        TTFileUploadFileTypeStr:@"image",
-        }];
-    }else{
-        hostName = @"vod.bytedanceapi.com";
-        [clientTop setRequestParameter: @{TTFileUploadSpace:@"video-test-dx",
-        TTFileUploadFileTypeStr:@"image",
-        }];
-    }
+    hostName = @"imagex.volcengineapi.com";
+    [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
+    TTFileUploadFileTypeStr:@"image",
+    }];
     [clientTop setImageHostName:hostName];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
     
@@ -132,9 +125,8 @@
     
     
     //[clientTop setAuthorizationParameter:parameter];
-    [clientTop setProcessActionType:TTFileUploadTopActionTypeGetMedia parameter:nil];
+    [clientTop setProcessActionType:TTVideoUplaodActionTypeNoProcess parameter:nil];
     
-//    [clientTop setFileNames:filePaths];
     NSDictionary* config = @{
                              TTFileUploadFileRetryCount:@1,
                              TTFileUploadSliceTimeout:@40,
@@ -144,7 +136,7 @@
                              };
     [clientTop setUploadConfig:config];
     if(isImageX){
-        [clientTop setImageHostName:@"imagex.bytedanceapi.com"];
+        [clientTop setImageHostName:@"imagex.volcengineapi.com"];
     }
     
     return clientTop;
