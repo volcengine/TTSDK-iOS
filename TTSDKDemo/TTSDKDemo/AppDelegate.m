@@ -31,7 +31,6 @@ void uncaughtExceptionHandler(NSException*exception){
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
-    // 配置 demo环境变量 模拟国内 海外测试环境
     [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
     [self initAppLog];
     [self initBDImageManager];
