@@ -61,24 +61,24 @@ PODS:
     - SDWebImage/Core (= 3.8.3)
   - SDWebImage/Core (3.8.3)
   - Toast (4.0.0)
-  - TTSDK/Core (1.11.0.1):
+  - TTSDK/Core (1.11.0.7):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/Image (1.11.0.1):
+  - TTSDK/Image (1.11.0.7):
     - libwebp
     - MMKV
-  - TTSDK/LivePull (1.11.0.1):
+  - TTSDK/LivePull (1.11.0.7):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.11.0.1):
+  - TTSDK/LivePush (1.11.0.7):
     - TTSDK/Core
-  - TTSDK/Player (1.11.0.1):
+  - TTSDK/Player (1.11.0.7):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.11.0.1):
+  - TTSDK/PlayerCore (1.11.0.7):
     - TTSDK/TTFFmpeg
-  - TTSDK/TTFFmpeg (1.11.0.1)
-  - TTSDK/Uploader (1.11.0.1):
+  - TTSDK/TTFFmpeg (1.11.0.7)
+  - TTSDK/Uploader (1.11.0.7):
     - TTSDK/Core
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -96,14 +96,14 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK/Core (from `../`)
-  - TTSDK/Image (from `../`)
-  - TTSDK/LivePull (from `../`)
-  - TTSDK/LivePush (from `../`)
-  - TTSDK/Player (from `../`)
-  - TTSDK/PlayerCore (from `../`)
-  - TTSDK/TTFFmpeg (from `../`)
-  - TTSDK/Uploader (from `../`)
+  - TTSDK/Core (= 1.11.0.7)
+  - TTSDK/Image (= 1.11.0.7)
+  - TTSDK/LivePull (= 1.11.0.7)
+  - TTSDK/LivePush (= 1.11.0.7)
+  - TTSDK/Player (= 1.11.0.7)
+  - TTSDK/PlayerCore (= 1.11.0.7)
+  - TTSDK/TTFFmpeg (= 1.11.0.7)
+  - TTSDK/Uploader (= 1.11.0.7)
   - YYCategories
 
 SPEC REPOS:
@@ -126,10 +126,8 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - YYCategories
-
-EXTERNAL SOURCES:
-  TTSDK:
-    :path: "../"
+  https://github.com/volcengine/volcengine-specs.git:
+    - TTSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -148,9 +146,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 7890608bc4ca2119e8dd93cdd3edf42807f4ea2c
+  TTSDK: 6ea103c005de301072e3ab5d6f8bbb2f85b1d469
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: d5249fe1250a1678e3a790a33fc376f2feecc6f0
+PODFILE CHECKSUM: 1e498df03a49a6cf1adfb8c048be494dca64f056
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

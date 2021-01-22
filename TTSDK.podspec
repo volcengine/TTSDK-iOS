@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.11.0.1"
+    spec.version      = "1.11.0.3"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -165,19 +165,6 @@
       ]
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
-    end
-    
-    spec.subspec 'Uploader' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/TTUploader/TTUploader/**/*.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/TTUploader/**/*',
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/TTUploader/*.a'
-      ]
-      subspec.dependency 'TTSDK/Core'
     end
 
   end
