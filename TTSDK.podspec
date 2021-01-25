@@ -166,6 +166,18 @@
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
     end
+    spec.subspec 'Uploader' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTUploader/TTUploader/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTUploader/**/*',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTUploader/*.a'
+      ]
+      subspec.dependency 'TTSDK/Core'
+    end
 
   end
 
