@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) NSArray *imageUrls;
+@property (nonatomic, copy) NSString *title;
 
 @end
 
