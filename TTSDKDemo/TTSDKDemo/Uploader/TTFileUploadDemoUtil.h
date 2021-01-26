@@ -14,7 +14,7 @@
 
 + (TTImageUploadClientTop*)imageUploadClientTop:(NSArray*)filePaths
      delegate:(id)delegate
-authParameter:(NSString*)parameter isImageX:(BOOL) isImageX;
+authParameter:(NSString*)parameter processAction:(int) processAction;
 
 + (TTVideoUploadClientTop*)videoUploadClientTop:(NSString*)filePath
      delegate:(id)delegate
