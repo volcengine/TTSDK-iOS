@@ -523,20 +523,20 @@
 			isa = PBXGroup;
 			children = (
 				83A3047824F6AED600209D0A /* BDImageAdapter.h */,
-				83A3047924F6AED600209D0A /* BDImageOptionView.h */,
-				83A3047A24F6AED600209D0A /* BDRootViewController.m */,
-				83A3047B24F6AED600209D0A /* images */,
-				83A3048924F6AED600209D0A /* BDImageSettingModel.m */,
-				83A3048A24F6AED600209D0A /* BDImageDetailViewController.h */,
-				83A3048B24F6AED600209D0A /* BDSettingsViewController.h */,
-				83A3048C24F6AED600209D0A /* BDImageCollectionViewController.h */,
-				83A3048D24F6AED600209D0A /* BDImageOptionView.m */,
 				83A3048E24F6AED600209D0A /* BDImageAdapter.m */,
-				83A3048F24F6AED600209D0A /* BDRootViewController.h */,
-				83A3049024F6AED600209D0A /* BDImageDetailViewController.m */,
-				83A3049124F6AED600209D0A /* BDImageSettingModel.h */,
+				83A3048C24F6AED600209D0A /* BDImageCollectionViewController.h */,
 				83A3049224F6AED600209D0A /* BDImageCollectionViewController.m */,
+				83A3048A24F6AED600209D0A /* BDImageDetailViewController.h */,
+				83A3049024F6AED600209D0A /* BDImageDetailViewController.m */,
+				83A3047924F6AED600209D0A /* BDImageOptionView.h */,
+				83A3048D24F6AED600209D0A /* BDImageOptionView.m */,
+				83A3049124F6AED600209D0A /* BDImageSettingModel.h */,
+				83A3048924F6AED600209D0A /* BDImageSettingModel.m */,
+				83A3048F24F6AED600209D0A /* BDRootViewController.h */,
+				83A3047A24F6AED600209D0A /* BDRootViewController.m */,
+				83A3048B24F6AED600209D0A /* BDSettingsViewController.h */,
 				83A3049324F6AED600209D0A /* BDSettingsViewController.m */,
+				83A3047B24F6AED600209D0A /* images */,
 			);
 			path = Imagex;
 			sourceTree = "<group>";

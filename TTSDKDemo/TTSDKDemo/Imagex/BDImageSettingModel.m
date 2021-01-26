@@ -2,11 +2,12 @@
 //  BDImageSettingModel.m
 //  BDWebImage_Example
 //
+//  Created by 陈奕 on 2020/4/8.
+//  Copyright © 2020 Bytedance.com. All rights reserved.
 //
 
 #import "BDImageSettingModel.h"
 #import "BDImageAdapter.h"
-#import "TTDemoSDKEnvironmentManager.h"
 
 NSString *const kBDImageSettingAppID = @"kBDImageSettingAppID";
 
@@ -14,25 +15,6 @@ NSString *const kBDImageSettingAppID = @"kBDImageSettingAppID";
 
 + (NSArray<BDImageSettingModel *> *)defaultSettingModels {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:9];
-    [array addObject:({
-        BDImageSettingModel *model = [BDImageSettingModel new];
-        model.name = @"APPID";
-        model.info = [TTDemoSDKEnvironmentManager shareEvnironment].appId;
-        model.type = BDImageSettingInfoType;
-        model;
-    })];
-    [array addObject:({
-        BDImageSettingModel *model = [BDImageSettingModel new];
-        model.name = @"HEIC 开启系统解码";
-        model.type = BDImageSettingSelectType;
-        model.showSelect = ^BOOL{
-            return [BDWebImageManager sharedManager].isSystemHeicDecoderFirst;
-        };
-        model.selectItem = ^{
-            [BDWebImageManager sharedManager].isSystemHeicDecoderFirst = ![BDWebImageManager sharedManager].isSystemHeicDecoderFirst;
-        };
-        model;
-    })];
     [array addObject:({
         BDImageSettingModel *model = [BDImageSettingModel new];
         model.name = @"动图边下边放";
@@ -90,6 +72,36 @@ NSString *const kBDImageSettingAppID = @"kBDImageSettingAppID";
         };
         model.selectItem = ^{
             [BDImageAdapter sharedAdapter].isDecodeForDisplay = ![BDImageAdapter sharedAdapter].isDecodeForDisplay;
+        };
+        model;
+    })];
+    [array addObject:({
+        BDImageSettingModel *model = [BDImageSettingModel new];
+        model.name = @"开启图像超分";
+        model.type = BDImageSettingSelectType;
+        model.showSelect = ^BOOL{
+            return [BDImageAdapter sharedAdapter].isSuperResolution;
+        };
+        model.selectItem = ^{
+            [BDImageAdapter sharedAdapter].isSuperResolution = ![BDImageAdapter sharedAdapter].isSuperResolution;
+        };
+        model;
+    })];
+    [array addObject:({
+        BDImageSettingModel *model = [BDImageSettingModel new];
+        model.name = @"选择超分模型";
+        model.info = @"3倍超分（VASR模型）";
+        model.type = BDImageSettingInfoType;
+        model;
+    })];
+    [array addObject:({
+        BDImageSettingModel *model = [BDImageSettingModel new];
+        model.name = @"超分文件来源";
+        model.info = [BDImageAdapter sharedAdapter].srImagesUrl ?: @"url";
+        model.type = BDImageSettingEditType;
+        __weak BDImageSettingModel *weakModel = model;
+        model.action = ^{
+            [BDImageAdapter sharedAdapter].srImagesUrl = weakModel.info;
         };
         model;
     })];
