@@ -56,8 +56,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     _titles = [[BDImageAdapter sharedAdapter].urls.allKeys mutableCopy];
-    [_titles removeObject:@"全部"];
-    [_titles insertObject:@"全部" atIndex:0];
+    [_titles removeObject:@"SR"];
+    [_titles insertObject:@"SR" atIndex:0];
     
     // 初始化UISegmentedControl
     self.segmentControl = [[UISegmentedControl alloc] initWithItems:_titles];
@@ -88,6 +88,7 @@
     BDImageCollectionViewController *vc = [BDImageCollectionViewController new];
     vc.index = 0;
     vc.imageUrls = [BDImageAdapter sharedAdapter].urls[_titles[0]];
+    vc.title = _titles[0];
     [self.weakCache setObject:vc forKey:@(vc.index)];
     [self.pageViewControl setViewControllers:@[vc]
                               direction:UIPageViewControllerNavigationDirectionForward
@@ -166,6 +167,7 @@
         BDImageCollectionViewController *vc1 = [BDImageCollectionViewController new];
         vc1.index = index;
         vc1.imageUrls = [BDImageAdapter sharedAdapter].urls[_titles[index]];
+        vc1.title = _titles[index];
         [self.weakCache setObject:vc1 forKey:@(index)];
         vc = vc1;
     }

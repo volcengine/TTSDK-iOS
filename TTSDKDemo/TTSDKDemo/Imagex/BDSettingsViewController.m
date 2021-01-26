@@ -6,6 +6,7 @@
 
 #import "BDSettingsViewController.h"
 #import "BDImageSettingModel.h"
+#import <TTSDK/BDWebImage.h>
 #import "BDImageAdapter.h"
 #import <Masonry/Masonry.h>
 
@@ -154,7 +155,9 @@ static NSString * const CellReuseIdentifier = @"BDImageSettingsSelectCell";
     NSString *text = textField.text;
     if (text.length > 0) {
         model.info = text;
-        model.action();
+        if (model.action) {
+            model.action();
+        }
     }
 }
 
