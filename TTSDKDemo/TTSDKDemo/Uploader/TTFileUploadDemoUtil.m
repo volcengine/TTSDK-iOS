@@ -105,13 +105,12 @@
 
 + (TTImageUploadClientTop*)imageUploadClientTop:(NSArray*)filePaths
                                        delegate:(id)delegate
-                                  authParameter:(NSString*)parameter isImageX:(BOOL)isImageX{
-    TTImageUploadType type = isImageX ? TTImageUploadTypeImageX: TTImageUploadTypeImage;
+                                  authParameter:(NSString*)parameter
+                                       processAction:(int)processAction{
     TTImageUploadClientTop* clientTop = [[TTImageUploadClientTop alloc] initWithFilePaths:filePaths];
     clientTop.delegate = delegate;
 
     NSString* hostName;
-        //hostName = @"staging-openapi-boe.byted.org";
     hostName = @"imagex.volcengineapi.com";
     [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
     TTFileUploadFileTypeStr:@"image",
@@ -125,7 +124,8 @@
     
     
     //[clientTop setAuthorizationParameter:parameter];
-    [clientTop setProcessActionType:TTVideoUplaodActionTypeNoProcess parameter:nil];
+    NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
+    [clientTop setProcessActionType:processAction parameter:params];
     
     NSDictionary* config = @{
                              TTFileUploadFileRetryCount:@1,
@@ -135,9 +135,7 @@
                              TTFileUploadTraceId:@"asdf"
                              };
     [clientTop setUploadConfig:config];
-    if(isImageX){
-        [clientTop setImageHostName:@"imagex.volcengineapi.com"];
-    }
+    [clientTop setImageHostName:@"imagex.volcengineapi.com"];
     
     return clientTop;
 }

@@ -97,6 +97,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         _resultArray = [NSMutableArray arrayWithCapacity:10];
         _fileArray = [NSMutableArray arrayWithCapacity:10];
         _assets = [NSMutableArray arrayWithCapacity:1000];
+        _processType = 0;
         [TTVideoUploadEventManager sharedManager].delegate = self;
         
         __weak typeof(self) weakSelf = self;
@@ -501,7 +502,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         [self setupfilePaths];
         [self.collectionView reloadData];
     }
-    self.imageUploadClientTop = [TTFileUploadDemoUtil imageUploadClientTop:_filePathArray delegate:self authParameter:self.authParameter isImageX:_isImageX];
+    self.imageUploadClientTop = [TTFileUploadDemoUtil imageUploadClientTop:_filePathArray delegate:self authParameter:self.authParameter processAction:_processType];
     //[[TTVideoUploadEventManager sharedManager] popAllEvents];
     
 }
