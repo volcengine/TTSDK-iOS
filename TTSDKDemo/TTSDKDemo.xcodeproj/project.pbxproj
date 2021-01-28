@@ -32,6 +32,7 @@
 		83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEC23E2C92F00E87A4A /* TTControlsBox.m */; };
 		83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */; };
 		83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */; };
+		838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */; };
 		83A3049424F6AED600209D0A /* BDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A3047A24F6AED600209D0A /* BDRootViewController.m */; };
 		83A3049524F6AED600209D0A /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3047C24F6AED600209D0A /* play@3x.png */; };
 		83A3049624F6AED600209D0A /* 配置@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3047D24F6AED600209D0A /* 配置@3x.png */; };
@@ -188,6 +189,8 @@
 		83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsModel.m; sourceTree = "<group>"; };
 		83795AF123E2CBCE00E87A4A /* TTEffectsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEffectsViewModel.h; sourceTree = "<group>"; };
 		83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsViewModel.m; sourceTree = "<group>"; };
+		838DE29F25C1BE3300757EC5 /* BDSRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSRDetailViewController.h; sourceTree = "<group>"; };
+		838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSRDetailViewController.m; sourceTree = "<group>"; };
 		83A3036624F62A9C00209D0A /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDKFramework.framework; path = ../TTSDKFramework/TTSDKFramework.framework; sourceTree = "<group>"; };
 		83A3047824F6AED600209D0A /* BDImageAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageAdapter.h; sourceTree = "<group>"; };
 		83A3047924F6AED600209D0A /* BDImageOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageOptionView.h; sourceTree = "<group>"; };
@@ -522,6 +525,8 @@
 		83A3047724F6AED600209D0A /* Imagex */ = {
 			isa = PBXGroup;
 			children = (
+				838DE29F25C1BE3300757EC5 /* BDSRDetailViewController.h */,
+				838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */,
 				83A3047824F6AED600209D0A /* BDImageAdapter.h */,
 				83A3048E24F6AED600209D0A /* BDImageAdapter.m */,
 				83A3048C24F6AED600209D0A /* BDImageCollectionViewController.h */,
@@ -1038,6 +1043,7 @@
 				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
 				831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */,
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
+				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
 				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
