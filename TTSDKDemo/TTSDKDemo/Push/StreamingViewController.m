@@ -655,14 +655,10 @@
         case 0:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecBaseAutoLevel;
-            else
-                type = LiveEnCodecHEVCMainAutoLevel;
             break;            
         case 1:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecMainAutoLevel;
-            else
-                type = LiveEnCodecHEVCMain10AutoLevel;
             break;
         case 2:
             type = LiveEnCodecHighAutoLevel;
@@ -678,15 +674,18 @@
     LiveStreamAudioCodec aCodec = LiveStreamAudioCodec_FAAC_LC;
     switch (index) {
         case 0:
-            aCodec = LiveStreamAudioCodec_AT_AAC;
+            aCodec = LiveStreamAudioCodec_AT_AAC_LC;
             break;
         case 1:
-            aCodec = LiveStreamAudioCodec_FAAC_LC;
+            aCodec = LiveStreamAudioCodec_AT_AAC_HE;
             break;
         case 2:
-            aCodec = LiveStreamAudioCodec_FAAC_HE;
+            aCodec = LiveStreamAudioCodec_FAAC_LC;
             break;
         case 3:
+            aCodec = LiveStreamAudioCodec_FAAC_HE;
+            break;
+        case 4:
             aCodec = LiveStreamAudioCodec_FAAC_HE_V2;
             break;
     }
