@@ -120,7 +120,12 @@
         [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
         NSLog(@"\n----------------setIdleTimerDisabled-");
     });
+    
+    _liveSession = nil;
+    _camera = nil;
+    
     NSLog(@"\n--------------stream view controller dealloced---------------");
+    
 }
 
 - (void)viewDidLoad {
@@ -315,11 +320,11 @@
     [_controlView addSubview:_cameraButton];
     [_controlView addSubview:_muteButton];
     
-    _headphonesMonitoringButton = [LiveHelper createButton:@"耳返: 关" target:self action:@selector(onHeadphonesMonitoringButtonClicked:)];
+    _headphonesMonitoringButton = [LiveHelper createButton:@"耳返: 开" target:self action:@selector(onHeadphonesMonitoringButtonClicked:)];
     [_controlView addSubview:_headphonesMonitoringButton];
     
     [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"回声消除: 开" target:self action:@selector(onEchoCancellationButtonClicked:)]];
     
     [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
@@ -549,8 +554,8 @@
 }
 
 - (void)onHeadphonesMonitoringButtonClicked:(UIButton *)sender {
-    _liveSession.headphonesMonitoringEnabled = !_liveSession.isHeadphonesMonitoringEnabled;
-    NSString *buttonText = [NSString stringWithFormat:@"耳返: %@", _liveSession.isHeadphonesMonitoringEnabled ? @"开" : @"关"];
+    [_liveSession setHeadphonesMonitoringEnabled:!_liveSession.isHeadphonesMonitoringEnabled];
+    NSString *buttonText = [NSString stringWithFormat:@"耳返: %@", _liveSession.isHeadphonesMonitoringEnabled ? @"关" : @"开"];
     [sender setTitle:buttonText forState:UIControlStateNormal];
 }
 
@@ -605,8 +610,6 @@
         [self.capture resetRecording];
     }
     
-    _liveSession = nil;
-    _camera = nil;
     [_timer invalidate];
     _timer = nil;
     
@@ -618,7 +621,7 @@
     if (self.liveSession) {
         self.liveSession.echoCancellationEnabled = !self.liveSession.isEchoCancellationEnabled;
         NSLog(@"echo cancellation turn %@", self.liveSession.isEchoCancellationEnabled ? @"on" : @"off");
-        [sender setTitle:[NSString stringWithFormat:@"回声消除: %@", self.liveSession.isEchoCancellationEnabled ? @"开" : @"关"] forState:UIControlStateNormal];
+        [sender setTitle:[NSString stringWithFormat:@"回声消除: %@", self.liveSession.isEchoCancellationEnabled ? @"关" : @"开"] forState:UIControlStateNormal];
     }
 }
 
@@ -655,7 +658,7 @@
         case 0:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecBaseAutoLevel;
-            break;            
+            break;
         case 1:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecMainAutoLevel;
