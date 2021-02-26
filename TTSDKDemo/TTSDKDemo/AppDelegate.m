@@ -11,7 +11,6 @@
 #import "NavigationViewController.h"
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
-#import <TTSDK/BDWebImageManager.h>
 #import "TTDemoSDKEnvironmentManager.h"
 
 void uncaughtExceptionHandler(NSException*exception){

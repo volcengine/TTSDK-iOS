@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */; };
+		17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */; };
+		18A667EAC8C2567D4F0E2BBA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */; };
 		2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB09254B0B72002CC02A /* uploadController.m */; };
 		2B44FB0E254C394E002CC02A /* UIBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB0D254C394E002CC02A /* UIBlockButton.m */; };
@@ -32,6 +33,7 @@
 		83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEC23E2C92F00E87A4A /* TTControlsBox.m */; };
 		83795AF023E2CA1000E87A4A /* TTEffectsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */; };
 		83795AF323E2CBCE00E87A4A /* TTEffectsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */; };
+		83797AEF25EBFAA5003C10F2 /* AppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83797AED25EBFAA5003C10F2 /* AppInfoViewController.m */; };
 		838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */; };
 		83A3049424F6AED600209D0A /* BDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A3047A24F6AED600209D0A /* BDRootViewController.m */; };
 		83A3049524F6AED600209D0A /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83A3047C24F6AED600209D0A /* play@3x.png */; };
@@ -143,7 +145,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTFileUploadDemoUtil.m; sourceTree = "<group>"; };
 		2B44FB072549D066002CC02A /* TTFileUploadDemoUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTFileUploadDemoUtil.h; sourceTree = "<group>"; };
 		2B44FB09254B0B72002CC02A /* uploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadController.m; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		2B44FB12254F3165002CC02A /* UIBlockSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBlockSegmentedControl.h; sourceTree = "<group>"; };
 		2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIBlockSegmentedControl.m; sourceTree = "<group>"; };
 		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
-		2B44FB992554195A002CC02A /* TTSDKDemo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TTSDKDemo copy-Info.plist"; path = "/Users/bytedance/workspace/TTSDKiosfix/Pandora/prj/iOS/TTSDK-iOS/TTSDKDemo/TTSDKDemo copy-Info.plist"; sourceTree = "<absolute>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
@@ -189,6 +189,8 @@
 		83795AEF23E2CA1000E87A4A /* TTEffectsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsModel.m; sourceTree = "<group>"; };
 		83795AF123E2CBCE00E87A4A /* TTEffectsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEffectsViewModel.h; sourceTree = "<group>"; };
 		83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTEffectsViewModel.m; sourceTree = "<group>"; };
+		83797AED25EBFAA5003C10F2 /* AppInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInfoViewController.m; sourceTree = "<group>"; };
+		83797AEE25EBFAA5003C10F2 /* AppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoViewController.h; sourceTree = "<group>"; };
 		838DE29F25C1BE3300757EC5 /* BDSRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSRDetailViewController.h; sourceTree = "<group>"; };
 		838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSRDetailViewController.m; sourceTree = "<group>"; };
 		83A3036624F62A9C00209D0A /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDKFramework.framework; path = ../TTSDKFramework/TTSDKFramework.framework; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		83C8D053242F3F9D0078C7EA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 		83CF2BAF23E7040A006F5174 /* TTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDK.framework; path = ../products/TTSDK.framework; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -379,7 +382,8 @@
 			files = (
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
-				18A667EAC8C2567D4F0E2BBA /* libPods-TTSDKDemo.a in Frameworks */,
+				18A667EAC8C2567D4F0E2BBA /* (null) in Frameworks */,
+				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +461,6 @@
 				8378B5BC23C4860F0075E05C /* Products */,
 				8378B5D723C486230075E05C /* Frameworks */,
 				90767481DA3AF1EB0F6B2CAB /* Pods */,
-				2B44FB992554195A002CC02A /* TTSDKDemo copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -472,6 +475,7 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				83797AEC25EBFAA5003C10F2 /* Common */,
 				2B44FB08254AFE7D002CC02A /* Uploader */,
 				2B58E8B1253ECD6D00FB5892 /* Env */,
 				83A3047724F6AED600209D0A /* Imagex */,
@@ -504,7 +508,7 @@
 				83CF2BAF23E7040A006F5174 /* TTSDK.framework */,
 				831E37E223D0530C00A9F7A9 /* Accelerate.framework */,
 				831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */,
-				03C45290F1C85E006F31A61F /* libPods-TTSDKDemo.a */,
+				B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -520,6 +524,15 @@
 				83795AF223E2CBCE00E87A4A /* TTEffectsViewModel.m */,
 			);
 			path = Effects;
+			sourceTree = "<group>";
+		};
+		83797AEC25EBFAA5003C10F2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				83797AED25EBFAA5003C10F2 /* AppInfoViewController.m */,
+				83797AEE25EBFAA5003C10F2 /* AppInfoViewController.h */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		83A3047724F6AED600209D0A /* Imagex */ = {
@@ -1045,6 +1058,7 @@
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
 				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
 				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
+				83797AEF25EBFAA5003C10F2 /* AppInfoViewController.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
 				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
@@ -1256,9 +1270,9 @@
 			baseConfigurationReference = D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = NS8X24V469;
+				DEVELOPMENT_TEAM = X46375UBYG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1292,7 +1306,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = Zhao_Jingxin_2_Wildcard_QBEJ781O3E;
+				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

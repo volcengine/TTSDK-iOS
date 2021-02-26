@@ -10,10 +10,6 @@
 #import "TTFileUploadDemoUtil.h"
 #import "UIBlockSegmentedControl.h"
 #import "MWPhotoBrowser.h"
-#import <TTSDK/TTVideoUploadClientTop.h>
-#import <TTSDK/TTImageUploadClientTop.h>
-#import <TTSDK/TTFUConstDefination.h>
-#import <TTSDK/TTVideoUploadEventManager.h>
 #import <RangersAppLog/RangersAppLogCore.h>
 
 //#import "MWPhotoBrowser.h"
@@ -540,18 +536,6 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     else {
         [self alertViewController:@"上传失败" title:@"上传失败"];
         NSLog(@"error = %@",error);
-    }
-    //NSLog(@"埋点日志:%@",)
-    //NSLog(@"event log is :%@",[[TTVideoUploadEventManager sharedManager] popAllEvents]);
-    NSString *did;
-    if(_videoUploadClientTop != nil){
-        did = [_videoUploadClientTop getDeviceID];
-    }
-    if(did.length <= 0){
-        NSLog(@"deviceID:%d",0);
-    }
-    else{
-        NSLog(@"deviceID:%@",did);
     }
 }
 

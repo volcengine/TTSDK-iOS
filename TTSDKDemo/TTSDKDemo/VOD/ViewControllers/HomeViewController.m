@@ -12,10 +12,8 @@
 #import "LivePlaySettingsViewController.h"
 #import "BDRootViewController.h"
 #import "TTFileUploadDemoUtil.h"
-#import <TTSDK/TTVideoUploadClientTop.h>
-#import <TTSDK/TTImageUploadClientTop.h>
-#import <TTSDK/TTFUConstDefination.h>
 #import "uploadController.h"
+#import "AppInfoViewController.h"
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIButton  *vodBtn;
@@ -23,6 +21,7 @@
 @property (nonatomic, strong) UIButton  *pullBtn;
 @property (nonatomic, strong) UIButton  *imageBtn;
 @property (nonatomic, strong) UIButton  *uploadBtn;
+@property (nonatomic, strong) UIButton  *appInfoBtn;
 @end
 
 @implementation HomeViewController
@@ -75,6 +74,13 @@
     [_uploadBtn addTarget:self action:@selector(_uploadDemoViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_uploadBtn];
     
+    _appInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,TT_BASE_375(100),TT_BASE_375(60))];
+    _appInfoBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
+    _appInfoBtn.titleLabel.font = TT_FONT(15);
+    [_appInfoBtn setTitle:@"Demo信息" forState:UIControlStateNormal];
+    [_appInfoBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [_appInfoBtn addTarget:self action:@selector(_enterAppInfoViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_appInfoBtn];
 }
 
 - (void)buildUI {
@@ -102,6 +108,9 @@
     
     _uploadBtn.left = _vodBtn.left;
     _uploadBtn.top = TT_BASE_375(30) + _imageBtn.bottom;
+    
+    _appInfoBtn.left = _vodBtn.left;
+    _appInfoBtn.top = TT_BASE_375(30) + _uploadBtn.bottom;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -111,6 +120,11 @@
 }
 
 /// MARK: - Private method
+
+- (void)_enterAppInfoViewController {
+    AppInfoViewController *vc = [[AppInfoViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)_enterImageDemoViewController {
     BDRootViewController *vc = [[BDRootViewController alloc] init];

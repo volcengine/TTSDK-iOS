@@ -17,6 +17,7 @@
 #import <TTSDK/LiveStreamLibrary.h>
 #import <TTSDK/TTVideoLive.h>
 #import <TTSDK/BDWebImage.h>
+#import <TTSDK/TTFileUploader.h>
 #endif
 
 #import <UIKit/UIKit.h>
