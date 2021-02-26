@@ -50,5 +50,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>buildBranch</key>
+	<string>alpha/1.12.0</string>
+	<key>commitID</key>
+	<string>93cd0d7</string>
 </dict>
 </plist>

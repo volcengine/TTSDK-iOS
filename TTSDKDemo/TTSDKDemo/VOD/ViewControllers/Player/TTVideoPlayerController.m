@@ -7,7 +7,6 @@
 //
 
 #import "TTVideoPlayerController.h"
-#import <TTVideoEngineHeader.h>
 #import "TTVideoPlayerControlsController.h"
 #import "TTVideoPlayerFullScreenManager.h"
 #import "SourceViewController.h"
@@ -163,8 +162,10 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
 //    self.engine.reportLogEnable = YES; /// 仅播放器的日志信息
     /// 异步初始化播放器
      [self.engine setOptions:@{VEKKEY(VEKKeyPlayerAsyncInit_BOOL):@(YES)}];
+#if !__has_include(<TTSDKFramework/TTSDKFramework.h>)
     /// 开启 Metal 渲染
     [self.engine setOptions:@{VEKKEY(VEKKeyViewRenderEngine_ENUM):@(TTVideoEngineRenderEngineMetal)}];
+#endif
     [self.engine setOptionForKey:VEKKeyLogTag_NSString value:@"普通视频"];
     /// 设置 分辨率
     [self.engine configResolution:self.resolutionIndex];

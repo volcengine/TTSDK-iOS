@@ -8,8 +8,9 @@ platform :ios, "8.0"
 
 inhibit_all_warnings!
 
-target 'TTSDKDemo' do
-  pod 'TTSDK', '1.12.0.2', :subspecs => [
+def ttsdk_pods
+  # pod 'TTSDK', '1.12.0.2', :subspecs => [
+  pod 'TTSDK', :path => '..', :subspecs => [
     'Core',
     'TTFFmpeg',
     'PlayerCore',
@@ -19,7 +20,9 @@ target 'TTSDKDemo' do
     'Image',
     'Uploader',
   ]
-  
+end
+
+def common_pods
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
   pod 'FLEX'
@@ -29,7 +32,15 @@ target 'TTSDKDemo' do
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
-  pod 'CocoaAsyncSocket'
   pod 'RangersAppLog', '~> 5.3.1', :subspecs => ['Core']
   pod 'MWPhotoBrowser'
+end
+
+target 'TTSDKDemo' do
+  ttsdk_pods
+  common_pods
+end
+
+post_install do |installer|
+  system("bash Scripts/update_git_info.sh")
 end

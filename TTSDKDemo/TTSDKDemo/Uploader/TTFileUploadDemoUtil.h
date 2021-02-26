@@ -5,8 +5,8 @@
 //  Created by bytedance on 2020/10/29.
 //  Copyright © 2020 ByteDance. All rights reserved.
 //
-#import <TTSDK/TTVideoUploadClientTop.h>
-#import <TTSDK/TTImageUploadClientTop.h>
+
+#import <UIKit/UIKit.h>
 
 @interface TTFileUploadDemoUtil : NSObject
 

@@ -168,13 +168,13 @@
     end
     spec.subspec 'Uploader' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/TTUploader/TTUploader/**/*.h',
+        'TTSDK/TTFileUploadClientb/**/*.h',
       ]
       subspec.source_files = [
-        'TTSDK/TTUploader/**/*',
+        'TTSDK/TTFileUploadClientb/**/*',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/TTUploader/*.a'
+        'TTSDK/TTFileUploadClientb/**/*.a'
       ]
       subspec.dependency 'TTSDK/Core'
     end
