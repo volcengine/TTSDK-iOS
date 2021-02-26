@@ -12,3 +12,4 @@ TTSDKDemo/LinkMap
 TTSDK
 .bundle
 ruby
+TTSDKDemo/extern/TTSDKFramework.framework

@@ -7,8 +7,6 @@
 //
 
 #import "BDSRDetailViewController.h"
-#import <TTSDK/BDWebImage.h>
-#import <TTSDK/BDSuperResolutionTransformer.h>
 #import <Masonry/Masonry.h>
 
 @interface BDSRDetailViewController ()
