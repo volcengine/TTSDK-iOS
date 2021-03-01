@@ -22,7 +22,8 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     NSMutableString *appInfoText = [NSMutableString string];
-    [appInfoText appendFormat:@"buildBranch: %@", [NSBundle.mainBundle.infoDictionary objectForKey:@"buildBranch"]];
+    [appInfoText appendFormat:@"SDKVersion: %@", TTSDKManager.SDKVersionString];
+    [appInfoText appendFormat:@"\nbuildBranch: %@", [NSBundle.mainBundle.infoDictionary objectForKey:@"buildBranch"]];
     [appInfoText appendFormat:@"\ncommitID: %@", [NSBundle.mainBundle.infoDictionary objectForKey:@"commitID"]];
 #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
     [appInfoText appendFormat:@"\nuseDynamicLibrary: YES"];
