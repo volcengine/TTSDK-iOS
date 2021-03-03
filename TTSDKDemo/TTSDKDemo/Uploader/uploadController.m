@@ -70,6 +70,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, copy) NSString *secretKey;
 @property (nonatomic, strong) NSDate *expirationTime;
 @property (nonatomic, copy) NSString *regionName;
+@property (nonatomic, assign) NSInteger shouldStartType;
 
 @end
 @implementation uploadController
@@ -113,7 +114,12 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                        [self alertViewController:@"请重新选择图片！！！" title:@"错误"];
                    }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
-                   [self.imageUploadClientTop start];
+                   _shouldStartType = 1;
+                   if (_authParameter == nil) {
+                       [self requestSign];
+                   } else {
+                       [self.imageUploadClientTop start];
+                   }
                }
                },
              @{@"title": @"ImageStop",
@@ -142,7 +148,12 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         [self alertViewController:@"请重新选择视频！！！" title:@"错误"];
                     }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
-                   [self.videoUploadClientTop start];
+                   _shouldStartType = 2;
+                   if (_authParameter == nil) {
+                       [self requestSign];
+                   } else {
+                       [self.videoUploadClientTop start];
+                   }
                   }
                },
              @{@"title": @"VideoStop",
@@ -365,6 +376,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         if (error) {
                             NSLog(@"error = %@",error);
                             dispatch_async(dispatch_get_main_queue(), ^{
+                                [self requestSign];
             //                    [strongSelf alertTitle:NULL Message:error.domain];
                             });
                         }
@@ -397,6 +409,18 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
                             }
                         }
+                    switch (_shouldStartType) {
+                        case 1:
+                            [self.imageUploadClientTop start];
+                            break;
+                        case 2:
+                            [self.videoUploadClientTop start];
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    _shouldStartType = 0;
                     }];
         }
 
@@ -432,7 +456,6 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
             _isImageX = NO;
             _processTypeVideo = TTVideoUploadActionTypeEncrypt;
         }
-        _authParameter = nil;
         [self initUploader];
         [self requestSign];
         
@@ -537,6 +560,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         [self alertViewController:@"上传失败" title:@"上传失败"];
         NSLog(@"error = %@",error);
     }
+    [self requestSign];
 }
 
 - (void)uploadProgressDidUpdate:(NSInteger)progress fileIndex:(NSInteger) fileIndex; {
