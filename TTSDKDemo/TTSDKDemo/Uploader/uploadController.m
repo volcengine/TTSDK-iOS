@@ -114,8 +114,8 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                        [self alertViewController:@"请重新选择图片！！！" title:@"错误"];
                    }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
-                   _shouldStartType = 1;
-                   if (_authParameter == nil) {
+                   self.shouldStartType = 1;
+                   if (self.authParameter == nil) {
                        [self requestSign];
                    } else {
                        [self.imageUploadClientTop start];
@@ -148,7 +148,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         [self alertViewController:@"请重新选择视频！！！" title:@"错误"];
                     }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
-                   _shouldStartType = 2;
+                   self.shouldStartType = 2;
                    if (_authParameter == nil) {
                        [self requestSign];
                    } else {
@@ -376,7 +376,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         if (error) {
                             NSLog(@"error = %@",error);
                             dispatch_async(dispatch_get_main_queue(), ^{
-                                [self requestSign];
+                                [strongSelf requestSign];
             //                    [strongSelf alertTitle:NULL Message:error.domain];
                             });
                         }
@@ -403,24 +403,24 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                                 strongSelf.sessionToken = result[@"SessionToken"];
                                 strongSelf.expirationTime = result[@"ExpiredTime"];
                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                        [self.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                                        [self.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                                        [strongSelf.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                                        [strongSelf.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
                                     });
 
                             }
                         }
-                    switch (_shouldStartType) {
+                    switch (strongSelf.shouldStartType) {
                         case 1:
-                            [self.imageUploadClientTop start];
+                            [strongSelf.imageUploadClientTop start];
                             break;
                         case 2:
-                            [self.videoUploadClientTop start];
+                            [strongSelf.videoUploadClientTop start];
                             break;
                             
                         default:
                             break;
                     }
-                    _shouldStartType = 0;
+                    strongSelf.shouldStartType = 0;
                     }];
         }
 
