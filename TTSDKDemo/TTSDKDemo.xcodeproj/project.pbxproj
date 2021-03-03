@@ -132,7 +132,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		83A3047624F6AD1100209D0A /* Embed Frameworks */ = {
+		83349B2425EF8C0500972DAC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -907,8 +907,8 @@
 				8378B5B723C4860F0075E05C /* Sources */,
 				8378B5B823C4860F0075E05C /* Frameworks */,
 				8378B5B923C4860F0075E05C /* Resources */,
-				83A3047624F6AD1100209D0A /* Embed Frameworks */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
+				83349B2425EF8C0500972DAC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1309,6 +1309,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -1356,6 +1357,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
