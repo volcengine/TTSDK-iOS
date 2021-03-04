@@ -128,6 +128,8 @@
 		83C44499243F8E2B00081EA1 /* TTVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445C243F8E2B00081EA1 /* TTVideoPlayerControlView.m */; };
 		83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */; };
 		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
+		83C6B54225F0BCE9007BE557 /* TTSDKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C6B54025F0BCD7007BE557 /* TTSDKFramework.framework */; };
+		83C6B54325F0BCE9007BE557 /* TTSDKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83C6B54025F0BCD7007BE557 /* TTSDKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +140,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				83C6B54325F0BCE9007BE557 /* TTSDKFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +368,7 @@
 		83C4445F243F8E2B00081EA1 /* TTVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlView.h; sourceTree = "<group>"; };
 		83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTVideoPlayerControlBottomView.m; sourceTree = "<group>"; };
 		83C44461243F8E2B00081EA1 /* TTVideoPlayerControlTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVideoPlayerControlTopView.h; sourceTree = "<group>"; };
+		83C6B54025F0BCD7007BE557 /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTSDKFramework.framework; sourceTree = "<group>"; };
 		83C8CF80242F29550078C7EA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		83C8CF82242F295F0078C7EA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		83C8CFB3242F2AE00078C7EA /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -382,6 +386,7 @@
 			files = (
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
+				83C6B54225F0BCE9007BE557 /* TTSDKFramework.framework in Frameworks */,
 				18A667EAC8C2567D4F0E2BBA /* (null) in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
@@ -582,6 +587,7 @@
 		83C44393243E492A00081EA1 /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				83C6B54025F0BCD7007BE557 /* TTSDKFramework.framework */,
 				83C44394243E492A00081EA1 /* EffectSDK */,
 			);
 			path = extern;
@@ -1270,9 +1276,9 @@
 			baseConfigurationReference = D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = X46375UBYG;
+				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1306,7 +1312,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
+				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_VBQ9WZD4GS;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = YES;
@@ -1318,9 +1324,9 @@
 			baseConfigurationReference = AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = X46375UBYG;
+				DEVELOPMENT_TEAM = TW8HYJ7YUJ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1354,7 +1360,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.videoarch.pandora.demo;
 				PRODUCT_NAME = Pandora;
-				PROVISIONING_PROFILE_SPECIFIER = TTSDKDemoInHouse.dist;
+				PROVISIONING_PROFILE_SPECIFIER = Jiangtao_Guo_Wildcard_VBQ9WZD4GS;
 				SYSTEM_HEADER_SEARCH_PATHS = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = YES;
