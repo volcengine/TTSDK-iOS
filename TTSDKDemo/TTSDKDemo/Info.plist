@@ -51,8 +51,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildBranch</key>
-	<string>alpha/1.12.0</string>
+	<string>master</string>
 	<key>commitID</key>
-	<string>c77d952</string>
+	<string>43a0c0c</string>
 </dict>
 </plist>
