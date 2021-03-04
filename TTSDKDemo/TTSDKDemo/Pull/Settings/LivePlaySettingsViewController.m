@@ -42,7 +42,9 @@
     self.navigationController.navigationBar.hidden = YES;
     self.config = [PlayConfiguration defaultConfiguration];
     
-    _playURLTextField.text = @"http://pull-f3.douyincdn.com/stage/stream-395984461564477541.flv";
+    _playURLTextField.text = [NSBundle.mainBundle pathForResource:@"resolution_change" ofType:@"flv"];
+    _playURLTextField.text = @"https://pull-stream-cn.poizon.com/dewuApp/release-328490-1612312266.m3u8?auth_key=1612398666-0-0-ee56f1d42e3ae8456f8dbe1b661b6db1&aliyunols=on&lhs_start_unix_s_0=1612317160";
+//    _playURLTextField.text = @"http://pull-flv-l11.douyincdn.com/stage/stream-396561264399876241.flv";
 //    _playURLTextField.text = @"请输入或扫码获取播放地址";
     [self setupUIComponent];
 }
