@@ -36,7 +36,7 @@ def common_pods
 end
 
 target 'TTSDKDemo' do
-#  ttsdk_pods
+  ttsdk_pods
   common_pods
 end
 
