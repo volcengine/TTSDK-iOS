@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */; };
-		18A667EAC8C2567D4F0E2BBA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */; };
 		2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB09254B0B72002CC02A /* uploadController.m */; };
 		2B44FB0E254C394E002CC02A /* UIBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB0D254C394E002CC02A /* UIBlockButton.m */; };
@@ -132,7 +131,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		83349B2425EF8C0500972DAC /* Embed Frameworks */ = {
+		83A2D22025F9250F00043E3E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -380,7 +379,6 @@
 			files = (
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
-				18A667EAC8C2567D4F0E2BBA /* (null) in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,7 +902,7 @@
 				8378B5B823C4860F0075E05C /* Frameworks */,
 				8378B5B923C4860F0075E05C /* Resources */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
-				83349B2425EF8C0500972DAC /* Embed Frameworks */,
+				83A2D22025F9250F00043E3E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
