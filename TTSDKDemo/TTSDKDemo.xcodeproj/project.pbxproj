@@ -368,7 +368,6 @@
 		83C8CF82242F295F0078C7EA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		83C8CFB3242F2AE00078C7EA /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		83C8D053242F3F9D0078C7EA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
-		83CF2BAF23E7040A006F5174 /* TTSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDK.framework; path = ../products/TTSDK.framework; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -503,7 +502,6 @@
 				83C8CFB3242F2AE00078C7EA /* MetalKit.framework */,
 				83C8CF82242F295F0078C7EA /* VideoToolbox.framework */,
 				83C8CF80242F29550078C7EA /* OpenAL.framework */,
-				83CF2BAF23E7040A006F5174 /* TTSDK.framework */,
 				831E37E223D0530C00A9F7A9 /* Accelerate.framework */,
 				831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */,
 				B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */,
