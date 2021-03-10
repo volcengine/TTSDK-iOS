@@ -193,7 +193,6 @@
 		83797AEE25EBFAA5003C10F2 /* AppInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInfoViewController.h; sourceTree = "<group>"; };
 		838DE29F25C1BE3300757EC5 /* BDSRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSRDetailViewController.h; sourceTree = "<group>"; };
 		838DE2A025C1BE3300757EC5 /* BDSRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSRDetailViewController.m; sourceTree = "<group>"; };
-		83A3036624F62A9C00209D0A /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTSDKFramework.framework; path = ../TTSDKFramework/TTSDKFramework.framework; sourceTree = "<group>"; };
 		83A3047824F6AED600209D0A /* BDImageAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageAdapter.h; sourceTree = "<group>"; };
 		83A3047924F6AED600209D0A /* BDImageOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImageOptionView.h; sourceTree = "<group>"; };
 		83A3047A24F6AED600209D0A /* BDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDRootViewController.m; sourceTree = "<group>"; };
@@ -504,7 +503,6 @@
 				83C8CFB3242F2AE00078C7EA /* MetalKit.framework */,
 				83C8CF82242F295F0078C7EA /* VideoToolbox.framework */,
 				83C8CF80242F29550078C7EA /* OpenAL.framework */,
-				83A3036624F62A9C00209D0A /* TTSDKFramework.framework */,
 				83CF2BAF23E7040A006F5174 /* TTSDK.framework */,
 				831E37E223D0530C00A9F7A9 /* Accelerate.framework */,
 				831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */,
