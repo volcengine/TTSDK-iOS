@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
 #import "TTDemoSDKEnvironmentManager.h"
+#import <TTSDK/TTSDKManager.h>
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);

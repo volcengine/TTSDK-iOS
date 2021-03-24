@@ -8,6 +8,7 @@
 
 #import "AppInfoViewController.h"
 #import <Masonry.h>
+#import <TTSDK/TTSDKManager.h>
 
 @interface AppInfoViewController ()
 

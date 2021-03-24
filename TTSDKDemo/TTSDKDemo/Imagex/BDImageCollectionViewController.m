@@ -8,6 +8,7 @@
 #import "BDImageDetailViewController.h"
 #import "BDSRDetailViewController.h"
 #import "BDImageAdapter.h"
+#import <TTSDK/BDSuperResolutionTransformer.h>
 #import <Masonry/Masonry.h>
 
 @interface BDImageCollectionViewCell : UICollectionViewCell
