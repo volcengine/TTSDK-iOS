@@ -51,8 +51,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildBranch</key>
-	<string>master</string>
+	<string>feature/1.13.1_image</string>
 	<key>commitID</key>
-	<string>b64dbdb</string>
+	<string>e575ca1</string>
 </dict>
 </plist>
