@@ -61,6 +61,7 @@
     result = bef_effect_ai_check_license(_renderMangerHandle, _licensePath.UTF8String);
     if (result != BEF_RESULT_SUC) {
         [self be_sendNotification:@"Effect Initialization failed"];
+        bef_effect_ai_destroy(_renderMangerHandle);
         NSLog(@"bef_effect_ai_check_license error: %d", result);
         return;
     }
