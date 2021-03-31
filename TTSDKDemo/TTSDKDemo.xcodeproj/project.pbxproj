@@ -128,6 +128,7 @@
 		83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C4445E243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m */; };
 		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
+		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -367,6 +368,8 @@
 		83C8CF82242F295F0078C7EA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		83C8CFB3242F2AE00078C7EA /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		83C8D053242F3F9D0078C7EA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		8406046326142676003B389D /* LicenseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseDemoViewController.h; sourceTree = "<group>"; };
+		8406046426142676003B389D /* LicenseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseDemoViewController.m; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +474,7 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
+				84060462261425D3003B389D /* License */,
 				83797AEC25EBFAA5003C10F2 /* Common */,
 				2B44FB08254AFE7D002CC02A /* Uploader */,
 				2B58E8B1253ECD6D00FB5892 /* Env */,
@@ -881,6 +885,15 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		84060462261425D3003B389D /* License */ = {
+			isa = PBXGroup;
+			children = (
+				8406046326142676003B389D /* LicenseDemoViewController.h */,
+				8406046426142676003B389D /* LicenseDemoViewController.m */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
 		90767481DA3AF1EB0F6B2CAB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1073,7 @@
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
 				83A304A524F6AED600209D0A /* BDImageDetailViewController.m in Sources */,
 				831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */,
+				8406046526142676003B389D /* LicenseDemoViewController.m in Sources */,
 				2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */,
 				83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */,
 				83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */,
