@@ -46,6 +46,15 @@
     
 }
 
+- (UIButton *)createButtonWithTitle:(NSString *)title {
+    UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
+    button.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
+    button.titleLabel.font = TT_FONT(15);
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    return button;
+}
+
 /// MARK: - Autorotate
 
 - (BOOL)shouldAutorotate{

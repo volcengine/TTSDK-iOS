@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Did get data, update UI.
 - (void)buildUI __attribute__((objc_requires_super));
 
+/// Standard Button
+- (UIButton *)createButtonWithTitle:(NSString *)title;
 @end
 
 NS_ASSUME_NONNULL_END
