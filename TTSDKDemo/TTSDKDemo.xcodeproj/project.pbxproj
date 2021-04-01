@@ -368,6 +368,7 @@
 		83C8CF82242F295F0078C7EA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		83C8CFB3242F2AE00078C7EA /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		83C8D053242F3F9D0078C7EA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		8402F28D2615D26F00D3D565 /* LicenseAssociatedConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseAssociatedConst.h; sourceTree = "<group>"; };
 		8406046326142676003B389D /* LicenseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseDemoViewController.h; sourceTree = "<group>"; };
 		8406046426142676003B389D /* LicenseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseDemoViewController.m; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -890,6 +891,7 @@
 			children = (
 				8406046326142676003B389D /* LicenseDemoViewController.h */,
 				8406046426142676003B389D /* LicenseDemoViewController.m */,
+				8402F28D2615D26F00D3D565 /* LicenseAssociatedConst.h */,
 			);
 			path = License;
 			sourceTree = "<group>";
