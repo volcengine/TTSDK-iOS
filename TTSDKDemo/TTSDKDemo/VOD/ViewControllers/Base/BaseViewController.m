@@ -6,6 +6,7 @@
 
 
 #import "BaseViewController.h"
+#import <UIView+Toast.h>
 
 @interface BaseViewController ()
 
@@ -53,6 +54,10 @@
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
     return button;
+}
+
+- (void)makeToast:(NSString *)msg {
+    [UIApplication.sharedApplication.keyWindow makeToast:msg duration:1 position:@(self.view.center)];
 }
 
 /// MARK: - Autorotate

@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Standard Button
 - (UIButton *)createButtonWithTitle:(NSString *)title;
+
+/// Toast Message in middle
+- (void)makeToast:(NSString *)msg;
 @end
 
 NS_ASSUME_NONNULL_END
