@@ -14,6 +14,8 @@
 #import "TTFileUploadDemoUtil.h"
 #import "uploadController.h"
 #import "AppInfoViewController.h"
+#import "LicenseDemoViewController.h"
+#import <Masonry/Masonry.h>
 
 @interface HomeViewController ()
 @property (nonatomic, strong) UIButton  *vodBtn;
@@ -21,6 +23,7 @@
 @property (nonatomic, strong) UIButton  *pullBtn;
 @property (nonatomic, strong) UIButton  *imageBtn;
 @property (nonatomic, strong) UIButton  *uploadBtn;
+@property (nonatomic, strong) UIButton  *licenseBtn;
 @property (nonatomic, strong) UIButton  *appInfoBtn;
 @end
 
@@ -32,55 +35,83 @@
 
 - (void)setUpUI {
     [super setUpUI];
-    
     self.view.backgroundColor = TT_THEME_COLOR;
-    _vodBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
-    _vodBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _vodBtn.titleLabel.font = TT_FONT(15);
-    [_vodBtn setTitle:@"视频播放" forState:UIControlStateNormal];
-    [_vodBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:scrollView];
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(NAVIGATIONBAR_BOTTOM);
+        make.bottom.left.right.equalTo(self.view);
+    }];
+    scrollView.clipsToBounds = YES;
+    scrollView.scrollEnabled = YES;
+    //
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+    [scrollView addSubview:contentView];
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(scrollView);
+        make.height.equalTo(scrollView);
+        make.width.equalTo(scrollView);
+        make.width.equalTo(@(self.view.width));
+    }];
+
+    _vodBtn = [self createButtonWithTitle:@"视频播放"];
     [_vodBtn addTarget:self action:@selector(_enterVodDemoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_vodBtn];
-    
-    _pushBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
-    _pushBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _pushBtn.titleLabel.font = TT_FONT(15);
-    [_pushBtn setTitle:@"直播推流" forState:UIControlStateNormal];
-    [_pushBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [contentView addSubview:_vodBtn];
+    [_vodBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.centerX.equalTo(contentView);
+        make.width.equalTo(@(TT_BASE_375(100)));
+        make.height.equalTo(@(TT_BASE_375(60)));
+    }];
+
+    _pushBtn = [self createButtonWithTitle:@"直播推流"];
     [_pushBtn addTarget:self action:@selector(_enterLivePushDemoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_pushBtn];
-    
-    _pullBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
-    _pullBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _pullBtn.titleLabel.font = TT_FONT(15);
-    [_pullBtn setTitle:@"直播拉流" forState:UIControlStateNormal];
-    [_pullBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [contentView addSubview:_pushBtn];
+    [_pushBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_vodBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+    }];
+
+    _pullBtn = [self createButtonWithTitle:@"直播拉流"];
     [_pullBtn addTarget:self action:@selector(_enterLivePlayDemoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_pullBtn];
-    
-    _imageBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, TT_BASE_375(100), TT_BASE_375(60))];
-    _imageBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _imageBtn.titleLabel.font = TT_FONT(15);
-    [_imageBtn setTitle:@"WebImage" forState:UIControlStateNormal];
-    [_imageBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [contentView addSubview:_pullBtn];
+    [_pullBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_pushBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+    }];
+
+    _imageBtn = [self createButtonWithTitle:@"WebImage"];
     [_imageBtn addTarget:self action:@selector(_enterImageDemoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_imageBtn];
-    
-    _uploadBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,TT_BASE_375(100),TT_BASE_375(60))];
-    _uploadBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _uploadBtn.titleLabel.font = TT_FONT(15);
-    [_uploadBtn setTitle:@"上传测试" forState:UIControlStateNormal];
-    [_uploadBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    [contentView addSubview:_imageBtn];
+    [_imageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_pullBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+    }];
+
+    _uploadBtn = [self createButtonWithTitle:@"上传测试"];
     [_uploadBtn addTarget:self action:@selector(_uploadDemoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_uploadBtn];
+    [contentView addSubview:_uploadBtn];
+    [_uploadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_imageBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+    }];
     
-    _appInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,TT_BASE_375(100),TT_BASE_375(60))];
-    _appInfoBtn.backgroundColor = TT_COLOR(0, 0, 0, 0.5);
-    _appInfoBtn.titleLabel.font = TT_FONT(15);
-    [_appInfoBtn setTitle:@"Demo信息" forState:UIControlStateNormal];
-    [_appInfoBtn setTitleColor:TT_COLOR(255, 255, 255, 1.0) forState:UIControlStateNormal];
+    _licenseBtn = [self createButtonWithTitle:@"配置License"];
+    [_licenseBtn addTarget:self action:@selector(_enterLicenseDemoViewController) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:_licenseBtn];
+    [_licenseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_uploadBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+    }];
+    
+    _appInfoBtn = [self createButtonWithTitle:@"Demo信息"];
     [_appInfoBtn addTarget:self action:@selector(_enterAppInfoViewController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_appInfoBtn];
+    [contentView addSubview:_appInfoBtn];
+    [_appInfoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_licenseBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.width.height.centerX.equalTo(_vodBtn);
+        make.bottom.equalTo(contentView);
+    }];
 }
 
 - (void)buildUI {
@@ -89,28 +120,6 @@
     self.navigationItem.title = @"Pandora";
     //
     [[TTVideoFetchDataHelper helper] startFetchTestListData];
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    
-    _vodBtn.centerX = self.view.centerX;
-    _vodBtn.top = TT_BASE_375(60) + NAVIGATIONBAR_BOTTOM;
-    
-    _pushBtn.left = _vodBtn.left;
-    _pushBtn.top = TT_BASE_375(30) + _vodBtn.bottom;
-    
-    _pullBtn.left = _vodBtn.left;
-    _pullBtn.top = TT_BASE_375(30) + _pushBtn.bottom;
-    
-    _imageBtn.left = _vodBtn.left;
-    _imageBtn.top = TT_BASE_375(30) + _pullBtn.bottom;
-    
-    _uploadBtn.left = _vodBtn.left;
-    _uploadBtn.top = TT_BASE_375(30) + _imageBtn.bottom;
-    
-    _appInfoBtn.left = _vodBtn.left;
-    _appInfoBtn.top = TT_BASE_375(30) + _uploadBtn.bottom;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -143,6 +152,11 @@
 
 - (void)_enterLivePlayDemoViewController {
     LivePlaySettingsViewController *vc = [[LivePlaySettingsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)_enterLicenseDemoViewController {
+    LicenseDemoViewController *vc = [[LicenseDemoViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

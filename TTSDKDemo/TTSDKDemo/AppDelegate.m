@@ -12,6 +12,7 @@
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
 #import "TTDemoSDKEnvironmentManager.h"
+#import "LicenseAssociatedConst.h"
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -88,7 +89,14 @@ void uncaughtExceptionHandler(NSException*exception){
     configuration.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     configuration.bundleID = @"com.bytedance.videoarch.pandora.demo";
-    configuration.licenseFilePath = [NSBundle.mainBundle pathForResource:@"ttsdkdemo.license" ofType:nil];
+    // Add Runtime Update License Path
+    NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *userDefineLicensePath = [docPath stringByAppendingString:LicenseUserDefinePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:userDefineLicensePath]) {
+        configuration.licenseFilePath = userDefineLicensePath;
+    } else {
+        configuration.licenseFilePath = [NSBundle.mainBundle pathForResource:LicenseBundleName ofType:nil];
+    }
     [TTSDKManager setCurrentUserUniqueID:@"10352432926"];
     [TTSDKManager startWithConfiguration:configuration];
 }
