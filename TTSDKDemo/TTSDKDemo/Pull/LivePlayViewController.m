@@ -703,7 +703,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 - (TVLPlayerItemPreferences *)playerItem:(TVLPlayerItem *)playerItem customizedPreferencesWithUserInfo:(NSDictionary *)userInfo {
     TVLPlayerItemPreferences *customizedPreferences = [TVLPlayerItemPreferences defaultPreferences];
-    customizedPreferences.videoCodecType = TVLVideoCodecTypeH264;
+   // customizedPreferences.videoCodecType = TVLVideoCodecTypeH264;
     return customizedPreferences;
 }
 
