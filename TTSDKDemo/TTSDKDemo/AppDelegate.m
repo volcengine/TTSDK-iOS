@@ -97,10 +97,9 @@ void uncaughtExceptionHandler(NSException*exception){
     configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     configuration.bundleID = @"com.bytedance.videoarch.pandora.demo";
     // Add Runtime Update License Path
-    NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *userDefineLicensePath = [docPath stringByAppendingString:LicenseUserDefinePath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:userDefineLicensePath]) {
-        configuration.licenseFilePath = userDefineLicensePath;
+    NSString* lastPath = [NSUserDefaults.standardUserDefaults stringForKey:LastLicenseDocumentPathUserDefaultsKey];
+    if (lastPath && [[NSFileManager defaultManager] fileExistsAtPath:lastPath]) {
+        configuration.licenseFilePath = lastPath;
     } else {
         configuration.licenseFilePath = [NSBundle.mainBundle pathForResource:LicenseBundleName ofType:nil];
     }
