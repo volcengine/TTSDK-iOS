@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIButton  *remoteBtn;
 @property (nonatomic, strong) UIButton  *contentBtn;
 @property (nonatomic, strong) UIButton  *checkLicenseBtn;
+@property (nonatomic, strong) UIButton  *cleanCacheBtn;
 
 @end
 
@@ -66,6 +67,14 @@
         make.top.equalTo(_contentBtn.mas_bottom).offset(16);
         make.centerX.width.height.equalTo(_contentBtn);
     }];
+    
+    _cleanCacheBtn = [self createButtonWithTitle:@"清除已設置的證書並退出"];
+    [_cleanCacheBtn addTarget:self action:@selector(cleanLicenseCache) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cleanCacheBtn];
+    [_cleanCacheBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_checkLicenseBtn.mas_bottom).offset(16);
+        make.centerX.width.height.equalTo(_checkLicenseBtn);
+    }];
 }
 
 - (void)handleRemoteLicense {
@@ -79,7 +88,7 @@
         [self makeToast:@"invalied url"];
         return;
     }
-    [self addRemoteLicense:content];
+    [self updateLicenseWith:content];
 }
 
 - (void)handleLicenseContent {
@@ -89,7 +98,9 @@
         return;
     }
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *userDefineLicensePath = [docPath stringByAppendingString:LicenseUserDefinePath];
+    // Use md5 to avoid same content redundant
+    NSString *contentMD5Path = [NSString stringWithFormat:@"/%@.text", [content md5String]];
+    NSString *userDefineLicensePath = [docPath stringByAppendingString:contentMD5Path];
     if (![[NSFileManager defaultManager] fileExistsAtPath:userDefineLicensePath]) {
         BOOL created = [[NSFileManager defaultManager] createFileAtPath:userDefineLicensePath contents:[[NSData alloc] init] attributes:nil];
         if (!created) {
@@ -101,12 +112,15 @@
     if (data) {
         BOOL rc = [data writeToFile:userDefineLicensePath atomically:YES];
         if (rc) {
-            exit(0);
+            [NSUserDefaults.standardUserDefaults setValue:userDefineLicensePath forKey:LastLicenseDocumentPathUserDefaultsKey];
+            [self updateLicenseWith:userDefineLicensePath];
+        } else {
+            [self makeToast:@"写入失败"];
         }
     }
 }
 
-- (void)addRemoteLicense:(NSString *)urlStr {
+- (void)updateLicenseWith:(NSString *)urlStr {
     TTSDKConfiguration *configuration = [TTSDKConfiguration defaultConfigurationWithAppID:[[TTDemoSDKEnvironmentManager shareEvnironment] appId]];
     configuration.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
@@ -114,7 +128,12 @@
     configuration.licenseFilePath = urlStr;
     [TTSDKManager setCurrentUserUniqueID:@"10352432926"];
     [TTSDKManager startWithConfiguration:configuration];
-    [self makeToast:@"已設置url"];
+    [self makeToast:@"已触发更新"];
+}
+
+- (void)cleanLicenseCache {
+    [NSUserDefaults.standardUserDefaults removeObjectForKey:LastLicenseDocumentPathUserDefaultsKey];
+    exit(0);
 }
 
 - (void)getLicenseInfoJSONStr {
