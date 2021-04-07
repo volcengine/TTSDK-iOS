@@ -10,6 +10,6 @@
 #define LicenseAssociatedConst_h
 
 static NSString *const LicenseBundleName = @"ttsdkdemo.license";
-static NSString *const LicenseUserDefinePath = @"/ttsdkdemo-userDefine-license.text";
+static NSString *const LastLicenseDocumentPathUserDefaultsKey = @"LastLicenseDocumentPathUserDefaultsKey";
 
 #endif /* LicenseAssociatedConst_h */
