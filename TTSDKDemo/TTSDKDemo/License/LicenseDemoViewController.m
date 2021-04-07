@@ -131,7 +131,7 @@
     NSString* jsonStr = [license mj_JSONString];
     //
     UIViewController *vc = [[UIViewController alloc] init];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 300, 700)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 32, 375, 700)];
     label.numberOfLines = 0;
     [label setText:jsonStr];
     [vc.view addSubview:label];
