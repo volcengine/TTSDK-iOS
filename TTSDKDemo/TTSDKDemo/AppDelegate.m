@@ -12,7 +12,13 @@
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
 #import "TTDemoSDKEnvironmentManager.h"
+#import <TTSDK/TTSDKManager.h>
 #import "LicenseAssociatedConst.h"
+
+FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseDidAdd;
+FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseInfoDidUpdate;;
+FOUNDATION_EXTERN NSString * const TTLicenseNotificationIdKey;
+FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseResultKey;
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -29,6 +35,7 @@ void uncaughtExceptionHandler(NSException*exception){
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    [self addLicenseObserver];
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
     [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
@@ -150,6 +157,39 @@ void uncaughtExceptionHandler(NSException*exception){
     if (TTVideoEngine.ls_isStarted) {
         [TTVideoEngine ls_close];
     }
+}
+
+
+- (void)addLicenseObserver {
+    [[NSNotificationCenter defaultCenter] addObserverForName:TTLicenseNotificationLicenseDidAdd object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        NSNumber *success = [note userInfo][TTLicenseNotificationLicenseResultKey];
+        BOOL isSuccess = [success boolValue];
+        if (isSuccess) {
+            NSLog(@"TTSDKLicense: add license successfully");
+            NSString *lid = [note userInfo][TTLicenseNotificationIdKey];
+            if (lid) {
+                NSDictionary *info = [TTSDKManager getCurrentLicenseInfo:lid];
+                NSLog(@"TTSDKLicense: license info: %@", info);
+            }
+        } else {
+            NSLog(@"TTSDKLicense: failed to add license");
+        }
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:TTLicenseNotificationLicenseInfoDidUpdate object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        NSNumber *success = [note userInfo][TTLicenseNotificationLicenseResultKey];
+        BOOL isSuccess = [success boolValue];
+        if (isSuccess) {
+            NSLog(@"TTSDKLicense:  update license successfully");
+            NSString *lid = [note userInfo][TTLicenseNotificationIdKey];
+            if (lid) {
+                NSDictionary *info = [TTSDKManager getCurrentLicenseInfo:lid];
+                NSLog(@"TTSDKLicense:  license info: %@", info);
+            }
+        } else {
+            NSLog(@"TTSDKLicense:  failed to update license");
+        }
+    }];
 }
 
 @end
