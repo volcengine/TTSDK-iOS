@@ -457,7 +457,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
             _processTypeVideo = TTVideoUploadActionTypeEncrypt;
         }
         [self initUploader];
-        [self requestSign];
+        //[self requestSign];
         
     }];
     [containView addSubview:netWorkControll];
@@ -511,7 +511,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 - (void)initUploader{
     [self initImageUploader];
     [self initVideoUploader];
-    [self requestSign];
+    //[self requestSign];
 }
 - (void)initImageUploader{
     if (_pickType != AlbumPickTypePhoto) {
