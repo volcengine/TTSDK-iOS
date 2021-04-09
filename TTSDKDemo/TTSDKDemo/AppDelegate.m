@@ -12,7 +12,6 @@
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
 #import "TTDemoSDKEnvironmentManager.h"
-#import <TTSDK/TTSDKManager.h>
 #import "LicenseAssociatedConst.h"
 
 FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseDidAdd;
