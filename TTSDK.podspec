@@ -25,7 +25,7 @@
         'TTSDK/VCloudPandora/**/*.h',
       ]
       subspec.source_files = [
-        'TTSDK/VCloudPandora/**/*',
+        'TTSDK/VCloudPandora/**/*.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
