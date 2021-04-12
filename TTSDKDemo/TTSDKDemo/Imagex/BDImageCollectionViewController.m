@@ -9,6 +9,7 @@
 #import "BDSRDetailViewController.h"
 #import "BDImageAdapter.h"
 #import <Masonry/Masonry.h>
+#import <BDSuperResolutionTransformer.h>
 
 @interface BDImageCollectionViewCell : UICollectionViewCell
 
