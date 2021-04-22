@@ -12,7 +12,26 @@
 #   import <NodeProber/LiveNodeSortManager.h>
 #endif
 
-@interface StreamingViewController : UIViewController
+#if USE_EFFECT
+//#define HAVE_EFFECT 1
+#define HAVE_AUDIO_EFFECT 1
+#else
+//#define HAVE_EFFECT 0
+#define HAVE_AUDIO_EFFECT 0
+#endif
+// LiveCore 無法接入
+#define LIVECORE_ENABLE 0
 
+@interface StreamingViewController : UIViewController
+@property (nonatomic) LiveStreamCapture *capture;
+#if HAVE_AUDIO_EFFECT
+@property (nonatomic, strong) LSLiveAudioUnitProcess *audioUnit;
+@property (nonatomic, strong) UIButton *karaokeButton;
+@property (nonatomic, strong) UIButton *musicTypeButton;
+@property (nonatomic) LiveStreamSession *liveSession;
+#endif
+@property (nonatomic, strong) UISlider *recordVolumeSlider;
+@property (nonatomic, strong) UISlider *musicVolumeSlider;
+@property (nonatomic, strong) UIView *karaokeControllersContainer;
 - (instancetype)initWithConfiguration:(StreamConfigurationModel *)configuraitons;
 @end
