@@ -129,6 +129,8 @@
 		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
 		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
+		841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 841F762626207F5400A17EF7 /* doubleTracks.m4a */; };
+		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -371,6 +373,11 @@
 		8402F28D2615D26F00D3D565 /* LicenseAssociatedConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseAssociatedConst.h; sourceTree = "<group>"; };
 		8406046326142676003B389D /* LicenseDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseDemoViewController.h; sourceTree = "<group>"; };
 		8406046426142676003B389D /* LicenseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseDemoViewController.m; sourceTree = "<group>"; };
+		841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
+		841F76232620701100A17EF7 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		841F762626207F5400A17EF7 /* doubleTracks.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleTracks.m4a; sourceTree = "<group>"; };
+		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
+		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -417,6 +424,7 @@
 		831E378423D0177B00A9F7A9 /* Push */ = {
 			isa = PBXGroup;
 			children = (
+				84FCCD9A2620413B0065FB4F /* KTV */,
 				83795AEA23E2C92F00E87A4A /* Effects */,
 				831E37A223D01BE800A9F7A9 /* LSCamera.h */,
 				831E37A323D01BE800A9F7A9 /* LSCamera.m */,
@@ -501,6 +509,8 @@
 		8378B5D723C486230075E05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				841F76232620701100A17EF7 /* CoreML.framework */,
+				841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */,
 				83A3054724F6B89C00209D0A /* Foundation.framework */,
 				83C8CFB3242F2AE00078C7EA /* MetalKit.framework */,
 				83C8CF82242F295F0078C7EA /* VideoToolbox.framework */,
@@ -896,6 +906,16 @@
 			path = License;
 			sourceTree = "<group>";
 		};
+		84FCCD9A2620413B0065FB4F /* KTV */ = {
+			isa = PBXGroup;
+			children = (
+				841F762626207F5400A17EF7 /* doubleTracks.m4a */,
+				84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */,
+				84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */,
+			);
+			path = KTV;
+			sourceTree = "<group>";
+		};
 		90767481DA3AF1EB0F6B2CAB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,6 +1011,7 @@
 				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
 				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
 				83A3049C24F6AED600209D0A /* search.png in Resources */,
+				841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */,
 				830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */,
 				83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */,
 				83A3049724F6AED600209D0A /* 永久循环.png in Resources */,
@@ -1070,6 +1091,7 @@
 				83797AEF25EBFAA5003C10F2 /* AppInfoViewController.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
+				84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */,
 				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
 				83A304A324F6AED600209D0A /* BDImageOptionView.m in Sources */,
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
