@@ -146,7 +146,7 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     
     [self.engine setOptionForKey:VEKKeyPlayerDashEnabled_BOOL value:@(dashEnable)];
     [self.engine setOptionForKey:VEKKeyPlayerBashEnabled_BOOL value:@(dashEnable)];
-    [self.engine setOptionForKey:VEKKeyPlayerByteVC1Enabled_BOOL value:@(byteVc1Enable)];
+    [self.engine setOptionForKey:VEKKeyPlayerh265Enabled_BOOL value:@(byteVc1Enable)];
     // 控制循环播放，默认是 NO;
     self.engine.looping = NO;
     /// 静音开关
