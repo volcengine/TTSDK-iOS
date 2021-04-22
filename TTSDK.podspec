@@ -103,6 +103,7 @@
     spec.subspec 'LivePush' do |subspec|
       subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
+        'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/LiveStreamFramework/**/*',
@@ -118,6 +119,8 @@
         'CoreMedia',
         'AVFoundation',
         'SystemConfiguration',
+        'GLKit',
+        'imageIO'
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.libraries = 'stdc++'
