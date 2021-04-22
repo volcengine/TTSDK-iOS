@@ -5,6 +5,7 @@
 //  Created by 王可成 on 2018/7/11.
 
 #import "StreamingViewController.h"
+#import "StreamingViewController+KTV.h"
 #import "LSCamera.h"
 #import "LiveHelper.h"
 #import <AVFoundation/AVFoundation.h>
@@ -15,10 +16,6 @@
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
-
-#define HAVE_EFFECT 0
-#define HAVE_AUDIO_EFFECT 0
-
 
 @interface StreamingViewController () <LiveStreamSessionProtocol>
 
@@ -34,7 +31,6 @@
 @property (nonatomic, strong) LSCamera *camera;
 
 @property (nonatomic, strong) UIButton *headphonesMonitoringButton;
-
 
 @property (nonatomic, strong) UIButton *beautifyButton;
 @property (nonatomic, strong) UIButton *beautifyButton2;
@@ -69,15 +65,10 @@
 
 @property (nonatomic) UILabel *infoView;
 
-@property (nonatomic) LiveStreamSession *liveSession;
-@property (nonatomic) LiveStreamCapture *capture;
 @property (nonatomic) StreamConfigurationModel *configuraitons;
 @property (nonatomic, assign) CGSize captureSize;
 
 @property (nonatomic, copy) NSString *did_str;
-@property (nonatomic, strong) UIView *karaokeControllersContainer;
-@property (nonatomic, strong) UISlider *recordVolumeSlider;
-@property (nonatomic, strong) UISlider *musicVolumeSlider;
 
 @property (nonatomic, assign) BOOL is_gamimg;
 @property (nonatomic, assign) BOOL is_game_playing;
@@ -332,6 +323,23 @@
     
     _headphonesMonitoringButton = [LiveHelper createButton:@"耳返: 关" target:self action:@selector(onHeadphonesMonitoringButtonClicked:)];
     [_controlView addSubview:_headphonesMonitoringButton];
+    
+#if HAVE_AUDIO_EFFECT
+    //MARK: 伴奏 + KTV功能
+    #if LIVECORE_ENABLE
+    _karaokeButton = [LiveHelper createButton:@"K歌: 关" target:self action:@selector(onKaraokeButtonClicked:)];
+    [_controlView addSubview:_karaokeButton];
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressKaraokeAction)];
+    [_karaokeButton addGestureRecognizer:longPressGR];
+    [_controlView addSubview:[LiveHelper createButton:@"音效" target:self action:@selector(switchAudioEffectButtonClicked:)]];
+    //
+    _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(onMusicTypeButtonClicked:)];
+    _musicTypeButton.hidden = YES;
+    #else
+    _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(setupAudioUnitProcess:)];
+    #endif
+    [_controlView addSubview:_musicTypeButton];
+#endif
     
     [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
@@ -616,6 +624,9 @@
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+#if HAVE_AUDIO_EFFECT
+    [self longPressKaraokeAction];
+#endif
 }
 
 - (void)onEchoCancellationButtonClicked:(UIButton *)sender {
