@@ -364,7 +364,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         /*vod账号信息*/
         NSString * url = nil;
         if(_isImageX){
-            url = @"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expire=50000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&LTSK=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expiredTime=10000";
         }
         else{
             url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
@@ -383,22 +383,14 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         if (jsonObject) {
                             NSLog(@"json Objct:%@",jsonObject);
                             NSDictionary* result;
-                            if(_isImageX){
-                                result = jsonObject[@"token"];
-                            }else{
-                                result = jsonObject[@"result"];
-                            }
+                            result = jsonObject[@"result"];
                             if (result) {
                                 strongSelf.accessKey = nil;
                                 strongSelf.secretKey = nil;
                                 strongSelf.sessionToken = nil;
                                 strongSelf.expirationTime = nil;
                                 
-                                if(_isImageX){
-                                    strongSelf.accessKey = result[@"AccessKeyId"];
-                                }else{
-                                    strongSelf.accessKey = result[@"AccessKeyID"];
-                                }
+                                strongSelf.accessKey = result[@"AccessKeyID"];
                                 strongSelf.secretKey = result[@"SecretAccessKey"];
                                 strongSelf.sessionToken = result[@"SessionToken"];
                                 strongSelf.expirationTime = result[@"ExpiredTime"];
