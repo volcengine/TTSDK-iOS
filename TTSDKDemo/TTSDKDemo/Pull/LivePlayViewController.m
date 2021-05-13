@@ -134,6 +134,8 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLogView)]];
     
     self.definesPresentationContext = YES;
+    // Keep Screen Open
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
