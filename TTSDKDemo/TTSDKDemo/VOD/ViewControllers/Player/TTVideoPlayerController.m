@@ -36,6 +36,9 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     [TTVideoAudioSession inActive];
     [_fullScreenManager removeObserverBlocksForKeyPath:kFullScreenControllerKeyPath];
     [_engine removeObserverBlocksForKeyPath:kEnginePlaybackStateKeyPath];
+   
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (instancetype)init {
@@ -81,6 +84,9 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
     }];
     
     [[TTVideoEngineEventManager sharedManager] setDelegate:(id<TTVideoEngineEventManagerProtocol> _Nullable)self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -503,5 +509,16 @@ static NSString *const kEnginePlaybackStateKeyPath = @"playbackState";
         self.toastView.alpha = 1.0f;
     }];
 }
+
+
+// MARK: - Notifications
+- (void)_applicationWillResignActive:(NSNotification *)notify {
+    [_engine pause];
+}
+
+- (void)_applicationDidBecomeActive:(NSNotification *)notify {
+    [_engine play];
+}
+
 
 @end
