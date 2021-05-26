@@ -113,6 +113,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(error))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playbackState))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playerLoadState))];
+    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -136,6 +137,10 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     self.definesPresentationContext = YES;
     // Keep Screen Open
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    __weak typeof(self) wself = self;
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [wself.liveManager pause];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
