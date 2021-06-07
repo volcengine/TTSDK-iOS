@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *clockSynchronizationEnabledSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *netAdaptiveSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *archiveLogsSwitch;
+// IP Mapping
+@property (weak, nonatomic) IBOutlet UITextField *ipAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *domainTextField;
 
 @end
 
@@ -62,6 +65,9 @@
     self.retryTimeIntervalTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeInternal];
     self.retryCountLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryCountLimit];
     self.retryTimeLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeLimit];
+    self.ipAddressTextField.text = self.currentConfiguration.ipAddress;
+    self.domainTextField.text = self.currentConfiguration.domainName;
+    
     @weakify(self);
     [[self.hardwareDecodeSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
         @strongify(self);
@@ -132,6 +138,16 @@
         self.currentConfiguration.retryTimeLimit = [numberFormater numberFromString:text] ? [[numberFormater numberFromString:text] integerValue] : self.currentConfiguration.retryTimeLimit;
     }];
     
+    [[self.ipAddressTextField rac_textSignal] subscribeNext:^(NSString *text) {
+        @strongify(self);
+        self.currentConfiguration.ipAddress = text;
+    }];
+    
+    [[self.domainTextField rac_textSignal] subscribeNext:^(NSString *text) {
+        @strongify(self);
+        self.currentConfiguration.domainName = text;
+    }];
+    
     self.confirmButton.rac_command = self.confirmCommand;
     
     self.cancelButton.rac_command = self.cancelCommand;
@@ -147,6 +163,7 @@
         _confirmCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             @strongify(self);
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                [self.currentConfiguration saveConfiguration];
                 [subscriber sendNext:self.currentConfiguration];
                 [subscriber sendCompleted];
                 return nil;
