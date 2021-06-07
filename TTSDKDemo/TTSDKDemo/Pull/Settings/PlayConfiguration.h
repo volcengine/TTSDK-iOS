@@ -32,7 +32,11 @@
 @property (nonatomic, assign) BOOL shouldArchiveLogs;
 @property (nonatomic, copy) NSDictionary *settingsData;
 @property (nonatomic, copy) NSDictionary *nodeOptimizeInfo;
+//
+@property (nonatomic, copy) NSString *ipAddress;
+@property (nonatomic, copy) NSString *domainName;
+@property (nonatomic, readonly) NSDictionary *ipMapping;
 
 + (instancetype)defaultConfiguration;
-
+- (void)saveConfiguration;
 @end
