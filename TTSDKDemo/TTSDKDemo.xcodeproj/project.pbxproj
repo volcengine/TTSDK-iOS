@@ -15,7 +15,6 @@
 		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
-		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
 		831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378F23D017E600A9F7A9 /* LiveHelper.m */; };
 		831E379523D017E700A9F7A9 /* TTLogerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379023D017E600A9F7A9 /* TTLogerHelper.m */; };
 		831E379C23D0180E00A9F7A9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379823D0180E00A9F7A9 /* SettingsViewController.m */; };
@@ -160,8 +159,6 @@
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
 		831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSDKDemo.pch; sourceTree = "<group>"; };
-		831E378523D0177B00A9F7A9 /* LSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainViewController.m; sourceTree = "<group>"; };
-		831E378623D0177B00A9F7A9 /* LSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSMainViewController.h; sourceTree = "<group>"; };
 		831E378D23D017E600A9F7A9 /* LiveHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveHelper.h; sourceTree = "<group>"; };
 		831E378E23D017E600A9F7A9 /* TTLogerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTLogerHelper.h; sourceTree = "<group>"; };
 		831E378F23D017E600A9F7A9 /* LiveHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveHelper.m; sourceTree = "<group>"; };
@@ -430,8 +427,6 @@
 				831E37A323D01BE800A9F7A9 /* LSCamera.m */,
 				831E379623D0180E00A9F7A9 /* SettingsViewController */,
 				831E378C23D017E600A9F7A9 /* Utils */,
-				831E378623D0177B00A9F7A9 /* LSMainViewController.h */,
-				831E378523D0177B00A9F7A9 /* LSMainViewController.m */,
 				831E379F23D01B8400A9F7A9 /* StreamingViewController.h */,
 				831E37A023D01B8400A9F7A9 /* StreamingViewController.m */,
 			);
@@ -677,20 +672,20 @@
 		83C443E0243F8E2A00081EA1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */,
-				83C443E2243F8E2A00081EA1 /* LogViewController.xib */,
-				83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */,
-				83C443E4243F8E2A00081EA1 /* LogViewController.h */,
-				83C443E5243F8E2A00081EA1 /* PlayConfiguration.m */,
-				83C443E6243F8E2A00081EA1 /* LivePlaySettingsViewController.xib */,
-				83C443E7243F8E2A00081EA1 /* PreferencesViewController.xib */,
-				83C443E8243F8E2A00081EA1 /* PreferencesViewController.h */,
-				83C443E9243F8E2A00081EA1 /* LivePlaySettingsViewController.h */,
 				83C443EA243F8E2A00081EA1 /* ConfiguringViewController.h */,
-				83C443EB243F8E2A00081EA1 /* PlayConfiguration.h */,
-				83C443EC243F8E2A00081EA1 /* LogViewController.m */,
+				83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */,
 				83C443ED243F8E2A00081EA1 /* ConfiguringViewController.xib */,
+				83C443E9243F8E2A00081EA1 /* LivePlaySettingsViewController.h */,
+				83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */,
+				83C443E6243F8E2A00081EA1 /* LivePlaySettingsViewController.xib */,
+				83C443E4243F8E2A00081EA1 /* LogViewController.h */,
+				83C443EC243F8E2A00081EA1 /* LogViewController.m */,
+				83C443E2243F8E2A00081EA1 /* LogViewController.xib */,
+				83C443EB243F8E2A00081EA1 /* PlayConfiguration.h */,
+				83C443E5243F8E2A00081EA1 /* PlayConfiguration.m */,
+				83C443E8243F8E2A00081EA1 /* PreferencesViewController.h */,
 				83C443EE243F8E2A00081EA1 /* PreferencesViewController.m */,
+				83C443E7243F8E2A00081EA1 /* PreferencesViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1084,7 +1079,6 @@
 				831E379D23D0180E00A9F7A9 /* StreamConfigurationModel.m in Sources */,
 				83C44481243F8E2B00081EA1 /* TTVideoDownloadController.m in Sources */,
 				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
-				831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */,
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
 				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
 				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
