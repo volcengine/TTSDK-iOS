@@ -408,7 +408,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         /*vod账号信息*/
         NSString * url = nil;
         if(_isImageX){
-            url = @"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expire=50000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&LTSK=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expiredTime=10000";
         }
         else{
             //url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
@@ -429,7 +429,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         if (jsonObject) {
                             NSLog(@"json Objct:%@",jsonObject);
                             NSDictionary* result;
-                            if(_isImageX){
+                            /*if(_isImageX){
                                 result = jsonObject[@"token"];
                             }else{
                                 NSString* jsonStr = @"{\"AccessKeyID\":\"AKTPNzc4MmYxYjU4MGFiNDhhMGJiMmVmZTQ4YjcyMDU3NGQ\", \"SecretAccessKey\":\"tphLPWVykyiDIA4IwcWpP3wEluB+w6jPcIno+6z08jJBVJzay9LVq/zXkCsbCm2i\", \"SessionToken\":\"STS2eyJMVEFjY2Vzc0tleUlkIjoiQUtMVE1qRm1NMk13WkRNell6RXlOR1prT0dFM1pUZGlORFkzWm1NeFpHUTRZakkiLCJBY2Nlc3NLZXlJZCI6IkFLVFBOemM0TW1ZeFlqVTRNR0ZpTkRoaE1HSmlNbVZtWlRRNFlqY3lNRFUzTkdRIiwiU2lnbmVkU2VjcmV0QWNjZXNzS2V5IjoiamlySWRYOEVycUh6cFF6bk92MzhXYXpkVFp1NE1laWZCV211NDFUdG5QQzU0cEJzN29lSUs3VnZGbC93OWY1eW9aTW01MUJWTXFDRzdvVzJKemorVmlsQVRnVjBqb0hXUjc0VHFac3AwOGM9IiwiRXhwaXJlZFRpbWUiOjE2NDgxMTc4NjksIlBvbGljeVN0cmluZyI6IntcIlN0YXRlbWVudFwiOlt7XCJFZmZlY3RcIjpcIkFsbG93XCIsXCJBY3Rpb25cIjpbXCJ2b2Q6QXBwbHlVcGxvYWRJbmZvXCIsXCJ2b2Q6Q29tbWl0VXBsb2FkSW5mb1wiXSxcIlJlc291cmNlXCI6W119XX0iLCJTaWduYXR1cmUiOiJkNGU1MzdiNTNkZDI0NTAyYjA0ZDkyMTM4ODg4MDk3MWU1Y2E3OWU5NWIzZDc0YWZhZGY0OGVjMWFkZGE4NGQ0In0=\", \"ExpiredTime\":\"2022-03-24T18:31:09+08:00\", \"CurrentTime\":\"2021-04-11T13:11:09+08:00\"}";
@@ -442,18 +442,14 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                                                                                       error:&err];
                                 //result = jsonObject[@"result"];
                                 
-                            }
+                            }*/
+                            result = jsonObject[@"result"];
                             if (result) {
                                 strongSelf.accessKey = nil;
                                 strongSelf.secretKey = nil;
                                 strongSelf.sessionToken = nil;
                                 strongSelf.expirationTime = nil;
-                                
-                                if(_isImageX){
-                                    strongSelf.accessKey = result[@"AccessKeyId"];
-                                }else{
-                                    strongSelf.accessKey = result[@"AccessKeyID"];
-                                }
+                                strongSelf.accessKey = result[@"AccessKeyID"];
                                 strongSelf.secretKey = result[@"SecretAccessKey"];
                                 strongSelf.sessionToken = result[@"SessionToken"];
                                 strongSelf.expirationTime = result[@"ExpiredTime"];
