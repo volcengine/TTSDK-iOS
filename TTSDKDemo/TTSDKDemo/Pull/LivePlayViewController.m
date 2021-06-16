@@ -88,8 +88,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     int64_t _stallCountInStallEvent;
 }
 
-// MARK: Life Cycle
-
 - (instancetype)initWithConfiguration:(PlayConfiguration *)configuration {
     if (self = [super init]) {
         _playConfiguration = configuration;
@@ -109,6 +107,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)removeObservations {
+    //MARK: 释放之前，移除对 LiveManager的KVO
     [self.liveManager.currentItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(presentationSize))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(error))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playbackState))];
@@ -227,6 +226,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
+//MARK:
 - (void)setupLivePlay {
     TVLSettingsManager.defaultManager.dataSource = self;
     [TVLSettingsManager.defaultManager updateCurrentSettings];
@@ -617,14 +617,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 - (void)manager:(TVLManager *)manager playerItemStatusDidChange:(TVLPlayerItemStatus)status {
     NSLog(@"%s", __FUNCTION__);
-}
-
-- (void)liveStatusResponse:(TVLLiveStatus)status {
-    _liveStatus = status;
-    // 由于代理方法所在线程并不明确，因此有关视图更新的调用需回到主线程执行，后续代码如无特殊说明，皆为此意
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateLiveStateInfo];
-    });
 }
 
 - (void)loadStateChanged:(NSNumber *)state {
