@@ -673,7 +673,7 @@
         //测试数据
         NSTimeInterval a=[[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970]*1000;
         NSString *timeString = [NSString stringWithFormat:@"当前时间%f", a];
-        NSDictionary * appDict = @{@"ver":[[self.liveSession class] getSdkVersion],@"time":timeString,@"statistic":[self.liveSession getStatistics]};
+//        NSDictionary * appDict = @{@"ver":[[self.liveSession class] getSdkVersion],@"time":timeString,@"statistic":[self.liveSession getStatistics]};
 //        [self.liveSession sendSEIMsgWithKey:@"info" value:appDict repeatTimes:2];
 //        [self.liveSession sendSEIMsgWithKey:@"testInt" value:[NSNumber numberWithInteger:111222333] repeatTimes:2];
 //        [self.liveSession sendSEIMsgWithKey:@"testBool" value:[NSNumber numberWithBool:YES] repeatTimes:2];
