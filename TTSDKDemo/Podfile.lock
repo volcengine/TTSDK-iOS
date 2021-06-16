@@ -61,24 +61,24 @@ PODS:
     - SDWebImage/Core (= 3.8.3)
   - SDWebImage/Core (3.8.3)
   - Toast (4.0.0)
-  - TTSDK/Core (1.12.0.6):
+  - TTSDK/Core (1.16.2.2-premium):
     - RangersAppLog (>= 3.2.5)
-  - TTSDK/Image (1.12.0.6):
+  - TTSDK/Image (1.16.2.2-premium):
     - libwebp
     - MMKV
-  - TTSDK/LivePull (1.12.0.6):
+  - TTSDK/LivePull (1.16.2.2-premium):
     - CocoaAsyncSocket (~> 7.6.4)
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/LivePush (1.12.0.6):
+  - TTSDK/LivePush (1.16.2.2-premium):
     - TTSDK/Core
-  - TTSDK/Player (1.12.0.6):
+  - TTSDK/Player (1.16.2.2-premium):
     - TTSDK/Core
     - TTSDK/PlayerCore
-  - TTSDK/PlayerCore (1.12.0.6):
+  - TTSDK/PlayerCore (1.16.2.2-premium):
     - TTSDK/TTFFmpeg
-  - TTSDK/TTFFmpeg (1.12.0.6)
-  - TTSDK/Uploader (1.12.0.6):
+  - TTSDK/TTFFmpeg (1.16.2.2-premium)
+  - TTSDK/Uploader (1.16.2.2-premium):
     - TTSDK/Core
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -95,14 +95,14 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - SDWebImage
   - Toast (~> 4.0.0)
-  - TTSDK/Core (from `../`)
-  - TTSDK/Image (from `../`)
-  - TTSDK/LivePull (from `../`)
-  - TTSDK/LivePush (from `../`)
-  - TTSDK/Player (from `../`)
-  - TTSDK/PlayerCore (from `../`)
-  - TTSDK/TTFFmpeg (from `../`)
-  - TTSDK/Uploader (from `../`)
+  - TTSDK/Core (= 1.16.2.2-premium)
+  - TTSDK/Image (= 1.16.2.2-premium)
+  - TTSDK/LivePull (= 1.16.2.2-premium)
+  - TTSDK/LivePush (= 1.16.2.2-premium)
+  - TTSDK/Player (= 1.16.2.2-premium)
+  - TTSDK/PlayerCore (= 1.16.2.2-premium)
+  - TTSDK/TTFFmpeg (= 1.16.2.2-premium)
+  - TTSDK/Uploader (= 1.16.2.2-premium)
   - YYCategories
 
 SPEC REPOS:
@@ -125,10 +125,8 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - YYCategories
-
-EXTERNAL SOURCES:
-  TTSDK:
-    :path: "../"
+  https://github.com/volcengine/volcengine-specs.git:
+    - TTSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -147,9 +145,9 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TTSDK: 176abd1df2413e462c81e79d1fc2f565c47be5c6
+  TTSDK: 75caf026f53ebb87951cc723c00c5a4291ee3782
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
 
-PODFILE CHECKSUM: d75dcc600be1d554411690c57e911d291a84c6e0
+PODFILE CHECKSUM: 65f5c385ad31387f383067e8c32b944ca281505c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.rc.1
