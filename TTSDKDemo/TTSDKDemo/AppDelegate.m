@@ -26,6 +26,10 @@ void uncaughtExceptionHandler(NSException*exception){
 
 @interface AppDelegate ()
 
+/// 是否让TTSDK初始化 RangersAppLog SDK
+/// 若已自行初始化可以为否。
+@property (nonatomic, assign) BOOL ttsdkShouldInitAppLog;
+
 @end
 
 @implementation AppDelegate
@@ -38,7 +42,10 @@ void uncaughtExceptionHandler(NSException*exception){
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
     [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
-    [self initAppLog];
+    self.ttsdkShouldInitAppLog = YES;
+    if (!self.ttsdkShouldInitAppLog) {
+        [self initAppLog];
+    }
     [self initBDImageManager];
 
     [self initTTSDK];
@@ -95,6 +102,7 @@ void uncaughtExceptionHandler(NSException*exception){
     configuration.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     configuration.bundleID = @"com.bytedance.videoarch.pandora.demo";
+    configuration.enableAppLog = self.ttsdkShouldInitAppLog;
     // Add Runtime Update License Path
     NSString* lastPath = [NSUserDefaults.standardUserDefaults stringForKey:LastLicenseDocumentPathUserDefaultsKey];
     if (lastPath && [[NSFileManager defaultManager] fileExistsAtPath:lastPath]) {
