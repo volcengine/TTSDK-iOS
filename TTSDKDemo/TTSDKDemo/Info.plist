@@ -57,6 +57,10 @@
 	<key>buildBranch</key>
 	<string>master</string>
 	<key>commitID</key>
-	<string>300af46</string>
+	<string>81431bf</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>保存视频</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>保存视频</string>
 </dict>
 </plist>

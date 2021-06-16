@@ -16,6 +16,7 @@
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface StreamingViewController () <LiveStreamSessionProtocol>
 
@@ -592,10 +593,18 @@
                 __weak typeof(strongSelf) wself = strongSelf;
                 strongSelf.dumpRecording = NO;
                 NSString *errDesc =@"";
-                if (error) {
+                if (error || !url) {
                     errDesc = [NSString stringWithFormat:@",出错了: %@",[error description]];
                 }
                 [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
+                [[[ALAssetsLibrary alloc] init] writeVideoAtPathToSavedPhotosAlbum:url completionBlock:^(NSURL *assetURL, NSError *error) {
+
+                            if(assetURL) {
+                                NSLog(@"saved down");
+                            } else {
+                                NSLog(@"something wrong");
+                            }
+                }];
             });
         }
     }];
