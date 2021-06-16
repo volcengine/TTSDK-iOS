@@ -16,7 +16,10 @@
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+
+static NSString *const kRecordingText = @"录制中";
+static NSString *const kRecordText = @"录制";
 
 @interface StreamingViewController () <LiveStreamSessionProtocol>
 
@@ -349,7 +352,7 @@
     [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:@"录屏" target:self action:@selector(onRecordButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:kRecordText target:self action:@selector(onRecordButtonClicked:)]];
     [self.view addSubview:self.infoView];
     
     // layout
@@ -574,41 +577,48 @@
     [self.capture setStreamMirror:button.selected];
 }
 
+//MARK: 录制
 - (void)onRecordButtonClicked:(UIButton *)button {
     if (self.dumpRecording) {
         [LiveHelper arertMessage:@"正在录制，耐心等待结束"];
         return;
-    }else{
-        if (!(self.capture && [_liveSession isRunning])) {
-            [LiveHelper arertMessage:@"需要先开启推流"];
-            return;
-        }
+    } if (!(self.capture && [_liveSession isRunning])) {
+        [LiveHelper arertMessage:@"需要先开启推流"];
+        return;
     }
+    [button setTitle:kRecordingText forState:UIControlStateNormal];
     self.dumpRecording = YES;
     __weak typeof(self)weakSelf = self;
-    [_capture startRecordingWithDuration:5 delay:5 fps:60 WithCompletionHandler:^(NSError * _Nonnull error, int type, NSURL * _Nonnull url) {
+    [_capture startRecordingWithDuration:5 delay:1 fps:30 WithCompletionHandler:^(NSError * _Nonnull error, int type, NSURL * _Nonnull url) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
         if([strongSelf.capture dumpIsFinished]){
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                __weak typeof(strongSelf) wself = strongSelf;
+                [button setTitle:kRecordText forState:UIControlStateNormal];
                 strongSelf.dumpRecording = NO;
                 NSString *errDesc =@"";
                 if (error || !url) {
                     errDesc = [NSString stringWithFormat:@",出错了: %@",[error description]];
+                    return;
                 }
-                [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
-                [[[ALAssetsLibrary alloc] init] writeVideoAtPathToSavedPhotosAlbum:url completionBlock:^(NSURL *assetURL, NSError *error) {
-
-                            if(assetURL) {
-                                NSLog(@"saved down");
-                            } else {
-                                NSLog(@"something wrong");
-                            }
-                }];
+                __weak typeof(self)weakSelf = strongSelf;
+                [StreamingViewController saveURL:url error:error];
             });
         }
     }];
     [_capture setValue:@NO forKey:@"shouldUpdateMetadata"];
+}
+
++ (void)saveURL:(NSURL *)videoURL error:(NSError *)error {
+    [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:videoURL];
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if(success) {
+            NSLog(@"saved down");
+        } else {
+            NSLog(@"something wrong");
+        }
+    }];
 }
 
 - (void)onHeadphonesMonitoringButtonClicked:(UIButton *)sender {
