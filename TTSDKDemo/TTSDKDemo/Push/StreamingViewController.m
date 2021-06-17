@@ -5,6 +5,7 @@
 //  Created by 王可成 on 2018/7/11.
 
 #import "StreamingViewController.h"
+#import "StreamingViewController+KTV.h"
 #import "LSCamera.h"
 #import "LiveHelper.h"
 #import <AVFoundation/AVFoundation.h>
@@ -15,10 +16,6 @@
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
-
-#define HAVE_EFFECT 0
-#define HAVE_AUDIO_EFFECT 0
-
 
 @interface StreamingViewController () <LiveStreamSessionProtocol>
 
@@ -34,7 +31,6 @@
 @property (nonatomic, strong) LSCamera *camera;
 
 @property (nonatomic, strong) UIButton *headphonesMonitoringButton;
-
 
 @property (nonatomic, strong) UIButton *beautifyButton;
 @property (nonatomic, strong) UIButton *beautifyButton2;
@@ -69,18 +65,14 @@
 
 @property (nonatomic) UILabel *infoView;
 
-@property (nonatomic) LiveStreamSession *liveSession;
-@property (nonatomic) LiveStreamCapture *capture;
 @property (nonatomic) StreamConfigurationModel *configuraitons;
 @property (nonatomic, assign) CGSize captureSize;
 
 @property (nonatomic, copy) NSString *did_str;
-@property (nonatomic, strong) UIView *karaokeControllersContainer;
-@property (nonatomic, strong) UISlider *recordVolumeSlider;
-@property (nonatomic, strong) UISlider *musicVolumeSlider;
 
 @property (nonatomic, assign) BOOL is_gamimg;
 @property (nonatomic, assign) BOOL is_game_playing;
+@property (nonatomic, assign) BOOL dumpRecording;
 
 @property (nonatomic, strong) UITapGestureRecognizer *effectsTapGesture;
 @property (nonatomic, strong) UILabel *tipsLabel;
@@ -333,12 +325,30 @@
     _headphonesMonitoringButton = [LiveHelper createButton:@"耳返: 关" target:self action:@selector(onHeadphonesMonitoringButtonClicked:)];
     [_controlView addSubview:_headphonesMonitoringButton];
     
+#if HAVE_AUDIO_EFFECT
+    //MARK: 伴奏 + KTV功能
+    #if LIVECORE_ENABLE
+    _karaokeButton = [LiveHelper createButton:@"K歌: 关" target:self action:@selector(onKaraokeButtonClicked:)];
+    [_controlView addSubview:_karaokeButton];
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressKaraokeAction)];
+    [_karaokeButton addGestureRecognizer:longPressGR];
+    [_controlView addSubview:[LiveHelper createButton:@"音效" target:self action:@selector(switchAudioEffectButtonClicked:)]];
+    //
+    _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(onMusicTypeButtonClicked:)];
+    _musicTypeButton.hidden = YES;
+    #else
+    _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(setupAudioUnitProcess:)];
+    #endif
+    [_controlView addSubview:_musicTypeButton];
+#endif
+    
     [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
     
     [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"录屏" target:self action:@selector(onRecordButtonClicked:)]];
     [self.view addSubview:self.infoView];
     
     // layout
@@ -563,6 +573,35 @@
     [self.capture setStreamMirror:button.selected];
 }
 
+- (void)onRecordButtonClicked:(UIButton *)button {
+    if (self.dumpRecording) {
+        [LiveHelper arertMessage:@"正在录制，耐心等待结束"];
+        return;
+    }else{
+        if (!(self.capture && [_liveSession isRunning])) {
+            [LiveHelper arertMessage:@"需要先开启推流"];
+            return;
+        }
+    }
+    self.dumpRecording = YES;
+    __weak typeof(self)weakSelf = self;
+    [_capture startRecordingWithDuration:5 delay:5 fps:60 WithCompletionHandler:^(NSError * _Nonnull error, int type, NSURL * _Nonnull url) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if([strongSelf.capture dumpIsFinished]){
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                __weak typeof(strongSelf) wself = strongSelf;
+                strongSelf.dumpRecording = NO;
+                NSString *errDesc =@"";
+                if (error) {
+                    errDesc = [NSString stringWithFormat:@",出错了: %@",[error description]];
+                }
+                [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
+            });
+        }
+    }];
+    [_capture setValue:@NO forKey:@"shouldUpdateMetadata"];
+}
+
 - (void)onHeadphonesMonitoringButtonClicked:(UIButton *)sender {
     _liveSession.headphonesMonitoringEnabled = !_liveSession.isHeadphonesMonitoringEnabled;
     NSString *buttonText = [NSString stringWithFormat:@"耳返: %@", _liveSession.isHeadphonesMonitoringEnabled ? @"开" : @"关"];
@@ -616,6 +655,9 @@
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+#if HAVE_AUDIO_EFFECT
+    [self longPressKaraokeAction];
+#endif
 }
 
 - (void)onEchoCancellationButtonClicked:(UIButton *)sender {

@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.14.0.9-standard"
+    spec.version      = "1.17.1.2-standard"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -31,7 +31,7 @@
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
         'TTSDK/TTVideoSetting/**/*.a',
       ]
-      subspec.dependency 'RangersAppLog', '>= 3.2.5'
+      subspec.dependency 'RangersAppLog', '< 6.0.0'
       subspec.libraries = 'stdc++'
     end
 
@@ -103,6 +103,7 @@
     spec.subspec 'LivePush' do |subspec|
       subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
+        'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/LiveStreamFramework/**/*',
@@ -118,6 +119,8 @@
         'CoreMedia',
         'AVFoundation',
         'SystemConfiguration',
+        'GLKit',
+        'imageIO'
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.libraries = 'stdc++'

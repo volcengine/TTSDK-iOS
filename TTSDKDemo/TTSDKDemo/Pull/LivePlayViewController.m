@@ -113,6 +113,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(error))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playbackState))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playerLoadState))];
+    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -134,6 +135,15 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLogView)]];
     
     self.definesPresentationContext = YES;
+    // Keep Screen Open
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    __weak typeof(self) wself = self;
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [wself.liveManager pause];
+    }];
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [wself.liveManager play];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -238,6 +248,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     liveManager.allowsResolutionDegrade = YES;
     [liveManager setMuted:self.isMuted];
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
+    [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -622,7 +633,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 - (void)onMonitorLog:(NSDictionary *)event {
     NSLog(@"%@", event);
-    NSLog(@"Server address: %@", self.liveManager.currentItem.accessLog.events.lastObject.serverAddress);
+//    NSLog(@"Server address: %@", self.liveManager.currentItem.accessLog.events.lastObject.serverAddress);
     NSString *eventKey = [event objectForKey:@"event_key"];
     if ([eventKey isEqualToString:@"first_frame"]) {
         _liveStatus = TVLLiveStatusOngoing;
@@ -676,7 +687,12 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)recieveError:(NSError *)error {
-    [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
+    if (error.code == -499896 && self.liveManager.ipMappingTable.count != 0) {
+        NSString *errorMessage = @"IP mapping table settings may be wrong";
+        [self.view makeToast:errorMessage duration:5.f position:CSToastPositionBottom title:nil image:nil style:nil completion:nil];
+    } else {
+        [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
+    }
 }
 
 - (void)stallEnd {
