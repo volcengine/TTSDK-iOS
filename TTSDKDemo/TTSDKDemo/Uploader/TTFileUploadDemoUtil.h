@@ -20,5 +20,11 @@ authParameter:(NSString*)parameter processAction:(int) processAction;
      delegate:(id)delegate
 authParameter:(NSString*)parameter;
 
++ (TTMateUploadClientTop*)mateUploadClientTop:(NSString*)filePath
+                                       delegate:(id)delegate
+                                  authParameter:(NSDictionary*)parameter
+                                       fileType:(NSString*)fileType
+                                       category:(NSString*)category;
+
 + (NSString*)dictionaryToJson:(NSDictionary *)dic;
 @end
