@@ -88,8 +88,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     int64_t _stallCountInStallEvent;
 }
 
-// MARK: Life Cycle
-
 - (instancetype)initWithConfiguration:(PlayConfiguration *)configuration {
     if (self = [super init]) {
         _playConfiguration = configuration;
@@ -109,10 +107,12 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)removeObservations {
+    //MARK: 释放之前，移除对 LiveManager的KVO
     [self.liveManager.currentItem removeObserver:self forKeyPath:NSStringFromSelector(@selector(presentationSize))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(error))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playbackState))];
     [self.liveManager removeObserver:self forKeyPath:NSStringFromSelector(@selector(playerLoadState))];
+    [NSNotificationCenter.defaultCenter removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -134,6 +134,15 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLogView)]];
     
     self.definesPresentationContext = YES;
+    // Keep Screen Open
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    __weak typeof(self) wself = self;
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillResignActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [wself.liveManager pause];
+    }];
+    [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [wself.liveManager play];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -217,6 +226,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
+//MARK:
 - (void)setupLivePlay {
     TVLSettingsManager.defaultManager.dataSource = self;
     [TVLSettingsManager.defaultManager updateCurrentSettings];
@@ -238,6 +248,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     liveManager.allowsResolutionDegrade = YES;
     [liveManager setMuted:self.isMuted];
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
+    [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -608,21 +619,13 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     NSLog(@"%s", __FUNCTION__);
 }
 
-- (void)liveStatusResponse:(TVLLiveStatus)status {
-    _liveStatus = status;
-    // 由于代理方法所在线程并不明确，因此有关视图更新的调用需回到主线程执行，后续代码如无特殊说明，皆为此意
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateLiveStateInfo];
-    });
-}
-
 - (void)loadStateChanged:(NSNumber *)state {
     NSLog(@"%s %@", __FUNCTION__, state);
 }
 
 - (void)onMonitorLog:(NSDictionary *)event {
     NSLog(@"%@", event);
-    NSLog(@"Server address: %@", self.liveManager.currentItem.accessLog.events.lastObject.serverAddress);
+//    NSLog(@"Server address: %@", self.liveManager.currentItem.accessLog.events.lastObject.serverAddress);
     NSString *eventKey = [event objectForKey:@"event_key"];
     if ([eventKey isEqualToString:@"first_frame"]) {
         _liveStatus = TVLLiveStatusOngoing;
@@ -676,7 +679,12 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)recieveError:(NSError *)error {
-    [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
+    if (error.code == -499896 && self.liveManager.ipMappingTable.count != 0) {
+        NSString *errorMessage = @"IP mapping table settings may be wrong";
+        [self.view makeToast:errorMessage duration:5.f position:CSToastPositionBottom title:nil image:nil style:nil completion:nil];
+    } else {
+        [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
+    }
 }
 
 - (void)stallEnd {
