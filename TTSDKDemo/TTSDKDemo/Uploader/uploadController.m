@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, weak) IBOutlet UILabel *progressLabel;
 @property (nonatomic, strong) TTVideoUploadClientTop *videoUploadClientTop;
 @property (nonatomic, strong) TTImageUploadClientTop *imageUploadClientTop;
+@property (nonatomic, strong) TTMateUploadClientTop *mateUploadClientTop;
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval finishTime;
 @property (nonatomic, assign) BOOL isImageX;
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 //@property (nonatomic, copy) NSString* authorizationUri;
 @property (nonatomic, copy) NSString* hostName;
 @property (nonatomic, strong) UIView* segmentContainView;
+@property (nonatomic, strong) UIView* segmentContainViewMate;
 @property (nonatomic, strong) UIView* buttonsContainView;
 @property (nonatomic, strong) UIView* fileButtonContainView;
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -71,6 +73,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, strong) NSDate *expirationTime;
 @property (nonatomic, copy) NSString *regionName;
 @property (nonatomic, assign) NSInteger shouldStartType;
+@property (nonatomic, copy) NSString* mateFilePath;
+@property (nonatomic, copy) NSString* mateFileType;
+@property (nonatomic, copy) NSString* mateCategory;
 
 @end
 @implementation uploadController
@@ -89,6 +94,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         _isfilePath = YES;
         _ImageOnce = YES;
         _VideoOnce = YES;
+        _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test33" ofType:@"JPG"];
+        _mateFileType = @"image";
+        _mateCategory = @"image";
         self.view.backgroundColor = [UIColor whiteColor];
         _pickType = AlbumPickTypePhoto;
         _resultArray = [NSMutableArray arrayWithCapacity:10];
@@ -172,6 +180,41 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 }
 
+- (NSArray *)mateButtonDescription
+{
+    __weak typeof(self) weakSelf = self;
+    return @[
+             @{@"title": @"MateStart",
+               @"handleBlock": ^{
+                   __strong typeof(weakSelf) self = weakSelf;
+                    if (self.mateUploadClientTop == nil) {
+                        [self alertViewController:@"请重新选择素材！！！" title:@"错误"];
+                    }
+                    self.startTime = [[NSDate date] timeIntervalSince1970];
+                    self.shouldStartType = 3;
+                    if (_authParameter == nil) {
+                        [self requestSign];
+                    } else {
+                        [self.mateUploadClientTop start];
+                    }
+                   }
+               },
+             @{@"title": @"MateStop",
+               @"handleBlock": ^{
+                   __strong typeof(weakSelf) self = weakSelf;
+                   [self.mateUploadClientTop stop];
+               }
+               },
+             @{@"title": @"MateClose",
+               @"handleBlock": ^{
+                [self.mateUploadClientTop stop];
+                 self.mateUploadClientTop = nil;
+               }
+               },
+             ];
+    
+}
+
 - (void)alertViewController:(NSString*)message title:(NSString*)title{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -190,6 +233,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 - (void)initUI{
     [self initSegmaent];
+    [self initMateSegment];
     [self initButtons];
     [self initsetImages];
     _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -364,10 +408,12 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         /*vod账号信息*/
         NSString * url = nil;
         if(_isImageX){
-            url = @"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expire=50000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&LTSK=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expiredTime=10000";
         }
         else{
-            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
+            //url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
+            //boe
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=100000000";
             }
                 /* imageX账号信息*/
                 [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
@@ -383,28 +429,34 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         if (jsonObject) {
                             NSLog(@"json Objct:%@",jsonObject);
                             NSDictionary* result;
-                            if(_isImageX){
+                            /*if(_isImageX){
                                 result = jsonObject[@"token"];
                             }else{
-                                result = jsonObject[@"result"];
-                            }
+                                NSString* jsonStr = @"{\"AccessKeyID\":\"AKTPNzc4MmYxYjU4MGFiNDhhMGJiMmVmZTQ4YjcyMDU3NGQ\", \"SecretAccessKey\":\"tphLPWVykyiDIA4IwcWpP3wEluB+w6jPcIno+6z08jJBVJzay9LVq/zXkCsbCm2i\", \"SessionToken\":\"STS2eyJMVEFjY2Vzc0tleUlkIjoiQUtMVE1qRm1NMk13WkRNell6RXlOR1prT0dFM1pUZGlORFkzWm1NeFpHUTRZakkiLCJBY2Nlc3NLZXlJZCI6IkFLVFBOemM0TW1ZeFlqVTRNR0ZpTkRoaE1HSmlNbVZtWlRRNFlqY3lNRFUzTkdRIiwiU2lnbmVkU2VjcmV0QWNjZXNzS2V5IjoiamlySWRYOEVycUh6cFF6bk92MzhXYXpkVFp1NE1laWZCV211NDFUdG5QQzU0cEJzN29lSUs3VnZGbC93OWY1eW9aTW01MUJWTXFDRzdvVzJKemorVmlsQVRnVjBqb0hXUjc0VHFac3AwOGM9IiwiRXhwaXJlZFRpbWUiOjE2NDgxMTc4NjksIlBvbGljeVN0cmluZyI6IntcIlN0YXRlbWVudFwiOlt7XCJFZmZlY3RcIjpcIkFsbG93XCIsXCJBY3Rpb25cIjpbXCJ2b2Q6QXBwbHlVcGxvYWRJbmZvXCIsXCJ2b2Q6Q29tbWl0VXBsb2FkSW5mb1wiXSxcIlJlc291cmNlXCI6W119XX0iLCJTaWduYXR1cmUiOiJkNGU1MzdiNTNkZDI0NTAyYjA0ZDkyMTM4ODg4MDk3MWU1Y2E3OWU5NWIzZDc0YWZhZGY0OGVjMWFkZGE4NGQ0In0=\", \"ExpiredTime\":\"2022-03-24T18:31:09+08:00\", \"CurrentTime\":\"2021-04-11T13:11:09+08:00\"}";
+                                
+                                NSData* jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+                                NSError *err;
+                                
+                                result = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                                    options:NSJSONReadingMutableContainers
+                                                                                      error:&err];
+                                //result = jsonObject[@"result"];
+                                
+                            }*/
+                            result = jsonObject[@"result"];
                             if (result) {
                                 strongSelf.accessKey = nil;
                                 strongSelf.secretKey = nil;
                                 strongSelf.sessionToken = nil;
                                 strongSelf.expirationTime = nil;
-                                
-                                if(_isImageX){
-                                    strongSelf.accessKey = result[@"AccessKeyId"];
-                                }else{
-                                    strongSelf.accessKey = result[@"AccessKeyID"];
-                                }
+                                strongSelf.accessKey = result[@"AccessKeyID"];
                                 strongSelf.secretKey = result[@"SecretAccessKey"];
                                 strongSelf.sessionToken = result[@"SessionToken"];
                                 strongSelf.expirationTime = result[@"ExpiredTime"];
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         [strongSelf.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
                                         [strongSelf.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                                        [strongSelf.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
                                     });
 
                             }
@@ -416,7 +468,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         case 2:
                             [strongSelf.videoUploadClientTop start];
                             break;
-                            
+                        case 3:
+                            [strongSelf.mateUploadClientTop start];
+                            break;
                         default:
                             break;
                     }
@@ -436,13 +490,13 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 #pragma -mark UI
 - (void)initSegmaent{
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, 48, WIDTH, 150)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, 48, WIDTH, 60)];
 //    containView.backgroundColor = [UIColor yellowColor];
     _segmentContainView = containView;
     [self.view addSubview:containView];
     NSInteger tag = 101;
-    NSArray *netArray = @[@"imageX",@"imageXIM",@"VideoAPI2.0"];
-    CGRect netFrame = CGRectMake(10,  40, 100, 40);
+    NSArray *netArray = @[@"imageX",@"imageXIM",@"VideoAPI2.0",@"Material"];
+    CGRect netFrame = CGRectMake(10,  40, WIDTH, 40);
     UIBlockSegmentedControl* netWorkControll = [UIBlockSegmentedControl initSegMentFrame:netFrame item:netArray tag:++tag];
     [netWorkControll addActionBlock:^{
         if (netWorkControll.selectedSegmentIndex == 0) {
@@ -455,6 +509,8 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         }else if(netWorkControll.selectedSegmentIndex == 2){
             _isImageX = NO;
             _processTypeVideo = TTVideoUploadActionTypeEncrypt;
+        }else if(netWorkControll.selectedSegmentIndex == 3){
+            _isImageX = NO;
         }
         [self initUploader];
         //[self requestSign];
@@ -464,9 +520,38 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     
 }
 
+- (void)initMateSegment{
+    UIView* containViewMate = [[UIView alloc] initWithFrame:CGRectMake(0, _segmentContainView.bottom + 20, WIDTH, 60)];
+    //UIView* containViewMate = [[UIView alloc] initWithFrame:CGRectMake(0, 40, WIDTH, 60)];
+    _segmentContainViewMate = containViewMate;
+    [self.view addSubview:containViewMate];
+    NSInteger tagMate = 202;
+    NSArray *netArrayMate = @[@"image",@"video",@"object"];
+    CGRect netFrameMate = CGRectMake(10,  40, WIDTH, 40);
+    
+    UIBlockSegmentedControl* netWorkControllMate = [UIBlockSegmentedControl initSegMentFrame:netFrameMate item:netArrayMate tag:++tagMate];
+    [netWorkControllMate addActionBlock:^{
+        if (netWorkControllMate.selectedSegmentIndex == 0) {
+            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test33" ofType:@"JPG"];
+            _mateFileType = @"image";
+            _mateCategory = @"image";
+        }
+        else if(netWorkControllMate.selectedSegmentIndex == 1){
+            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
+            _mateFileType = @"media";
+            _mateCategory = @"video";
+        }else if(netWorkControllMate.selectedSegmentIndex == 2){
+            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test44" ofType:@"ttf"];
+            _mateFileType = @"object";
+            _mateCategory = @"font";
+        }
+    }];
+    [containViewMate addSubview:netWorkControllMate];
+}
+
 - (void)initButtons{
     
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _segmentContainView.bottom + 20, WIDTH, 120)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _segmentContainViewMate.bottom + 60, WIDTH, 170)];
 //    containView.backgroundColor = [UIColor grayColor];
     _buttonsContainView = containView;
     [self.view addSubview:containView];
@@ -484,9 +569,16 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         UIBlockButton* button = [UIBlockButton buttonFrame:frame titile:title action:obj[@"handleBlock"]];
         [containView addSubview:button];
     }];
+    NSArray * mateButtons = [self mateButtonDescription];
+    [mateButtons enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect frame = CGRectMake(20+(BUTTONWIDTH+40)*idx, BUTTONHEIGHT + 90, BUTTONWIDTH, BUTTONHEIGHT);
+        NSString* title = obj[@"title"];
+        UIBlockButton* button = [UIBlockButton buttonFrame:frame titile:title action:obj[@"handleBlock"]];
+        [containView addSubview:button];
+    }];
 }
 - (void)initsetImages{
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _buttonsContainView.bottom + 20, WIDTH, HEIGHT-_buttonsContainView.bottom - 20)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _buttonsContainView.bottom + 80, WIDTH, HEIGHT-_buttonsContainView.bottom - 20)];
 //    containView.backgroundColor = [UIColor grayColor];
     _fileButtonContainView = containView;
     [self.view addSubview:containView];
@@ -511,6 +603,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 - (void)initUploader{
     [self initImageUploader];
     [self initVideoUploader];
+    [self initMateUploader];
     //[self requestSign];
 }
 - (void)initImageUploader{
@@ -537,6 +630,14 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     [self.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
     //[[TTVideoUploadEventManager sharedManager] popAllEvents];
     
+}
+
+- (void)initMateUploader{
+    if (_mateFilePath == nil || _mateFileType == nil || _mateCategory == nil) {
+        [self alertViewController:@"请先选择素材类型！！！！" title:@"提示"];
+    }
+    self.mateUploadClientTop = [TTFileUploadDemoUtil mateUploadClientTop:_mateFilePath delegate:self authParameter:[self authorizationParameter] fileType:_mateFileType category:_mateCategory];
+    [self.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
 }
 
 #pragma mark -
