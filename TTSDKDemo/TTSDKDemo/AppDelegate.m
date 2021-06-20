@@ -102,7 +102,7 @@ void uncaughtExceptionHandler(NSException*exception){
     configuration.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     configuration.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     configuration.bundleID = @"com.bytedance.videoarch.pandora.demo";
-    configuration.enableAppLog = self.ttsdkShouldInitAppLog;
+    configuration.shouldInitAppLog = self.ttsdkShouldInitAppLog;
     // Add Runtime Update License Path
     NSString* lastPath = [NSUserDefaults.standardUserDefaults stringForKey:LastLicenseDocumentPathUserDefaultsKey];
     if (lastPath && [[NSFileManager defaultManager] fileExistsAtPath:lastPath]) {
