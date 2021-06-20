@@ -103,6 +103,39 @@
     return clientTop;
 }
 
++ (TTMateUploadClientTop*)mateUploadClientTop:(NSString*)filePath
+                                       delegate:(id)delegate
+                                  authParameter:(NSDictionary*)parameter
+                                     fileType:(NSString*)fileType
+                                     category:(NSString*)category{
+    TTMateUploadClientTop* clientTop  = [[TTMateUploadClientTop alloc] initWithFilePath:filePath];
+    if (fileType != nil) {
+        NSDictionary* requestParameter = @{
+                                           TTFileUploadFileTypeStr:fileType,
+                                           //TTFileUploadSpace:@"boe-store",
+                                           TTFileUploadSpace:@"store",
+                                           };
+        [clientTop setRequestParameter: requestParameter];
+        NSLog(@"filePath %@ fileType %@ category %@",filePath,fileType,category);
+    }
+    
+    clientTop.delegate = delegate;
+    /**boe*/
+    //NSString* hostName = @"volcengineapi-boe.byted.org";
+    /**online*/
+    NSString* hostName = @"vod.volcengineapi.com";
+    [clientTop setMateHostName:hostName];
+    [clientTop setAuthorizationParameter:parameter];
+    [clientTop setSeverParameter:@"key1=value1&key2=value2"];
+    [clientTop setRecordType:2];
+    [clientTop setCategory:category];
+    [clientTop setTitle:@"testMateUpload"];
+    [clientTop setTags:@"testMateTag,testMateTagOne"];
+    [clientTop setDescription:@"testMateDescription"];
+    [clientTop setFormat:@"JPG"];
+    return clientTop;
+}
+
 + (TTImageUploadClientTop*)imageUploadClientTop:(NSArray*)filePaths
                                        delegate:(id)delegate
                                   authParameter:(NSString*)parameter

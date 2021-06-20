@@ -14,6 +14,8 @@
 		2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */; };
 		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
+		5C5CA2452627E54600317338 /* test33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2442627E54600317338 /* test33.JPG */; };
+		5C5CA2732628139500317338 /* test44.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2462627E55100317338 /* test44.ttf */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
 		831E378823D0177B00A9F7A9 /* LSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378523D0177B00A9F7A9 /* LSMainViewController.m */; };
 		831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E378F23D017E600A9F7A9 /* LiveHelper.m */; };
@@ -156,6 +158,8 @@
 		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
+		5C5CA2442627E54600317338 /* test33.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test33.JPG; sourceTree = "<group>"; };
+		5C5CA2462627E55100317338 /* test44.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test44.ttf; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
 		831E377A23CF657600A9F7A9 /* TTSDKDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTSDKDemo.pch; sourceTree = "<group>"; };
 		831E378523D0177B00A9F7A9 /* LSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSMainViewController.m; sourceTree = "<group>"; };
@@ -484,6 +488,8 @@
 				83C443DF243F8E2A00081EA1 /* Pull */,
 				83C443F3243F8E2A00081EA1 /* VOD */,
 				83C8D053242F3F9D0078C7EA /* test.mp4 */,
+				5C5CA2442627E54600317338 /* test33.JPG */,
+				5C5CA2462627E55100317338 /* test44.ttf */,
 				2B44FB1525515BD9002CC02A /* test1.png */,
 				831E378423D0177B00A9F7A9 /* Push */,
 				8378B5BE23C4860F0075E05C /* AppDelegate.h */,
@@ -971,12 +977,14 @@
 				8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */,
 				83A3049D24F6AED600209D0A /* 手动暂停.png in Resources */,
 				83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */,
+				5C5CA2732628139500317338 /* test44.ttf in Resources */,
 				83A3049E24F6AED600209D0A /* stop@2x.png in Resources */,
 				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
 				83A304A024F6AED600209D0A /* setting.png in Resources */,
 				83A3049524F6AED600209D0A /* play@3x.png in Resources */,
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
+				5C5CA2452627E54600317338 /* test33.JPG in Resources */,
 				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
 				2B44FB1625515BD9002CC02A /* test1.png in Resources */,
 				8378B5CB23C486100075E05C /* Assets.xcassets in Resources */,
