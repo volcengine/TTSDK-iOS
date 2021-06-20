@@ -20,6 +20,16 @@
 #import <TTSDK/TTFileUploader.h>
 #endif
 
+#define USE_EFFECT 1
+#if USE_EFFECT
+    #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+    //
+    #else
+    #import <TTSDK/LSLiveAudioUnitProcess.h>
+    #import <TTSDK/LSLiveAudioEffectFormat.h>
+    #endif
+#endif
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "TTVideoPlayerDemoDefine.h"

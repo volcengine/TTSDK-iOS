@@ -8,6 +8,8 @@
 #import "PlayConfiguration.h"
 
 @implementation PlayConfiguration
+static NSString *IP_ADDRESS = @"IPAddressUserDefaultKey";
+static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
 
 + (instancetype)defaultConfiguration {
     PlayConfiguration *defaultConfiguration = [[PlayConfiguration alloc] init];
@@ -41,8 +43,26 @@
 //                                          TVLSettingsItemKeyIsH265HardwareDecodeEnabled: @(0),
 //                                          TVLSettingsItemKeyIsFastOpenEnabled: @(1),
                                           };
+    defaultConfiguration.ipAddress = [[NSUserDefaults standardUserDefaults] stringForKey:IP_ADDRESS];
+    defaultConfiguration.domainName = [[NSUserDefaults standardUserDefaults] stringForKey:DOMAIN_NAME];
     defaultConfiguration.shouldArchiveLogs = YES;
     return defaultConfiguration;
+}
+
+- (NSDictionary *)ipMapping {
+    if (self.ipAddress.length > 0 && self.domainName.length > 0) {
+        return @{ self.ipAddress : self.domainName };
+    }
+    return @{};
+}
+
+- (void)saveConfiguration {
+    if (self.ipAddress.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setValue:[self.ipAddress copy] forKey:IP_ADDRESS];
+    }
+    if (self.domainName.length > 0) {
+        [[NSUserDefaults standardUserDefaults] setValue:[self.domainName copy] forKey:DOMAIN_NAME];
+    }
 }
 
 @end
