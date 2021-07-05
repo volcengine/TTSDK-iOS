@@ -249,6 +249,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [liveManager setMuted:self.isMuted];
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
     [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
+    [liveManager setShouldReportAudioFrame:YES];
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -617,6 +618,14 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 - (void)manager:(TVLManager *)manager playerItemStatusDidChange:(TVLPlayerItemStatus)status {
     NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)manager:(TVLManager *)manager willProcessAudioFrameWithRawData:(float **)rawData samples:(int)samples timeStamp:(int64_t)timestamp {
+    
+}
+
+- (void)manager:(TVLManager *)manager willOpenAudioRenderWithSampleRate:(int)sampleRate channels:(int)channels duration:(int)duration {
+    NSLog(@"TTSDK: Audio Render Will Open");
 }
 
 - (void)loadStateChanged:(NSNumber *)state {
