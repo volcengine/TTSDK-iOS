@@ -132,12 +132,14 @@
         'TTSDK/ABRInterface/**/*.h',
         'TTSDK/VCPreloadStrategy/**/*.h',
         'TTSDK/TTNetworkPredict/**/*.h',
+        'TTSDK/VCVodSettings/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoEngine/**/*',
         'TTSDK/ABRInterface/**/*',
         'TTSDK/VCPreloadStrategy/**/*',
         'TTSDK/TTNetworkPredict/**/*',
+        'TTSDK/VCVodSettings/**/*'
       ]
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
@@ -151,6 +153,7 @@
         'TTSDK/TTNetworkPredict/**/*.a',
         'TTSDK/lib_h_dec/**/*.a',
         'TTSDK/ABRInterface/**/*.a',
+        'TTSDK/VCVodSettings/**/*.a',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
