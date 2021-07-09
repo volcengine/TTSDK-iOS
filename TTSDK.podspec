@@ -133,6 +133,7 @@
         'TTSDK/VCPreloadStrategy/**/*.h',
         'TTSDK/TTNetworkPredict/**/*.h',
         'TTSDK/VCVodSettings/**/*.h',
+        'TTSDK/BDHTTPDNS/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoEngine/**/*',
@@ -154,6 +155,7 @@
         'TTSDK/lib_h_dec/**/*.a',
         'TTSDK/ABRInterface/**/*.a',
         'TTSDK/VCVodSettings/**/*.a',
+        'TTSDK/BDHTTPDNS/**/*.a',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
