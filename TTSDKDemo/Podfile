@@ -27,7 +27,7 @@ def common_pods
   pod 'FLEX'
   pod 'Toast', '~> 4.0.0'
   pod 'YYCategories'
-  pod 'AFNetworking'
+  pod 'AFNetworking', '~> 2.0'
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
