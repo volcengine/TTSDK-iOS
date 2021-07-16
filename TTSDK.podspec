@@ -181,6 +181,97 @@
       ]
       subspec.dependency 'TTSDK/Core'
     end
+    
+     # MARK: - Player trim boringssl, optional subspecs
+     # 新增 subspec: Player_strip, 与原来的 Player 基本一致
+     # 对 MDL 的引用改为隐藏符号后的版本
+     # 对 VCN 的引用改为隐藏符号后的版本
+     # dependecy 引用的是 PlayerCore_strip
+       spec.subspec 'Player_strip' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTVideoEngine/**/*.h',
+        'TTSDK/ABRInterface/**/*.h',
+        'TTSDK/VCPreloadStrategy/**/*.h',
+        'TTSDK/TTNetworkPredict/**/*.h',
+        'TTSDK/VCVodSettings/**/*.h',
+        'TTSDK/BDHTTPDNS/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTVideoEngine/**/*',
+        'TTSDK/ABRInterface/**/*',
+        'TTSDK/VCPreloadStrategy/**/*',
+        'TTSDK/TTNetworkPredict/**/*',
+        'TTSDK/VCVodSettings/**/*'
+      ]
+      subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTVideoEngine/**/*.a',
+        'TTSDK/TTTopSignature/**/*.a',
+        'TTSDK/MDLMediaDataLoader_strip/**/*.a',
+        'TTSDK/VCNVCloudNetwork_strip/**/*.a',
+        'TTSDK/VCPreloadStrategy/**/*.a',
+        'TTSDK/TTNetworkPredict/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a',
+        'TTSDK/ABRInterface/**/*.a',
+        'TTSDK/VCVodSettings/**/*.a',
+        'TTSDK/BDHTTPDNS/**/*.a',
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore_strip'
+    end
 
+    # PlayerCore_strip 引用的是 TTFFmpeg_strip
+    spec.subspec 'PlayerCore_strip' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTPlayerSDK/**/*.a',
+        'TTSDK/audiosdk/**/*.a',
+      ]
+      subspec.resources = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+      subspec.dependency 'TTSDK/TTFFmpeg_strip'
+
+    end
+
+    # TTFFmpeg_strip 移除对 boringssl 的引用，只引用必要的 libcrcrypto
+    # 对 ffmpeg 的引用更新为隐藏符号之后的版本
+    spec.subspec 'TTFFmpeg_strip' do |subspec|
+      subspec.vendored_libraries = [
+        'TTSDK/boringssl/**/libcrcrypto.a',
+        'TTSDK/TTFFmpeg_strip/**/*.a',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
   end
 
