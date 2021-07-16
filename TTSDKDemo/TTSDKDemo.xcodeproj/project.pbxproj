@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1195EBB4F867F87D00458346 /* TTSDKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E8298C282C80A657B09718 /* TTSDKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */; };
 		2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */; };
 		2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB09254B0B72002CC02A /* uploadController.m */; };
@@ -139,6 +140,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1195EBB4F867F87D00458346 /* TTSDKFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +380,7 @@
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27864F2B5D4CED392ABB1D9 /* Pods-TTSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E6E8298C282C80A657B09718 /* TTSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TTSDKFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				83C44394243E492A00081EA1 /* EffectSDK */,
+				E6E8298C282C80A657B09718 /* TTSDKFramework.framework */,
 			);
 			path = extern;
 			sourceTree = "<group>";

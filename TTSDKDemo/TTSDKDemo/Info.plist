@@ -55,8 +55,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>buildBranch</key>
-	<string>master</string>
+	<string>wxy/bits-test</string>
 	<key>commitID</key>
-	<string>300af46</string>
+	<string>e5b8413</string>
 </dict>
 </plist>
