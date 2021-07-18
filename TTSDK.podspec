@@ -165,6 +165,7 @@
         'TTSDK/TTNetworkManager/**/*.a',
         'TTSDK/boringssl/**/*.a',
         'TTSDK/protobuf_lite/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a',
       ]
       subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore'
       subspec.libraries = "c++", "resolv", "sscronet"
