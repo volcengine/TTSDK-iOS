@@ -195,5 +195,62 @@
       subspec.dependency 'TTSDK/Net'
     end
 
+    # Lite Pod Spec , Use With Caution! If there is no symbol conflict, Should not intergrate subspecs below
+
+    spec.subspec 'PlayerCore-Lite' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTPlayerSDK/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a'
+      ]
+      subspec.resources = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+      ]
+      subspec.frameworks = ['CoreMotion', 'CoreMedia', 'MetalKit', 'OpenAL', 'VideoToolBox', 'AudioToolBox', 'AVFoundation', 'SystemConfiguration']
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
+
+    spec.subspec 'Player-Lite' do |subspec|
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      subspec.public_header_files = [
+        "TTSDK/{#{class_name}}/**/*.h"
+      ]
+      subspec.source_files = [
+        "TTSDK/{#{class_name}}/**/*"
+      ]
+      subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+      ]
+      lib_name = "#{class_name},MDLMediaDataLoader,TTTopSignature,TTVideoSetting"
+      subspec.vendored_libraries = [
+        "TTSDK/{#{lib_name}}/**/*.a"
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-Lite'
+      subspec.dependency 'TTSDK/Net'
+    end
+
+    spec.subspec 'LivePull-Lite' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTVideoLive/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTVideoLive/**/*',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTVideoLive/**/*.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-Lite'
+      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
+    end
   end
 
