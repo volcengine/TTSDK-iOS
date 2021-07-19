@@ -168,7 +168,8 @@
       subspec.vendored_libraries = [
         'TTSDK/BDWebImageToB/**/*.a',
         'TTSDK/TTNetworkManager/**/*.a',
-        'TTSDK/protobuf_lite/**/*.a'
+        'TTSDK/protobuf_lite/**/*.a',
+        'TTSDK/libttheif_ios/**/*.a'
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/Tools'
