@@ -167,7 +167,7 @@
         'TTSDK/protobuf_lite/**/*.a',
         'TTSDK/lib_h_dec/**/*.a',
       ]
-      subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore'
+      subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore', 'Accelerate'
       subspec.libraries = "c++", "resolv", "sscronet"
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
@@ -183,7 +183,8 @@
         'TTSDK/TTFileUploadClientb/**/*',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/TTFileUploadClientb/**/*.a'
+        'TTSDK/TTFileUploadClientb/**/*.a',
+        'TTSDK/VCNVCloudNetwork/**/*.a'
       ]
       subspec.dependency 'TTSDK/Core'
     end
