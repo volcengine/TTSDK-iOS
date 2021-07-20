@@ -45,6 +45,7 @@
     spec.subspec 'Net' do |subspec| 
       subspec.vendored_libraries = [
         'TTSDK/VCNVCloudNetwork/**/*.a',
+        'TTSDK/TTNetworkManager/**/*.a'
       ]
     end
 
@@ -167,11 +168,11 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/BDWebImageToB/**/*.a',
-        'TTSDK/TTNetworkManager/**/*.a',
         'TTSDK/protobuf_lite/**/*.a',
         'TTSDK/libttheif_ios/**/*.a'
       ]
       subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/Net'
       subspec.dependency 'TTSDK/Tools'
       #
       subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore', 'Accelerate'
@@ -190,10 +191,11 @@
         'TTSDK/TTFileUploadClientb/**/*',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/TTFileUploadClientb/**/*.a'
+        "TTSDK/{TTVideoSetting,TTFileUploadClientb}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/Net'
+      subspec.dependency 'TTSDK/Tools'
     end
 
     # Lite Pod Spec , Use With Caution! If there is no symbol conflict, Should not intergrate subspecs below
