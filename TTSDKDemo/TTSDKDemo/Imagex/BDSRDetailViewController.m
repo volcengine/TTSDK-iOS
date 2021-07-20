@@ -8,7 +8,6 @@
 
 #import "BDSRDetailViewController.h"
 #import <Masonry/Masonry.h>
-#import <BDSuperResolutionTransformer.h>
 
 @interface BDSRDetailViewController ()
 
