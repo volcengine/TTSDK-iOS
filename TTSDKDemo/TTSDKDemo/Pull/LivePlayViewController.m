@@ -779,7 +779,9 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
         id value = [formattedDebugInfoItems objectForKey:key];
         [formattedDebugInfo appendFormat:@"%@: %@\n", key, value];
     }
-    self.infoTextView.text = formattedDebugInfo;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.infoTextView.text = formattedDebugInfo;
+    });
 }
 
 @end
