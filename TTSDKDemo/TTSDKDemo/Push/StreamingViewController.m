@@ -721,13 +721,13 @@ static NSString *const kRecordText = @"录制";
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecBaseAutoLevel;
             else
-                type = 901;//LiveEnCodecByteVC1MainAutoLevel
+                type = 901;
             break;            
         case 1:
             if (LiveStreamVideoCodec_VT_264 == (LiveStreamVideoCodec)_configuraitons.videoCodecType)
                 type = LiveEnCodecMainAutoLevel;
             else
-                type = 902;//LiveEnCodecByteVC1Main10AutoLevel
+                type = 901;
             break;
         case 2:
             type = LiveEnCodecHighAutoLevel;
