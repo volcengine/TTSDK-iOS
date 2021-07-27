@@ -113,7 +113,7 @@
         NSDictionary* requestParameter = @{
                                            TTFileUploadFileTypeStr:fileType,
                                            //TTFileUploadSpace:@"boe-store",
-                                           TTFileUploadSpace:@"store",
+                                           TTFileUploadSpace:@"testaether",
                                            };
         [clientTop setRequestParameter: requestParameter];
         NSLog(@"filePath %@ fileType %@ category %@",filePath,fileType,category);
@@ -123,7 +123,7 @@
     /**boe*/
     //NSString* hostName = @"volcengineapi-boe.byted.org";
     /**online*/
-    NSString* hostName = @"vod.volcengineapi.com";
+    NSString* hostName = @"vod.byteplusapi.com";
     [clientTop setMateHostName:hostName];
     [clientTop setAuthorizationParameter:parameter];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
@@ -168,7 +168,7 @@
                              TTFileUploadTraceId:@"asdf"
                              };
     [clientTop setUploadConfig:config];
-    [clientTop setImageHostName:@"imagex.volcengineapi.com"];
+    //[clientTop setImageHostName:@"imagex.volcengineapi.com"];
     
     return clientTop;
 }
