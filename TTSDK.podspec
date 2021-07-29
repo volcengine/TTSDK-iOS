@@ -255,5 +255,75 @@
       subspec.dependency 'TTSDK/PlayerCore-Lite'
       subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
+
+    # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
+    
+    spec.subspec 'Player-Strip' do |subspec|
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      subspec.public_header_files = [
+        "TTSDK/{#{class_name}}/**/*.h"
+      ]
+      subspec.source_files = [
+        "TTSDK/{#{class_name}}/**/*"
+      ]
+      subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+      ]
+      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
+      subspec.vendored_libraries = [
+        "TTSDK/{#{lib_name}}/**/*.a"
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-Strip'
+    end
+    
+    spec.subspec 'PlayerCore-Strip' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTPlayerSDK/**/*.a',
+        'TTSDK/audiosdk/**/*.a',
+      ]
+      subspec.resources = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+      subspec.dependency 'TTSDK/TTFFmpeg-Strip'
+    end
+
+    spec.subspec 'TTFFmpeg-Strip' do |subspec|
+      subspec.vendored_libraries = [
+        'TTSDK/boringssl/**/libcrcrypto.a',
+        'TTSDK/TTFFmpeg_strip/**/*.a',
+      ]
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
+
   end
 
