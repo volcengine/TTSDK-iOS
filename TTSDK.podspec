@@ -269,7 +269,7 @@
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
+      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec,TTVideoSetting"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
