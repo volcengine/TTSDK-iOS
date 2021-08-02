@@ -90,16 +90,16 @@
     TTVideoUploadClientTop* clientTop  = [[TTVideoUploadClientTop alloc] initWithFilePath:filePath];
     NSDictionary* requestParameter = @{/* TTFileUploadSpace:@"for-boe-test",*/
                                        TTFileUploadFileTypeStr:@"video",
-                                       TTFileUploadSpace:@"store",
+                                       TTFileUploadSpace:@"testaether",
 
                                        };
     clientTop.delegate = delegate;
-    NSString* hostName = @"vod.volcengineapi.com";
+    NSString* hostName = @"vod.byteplusapi.com";
     [clientTop setVideoHostName:hostName];
     [clientTop setRequestParameter: requestParameter];
     [clientTop setAuthorizationParameter:parameter];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
-    [clientTop setProcessActionType:TTVideoUploadActionTypeEncrypt parameter:nil];
+    //[clientTop setProcessActionType:TTVideoUploadActionTypeEncrypt parameter:nil];
     return clientTop;
 }
 
@@ -113,7 +113,7 @@
         NSDictionary* requestParameter = @{
                                            TTFileUploadFileTypeStr:fileType,
                                            //TTFileUploadSpace:@"boe-store",
-                                           TTFileUploadSpace:@"store",
+                                           TTFileUploadSpace:@"testaether",
                                            };
         [clientTop setRequestParameter: requestParameter];
         NSLog(@"filePath %@ fileType %@ category %@",filePath,fileType,category);
@@ -123,7 +123,7 @@
     /**boe*/
     //NSString* hostName = @"volcengineapi-boe.byted.org";
     /**online*/
-    NSString* hostName = @"vod.volcengineapi.com";
+    NSString* hostName = @"vod.byteplusapi.com";
     [clientTop setMateHostName:hostName];
     [clientTop setAuthorizationParameter:parameter];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
@@ -144,8 +144,8 @@
     clientTop.delegate = delegate;
 
     NSString* hostName;
-    hostName = @"imagex.volcengineapi.com";
-    [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
+    hostName = @"vod.byteplusapi.com";
+    [clientTop setRequestParameter: @{TTFileUploadSpace:@"testaether",
     TTFileUploadFileTypeStr:@"image",
     }];
     [clientTop setImageHostName:hostName];
@@ -157,8 +157,8 @@
     
     
     //[clientTop setAuthorizationParameter:parameter];
-    NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
-    [clientTop setProcessActionType:processAction parameter:params];
+    //NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
+    //[clientTop setProcessActionType:processAction parameter:params];
     
     NSDictionary* config = @{
                              TTFileUploadFileRetryCount:@1,
@@ -168,7 +168,7 @@
                              TTFileUploadTraceId:@"asdf"
                              };
     [clientTop setUploadConfig:config];
-    [clientTop setImageHostName:@"imagex.volcengineapi.com"];
+    //[clientTop setImageHostName:@"imagex.volcengineapi.com"];
     
     return clientTop;
 }
