@@ -275,6 +275,22 @@
       subspec.dependency 'TTSDK/PlayerCore-Strip'
     end
     
+    spec.subspec 'LivePull-Strip' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTVideoLive/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTVideoLive/**/*',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTVideoLive/**/*.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-Strip'
+      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
+    end
+
     spec.subspec 'PlayerCore-Strip' do |subspec|
       subspec.public_header_files = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
