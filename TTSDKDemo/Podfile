@@ -24,7 +24,7 @@ end
 def common_pods
   pod 'Masonry'
   pod 'ReactiveCocoa', '2.5'
-  pod 'FLEX'
+  #pod 'FLEX'
   pod 'Toast', '~> 4.0.0'
   pod 'YYCategories'
   pod 'AFNetworking'
