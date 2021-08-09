@@ -31,7 +31,10 @@ else
 
   file_reference = project.objects.select { |object| object.display_name == display_name and object.instance_of? PBXFileReference }.first
   image_file_reference = project.objects.select { |object| object.display_name == display_image_name and object.instance_of? PBXFileReference }.first
+  ##
   build_file = project.objects.select { |object| object.display_name == display_name and object.instance_of? PBXBuildFile }.first
+  image_build_file = project.objects.select { |object| object.display_name == display_image_name and object.instance_of? PBXBuildFile }.first
+
   copy_files_build_phases = target.copy_files_build_phases.select { |build_phase| build_phase.name == "Embed Frameworks" }.first
 
   if command == "setup"
@@ -43,8 +46,15 @@ else
   
     if build_file.nil?
       build_file = copy_files_build_phases.add_file_reference(file_reference)
-      build_file = copy_files_build_phases.add_file_reference(image_file_reference)
       build_file.settings = {
+        "ATTRIBUTES" => [ 
+          :CodeSignOnCopy, 
+          :RemoveHeadersOnCopy,
+        ]
+      }
+      #
+      image_build_file = copy_files_build_phases.add_file_reference(image_file_reference)
+      image_build_file.settings = {
         "ATTRIBUTES" => [ 
           :CodeSignOnCopy, 
           :RemoveHeadersOnCopy,
