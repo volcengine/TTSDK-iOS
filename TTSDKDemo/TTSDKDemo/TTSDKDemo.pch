@@ -20,6 +20,10 @@
 #import <TTSDK/TTFileUploader.h>
 #endif
 
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKImageFramework/TTSDKImageFramework.h>
+#endif
+
 #define USE_EFFECT 1
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
