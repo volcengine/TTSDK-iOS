@@ -20,7 +20,7 @@
 #import <TTSDK/TTFileUploader.h>
 #endif
 
-#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#if __has_include(<TTSDKImageFramework/TTSDKImageFramework.h>)
 #import <TTSDKImageFramework/TTSDKImageFramework.h>
 #endif
 
