@@ -21,6 +21,7 @@ if command == "help" or command.nil?
   puts usage
 else
   display_name = "TTSDKFramework.framework"
+  display_image_name = "TTSDKImageFramework.framework"
   IO.readlines(File.join(scripts_dir, "../../TTSDK.podspec")).each { |line| version = line.chop.split("=")[-1].strip[1...-1] if line =~ /spec\.version\s*\=\s*\".*\"/ } if version.nil?
   lib_download_url = "http://sf1-hscdn-tos.pstatp.com/obj/cloud-common/ttsdk/iOS/TTSDKFramework-#{version}-ta.zip"
   project_path = File.join(scripts_dir, "../TTSDKDemo.xcodeproj")
@@ -29,6 +30,7 @@ else
   group = project.groups.select { |group| group.display_name == "extern" }.first
 
   file_reference = project.objects.select { |object| object.display_name == display_name and object.instance_of? PBXFileReference }.first
+  image_file_reference = project.objects.select { |object| object.display_name == display_image_name and object.instance_of? PBXFileReference }.first
   build_file = project.objects.select { |object| object.display_name == display_name and object.instance_of? PBXBuildFile }.first
   copy_files_build_phases = target.copy_files_build_phases.select { |build_phase| build_phase.name == "Embed Frameworks" }.first
 
@@ -36,18 +38,18 @@ else
     puts "dynamic library environment will be setup..."
     if file_reference.nil?
       file_reference = group.new_reference(display_name)
-      # puts file_reference.inspect
+      image_file_reference = group.new_reference(display_image_name)
     end
   
     if build_file.nil?
       build_file = copy_files_build_phases.add_file_reference(file_reference)
+      build_file = copy_files_build_phases.add_file_reference(image_file_reference)
       build_file.settings = {
         "ATTRIBUTES" => [ 
           :CodeSignOnCopy, 
           :RemoveHeadersOnCopy,
         ]
       }
-      # puts build_file.inspect
     end
     unless File.exist?(file_reference.real_path)
       system <<-EOF
@@ -63,7 +65,9 @@ else
     unless file_reference.nil?
       FileUtils.rm_rf(file_reference.real_path)
       copy_files_build_phases.remove_file_reference(file_reference)
+      copy_files_build_phases.remove_file_reference(image_file_reference)
       file_reference.remove_from_project()
+      image_file_reference.remove_from_project()
     end
     puts "cleaning dynamic library environment finished..."
   end
