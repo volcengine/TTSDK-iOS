@@ -145,7 +145,7 @@
     [self.view endEditing:YES];
 }
 
-- (IBAction)onExit:(id)sender {
+- (IBAction)onExits:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

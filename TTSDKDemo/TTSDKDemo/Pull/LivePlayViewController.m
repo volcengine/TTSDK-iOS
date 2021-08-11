@@ -14,7 +14,6 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
-#import <ReactiveCocoa.h>
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -244,7 +243,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     liveManager.commonTag = self.playConfiguration.commonTag;
     liveManager.shouldUseLiveDNS = self.playConfiguration.shouldUseLiveDNS;
     liveManager.preferredToHTTPDNS = self.playConfiguration.isPreferredToHTTPDNS;
-    liveManager.clockSynchronizationEnabled = self.playConfiguration.isClockSynchronizationEnabled;
     liveManager.allowsResolutionDegrade = YES;
     [liveManager setMuted:self.isMuted];
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
