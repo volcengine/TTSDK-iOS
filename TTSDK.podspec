@@ -110,7 +110,6 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
-      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
 
     spec.subspec 'LivePush' do |subspec|
@@ -251,7 +250,6 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-Lite'
-      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
 
     # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
