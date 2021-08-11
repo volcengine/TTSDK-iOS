@@ -9,7 +9,6 @@
 #import "LivePlayViewController.h"
 #import "ConfiguringViewController.h"
 #import "PlayConfiguration.h"
-#import <ReactiveCocoa.h>
 #import <AVFoundation/AVFoundation.h>
 #import <Masonry.h>
 #import "UIColor+Hex.h"
