@@ -24,7 +24,7 @@ end
 def common_pods
   pod 'CocoaAsyncSocket', :path => '../Pods-Cache'
   pod 'Masonry'
-  pod 'ReactiveCocoa', '2.5'
+  pod 'ReactiveObjC'
   pod 'FLEX'
   pod 'Toast', '~> 4.0.0'
   pod 'YYCategories'
