@@ -56,10 +56,6 @@ void uncaughtExceptionHandler(NSException*exception){
     self.window.rootViewController = naviVC;
     [self.window makeKeyAndVisible];
     
-//    [TTVideoEngine tracker_start:^(NSString * _Nullable deviceID, NSString * _Nullable installID, NSString * _Nullable ssID) {
-//        NSLog(@"deviceID = %@, installID = %@, ssID = %@",deviceID,installID,ssID);
-//    }];
-    
     // 启动播放器的localserver.
     [self startVideoServer];
     
