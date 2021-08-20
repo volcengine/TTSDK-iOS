@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
-@interface uploadController ()
+@interface uploadController () <UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *uploadButton;
 @property (nonatomic, weak) IBOutlet UILabel *progressLabel;
@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, strong) UIView* segmentContainViewMate;
 @property (nonatomic, strong) UIView* buttonsContainView;
 @property (nonatomic, strong) UIView* fileButtonContainView;
+@property (nonatomic, strong) UITextField* textfiled;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *thumbs;
 @property (nonatomic, strong) NSMutableArray *assets;
@@ -76,6 +77,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, copy) NSString* mateFilePath;
 @property (nonatomic, copy) NSString* mateFileType;
 @property (nonatomic, copy) NSString* mateCategory;
+@property (nonatomic, copy) NSString* mAKSKJsonStr;
 
 @end
 @implementation uploadController
@@ -231,9 +233,15 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     }
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    _mAKSKJsonStr = textField.text;
+    NSLog(@"AKSKJsonStr:%@",_mAKSKJsonStr);
+}
+
 - (void)initUI{
     [self initSegmaent];
     [self initMateSegment];
+    [self initAKSKText];
     [self initButtons];
     [self initsetImages];
     _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -408,61 +416,66 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         /*vod账号信息*/
         NSString * url = nil;
         if(_isImageX){
-            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&LTSK=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&expiredTime=10000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKStr&LTSK=SKStr&expiredTime=10000";
         }
         else{
-            //url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
-            //boe
-            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=100000000";
+            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKStr&LTSK=SKStr&expiredTime=100000000";
             }
                 /* imageX账号信息*/
-                [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
-            //[TTFileUploadDemoUtil configTaskWithURL:@"http://vod-sdk-playground.snssdk.com/api/v1/sign_sts2?ak=AKLTZjRkNWRhOTExNzVhNDgzMmExMGM4OTdjNDM1YzMxMzM&sk=vluAyFdJFItpD/fvXchJouMLRHMYO0LjUzCvWMM7XnxYi9SPxk3CQC6mlrJOLhxy&expire=10000" params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
-                        __strong typeof(self) strongSelf = weakSelf;
-                        if (error) {
-                            NSLog(@"error = %@",error);
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [strongSelf requestSign];
-            //                    [strongSelf alertTitle:NULL Message:error.domain];
-                            });
-                        }
-                        if (jsonObject) {
-                            NSLog(@"json Objct:%@",jsonObject);
-                            NSDictionary* result;
-                            result = jsonObject[@"result"];
-                            if (result) {
-                                strongSelf.accessKey = nil;
-                                strongSelf.secretKey = nil;
-                                strongSelf.sessionToken = nil;
-                                strongSelf.expirationTime = nil;
-                                strongSelf.accessKey = result[@"AccessKeyID"];
-                                strongSelf.secretKey = result[@"SecretAccessKey"];
-                                strongSelf.sessionToken = result[@"SessionToken"];
-                                strongSelf.expirationTime = result[@"ExpiredTime"];
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        [strongSelf.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                                        [strongSelf.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                                        [strongSelf.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                                    });
-
-                            }
-                        }
-                    switch (strongSelf.shouldStartType) {
-                        case 1:
-                            [strongSelf.imageUploadClientTop start];
-                            break;
-                        case 2:
-                            [strongSelf.videoUploadClientTop start];
-                            break;
-                        case 3:
-                            [strongSelf.mateUploadClientTop start];
-                            break;
-                        default:
-                            break;
-                    }
-                    strongSelf.shouldStartType = 0;
-                    }];
+    [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
+        __strong typeof(self) strongSelf = weakSelf;
+        if (error) {
+            NSLog(@"error = %@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf requestSign];
+        //      [strongSelf alertTitle:NULL Message:error.domain];
+            });
         }
+        if (jsonObject) {
+            NSLog(@"json Objct:%@",jsonObject);
+            NSDictionary* result;
+            NSData* jsonData = [self.mAKSKJsonStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+
+            result = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                     options:NSJSONReadingMutableContainers
+                                                       error:&err];
+
+
+            //result = jsonObject[@"result"];
+            if (result) {
+                strongSelf.accessKey = nil;
+                strongSelf.secretKey = nil;
+                strongSelf.sessionToken = nil;
+                strongSelf.expirationTime = nil;
+                strongSelf.accessKey = result[@"AccessKeyID"];
+                strongSelf.secretKey = result[@"SecretAccessKey"];
+                strongSelf.sessionToken = result[@"SessionToken"];
+                strongSelf.expirationTime = result[@"ExpiredTime"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [strongSelf.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                    [strongSelf.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                    [strongSelf.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+                });
+
+            }
+        }
+        switch (strongSelf.shouldStartType) {
+            case 1:
+                [strongSelf.imageUploadClientTop start];
+                break;
+            case 2:
+                [strongSelf.videoUploadClientTop start];
+                break;
+            case 3:
+                [strongSelf.mateUploadClientTop start];
+                break;
+            default:
+                break;
+        }
+        strongSelf.shouldStartType = 0;
+    }];
+}
 
     - (NSDictionary*)authorizationParameter{
                                 NSDictionary* dictionary = @{@"TTFileUploadAccessKey":self.accessKey?:@"",
@@ -535,9 +548,22 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     [containViewMate addSubview:netWorkControllMate];
 }
 
+- (void)initAKSKText{
+    UITextField *text = [[UITextField alloc]initWithFrame:CGRectMake(0, _segmentContainViewMate.bottom + 30, WIDTH, 100)];
+    text.borderStyle = UITextBorderStyleRoundedRect;
+    text.placeholder = @"AccessKey SecretKey .. JsonStr";
+    text.font = [UIFont fontWithName:@"Arial" size:15.0f];
+    text.textColor = [UIColor redColor];
+    text.clearsOnBeginEditing = YES;
+
+    _textfiled = text;
+    _textfiled.delegate = self;
+    [self.view addSubview:text];
+}
+
 - (void)initButtons{
     
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _segmentContainViewMate.bottom + 60, WIDTH, 170)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _textfiled.bottom + 30, WIDTH, 170)];
 //    containView.backgroundColor = [UIColor grayColor];
     _buttonsContainView = containView;
     [self.view addSubview:containView];
