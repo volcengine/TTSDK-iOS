@@ -175,11 +175,11 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gP3-i7-hgi">
-                    <rect key="frame" x="130" y="254" width="97" height="29"/>
+                    <rect key="frame" x="130" y="253" width="97" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
-                        <segment title="VT264"/>
-                        <segment title="VT265"/>
+                        <segment title="264"/>
+                        <segment title="265"/>
                     </segments>
                     <connections>
                         <action selector="handleSwitchVideoCodecType:" destination="-1" eventType="valueChanged" id="2pG-Sn-Sqp"/>
