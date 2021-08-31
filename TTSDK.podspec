@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.19.1.100-hanjutv"
+    spec.version      = "1.19.2.1-premium"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -42,12 +42,19 @@
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
-    spec.subspec 'Net' do |subspec| 
+    spec.subspec 'VCN' do |subspec|
       subspec.vendored_libraries = [
         'TTSDK/VCNVCloudNetwork/**/*.a',
+        'TTSDK/protobuf_lite/**/*.a'
+      ]
+    end
+
+    spec.subspec 'TTNet' do |subspec| 
+      subspec.vendored_libraries = [
         'TTSDK/protobuf_lite/**/*.a',
         'TTSDK/TTNetworkManager/**/*.a'
       ]
+      subspec.dependency 'AFNetworking'
     end
 
     spec.subspec 'TTFFmpeg' do |subspec|
@@ -65,7 +72,6 @@
         'SystemConfiguration',
       ]
       subspec.dependency 'TTSDK/Tools'
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
     spec.subspec 'PlayerCore' do |subspec|
@@ -84,17 +90,6 @@
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
-      subspec.frameworks = [
-        'CoreMotion',
-        'CoreMedia',
-        'MetalKit',
-        'OpenAL',
-        'VideoToolBox',
-        'AudioToolBox',
-        'AVFoundation',
-        'SystemConfiguration',
-      ]
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
       subspec.dependency 'TTSDK/TTFFmpeg'
     end
 
@@ -171,14 +166,13 @@
         'TTSDK/libttheif_ios/**/*.a'
       ]
       subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/Net'
+      subspec.dependency 'TTSDK/TTNet'
       subspec.dependency 'TTSDK/Tools'
-      #
+      # Third
       subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore', 'Accelerate'
       subspec.libraries = "c++", "resolv"
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
-      subspec.dependency 'AFNetworking'
       subspec.dependency 'AFgzipRequestSerializer'
     end
 
@@ -193,8 +187,8 @@
         "TTSDK/{TTVideoSetting,TTFileUploadClientb}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/Net'
       subspec.dependency 'TTSDK/Tools'
+      subspec.dependency 'TTSDK/VCN'
     end
 
     # Lite Pod Spec , Use With Caution! If there is no symbol conflict, Should not intergrate subspecs below
