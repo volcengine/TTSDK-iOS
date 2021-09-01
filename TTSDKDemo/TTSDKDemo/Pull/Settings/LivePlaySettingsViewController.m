@@ -197,7 +197,29 @@
     // Configure player item.
     LivePlayViewController *vc = [[LivePlayViewController alloc] initWithConfiguration:config];
     NSString *playURL = config.playURL;
-    if ([[playURL lowercaseString] hasPrefix:@"http"] || [[playURL lowercaseString] hasPrefix:@"rtmp"] || [playURL hasPrefix:@"/"]) {
+    NSError *error = nil;
+    NSDictionary *infoData = [NSJSONSerialization JSONObjectWithData:[playURL dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
+    BOOL isJSONData = !error && infoData;
+    BOOL isStreamData = isJSONData && [infoData.allKeys containsObject:@"stream_data"];
+    if (isStreamData) {
+        id rawStreamData = [infoData objectForKey:@"stream_data"];
+        if ([rawStreamData isKindOfClass:NSString.class]) {
+            rawStreamData = [NSJSONSerialization JSONObjectWithData:[rawStreamData dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
+        }
+        TVLPlayerItem *item = [TVLPlayerItem playerItemWithStreamData:rawStreamData];
+        NSLog(@"Stream data supported preferences: %@", item.supportedPreferences);
+        NSLog(@"Stream data supported resolutions: %@", item.supportedResolutionTypes);
+        for (TVLPlayerItemPreferences *preferences in item.supportedPreferences) {
+            //优先跳选主流/源流
+            if ([preferences.sourceType isEqualToString:TVLMediaSourceTypeMain]
+                && [preferences.resolutionType isEqualToString:TVLMediaResolutionTypeOrigin]
+                && [preferences.formatType isEqualToString:TVLMediaFormatTypeFLV]) {
+                item.preferences = preferences;
+                break;
+            }
+        }
+        config.playerItem = item;
+    } else if ([[playURL lowercaseString] hasPrefix:@"http"] || [[playURL lowercaseString] hasPrefix:@"rtmp"] || [playURL hasPrefix:@"/"]) {
         // Basic usage.
         config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];
     }
