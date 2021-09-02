@@ -43,7 +43,7 @@ void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
     [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
     self.ttsdkShouldInitAppLog = YES;
-    if (!self.ttsdkShouldInitAppLog) {
+    if (self.ttsdkShouldInitAppLog) {
         [self initAppLog];
     }
     [self initBDImageManager];
