@@ -225,9 +225,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 }
 
 - (void)setupfilePaths{
-    NSString* filePath2 = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"png"];
-    if(filePath2 != nil){
-        _filePathArray = @[filePath2];
+    NSString* filePath1 = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"png"];
+    if(filePath1 != nil){
+        _filePathArray = @[filePath1,filePath1,filePath1];
     }
 }
 
@@ -587,6 +587,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 #pragma -mark initUploader
 - (void)initUploader{
+    [TTVideoUploadClientTop enableDebug:1];
     [self initImageUploader];
     [self initVideoUploader];
     [self initMateUploader];
