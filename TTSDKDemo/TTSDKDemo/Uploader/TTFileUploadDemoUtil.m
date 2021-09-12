@@ -160,12 +160,18 @@
     NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
     [clientTop setProcessActionType:processAction parameter:params];
     
+    NSString* imagePathKey1 = @"red";
+    NSString* imagePathKey2 = @"yellow";
+    NSString* imagePathKey3 = @"blue";
+    NSArray* imagePathKeys = @[imagePathKey1,imagePathKey2,imagePathKey3];
+    
     NSDictionary* config = @{
                              TTFileUploadFileRetryCount:@1,
                              TTFileUploadSliceTimeout:@40,
                              TTFileUploadSocketNum:@1,
                              TTFileUploadDeviceID:@3424321,
-                             TTFileUploadTraceId:@"asdf"
+                             TTFileUploadTraceId:@"asdf",
+                             TTFileUploadImagePathKey:imagePathKeys
                              };
     [clientTop setUploadConfig:config];
     [clientTop setImageHostName:@"imagex.volcengineapi.com"];
