@@ -54,7 +54,6 @@
         'TTSDK/protobuf_lite/**/*.a',
         'TTSDK/TTNetworkManager/**/*.a'
       ]
-      subspec.dependency 'AFNetworking'
     end
 
     spec.subspec 'TTFFmpeg' do |subspec|
@@ -173,7 +172,6 @@
       subspec.libraries = "c++", "resolv"
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
-      subspec.dependency 'AFgzipRequestSerializer'
     end
 
     spec.subspec 'Uploader' do |subspec|
