@@ -22,10 +22,10 @@
     
     spec.subspec 'Core' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/VCloudPandora/**/*.h',
+        'TTSDK/VCloudPandora/**/TTSDKManager.h',
       ]
       subspec.source_files = [
-        'TTSDK/VCloudPandora/**/*.h',
+        'TTSDK/VCloudPandora/**/TTSDKManager.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
@@ -95,6 +95,7 @@
 
     spec.subspec 'LivePull' do |subspec|
       subspec.public_header_files = [
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
         'TTSDK/TTVideoLive/**/*.h',
       ]
       subspec.source_files = [
