@@ -84,7 +84,6 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
-        'TTSDK/audiosdk/**/*.a',
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
@@ -113,13 +112,19 @@
       subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
+        'TTSDK/LiveCore/**/*.h',
       ]
       subspec.source_files = [
-        'TTSDK/LiveStreamFramework/**/*',
+        'TTSDK/LiveCore/**/*'
       ]
       subspec.vendored_libraries = [
-        'TTSDK/LiveStreamFramework/**/*.a',
+        'TTSDK/LiveCore/**/*.a',
+        "TTSDK/LiveStreamFramework/**/libLiveStreamFramework_{base,glbase,session,webrtc,base_webrtc,ntp,audio-effect}_ios.a",
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePush_ios.a',
+        'TTSDK/libyuv-iOS/**/*.a'
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteAudio/*.framework',
       ]
       subspec.frameworks = [
         'VideoToolBox',
@@ -129,7 +134,8 @@
         'AVFoundation',
         'SystemConfiguration',
         'GLKit',
-        'imageIO'
+        'imageIO',
+        'MetalPerformanceShaders'
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.libraries = 'stdc++'
