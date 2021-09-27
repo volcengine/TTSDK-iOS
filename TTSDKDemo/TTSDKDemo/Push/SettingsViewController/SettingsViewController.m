@@ -83,21 +83,6 @@
     [self.startStreamingButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
-- (IBAction)didNodeProbeStateChanged:(UISwitch *)sender {
-#if LIVE_NODE_PROBER_TEST
-    if (sender.isOn) {
-        [[LiveNodeSortManager sharedManager] setSortCompletion:^(NSError *error, NSString *host, NSArray<NSString *> *ipList, NSString *elevatorSymbol) {
-            NSLog(@"host: %@ ip: %@", host, ipList);
-        }];
-        // 开启节点优选服务
-        [[LiveNodeSortManager sharedManager] setAppId:32];
-        [[LiveNodeSortManager sharedManager] start];
-    } else {
-        [[LiveNodeSortManager sharedManager] stop];
-    }
-#endif
-}
-
 - (IBAction)onStartStreamingButtonClicked:(UIButton *)sender {
     StreamConfigurationModel *model = [StreamConfigurationModel defaultConfigurationModel];
     // stream url
