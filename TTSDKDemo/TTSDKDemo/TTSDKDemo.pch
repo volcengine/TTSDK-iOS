@@ -14,7 +14,12 @@
 #else
 #import <TTSDK/TTSDKManager.h>
 #import <TTSDK/TTVideoEngineHeader.h>
-#import <TTSDK/LiveStreamLibrary.h>
+//推流
+#import <TTSDK/LiveCore.h>
+#import <TTSDK/LiveCore+Capture.h>
+#import <TTSDK/LiveStreamHelper.h>
+#import <TTSDK/LCScreenRecorder.h>
+//拉流
 #import <TTSDK/TTVideoLive.h>
 #import <TTSDK/BDWebImage.h>
 #import <TTSDK/TTFileUploader.h>
@@ -24,6 +29,7 @@
 #import <TTSDKImageFramework/TTSDKImageFramework.h>
 #endif
 
+//MARK: 音效相关
 #define USE_EFFECT 1
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
