@@ -28,7 +28,6 @@
 @property (nonatomic, strong) LSLiveAudioUnitProcess *audioUnit;
 @property (nonatomic, strong) UIButton *karaokeButton;
 @property (nonatomic, strong) UIButton *musicTypeButton;
-@property (nonatomic) LiveStreamSession *liveSession;
 #endif
 @property (nonatomic, strong) UISlider *recordVolumeSlider;
 @property (nonatomic, strong) UISlider *musicVolumeSlider;
