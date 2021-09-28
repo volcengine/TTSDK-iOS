@@ -37,6 +37,7 @@
     #else
     #import <TTSDK/LSLiveAudioUnitProcess.h>
     #import <TTSDK/LSLiveAudioEffectFormat.h>
+    #import <TTSDK/LSLiveAudioBufferUtils.h>
     #endif
 #endif
 

@@ -192,7 +192,7 @@ static NSString *const kRecordText = @"录制";
     [_engine setEnableExternalAU:YES];
     [_engine setReconnectCount:10];
     [_engine setLogLevel:LiveStreamLogLevelWarning];
-    
+
     //MARK: 3.1 LiveCore + 视频采集
     [_engine setLiveCapture:_capture];
     
@@ -624,7 +624,7 @@ static NSString *const kRecordText = @"录制";
         }
     }];
 }
-
+//MARK: 推流控制
 - (void)onStartButtonClicked:(UIButton *)sender {
     _startButton.hidden = YES;
     if(_engine) {
@@ -819,31 +819,6 @@ static NSString *const kRecordText = @"录制";
     _startButton.hidden = NO;
     _stopButton.hidden = YES;
     
-}
-
-@end
-
-@implementation LiveStreamCapture (HOOK)
-
-- (void)releaseAudioResampler {
-    
-}
-
-- (void)releaseMovieAudioQueue {
-    
-}
-
-- (void)setEffectABLicense:(id)l {
-    
-}
-
-- (void)__doOtherProcess:(int16_t *)ioData
-           processedData:(int16_t *)processedData
-          earMonitorData:(int16_t *)earMonitingData
-              bufferSize:(UInt32)bufferSize
-        numberOfChannels:(int)channels
-              sampleRate:(int)sampleRate
-          numberOfFrames:(int)inNumberFrames {
 }
 
 @end
