@@ -234,6 +234,15 @@ static NSString *const kRecordText = @"录制";
         }
     }];
     
+    //MARK: Special 背景音乐混合主播声音
+    [_engine.liveSession setDidCapturedAudioBufferList:^(void *mData, UInt32 inNumberFrames, void *processedData, void *headphonesMonitoringData) {
+        __strong typeof(wself) sself = wself;
+        if (sself.audioUnit) {
+            [sself.audioUnit processAudioBufferList:mData inNumberFrames:inNumberFrames];
+            [LSLiveAudioBufferUtils copyBufferList:processedData srcBufferList:mData];
+        }
+    }];
+    
     //MARK: Final. 开始采集
     [_engine startVideoCapture];
     
