@@ -33,7 +33,7 @@
 #define USE_EFFECT 1
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
-    //
+    #import <TTSDKFramework/LSLiveAudioBufferUtils.h>
     #else
     #import <TTSDK/LSLiveAudioUnitProcess.h>
     #import <TTSDK/LSLiveAudioEffectFormat.h>
