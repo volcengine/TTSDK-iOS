@@ -23,7 +23,6 @@
 		831E379D23D0180E00A9F7A9 /* StreamConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E379923D0180E00A9F7A9 /* StreamConfigurationModel.m */; };
 		831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831E379B23D0180E00A9F7A9 /* SettingsViewController.xib */; };
 		831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E37A023D01B8400A9F7A9 /* StreamingViewController.m */; };
-		831E37A423D01BE800A9F7A9 /* LSCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 831E37A323D01BE800A9F7A9 /* LSCamera.m */; };
 		831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831E37E223D0530C00A9F7A9 /* Accelerate.framework */; };
 		8378B5C023C4860F0075E05C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8378B5BF23C4860F0075E05C /* AppDelegate.m */; };
 		8378B5C923C4860F0075E05C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8378B5C723C4860F0075E05C /* Main.storyboard */; };
@@ -174,8 +173,6 @@
 		831E379B23D0180E00A9F7A9 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		831E379F23D01B8400A9F7A9 /* StreamingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingViewController.h; sourceTree = "<group>"; };
 		831E37A023D01B8400A9F7A9 /* StreamingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingViewController.m; sourceTree = "<group>"; };
-		831E37A223D01BE800A9F7A9 /* LSCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCamera.h; sourceTree = "<group>"; };
-		831E37A323D01BE800A9F7A9 /* LSCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCamera.m; sourceTree = "<group>"; };
 		831E37AE23D0411400A9F7A9 /* libeffect-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libeffect-sdk.a"; path = "../extern/EffectSDK/libeffect-sdk.a"; sourceTree = "<group>"; };
 		831E37E223D0530C00A9F7A9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8378B5BB23C4860F0075E05C /* Pandora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pandora.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,8 +424,6 @@
 			children = (
 				84FCCD9A2620413B0065FB4F /* KTV */,
 				83795AEA23E2C92F00E87A4A /* Effects */,
-				831E37A223D01BE800A9F7A9 /* LSCamera.h */,
-				831E37A323D01BE800A9F7A9 /* LSCamera.m */,
 				831E379623D0180E00A9F7A9 /* SettingsViewController */,
 				831E378C23D017E600A9F7A9 /* Utils */,
 				831E379F23D01B8400A9F7A9 /* StreamingViewController.h */,
@@ -1120,7 +1115,6 @@
 				831E379523D017E700A9F7A9 /* TTLogerHelper.m in Sources */,
 				8378B5C023C4860F0075E05C /* AppDelegate.m in Sources */,
 				8378B5D123C486100075E05C /* main.m in Sources */,
-				831E37A423D01BE800A9F7A9 /* LSCamera.m in Sources */,
 				83C44464243F8E2B00081EA1 /* ConfiguringViewController.m in Sources */,
 				83C44477243F8E2B00081EA1 /* TTVideoHistoryURLModel.m in Sources */,
 				83C44490243F8E2B00081EA1 /* TTVideoListCell.m in Sources */,
