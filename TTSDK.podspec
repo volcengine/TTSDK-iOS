@@ -142,7 +142,7 @@
     end
 
     spec.subspec 'Player' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
@@ -219,7 +219,7 @@
     end
 
     spec.subspec 'Player-Lite' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
@@ -255,7 +255,7 @@
     # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
     
     spec.subspec 'Player-Strip' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
