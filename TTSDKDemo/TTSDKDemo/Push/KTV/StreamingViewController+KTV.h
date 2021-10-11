@@ -14,7 +14,6 @@
 - (void)switchAudioEffectButtonClicked:(UIButton *)sender;
 - (void)onMusicTypeButtonClicked:(UIButton *)sender;
 - (void)onKaraokeButtonClicked:(UIButton *)sender;
-- (void)longPressKaraokeAction;
 //- (void)startKTVWithStartTime:(NSTimeInterval)startTime musicType:(LCKTVMusicType)musicType;
 
 @end
