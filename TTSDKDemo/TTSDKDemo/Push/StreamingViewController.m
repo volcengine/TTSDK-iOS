@@ -671,9 +671,6 @@ static NSString *const kRecordText = @"录制";
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-#if HAVE_AUDIO_EFFECT
-    [self longPressKaraokeAction];
-#endif
 }
 
 - (void)onEchoCancellationButtonClicked:(UIButton *)sender {
