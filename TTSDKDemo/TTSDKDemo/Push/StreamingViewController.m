@@ -234,6 +234,12 @@ static NSString *const kRecordText = @"录制";
     }];
   
     //MARK: Final. 开始采集
+    [_engine setDidCapturedVideoFrame:^(CVPixelBufferRef  _Nonnull buffer, CMTime pts) {
+        __strong typeof(wself) sself = wself;
+        if (sself.dumpRecording) {
+            [sself.recorder processVideoPixelbuf:buffer presentationTime:pts sourceType:LSRawDataSourceTypeH264];
+        }
+    }];
     [_engine startVideoCapture];
     
     //MARK: 若需要美颜，需要接管摄影机采集
