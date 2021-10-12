@@ -24,8 +24,8 @@
 
 @interface StreamingViewController : UIViewController
 @property (nonatomic) LiveStreamCapture *capture;
+@property (nonatomic, strong) LiveCore *engine;
 #if HAVE_AUDIO_EFFECT
-@property (nonatomic, strong) LSLiveAudioUnitProcess *audioUnit;
 @property (nonatomic, strong) UIButton *karaokeButton;
 @property (nonatomic, strong) UIButton *musicTypeButton;
 #endif

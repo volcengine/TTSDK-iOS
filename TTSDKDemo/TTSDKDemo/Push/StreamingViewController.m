@@ -20,7 +20,7 @@
 static NSString *const kRecordingText = @"录制中";
 static NSString *const kRecordText = @"录制";
 
-@interface StreamingViewController () <LCCameraOutputDelegate, LiveStreamSessionProtocol, LCScreenRecorderProtocol>
+@interface StreamingViewController () <LCCameraOutputDelegate, LiveStreamSessionProtocol>
 
 //MARK: UI
 @property (nonatomic) UIView *controlView;
@@ -68,7 +68,6 @@ static NSString *const kRecordText = @"录制";
 
 //MARK: Streaming - 推流配置
 @property (nonatomic, strong) LiveStreamConfiguration *liveConfig;
-@property (nonatomic, strong) LiveCore *engine;
 
 @property (nonatomic) StreamConfigurationModel *configuraitons;
 @property (nonatomic, assign) CGSize captureSize;
@@ -82,7 +81,7 @@ static NSString *const kRecordText = @"录制";
 @property (nonatomic, strong) TTControlsBox *controlsBox;
 
 //MARK: 录屏
-@property (nonatomic, strong) LCScreenRecorder *recorder;
+@property (nonatomic, strong) LiveStreamRawDataHelper *recorder;
 
 @end
 
@@ -192,17 +191,17 @@ static NSString *const kRecordText = @"录制";
     [_engine setEnableExternalAU:YES];
     [_engine setReconnectCount:10];
     [_engine setLogLevel:LiveStreamLogLevelWarning];
-
+    
+    //MARK: 4. 传入推流网路配置到 LiveCore
+    [_engine setupLiveSessionWithConfig:_liveConfig];
+    
     //MARK: 3.1 LiveCore + 视频采集
     [_engine setLiveCapture:_capture];
     
     //MARK: 3.2 LiveCore + 音频采集
+    // 如果需要
     LiveAudioConfiguration *audioConfig = [[LiveAudioConfiguration alloc] init];
-    audioConfig.enableNoiseSuppression = YES;
     [_engine setupAudioCaptureWithConfig:audioConfig];
-    
-    //MARK: 4. 传入推流网路配置到 LiveCore
-    [_engine setupLiveSessionWithConfig:_liveConfig];
 
     //MARK: 5. 设置日志回调与状态通知
     // 网路状况回调
@@ -233,21 +232,12 @@ static NSString *const kRecordText = @"录制";
             [wself streamSession:wself.engine.liveSession onError:errCode];
         }
     }];
-    
-    //MARK: Special 背景音乐混合主播声音
-    [_engine.liveSession setDidCapturedAudioBufferList:^(void *mData, UInt32 inNumberFrames, void *processedData, void *headphonesMonitoringData) {
-        __strong typeof(wself) sself = wself;
-        if (sself.audioUnit) {
-            [sself.audioUnit processAudioBufferList:mData inNumberFrames:inNumberFrames];
-            [LSLiveAudioBufferUtils copyBufferList:processedData srcBufferList:mData];
-        }
-    }];
-    
+  
     //MARK: Final. 开始采集
     [_engine startVideoCapture];
     
     //MARK: 若需要美颜，需要接管摄影机采集
-    self.engine.camera.delegate = self;
+    //self.engine.camera.delegate = self;
     
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
 
@@ -579,10 +569,7 @@ static NSString *const kRecordText = @"录制";
 //MARK: 录制
 - (void)onRecordButtonClicked:(UIButton *)button {
     if (self.dumpRecording) {
-        [self.recorder stopRecording];
-        self.recorder = nil;
-        self.dumpRecording = false;
-        [button setTitle:kRecordText forState:UIControlStateNormal];
+        [LiveHelper arertMessage:@"视频录置中，请稍后"];
         return;
     }
     if (!(self.capture && [_engine isStreaming])) {
@@ -592,26 +579,20 @@ static NSString *const kRecordText = @"录制";
     [button setTitle:kRecordingText forState:UIControlStateNormal];
     self.dumpRecording = YES;
     if (!self.recorder) {
-        self.recorder = [[LCScreenRecorder alloc] initWithLiveCore:self.engine];
-        self.recorder.delegate = self;
-        //self.recorder.frameRate = 30;
-        self.recorder.bitrate = 30 * 1000 * 1000;
-        self.recorder.outputSize = CGSizeMake(self.view.bounds.size.width / 2 , self.view.bounds.size.height / 2);
-        [self.recorder performSelector:@selector(setFrameInterval:) withObject:@(10)];
+        self.recorder = [[LiveStreamRawDataHelper alloc] init];
     }
-    self.recorder.outputPath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/screen_record_%ld.mp4", time(NULL)];
-    [self.recorder setContainerView:self.cameraPreviewContainerView];
-    
-    [self.recorder startRecordingWithImageCallback:^(CVPixelBufferRef  _Nonnull buffer, CMTime pts) {
-
+    __weak typeof(self) weakself = self;
+    [self.recorder startRawRecordingWithFileName:@"originMp4" maxProcessVideoBufCount:10 * 15 CompletionHandler:^(NSError * _Nonnull error, LSRawDataSourceType type, NSURL * _Nonnull url) {
+        __strong typeof(weakself) sself = weakself;
+        sself.dumpRecording = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [sself didRecordingFinished:url error:error];
+            [button setTitle:kRecordText forState:UIControlStateNormal];
+        });
     }];
 }
 
-- (void)screenRecorder:(LCScreenRecorder *)recorder didStatusChanged:(LCScreenRecorderStatus)status {
-    NSLog(@"[Recorder] status changed %ld", status);
-}
-
-- (void)screenRecorder:(LCScreenRecorder *)recorder didRecordingFinished:(NSURL *)path error:(nonnull NSError *)error {
+- (void)didRecordingFinished:(NSURL *)path error:(nonnull NSError *)error {
     NSLog(@"[Recorder] did finished recording:%@", path);
     [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
