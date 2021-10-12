@@ -38,15 +38,11 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *ExtensionSwitcher;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *videoCodecSegControl;
-@property (weak, nonatomic) IBOutlet UISwitch *rtmpkOnlySwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *enableBFrameswitcher;
 
 @property (weak, nonatomic) IBOutlet UISwitch *backgrounModeBtn;
 
 @property (weak, nonatomic) IBOutlet UISwitch *audioStreamSwitcher;
-
-
-@property (weak, nonatomic) IBOutlet UISwitch *ntpSwitcher;
 
 /** 输入数据源 */
 @property (nonatomic, strong) AVCaptureDeviceInput *input;
@@ -103,10 +99,8 @@
     
     // debug
     model.registExtension = _ExtensionSwitcher.isOn;
-    model.rtmpkOnly = _rtmpkOnlySwitcher.isOn;
     model.enableBFrame = _enableBFrameswitcher.isOn;
     model.enableBackgroundMode = _backgrounModeBtn.isOn;
-    model.ntpEnabled = _ntpSwitcher.isOn;
     model.glMultiThreaded = _glMultiThreaded.isOn;
     model.enableAudioStream = _audioStreamSwitcher.isOn;
     StreamingViewController *streamVC = [[StreamingViewController alloc] initWithConfiguration:model];

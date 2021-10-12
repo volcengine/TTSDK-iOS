@@ -18,7 +18,7 @@
 #import <TTSDK/LiveCore.h>
 #import <TTSDK/LiveCore+Capture.h>
 #import <TTSDK/LiveStreamHelper.h>
-#import <TTSDK/LCScreenRecorder.h>
+#import <TTSDK/LiveStreamRawDataHelper.h>
 //拉流
 #import <TTSDK/TTVideoLive.h>
 #import <TTSDK/BDWebImage.h>

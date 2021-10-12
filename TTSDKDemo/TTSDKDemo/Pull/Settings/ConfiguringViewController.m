@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UISwitch *hardwareDecodeSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *nodeOptimizingSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *autoPlaySwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *audioDeviceSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *settingsSwitch;
@@ -21,9 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *retryTimeLimitTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *SDKDNSSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *DNSMethodSegmentedControl;
-@property (weak, nonatomic) IBOutlet UISwitch *clockSynchronizationEnabledSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *netAdaptiveSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *archiveLogsSwitch;
 // IP Mapping
 @property (weak, nonatomic) IBOutlet UITextField *ipAddressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *domainTextField;
@@ -53,15 +49,11 @@
     // Do any additional setup after loading the view from its nib.
     
     self.hardwareDecodeSwitch.on = self.currentConfiguration.isHardwareDecodeEnabled;
-    self.archiveLogsSwitch.on = self.currentConfiguration.shouldArchiveLogs;
-    self.nodeOptimizingSwitch.on = self.currentConfiguration.isNodeOptimizingEnabled;
     self.autoPlaySwitch.on = self.currentConfiguration.shouldAutoPlay;
     self.audioDeviceSwitch.on = self.currentConfiguration.allowsAudioRendering;
     self.SDKDNSSwitch.on = self.currentConfiguration.shouldUseLiveDNS;
-    self.clockSynchronizationEnabledSwitch.on = self.currentConfiguration.isClockSynchronizationEnabled;
     self.settingsSwitch.on = !self.currentConfiguration.shouldIgnoreSettings;
     self.DNSMethodSegmentedControl.selectedSegmentIndex = self.currentConfiguration.isPreferredToHTTPDNS ? 1 : 0;
-    self.netAdaptiveSwitch.on = self.currentConfiguration.isNetAdaptiveEnabled;
     self.retryTimeIntervalTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeInternal];
     self.retryCountLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryCountLimit];
     self.retryTimeLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeLimit];
@@ -72,16 +64,6 @@
     [[self.hardwareDecodeSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
         @strongify(self);
         self.currentConfiguration.hardwareDecodeEnabled = aSwitch.isOn;
-    }];
-    
-    [[self.archiveLogsSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
-        @strongify(self);
-        self.currentConfiguration.shouldArchiveLogs = aSwitch.isOn;
-    }];
-    
-    [[self.netAdaptiveSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
-        @strongify(self);
-        self.currentConfiguration.netAdaptiveEnabled = aSwitch.isOn;
     }];
     
     [[self.settingsSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
@@ -95,19 +77,9 @@
         self.DNSMethodSegmentedControl.enabled = aSwitch.isOn;
     }];
     
-    [[self.clockSynchronizationEnabledSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
-        @strongify(self);
-        self.currentConfiguration.clockSynchronizationEnabled = aSwitch.isOn;
-    }];
-    
     [[self.DNSMethodSegmentedControl rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISegmentedControl *aSegmentedControl) {
         @strongify(self);
         self.currentConfiguration.preferredToHTTPDNS = aSegmentedControl.selectedSegmentIndex == 0 ? NO : YES;
-    }];
-    
-    [[self.nodeOptimizingSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
-        @strongify(self);
-        self.currentConfiguration.nodeOptimizingEnabled = aSwitch.isOn;
     }];
     
     [[self.autoPlaySwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
