@@ -10,6 +10,37 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "StreamingViewController+KTV.h"
 
+@interface LiveCore (KTV)
+
+@property (nonatomic, strong)LSLiveAudioUnitProcess *audioUnit;
+
+@end
+
+@implementation LiveCore (KTV)
+
+- (LSLiveAudioUnitProcess *)audioUnit {
+    return objc_getAssociatedObject(self, @"LiveCoreKTVKey");
+}
+
+- (void)setAudioUnit:(LSLiveAudioUnitProcess *)audioUnit{
+    objc_setAssociatedObject(self, @"LiveCoreKTVKey", audioUnit, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)original_ktv_processAudioBufferList:(void *)ioData
+                             inNumberFrames:(UInt32)inNumberFrames
+                              processedData:(void *)processedData
+                   headphonesMonitoringData:(void *)headphonesMonitoringData
+                                   channels:(int)channels
+                                   dataSize:(UInt32)dataSize
+                                 sampleRate:(int)sampleRate
+                              onlyLocalPlay:(bool)onlyLocalPlay {
+    if (self.audioUnit) {
+        [self.audioUnit processAudioData:(int16_t *)ioData dataSize:dataSize inNumberFrames:inNumberFrames];
+        memcpy(processedData, ioData, dataSize);
+    }
+}
+
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,9 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sliderValueDidChange:(UISlider *)slider {
 #if HAVE_AUDIO_EFFECT
     if (slider == self.musicVolumeSlider) {
-        [self.audioUnit setMusicVolume:slider.value];
+        [self.engine.audioUnit setMusicVolume:slider.value];
     } else if (slider == self.recordVolumeSlider) {
-        [self.audioUnit setRecordVolume:slider.value];
+        [self.engine.audioUnit setRecordVolume:slider.value];
     }
 #endif
 }
@@ -28,30 +59,31 @@ NS_ASSUME_NONNULL_BEGIN
 #if HAVE_AUDIO_EFFECT
 // 播放伴奏
 - (void)setupAudioUnitProcess:(UIButton *)sender {
-    if (self.audioUnit) {
-        [self.audioUnit stopProcess];
-        self.audioUnit = nil;
+    if (self.engine.audioUnit) {
+        [self.engine.audioUnit stopProcess];
+        self.engine.audioUnit = nil;
         self.karaokeControllersContainer.hidden = YES;
     } else {
         NSURL *musicURL = [[NSBundle mainBundle] URLForResource:@"doubleTracks.m4a" withExtension:nil];
         LSLiveAudioUnitConfig *config = [[LSLiveAudioUnitConfig alloc] init];
         config.musicURL = musicURL;
-        //config.musicStartTime = KTVConfig.musicStartTime;
+        config.musicStartTime = 0;
         config.musicType = LSMusicTypeAccompany;
-        //config.asbd = [self.liveSession audioStreamBasicDescription];
+        config.asbd = [self.engine.liveSession audioStreamBasicDescription];
+        config.newPlayerMode = NO;
         if (YES) {
             config.numberOfLoops = NSIntegerMax;
         }
-        self.audioUnit = [[LSLiveAudioUnitProcess alloc] initWithConfig:config];
-//        if (self.capture.isEchoCancellationEnabled) {
-//           [self.capture setEchoCancellationEnabled:NO];
-//        }
-        [self.audioUnit startProcess];
+        self.engine.audioUnit = [[LSLiveAudioUnitProcess alloc] initWithConfig:config];
+        [self.engine.audioUnit startProcess];
         self.karaokeControllersContainer.hidden = NO;
     }
 }
 #endif
 
 @end
+
+
+
 
 NS_ASSUME_NONNULL_END
