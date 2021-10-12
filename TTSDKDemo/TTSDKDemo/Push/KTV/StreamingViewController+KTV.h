@@ -13,8 +13,6 @@
 @interface StreamingViewController (KTV)
 - (void)switchAudioEffectButtonClicked:(UIButton *)sender;
 - (void)onMusicTypeButtonClicked:(UIButton *)sender;
-- (void)onKaraokeButtonClicked:(UIButton *)sender;
-//- (void)startKTVWithStartTime:(NSTimeInterval)startTime musicType:(LCKTVMusicType)musicType;
 
 @end
 
