@@ -10,9 +10,14 @@
 #define StreamingViewController_KTV_h
 #import "StreamingViewController.h"
 
+@interface StreamingKTVControllBox : UIView
+
+@end
+
 @interface StreamingViewController (KTV)
+@property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
+- (void)initKTVView;
 - (void)switchAudioEffectButtonClicked:(UIButton *)sender;
-- (void)onMusicTypeButtonClicked:(UIButton *)sender;
 
 @end
 
