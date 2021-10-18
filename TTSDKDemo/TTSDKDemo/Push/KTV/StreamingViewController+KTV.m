@@ -10,9 +10,94 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "StreamingViewController+KTV.h"
 
+@interface StreamingKTVControllBox ()
+
+@property (strong, nonatomic) IBOutlet UIView *rootView;
+@property (weak, nonatomic) IBOutlet UISlider *recordVolumeSlider;
+@property (weak, nonatomic) IBOutlet UISlider *musicVolumeSlider;
+@property (weak, nonatomic) IBOutlet UISlider *timeSeekSlider;
+
+@property (weak, nonatomic) IBOutlet UIButton *pauseMusic;
+@property (weak, nonatomic) IBOutlet UIButton *continueMusic;
+
+@end
+
+@implementation StreamingKTVControllBox
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initSubViewWithNib];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initSubViewWithNib];
+    }
+    return self;
+}
+
+-(void)initSubViewWithNib {
+    [[NSBundle mainBundle] loadNibNamed:@"StreamingKTVControllBox" owner:self options:NULL];
+    [self addSubview:self.rootView];
+}
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation StreamingViewController (KTV)
+
+-(UISlider *)recordVolumeSlider {
+    return self.karaokeControllersContainer.recordVolumeSlider;
+}
+
+-(UISlider *)musicVolumeSlider {
+    return self.karaokeControllersContainer.musicVolumeSlider;
+}
+
+-(UISlider *)timeSeekSlider {
+    return self.karaokeControllersContainer.timeSeekSlider;
+}
+
+-(UIButton *)pauseMusicBtn {
+    return self.karaokeControllersContainer.pauseMusic;
+}
+
+-(UIButton *)continueMusicBtn {
+    return self.karaokeControllersContainer.continueMusic;
+}
+
+- (void)initKTVView {
+    //MARK: K歌相关
+    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 180);
+    StreamingKTVControllBox *karaokeControllersContainer = [[StreamingKTVControllBox alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - karaokeControllersContainerSize.height, karaokeControllersContainerSize.width, karaokeControllersContainerSize.height)];
+    karaokeControllersContainer.backgroundColor = UIColor.whiteColor;
+    karaokeControllersContainer.alpha = .7;
+    [self.view addSubview:karaokeControllersContainer];
+    self.karaokeControllersContainer = karaokeControllersContainer;
+    
+    [self.recordVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    [self.musicVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    [self.timeSeekSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    //
+    [self.pauseMusicBtn addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.continueMusicBtn addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    karaokeControllersContainer.hidden = YES;
+}
+
+- (void)buttonDidClick:(UIButton *)buttn {
+    if (buttn == self.pauseMusicBtn) {
+        [self.engine pauseBgMusic];
+    } else if (buttn == self.continueMusicBtn) {
+        [self.engine resumeBgMusic];
+    }
+}
 
 - (void)sliderValueDidChange:(UISlider *)slider {
 #if HAVE_AUDIO_EFFECT
