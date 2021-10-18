@@ -35,9 +35,7 @@
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
     #import <TTSDKFramework/LSLiveAudioBufferUtils.h>
     #else
-    #import <TTSDK/LSLiveAudioUnitProcess.h>
-    #import <TTSDK/LSLiveAudioEffectFormat.h>
-    #import <TTSDK/LSLiveAudioBufferUtils.h>
+    #import <TTSDK/LiveCore+KTV.h>
     #endif
 #endif
 
