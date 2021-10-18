@@ -29,8 +29,6 @@
 @property (nonatomic, strong) UIButton *karaokeButton;
 @property (nonatomic, strong) UIButton *musicTypeButton;
 #endif
-@property (nonatomic, strong) UISlider *recordVolumeSlider;
-@property (nonatomic, strong) UISlider *musicVolumeSlider;
-@property (nonatomic, strong) UIView *karaokeControllersContainer;
+
 - (instancetype)initWithConfiguration:(StreamConfigurationModel *)configuraitons;
 @end
