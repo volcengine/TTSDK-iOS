@@ -83,6 +83,9 @@ static NSString *const kRecordText = @"录制";
 //MARK: 录屏
 @property (nonatomic, strong) LiveStreamRawDataHelper *recorder;
 
+//MARK:
+@property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
+
 @end
 
 @implementation StreamingViewController
@@ -170,6 +173,7 @@ static NSString *const kRecordText = @"录制";
     _liveConfig.minBitrate = _configuraitons.videoBitrate * 1000 * 2 / 5;
     _liveConfig.maxBitrate = _configuraitons.videoBitrate * 1000 * 5 / 3;
     _liveConfig.audioSource = LiveStreamAudioSourceMic;
+ 
     // 推流地址
     _liveConfig.URLs = @[_configuraitons.streamURL];
     _liveConfig.audioSampleRate = 44100;
@@ -341,6 +345,7 @@ static NSString *const kRecordText = @"录制";
 #if HAVE_AUDIO_EFFECT
     _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(setupAudioUnitProcess:)];
     [_controlView addSubview:_musicTypeButton];
+    [self initKTVView];
 #endif
     
     [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
@@ -373,44 +378,6 @@ static NSString *const kRecordText = @"录制";
     self.tipsLabel = [LiveHelper createLable:@""];
     self.tipsLabel.frame = CGRectMake(CGRectGetMinX(content)+5, CGRectGetMaxY(lastControlFrame)+10, CGRectGetMaxX(content)-10, 20);
     [_controlView addSubview:self.tipsLabel];
-    
-    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 160);
-    UIView *karaokeControllersContainer = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - karaokeControllersContainerSize.height, karaokeControllersContainerSize.width, karaokeControllersContainerSize.height)];
-    karaokeControllersContainer.backgroundColor = UIColor.whiteColor;
-    karaokeControllersContainer.alpha = .7;
-    [self.view addSubview:karaokeControllersContainer];
-    self.karaokeControllersContainer = karaokeControllersContainer;
-    
-    UILabel *recordVolumeLabel = [[UILabel alloc] init];
-    recordVolumeLabel.text = @"人声";
-    recordVolumeLabel.textAlignment = NSTextAlignmentCenter;
-    [karaokeControllersContainer addSubview:recordVolumeLabel];
-    UISlider *recordVolumeSlider = [[UISlider alloc] init];
-    recordVolumeSlider.value = .5;
-    [recordVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
-    [karaokeControllersContainer addSubview:recordVolumeSlider];
-    self.recordVolumeSlider = recordVolumeSlider;
-    UILabel *musicVolumeLabel = [[UILabel alloc] init];
-    musicVolumeLabel.text = @"伴奏";
-    musicVolumeLabel.textAlignment = NSTextAlignmentCenter;
-    [karaokeControllersContainer addSubview:musicVolumeLabel];
-    UISlider *musicVolumeSlider = [[UISlider alloc] init];
-    musicVolumeSlider.value = .5;
-    musicVolumeSlider.tag = 1;
-    [musicVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
-    [karaokeControllersContainer addSubview:musicVolumeSlider];
-    self.musicVolumeSlider = musicVolumeSlider;
-    NSInteger rows = karaokeControllersContainer.subviews.count;
-    CGFloat rowHeight = karaokeControllersContainerSize.height / rows;
-    CGFloat rowWidth = self.view.bounds.size.width;
-    for (NSInteger row = 0; row < rows; row++) {
-        CGFloat width = rowWidth * 0.9;
-        CGFloat originX = (rowWidth - width) / 2;
-        CGRect frame = CGRectMake(originX, rowHeight * row, rowWidth * 0.9, rowHeight);
-        UIView *view = karaokeControllersContainer.subviews[row];
-        view.frame = frame;
-    }
-    karaokeControllersContainer.hidden = YES;
     
     TTEffectsViewModel *effectsViewModel = [[TTEffectsViewModel alloc] initWithModel:TTEffectsModel.defaultModel];
     __weak typeof(self) weakSelf = self;
@@ -781,6 +748,7 @@ static NSString *const kRecordText = @"录制";
                 break;
             case LiveStreamSessionStateReconnecting:
                 NSLog(@"// reconnect // %@", [NSDate date]);
+                
                 break;
             default:
                 break;
