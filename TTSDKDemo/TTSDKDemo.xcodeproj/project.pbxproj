@@ -130,6 +130,7 @@
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
 		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
 		841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 841F762626207F5400A17EF7 /* doubleTracks.m4a */; };
+		84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84226913271DA1060027699F /* StreamingKTVControllBox.xib */; };
 		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
@@ -374,6 +375,7 @@
 		841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		841F76232620701100A17EF7 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		841F762626207F5400A17EF7 /* doubleTracks.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleTracks.m4a; sourceTree = "<group>"; };
+		84226913271DA1060027699F /* StreamingKTVControllBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingKTVControllBox.xib; sourceTree = "<group>"; };
 		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
 		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 		84FCCD9A2620413B0065FB4F /* KTV */ = {
 			isa = PBXGroup;
 			children = (
+				84226913271DA1060027699F /* StreamingKTVControllBox.xib */,
 				841F762626207F5400A17EF7 /* doubleTracks.m4a */,
 				84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */,
 				84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */,
@@ -994,6 +997,7 @@
 				83A3049524F6AED600209D0A /* play@3x.png in Resources */,
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
+				84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */,
 				5C5CA2452627E54600317338 /* test33.JPG in Resources */,
 				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
 				2B44FB1625515BD9002CC02A /* test1.png in Resources */,
