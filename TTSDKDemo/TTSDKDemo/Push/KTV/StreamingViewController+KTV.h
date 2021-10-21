@@ -16,6 +16,7 @@
 
 @interface StreamingViewController (KTV)
 @property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
+@property (nonatomic, readonly) UISlider *timeSeekSlider;
 - (void)initKTVView;
 - (void)switchAudioEffectButtonClicked:(UIButton *)sender;
 
