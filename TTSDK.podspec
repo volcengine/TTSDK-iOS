@@ -84,6 +84,8 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
+        'TTSDK/lens/**/*.a',
+        'TTSDK/videoprocessor/**/*.a'
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
@@ -209,7 +211,9 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
-        'TTSDK/lib_h_dec/**/*.a'
+        'TTSDK/lib_h_dec/**/*.a',
+        'TTSDK/lens/**/*.a',
+        'TTSDK/videoprocessor/**/*.a'
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
@@ -219,7 +223,7 @@
     end
 
     spec.subspec 'Player-Lite' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
@@ -255,7 +259,7 @@
     # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
     
     spec.subspec 'Player-Strip' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
