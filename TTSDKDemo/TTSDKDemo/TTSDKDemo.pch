@@ -34,8 +34,10 @@
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
     #import <TTSDKFramework/LiveCore+KTV.h>
+    #import <TTSDKFramework/LSLiveAudioUnitProcess.h>
     #else
     #import <TTSDK/LiveCore+KTV.h>
+    #import <TTSDK/LSLiveAudioUnitProcess.h>
     #endif
 #endif
 
