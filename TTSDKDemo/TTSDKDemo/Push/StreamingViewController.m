@@ -28,24 +28,9 @@ static NSString *const kRecordText = @"录制";
 @property (nonatomic) UIButton *stopButton;
 @property (nonatomic) UIButton *cameraButton;
 @property (nonatomic) UIButton *muteButton;
-@property (nonatomic) UIButton *echoCancellationButton;
 
 @property (nonatomic) UIView *canvasView;
-@property (nonatomic, strong) UIButton *headphonesMonitoringButton;
 
-@property (nonatomic, strong) UIButton *beautifyButton;
-@property (nonatomic, strong) UIButton *beautifyButton2;
-@property (nonatomic, strong) UIButton *mattingSwitchButton;
-@property (nonatomic, strong) UIButton *mirrorOutputButton;
-@property (nonatomic, strong) UIButton *captureImageButton;
-@property (nonatomic, strong) UISlider *shrinkSlider;
-@property (nonatomic, strong) UILabel *shrinkLable;
-@property (nonatomic, strong) UISlider *filterSlider;
-@property (nonatomic, strong) UILabel *filterLable;
-@property (nonatomic, strong) UISlider *whitenSlider;
-@property (nonatomic, strong) UILabel *whitenLable;
-@property (nonatomic, strong) UILabel *beautifyLable;
-@property (nonatomic, strong) UILabel *countLabel;
 @property (nonatomic, strong) NSMutableArray *observerArray;
 
 @property (nonatomic, strong) UIView *cameraPreviewContainerView;
@@ -348,12 +333,13 @@ static NSString *const kRecordText = @"录制";
     [self initKTVView];
 #endif
     
-    [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
+    //[_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
     
     [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"耳返开" target:self action:@selector(onHeadphoneBackButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:kRecordText target:self action:@selector(onRecordButtonClicked:)]];
     [self.view addSubview:self.infoView];
     
@@ -405,6 +391,13 @@ static NSString *const kRecordText = @"录制";
 
 /* ......... */
 - (void)timerStatistics {
+    //
+    if (self.engine && self.engine.musicIsPlaying) {
+        float progress = [self.engine currentPlayTime] / [self.engine musicDuration];
+        [self.timeSeekSlider setValue:progress];
+    }
+    
+    //
     NSDictionary *dic = [_engine.liveSession getStatistics];
     if(!dic) {
         return;
@@ -490,6 +483,7 @@ static NSString *const kRecordText = @"录制";
 //MARK: 停止推流
 - (void)stopStreaming {
     NSLog(@"stop begin --->");
+    [_engine stopBgMusic];
     [_engine stopStreaming];
     NSLog(@"stop end --->");
 }
@@ -537,6 +531,16 @@ static NSString *const kRecordText = @"录制";
 - (void)onMirrorButtonClicked:(UIButton *)button {
     button.selected = !button.selected;
     [self.capture setStreamMirror:button.selected];
+}
+
+- (void)onHeadphoneBackButtonClicked:(UIButton *)button {
+    if (self.engine.isHeadphonesMonitoringEnabled) {
+        [button setTitle:@"耳返开" forState:UIControlStateNormal];
+        [self.engine setHeadphonesMonitoringEnabled:NO];
+    } else {
+        [button setTitle:@"耳返关" forState:UIControlStateNormal];
+        [self.engine setHeadphonesMonitoringEnabled:YES];
+    }
 }
 
 //MARK: 录制
