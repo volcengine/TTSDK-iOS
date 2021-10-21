@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *pauseMusic;
 @property (weak, nonatomic) IBOutlet UIButton *continueMusic;
-
 @end
 
 @implementation StreamingKTVControllBox
@@ -75,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)initKTVView {
     //MARK: K歌相关
-    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 180);
+    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 240);
     StreamingKTVControllBox *karaokeControllersContainer = [[StreamingKTVControllBox alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - karaokeControllersContainerSize.height, karaokeControllersContainerSize.width, karaokeControllersContainerSize.height)];
     karaokeControllersContainer.backgroundColor = UIColor.whiteColor;
     karaokeControllersContainer.alpha = .7;
@@ -105,6 +104,10 @@ NS_ASSUME_NONNULL_BEGIN
         [self.engine setMusicVolume:slider.value];
     } else if (slider == self.recordVolumeSlider) {
         [self.engine setAudioVolume:slider.value];
+    } else if (slider == self.timeSeekSlider) {
+        NSTimeInterval musicD = [self.engine musicDuration];
+        NSTimeInterval expectD = musicD * slider.value;
+        [self.engine seekToTime:expectD];
     }
 #endif
 }
@@ -122,6 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
             __strong typeof(wself) sself = wself;
             if (success) {
                 sself.karaokeControllersContainer.hidden = NO;
+                [sself.timeSeekSlider setValue:0];
             }
         } completionBlock:^{
             
@@ -132,7 +136,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-
-
 NS_ASSUME_NONNULL_END
+
+@implementation LSLiveAudioUnitConfig (TTSDK)
+
+- (BOOL)newPlayerMode {
+    return YES;
+}
+
+@end
