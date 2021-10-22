@@ -37,8 +37,10 @@
 }
 
 - (void)appendLogWithLogInfo:(NSDictionary *)info {
-    [_logText appendString:[NSString stringWithFormat:@"\n%@", info]];
-    [self updateLogTextViewWithContent:_logText];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->_logText appendString:[NSString stringWithFormat:@"%@", info]];
+        [self updateLogTextViewWithContent:self->_logText];
+    });
 }
 
 - (void)clear {
