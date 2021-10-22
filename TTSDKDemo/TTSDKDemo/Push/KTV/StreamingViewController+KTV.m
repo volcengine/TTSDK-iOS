@@ -19,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *pauseMusic;
 @property (weak, nonatomic) IBOutlet UIButton *continueMusic;
+
+-(void)resetUI;
+
 @end
 
 @implementation StreamingKTVControllBox
@@ -44,6 +47,13 @@
 -(void)initSubViewWithNib {
     [[NSBundle mainBundle] loadNibNamed:@"StreamingKTVControllBox" owner:self options:NULL];
     [self addSubview:self.rootView];
+    [self.rootView setFrame:self.bounds];
+}
+
+- (void)resetUI {
+    self.recordVolumeSlider.value = 0.5;
+    self.musicVolumeSlider.value = 0.5;
+    self.timeSeekSlider.value = 0;
 }
 
 @end
@@ -125,6 +135,9 @@ NS_ASSUME_NONNULL_BEGIN
             __strong typeof(wself) sself = wself;
             if (success) {
                 sself.karaokeControllersContainer.hidden = NO;
+                [sself.karaokeControllersContainer resetUI];
+                [sself.engine setAudioVolume:0.5];
+                [sself.engine setMusicVolume:0.5];
                 [sself.timeSeekSlider setValue:0];
             }
         } completionBlock:^{
