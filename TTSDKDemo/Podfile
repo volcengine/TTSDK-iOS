@@ -9,7 +9,7 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 def ttsdk_pods
-  pod 'TTSDK', '1.19.1.100-hanjutv', :subspecs => [
+  pod 'TTSDK', '1.19.2.2403', :subspecs => [
     'Core',
     'TTFFmpeg',
     'PlayerCore',
