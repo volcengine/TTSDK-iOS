@@ -172,7 +172,8 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/BDWebImageToB/**/*.a',
-        'TTSDK/libttheif_ios/**/*.a'
+        'TTSDK/libttheif_ios/**/*.a',
+        'TTSDK/BDSword/ios-arch-iphone/*.a',    # 解密
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/TTNet'
@@ -182,6 +183,8 @@
       subspec.libraries = "c++", "resolv"
       subspec.dependency 'libwebp'
       subspec.dependency 'MMKV'
+      subspec.dependency 'libdav1d', '0.8.0'
+      subspec.dependency 'libavif/libdav1d', '0.9.1'
     end
 
     spec.subspec 'Uploader' do |subspec|
