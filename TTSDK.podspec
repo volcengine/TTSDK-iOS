@@ -173,7 +173,7 @@
       subspec.vendored_libraries = [
         'TTSDK/BDWebImageToB/**/*.a',
         'TTSDK/libttheif_ios/**/*.a',
-        'TTSDK/BDSword/ios-arch-iphone/*.a',    # 解密
+        'TTSDK/BDSword/ios-arch-iphone/*.a',    
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/TTNet'
