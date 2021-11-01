@@ -141,7 +141,7 @@ void uncaughtExceptionHandler(NSException*exception){
     // 配置图片库AppID 是否是海外产品
     BDWebImageStartUpConfig * imageConfig = [BDWebImageStartUpConfig new];
     imageConfig.appID = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
-    imageConfig.serviceVendor = BDAutoTrackServiceVendorCN;
+    imageConfig.serviceVendor = BDImageServiceVendorCN;
     [[BDWebImageManager sharedManager] startUpWithConfig:imageConfig];
 }
 
