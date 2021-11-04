@@ -230,7 +230,6 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-Strip'
-      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
     end
 
     spec.subspec 'PlayerCore-Strip' do |subspec|
