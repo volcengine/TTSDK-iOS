@@ -116,9 +116,8 @@ void uncaughtExceptionHandler(NSException*exception){
 
 - (void)initAppLog {
 #if __has_include(<RangersAppLog/RangersAppLogCore.h>)
-    BDAutoTrackConfig *config = [BDAutoTrackConfig new];
     // 必须配置
-    config.appID = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+    BDAutoTrackConfig *config = [BDAutoTrackConfig configWithAppID:[[TTDemoSDKEnvironmentManager shareEvnironment] appId]];
     config.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     config.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
     config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorVA;
