@@ -65,7 +65,6 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, strong) UIActivityIndicatorView* loadingView;
 @property (nonatomic, copy) NSString* applyAuth;
 @property (nonatomic, copy) NSString* commitAuth;
-@property (nonatomic, copy) NSString* authParameter;
 @property (nonatomic, strong) NSTimer* timer;
 
 @property (nonatomic, copy) NSString *sessionToken;
@@ -73,11 +72,11 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, copy) NSString *secretKey;
 @property (nonatomic, strong) NSDate *expirationTime;
 @property (nonatomic, copy) NSString *regionName;
-@property (nonatomic, assign) NSInteger shouldStartType;
 @property (nonatomic, copy) NSString* mateFilePath;
 @property (nonatomic, copy) NSString* mateFileType;
 @property (nonatomic, copy) NSString* mateCategory;
 @property (nonatomic, copy) NSString* mAKSKJsonStr;
+@property (nonatomic, copy) NSString* spaceName;
 
 @end
 @implementation uploadController
@@ -107,9 +106,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         _processType = 0;
         [TTVideoUploadEventManager sharedManager].delegate = self;
         
-        __weak typeof(self) weakSelf = self;
 
-        NSLog(@"authparam is %@",_authParameter);
         [self initUploader];
         [self initUI];
 }
@@ -119,17 +116,12 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     return @[
              @{@"title": @"ImageStart",
                @"handleBlock": ^{
-                   __strong typeof(weakSelf) self = weakSelf;
-                   if (self.imageUploadClientTop == nil) {
-                       [self alertViewController:@"请重新选择图片！！！" title:@"错误"];
-                   }
-                   self.startTime = [[NSDate date] timeIntervalSince1970];
-                   self.shouldStartType = 1;
-                   if (self.authParameter == nil) {
-                       [self requestSign];
-                   } else {
-                       [self.imageUploadClientTop start];
-                   }
+                __strong typeof(weakSelf) self = weakSelf;
+                if (self.imageUploadClientTop == nil) {
+                    [self alertViewController:@"请重新选择图片！！！" title:@"错误"];
+                }
+                self.startTime = [[NSDate date] timeIntervalSince1970];
+                [self.imageUploadClientTop start];
                }
                },
              @{@"title": @"ImageStop",
@@ -158,12 +150,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         [self alertViewController:@"请重新选择视频！！！" title:@"错误"];
                     }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
-                   self.shouldStartType = 2;
-                   if (_authParameter == nil) {
-                       [self requestSign];
-                   } else {
-                       [self.videoUploadClientTop start];
-                   }
+                   [self.videoUploadClientTop start];
                   }
                },
              @{@"title": @"VideoStop",
@@ -193,12 +180,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                         [self alertViewController:@"请重新选择素材！！！" title:@"错误"];
                     }
                     self.startTime = [[NSDate date] timeIntervalSince1970];
-                    self.shouldStartType = 3;
-                    if (_authParameter == nil) {
-                        [self requestSign];
-                    } else {
-                        [self.mateUploadClientTop start];
-                    }
+                    [self.mateUploadClientTop start];
                    }
                },
              @{@"title": @"MateStop",
@@ -235,6 +217,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     _mAKSKJsonStr = textField.text;
+    [self requestSign];
     NSLog(@"AKSKJsonStr:%@",_mAKSKJsonStr);
 }
 
@@ -252,119 +235,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     [self.view addSubview:_loadingView];
 }
 
-- (void) getAuth{
-    NSString* url;
-    if (_isImageX) {
-        url = @"http://vod-sdk-playground.snssdk.com/api/v1/get_image_upload_token?ak=AKLTNzg3MGY3YzdkYWY5NGMzMDkwNTEyMTI1NzYyOGE0MDE&sk=zqwmw2zQT/cQNTWrCEUf3DY5WVaYmbfwX/nutLW7Reauf0WX/35FsY18oORMEZt9&service_id=19tz3ytenx";
-    }else {
-        url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKLTZWE1ZDM4YTY1MDk4NDE3NzgyMDU4ZWExN2YzZTUzMjI&LTSK=TURBMU9XRTRNVGRtTURjd05EWTRPV0V4TURjM09EUXhaamxpWlRneVpqWQ==&expiredTime=10";
-    }
-    
-    [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(id  _Nullable jsonObject, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"error:%@",error);
-            [self getAuth];
-            return ;
-        }
-        if (jsonObject) {
-            NSLog(@"json Objct:%@",jsonObject);
-            NSString* result = jsonObject[@"token"];
-            if (_authParameter == nil) {
-                _authParameter = result;
-                [self initUploader];
-            }
-            _authParameter = result;
-        } else {
-            [self getAuth];
-        }
-    }];
-    
-    
-    
-}
-
 - (void)buttonAction{
     [_resultArray removeAllObjects];
     [_fileArray removeAllObjects];
-    [self dealAssets];
-}
-
-- (void)dealAssets{
-}
-
-- (void)configTaskWithURL:(NSString *)urlString params:(NSDictionary *)params headers:(NSDictionary *)headers completion:(void (^)(id _Nullable jsonObject, NSError * _Nullable error))completionHandler
-{
-    NSString *originURL = urlString;
-    NSMutableString *requestURL = [NSMutableString stringWithString:originURL];
-    if (params != nil) {
-        NSRange range = [originURL rangeOfString:@"?"];
-        if (range.location == NSNotFound) {
-            [requestURL appendString:@"?"];
-        }
-        else if (range.location != originURL.length - 1) {
-            [requestURL appendString:@"&"];
-        }
-        NSUInteger keysNum = [params allKeys].count;
-        for (int i = 0; i < keysNum; i++) {
-            NSString *key = [[params allKeys] objectAtIndex:i];
-            NSString *value = [params objectForKey:key];
-            NSString *encodedKey = [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSString *encodedValue = [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            [requestURL appendString:[NSString stringWithFormat:@"%@=%@",encodedKey,encodedValue]];
-            if (i != keysNum - 1) {
-                [requestURL appendString:@"&"];
-            }
-        }
-    }
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
-    //    [urlRequest setValue:@"TTVideoEngine(iOS)" forHTTPHeaderField:@"User-Agent"];
-    for (NSString *key in [headers allKeys]) {
-        [urlRequest setValue:[headers valueForKey:key] forHTTPHeaderField:key];
-    }
-    NSURLSession* session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:[urlRequest copy]
-                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                if (error) {
-                                                    completionHandler(nil,error);
-                                                }
-                                                else {
-                                                    NSLog(@"**********************************%@",((NSHTTPURLResponse*)response).allHeaderFields);
-                                                    NSInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
-                                                    if ([response isKindOfClass:[NSHTTPURLResponse class]] && (statusCode == 200 || statusCode == 403)) {
-                                                        NSError *jsonError = nil;
-                                                        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:nil error:&jsonError];
-                                                        if (jsonError) {
-                                                            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:jsonError.userInfo];
-                                                            if (data) {
-                                                                const char *cStr = (const char *)[data bytes];
-                                                                NSString *body = nil;
-                                                                if (cStr != NULL) {
-                                                                    body = [NSString stringWithUTF8String:cStr];
-                                                                }
-                                                                if (body) {
-                                                                    [userInfo setValue:body forKey:@"body"];
-                                                                } else {
-                                                                    [userInfo setValue:@"" forKey:@"body"];
-                                                                }
-                                                            }
-                                                            NSError *parseError = [NSError errorWithDomain:jsonError.domain code:jsonError.code userInfo:userInfo];
-                                                            completionHandler(nil,jsonError);
-                                                        }
-                                                        else {
-                                                            NSError *retError = nil;
-                                                            if (statusCode != 200) {
-                                                                
-                                                            }
-                                                            completionHandler(jsonObject,retError);
-                                                        }
-                                                    }
-                                                    else {
-                                                        completionHandler(nil,[NSError errorWithDomain:@"not 200" code:-1000 userInfo:@{@"description": response.description ?:@""}]);
-                                                    }
-                                                }
-                                            }];
-    [task resume];
-    
 }
 
 - (void)alertView:(TTUploadImageInfoTop*)imageInfo message:(NSString*)messageStr title:(NSString*)title{
@@ -412,72 +285,33 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 
 - (void)requestSign{
-    __weak typeof(self) weakSelf = self;
-        /*vod账号信息*/
-        NSString * url = nil;
-        if(_isImageX){
-            url = @"http://vod-app-server.bytedance.net/api/sts2/v1/upload?LTAK=AKStr&LTSK=SKStr&expiredTime=10000";
-        }
-        else{
-            url = @"http://vod-app-server.bytedance.net/api/sts2/v2/upload?LTAK=AKStr&LTSK=SKStr&expiredTime=100000000";
-            }
-                /* imageX账号信息*/
-    [TTFileUploadDemoUtil configTaskWithURL:url params:nil headers:nil completion:^(NSMutableDictionary*  _Nullable jsonObject, NSError * _Nullable error){
-        __strong typeof(self) strongSelf = weakSelf;
-        if (error) {
-            NSLog(@"error = %@",error);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [strongSelf requestSign];
-        //      [strongSelf alertTitle:NULL Message:error.domain];
-            });
-        }
-        if (jsonObject) {
-            NSLog(@"json Objct:%@",jsonObject);
-            NSDictionary* result;
-            NSData* jsonData = [self.mAKSKJsonStr dataUsingEncoding:NSUTF8StringEncoding];
-            NSError *err;
+    if (self.mAKSKJsonStr) {
+        NSDictionary* result;
+        NSData* jsonData = [self.mAKSKJsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
 
-            result = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                     options:NSJSONReadingMutableContainers
-                                                       error:&err];
+        result = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                 options:NSJSONReadingMutableContainers
+                                                   error:&err];
 
 
-            //result = jsonObject[@"result"];
-            if (result) {
-                strongSelf.accessKey = nil;
-                strongSelf.secretKey = nil;
-                strongSelf.sessionToken = nil;
-                strongSelf.expirationTime = nil;
-                strongSelf.accessKey = result[@"AccessKeyID"];
-                strongSelf.secretKey = result[@"SecretAccessKey"];
-                strongSelf.sessionToken = result[@"SessionToken"];
-                strongSelf.expirationTime = result[@"ExpiredTime"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [strongSelf.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                    [strongSelf.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                    [strongSelf.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
-                });
-
-            }
+        if (result) {
+            self.accessKey = result[@"AccessKeyID"];
+            self.secretKey = result[@"SecretAccessKey"];
+            self.sessionToken = result[@"SessionToken"];
+            self.expirationTime = result[@"ExpiredTime"];
+            self.spaceName = result[@"SpaceName"];
+            [self.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+            [self.imageUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+            [self.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+            [self.videoUploadClientTop setRequestParameter:[self requestParameter]];
+            [self.imageUploadClientTop setRequestParameter:[self requestParameter]];
+            [self.mateUploadClientTop setRequestParameter:[self requestParameter]];
         }
-        switch (strongSelf.shouldStartType) {
-            case 1:
-                [strongSelf.imageUploadClientTop start];
-                break;
-            case 2:
-                [strongSelf.videoUploadClientTop start];
-                break;
-            case 3:
-                [strongSelf.mateUploadClientTop start];
-                break;
-            default:
-                break;
-        }
-        strongSelf.shouldStartType = 0;
-    }];
+    }
 }
 
-    - (NSDictionary*)authorizationParameter{
+- (NSDictionary*)authorizationParameter{
                                 NSDictionary* dictionary = @{@"TTFileUploadAccessKey":self.accessKey?:@"",
                                      @"TTFileUploadSecretKey":self.secretKey?:@"",
                                      @"TTFileUploadSessionToken":self.sessionToken?:@"",
@@ -485,6 +319,9 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                                      @"TTFileUploadRegionName":@"cn-north-1"
                                      };
         return dictionary;
+}
+- (NSDictionary *)requestParameter {
+    return @{TTFileUploadSpace:self.spaceName?:@""};
 }
 
 #pragma -mark UI
@@ -499,20 +336,20 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     UIBlockSegmentedControl* netWorkControll = [UIBlockSegmentedControl initSegMentFrame:netFrame item:netArray tag:++tag];
     [netWorkControll addActionBlock:^{
         if (netWorkControll.selectedSegmentIndex == 0) {
-            _isImageX = YES;
-            _processType = TTImageUploadActionTypeNoProcess;
+            self.isImageX = YES;
+            self.processType = TTImageUploadActionTypeNoProcess;
         }
         else if(netWorkControll.selectedSegmentIndex == 1){
-            _isImageX = YES;
-            _processType = TTImageUploadActionTypeEncrypt;
+            self.isImageX = YES;
+            self.processType = TTImageUploadActionTypeEncrypt;
         }else if(netWorkControll.selectedSegmentIndex == 2){
-            _isImageX = NO;
-            _processTypeVideo = TTVideoUploadActionTypeEncrypt;
+            self.isImageX = NO;
+            self.processTypeVideo = TTVideoUploadActionTypeEncrypt;
         }else if(netWorkControll.selectedSegmentIndex == 3){
-            _isImageX = NO;
+            self.isImageX = NO;
         }
         [self initUploader];
-        //[self requestSign];
+        [self requestSign];
         
     }];
     [containView addSubview:netWorkControll];
@@ -531,18 +368,18 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     UIBlockSegmentedControl* netWorkControllMate = [UIBlockSegmentedControl initSegMentFrame:netFrameMate item:netArrayMate tag:++tagMate];
     [netWorkControllMate addActionBlock:^{
         if (netWorkControllMate.selectedSegmentIndex == 0) {
-            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test33" ofType:@"JPG"];
-            _mateFileType = @"image";
-            _mateCategory = @"image";
+            self.mateFilePath = [[NSBundle mainBundle] pathForResource:@"test33" ofType:@"JPG"];
+            self.mateFileType = @"image";
+            self.mateCategory = @"image";
         }
         else if(netWorkControllMate.selectedSegmentIndex == 1){
-            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
-            _mateFileType = @"media";
-            _mateCategory = @"video";
+            self.mateFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
+            self.mateFileType = @"media";
+            self.mateCategory = @"video";
         }else if(netWorkControllMate.selectedSegmentIndex == 2){
-            _mateFilePath = [[NSBundle mainBundle] pathForResource:@"test44" ofType:@"ttf"];
-            _mateFileType = @"object";
-            _mateCategory = @"font";
+            self.mateFilePath = [[NSBundle mainBundle] pathForResource:@"test44" ofType:@"ttf"];
+            self.mateFileType = @"object";
+            self.mateCategory = @"font";
         }
     }];
     [containViewMate addSubview:netWorkControllMate];
@@ -627,7 +464,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         [self setupfilePaths];
         [self.collectionView reloadData];
     }
-    self.imageUploadClientTop = [TTFileUploadDemoUtil imageUploadClientTop:_filePathArray delegate:self authParameter:self.authParameter processAction:_processType];
+    self.imageUploadClientTop = [TTFileUploadDemoUtil imageUploadClientTop:_filePathArray delegate:self authParameter:nil processAction:_processType];
     //[[TTVideoUploadEventManager sharedManager] popAllEvents];
     
 }
