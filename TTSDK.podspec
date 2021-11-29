@@ -31,7 +31,6 @@
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
       ]
       subspec.dependency 'RangersAppLog/Core', '< 6.0.0'
-      subspec.dependency 'RangersAppLog/Host/CN', '< 6.0.0'
       subspec.libraries = 'stdc++'
     end
 
@@ -126,9 +125,6 @@
         "TTSDK/LiveStreamFramework/**/libLiveStreamFramework_{base,glbase,session,webrtc,base_webrtc,ntp,audio-effect}_ios.a",
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePush_ios.a',
         'TTSDK/libyuv-iOS/**/*.a'
-      ]
-      subspec.vendored_frameworks = [
-        'TTSDK/ByteAudio/*.framework',
       ]
       subspec.frameworks = [
         'VideoToolBox',
