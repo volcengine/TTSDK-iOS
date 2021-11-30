@@ -937,6 +937,7 @@
 				8378B5B923C4860F0075E05C /* Resources */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
 				83A2D22025F9250F00043E3E /* Embed Frameworks */,
+				842E4A65E8794D9F79B2C06F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1041,6 +1042,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		842E4A65E8794D9F79B2C06F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9389C65C0396185FCC59ACF6 /* [CP] Check Pods Manifest.lock */ = {
