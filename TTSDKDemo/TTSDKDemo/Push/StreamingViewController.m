@@ -232,7 +232,8 @@ static NSString *const kRecordText = @"录制";
     [_engine startVideoCapture];
     
     //MARK: 若需要美颜，需要接管摄影机采集
-    //self.engine.camera.delegate = self;
+    self.engine.camera.outputPixelFmt = kCVPixelFormatType_32BGRA;
+    self.engine.camera.outputDelegate = self;
     
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
 
@@ -257,7 +258,7 @@ static NSString *const kRecordText = @"录制";
 }
 
 - (void)setupProcessor {
-    _processor = [[BEFrameProcessor alloc] initWithContext:[_engine getEAGLContext] resourceDelegate:nil];
+    _processor = [[BEFrameProcessor alloc] initWithContext:[_capture getGLContext] resourceDelegate:nil];
     NSLog(@"%@", _processor.availableFeatures);
     [_processor setComposerMode:1];
     [_processor updateComposerNodes:@[]];
@@ -284,9 +285,9 @@ static NSString *const kRecordText = @"录制";
     CMTime pts = CMSampleBufferGetPresentationTimeStamp(videoBuffer);
 
     double timeStamp = (double)(pts.value / pts.timescale);
-//    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
-//    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
-    [_capture pushVideoBuffer:buffer andCMTime:pts];
+    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
+    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
+    //[_capture pushVideoBuffer:buffer andCMTime:pts];
 }
 
 - (void)setupUIComponent {
