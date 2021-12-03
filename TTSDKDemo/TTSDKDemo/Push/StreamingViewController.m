@@ -233,7 +233,7 @@ static NSString *const kRecordText = @"录制";
     
     //MARK: 若需要美颜，需要接管摄影机采集
     self.engine.camera.outputPixelFmt = kCVPixelFormatType_32BGRA;
-    self.engine.camera.outputDelegate = self;
+    self.engine.camera.delegate = self;
     
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
 
