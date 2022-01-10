@@ -85,11 +85,28 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
-        'TTSDK/lens/**/*.a',
-        'TTSDK/videoprocessor/**/*.a'
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+      ]
+      subspec.dependency 'TTSDK/TTFFmpeg'
+    end
+
+    # Support Super Resolution
+    spec.subspec 'PlayerCore-SR' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
+      ]
+      subspec.resources = [
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
       subspec.dependency 'TTSDK/TTFFmpeg'
     end
@@ -146,7 +163,7 @@
     end
 
     spec.subspec 'Player' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
       subspec.public_header_files = [
         "TTSDK/{#{class_name}}/**/*.h"
       ]
@@ -162,6 +179,26 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+    end
+
+    # Support Super Resolution
+    spec.subspec 'Player-SR' do |subspec| 
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS,lens,videoprocessor'
+      subspec.public_header_files = [
+        "TTSDK/{#{class_name}}/**/*.h"
+      ]
+      subspec.source_files = [
+        "TTSDK/{#{class_name}}/**/*"
+      ]
+      subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+      ]
+      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
+      subspec.vendored_libraries = [
+        "TTSDK/{#{lib_name}}/**/*.a"
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-SR'
     end
 
     spec.subspec 'Image' do |subspec|
@@ -217,8 +254,6 @@
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
         'TTSDK/lib_h_dec/**/*.a',
-        'TTSDK/lens/**/*.a',
-        'TTSDK/videoprocessor/**/*.a'
       ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
@@ -263,7 +298,7 @@
     end
 
     # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
-    
+
     spec.subspec 'Player-Strip' do |subspec|
       class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
       subspec.public_header_files = [
