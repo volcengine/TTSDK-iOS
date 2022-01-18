@@ -9,7 +9,7 @@ platform :ios, "8.0"
 inhibit_all_warnings!
 
 def ttsdk_pods
-  pod 'TTSDK', '1.24.1.2-standard', :subspecs => [
+  pod 'TTSDK', '1.24.2.2-standard', :subspecs => [
     'Core',
     'TTFFmpeg',
     'PlayerCore',
