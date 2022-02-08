@@ -186,7 +186,11 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*'
       ]
       lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
       subspec.vendored_libraries = [
