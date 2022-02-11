@@ -190,7 +190,9 @@
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
         'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
         'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
-        'TTSDK/VCPreloadStrategy/sources/**/*'
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
       subspec.vendored_libraries = [
