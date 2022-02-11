@@ -6,6 +6,7 @@
 
 #import "StreamingViewController.h"
 #import "StreamingViewController+KTV.h"
+#import "StreamingViewController+MTV.h"
 #import "LiveHelper.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -19,6 +20,10 @@
 
 static NSString *const kRecordingText = @"录制中";
 static NSString *const kRecordText = @"录制";
+#define kSessionMixPic         @"加图片"
+#define kSessionRemovePic      @"删图片"
+static int const kTestSessionPicID = 50;
+
 
 @interface StreamingViewController () <LCCameraOutputDelegate, LiveStreamSessionProtocol>
 
@@ -28,6 +33,7 @@ static NSString *const kRecordText = @"录制";
 @property (nonatomic) UIButton *stopButton;
 @property (nonatomic) UIButton *cameraButton;
 @property (nonatomic) UIButton *muteButton;
+@property (nonatomic, strong) UIButton *mixPicButton; //端上合流加上一个图片
 
 @property (nonatomic) UIView *canvasView;
 
@@ -47,9 +53,12 @@ static NSString *const kRecordText = @"录制";
 @property (nonatomic, assign) CGFloat recordRate;
 
 @property (nonatomic, assign) BOOL audioMute;
-
-@property (nonatomic, assign) BOOL isPhotoMovie;//测试照片电影
 @property (nonatomic, assign) BOOL dumpRecording;
+//MARK: 媒体混流
+@property (nonatomic, strong) NSLock* mixPicLock;
+@property (nonatomic, strong) LiveStreamMultiTimerManager *pushMixPicTimer;
+@property (nonatomic, assign) CVPixelBufferRef mixPicPixelBuffer;
+
 
 //MARK: Streaming - 推流配置
 @property (nonatomic, strong) LiveStreamConfiguration *liveConfig;
@@ -230,10 +239,11 @@ static NSString *const kRecordText = @"录制";
         }
     }];
     [_engine startVideoCapture];
+    [_engine startAudioCapture];
     
     //MARK: 若需要美颜，需要接管摄影机采集
     self.engine.camera.outputPixelFmt = kCVPixelFormatType_32BGRA;
-    self.engine.camera.delegate = self;
+    self.engine.camera.outputDelegate = self;
     
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
 
@@ -285,9 +295,9 @@ static NSString *const kRecordText = @"录制";
     CMTime pts = CMSampleBufferGetPresentationTimeStamp(videoBuffer);
 
     double timeStamp = (double)(pts.value / pts.timescale);
-    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
-    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
-    //[_capture pushVideoBuffer:buffer andCMTime:pts];
+//    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
+//    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
+    [_capture pushVideoBuffer:buffer andCMTime:pts];
 }
 
 - (void)setupUIComponent {
@@ -342,6 +352,8 @@ static NSString *const kRecordText = @"录制";
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"耳返开" target:self action:@selector(onHeadphoneBackButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:kRecordText target:self action:@selector(onRecordButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:kSessionMixPic target:self action:@selector(mixPicButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"开mv" target:self action:@selector(mvButtonClicked:)]];
     [self.view addSubview:self.infoView];
     
     // layout
@@ -542,6 +554,79 @@ static NSString *const kRecordText = @"录制";
         [button setTitle:@"耳返关" forState:UIControlStateNormal];
         [self.engine setHeadphonesMonitoringEnabled:YES];
     }
+}
+
+//MARK: 添加图片媒体混流
+- (void)mixPicButtonClicked:(UIButton *)button
+{
+    if ([button.titleLabel.text isEqual:kSessionMixPic]) {
+        [self startPushMixPicBuffer];
+        // 添加视频流，LayerID: kTestSessionPicID
+        [self.engine.liveCapture addVideoInput:CGRectMake(0, 0, 0.5, 0.40625) fillMode:LSRenderModeScaleAspectFill zOrder:100 forLayer:kTestSessionPicID rotation:LSRotateModeNoRotation];
+        // 设置本地可预览
+        [self.engine setPreviewMode:LCPreviewMode_GameInteract];
+        [button setTitle:kSessionRemovePic forState:UIControlStateNormal];
+    } else if ([button.titleLabel.text isEqual:kSessionRemovePic]) {
+        // 移除视频流
+        [self.engine.liveCapture removeVideoInput:kTestSessionPicID];
+        [self stopPushMixPicBuffer];
+        [button setTitle:kSessionMixPic forState:UIControlStateNormal];
+    }
+}
+
+- (void) startPushMixPicBuffer
+{
+    if (!_pushMixPicTimer) {
+        _pushMixPicTimer = [[LiveStreamMultiTimerManager alloc] init];
+    }
+    NSString *img = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"png"];
+    UIImage *mixImage = [UIImage imageNamed:img];
+    [self.mixPicLock lock];
+    // 将图片保存成PixelBuffer
+    self.mixPicPixelBuffer = [LSIHelper imageBufferFromImage:mixImage];
+    [self.mixPicLock unlock];
+    
+    @ls_weakify(self);
+    // 15fps Timer
+    [_pushMixPicTimer schedualTimerWithIdentifier:@"push_mix_pic_indentifier"
+                                      interval:1.0/15
+                                              queue:nil
+                                          repeats:YES
+                                             action:^{
+       @ls_strongify(self);
+        if (!self) {
+           return;
+        }
+        int64_t value = (int64_t)(CACurrentMediaTime() * 1000000000);
+        int32_t timeScale = 1000000000;
+        CMTime pts = CMTimeMake(value, timeScale);
+        [self.mixPicLock lock];
+        if (self.mixPicPixelBuffer != NULL) {
+            // 将图片推入采集模块
+            [self.engine.liveCapture pushVideoBuffer:self.mixPicPixelBuffer withCMTime:pts toLayer:kTestSessionPicID];
+        }
+        [self.mixPicLock unlock];
+    }];
+}
+
+- (void) stopPushMixPicBuffer
+{
+    if (_pushMixPicTimer) {
+        [_pushMixPicTimer cancelTimerWithName:@"push_mix_pic_indentifier"];
+        _pushMixPicTimer = nil;
+    }
+    
+    [self.mixPicLock lock];
+    if (self.mixPicPixelBuffer != NULL) {
+        CVPixelBufferRelease(self.mixPicPixelBuffer);
+        self.mixPicPixelBuffer = NULL;
+    }
+    [self.mixPicLock unlock];
+}
+
+//MARK: MTV
+- (void)mvButtonClicked:(UIButton *)button {
+    [self mvButtonClicked:button];
 }
 
 //MARK: 录制
