@@ -13,7 +13,7 @@ def ttsdk_pods
     'Core',
     'TTFFmpeg',
     'PlayerCore',
-    'LivePull',
+    'LivePull-RTS',
     'LivePush',
     'Player',
     'Image',
