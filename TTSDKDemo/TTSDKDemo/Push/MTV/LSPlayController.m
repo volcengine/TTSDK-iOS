@@ -68,7 +68,6 @@
 
 - (void) setAudioWrapper:(void *)audioWrapper
 {
-    EngineAudioWrapper *engineAudio = (EngineAudioWrapper *)audioWrapper;
     [self.player setAudioProcessor:audioWrapper];
 }
 
