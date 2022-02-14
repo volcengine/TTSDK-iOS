@@ -114,18 +114,28 @@
     spec.subspec 'LivePull' do |subspec|
       subspec.public_header_files = [
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
-        'TTSDK/TTVideoLive/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
       ]
       subspec.source_files = [
-        'TTSDK/TTVideoLive/**/*',
+        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/TTVideoLive/**/*.a',
+        'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_TTLiveSetting_ios.a',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+    end
+
+    spec.subspec 'LivePull-RTS' do |subspec|
+      subspec.vendored_libraries = [
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_awesome_ios.a',
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteRtsSDK/*.framework',
+      ]
+      subspec.dependency 'TTSDK/LivePull'
     end
 
     spec.subspec 'LivePush' do |subspec|
