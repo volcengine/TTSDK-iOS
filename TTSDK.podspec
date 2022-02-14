@@ -130,7 +130,7 @@
 
     spec.subspec 'LivePull-RTS' do |subspec|
       subspec.vendored_libraries = [
-        'TTSDK/TTVideoLive/**/libTTVideoLive_RTC_ios.a',
+        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_awesome_ios.a',
       ]
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtsSDK/*.framework',
