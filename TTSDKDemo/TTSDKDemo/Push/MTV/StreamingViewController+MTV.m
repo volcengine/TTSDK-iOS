@@ -48,13 +48,9 @@
 
 - (void) p_startMVPlay:(NSURL *)url
 {
-    
-    if ([self.engine.liveCapture respondsToSelector:@selector(feedProcessBuffer:sampleFrames:elementIndex:withMixerHandle:)]) {
-        NSLog(@"James");
-    }
     self.playerController = [[LSPlayController alloc] initWithURL:url];
     self.karaokeMovieInstance = [[LCKaraokeMovie alloc] initWithLiveCore:self.engine player:self.playerController];
-    self.mvView = [[UIView alloc] initWithFrame: self.view.bounds];
+//    self.mvView = [[UIView alloc] initWithFrame: self.view.bounds];
     CGRect superRect = self.view.bounds;
     CGRect region = CGRectMake(0.5, 0.2, 0.5, 0.5);
     int x = superRect.size.width * region.origin.x;
@@ -62,8 +58,9 @@
     int w = superRect.size.width * region.size.width;
     int h = superRect.size.width / 16 * 9 * region.size.height;
     self.mvView.frame = CGRectMake(x, y, w, h);
-    [self.karaokeMovieInstance setMovieRenderView:self.mvView];
-    [self.view addSubview:self.mvView];
+//    [self.karaokeMovieInstance setMovieRenderView:self.mvView];
+//    [self.view addSubview:self.mvView];
+    [self.engine setPreviewMode:LCPreviewMode_GameInteract];
     [self.karaokeMovieInstance play];
   
     [self.karaokeMovieInstance setKaraokeVideoMixerDescription:0 zOrder:0 withPosition:CGRectMake( 0, 0, 1, 1)];
@@ -72,6 +69,9 @@
 
 - (void) p_stopMVInternal:(UIButton *)sender
 {
+    if (!self.isMixPicRunning) {
+        [self.engine setPreviewMode:LCPreviewMode_Normal];
+    }
     [sender setTitle:kMVStart forState:UIControlStateNormal];
     [self.karaokeMovieInstance stop];
     [self.karaokeMovieInstance close];
@@ -91,6 +91,10 @@
     } else if ([sender.titleLabel.text isEqual:kMVStop]) {
         [self p_stopMVInternal:sender];
     }
+}
+
+- (BOOL)isMVRunning {
+    return (self.karaokeMovieInstance != nil);
 }
 
 @end
