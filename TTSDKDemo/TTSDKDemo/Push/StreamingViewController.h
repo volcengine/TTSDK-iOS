@@ -25,6 +25,7 @@
 @interface StreamingViewController : UIViewController
 @property (nonatomic) LiveStreamCapture *capture;
 @property (nonatomic, strong) LiveCore *engine;
+@property (nonatomic, assign, readonly) BOOL isMixPicRunning;
 #if HAVE_AUDIO_EFFECT
 @property (nonatomic, strong) UIButton *karaokeButton;
 @property (nonatomic, strong) UIButton *musicTypeButton;

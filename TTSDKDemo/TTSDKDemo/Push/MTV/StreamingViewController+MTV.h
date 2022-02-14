@@ -11,6 +11,8 @@
 
 @interface StreamingViewController (MTV)
 
+@property (nonatomic, assign, readonly) BOOL isMVRunning;
+
 - (void)mvButtonClicked:(UIButton *)sender;
 
 @end

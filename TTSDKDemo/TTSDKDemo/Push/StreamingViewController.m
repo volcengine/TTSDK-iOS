@@ -22,7 +22,7 @@ static NSString *const kRecordingText = @"录制中";
 static NSString *const kRecordText = @"录制";
 #define kSessionMixPic         @"加图片"
 #define kSessionRemovePic      @"删图片"
-static int const kTestSessionPicID = 50;
+static int const kTestSessionPicID = 60;
 
 
 @interface StreamingViewController () <LCCameraOutputDelegate, LiveStreamSessionProtocol>
@@ -557,6 +557,10 @@ static int const kTestSessionPicID = 50;
 }
 
 //MARK: 添加图片媒体混流
+- (BOOL)isMixPicRunning {
+    return _pushMixPicTimer != nil;
+}
+
 - (void)mixPicButtonClicked:(UIButton *)button
 {
     if ([button.titleLabel.text isEqual:kSessionMixPic]) {
@@ -569,6 +573,9 @@ static int const kTestSessionPicID = 50;
     } else if ([button.titleLabel.text isEqual:kSessionRemovePic]) {
         // 移除视频流
         [self.engine.liveCapture removeVideoInput:kTestSessionPicID];
+        if (!self.isMVRunning) {
+            [self.engine setPreviewMode:LCPreviewMode_Normal];
+        }
         [self stopPushMixPicBuffer];
         [button setTitle:kSessionMixPic forState:UIControlStateNormal];
     }
@@ -577,8 +584,10 @@ static int const kTestSessionPicID = 50;
 - (void) startPushMixPicBuffer
 {
     if (!_pushMixPicTimer) {
+        // 创建Timer
         _pushMixPicTimer = [[LiveStreamMultiTimerManager alloc] init];
     }
+    // 本地图片
     NSString *img = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"png"];
     UIImage *mixImage = [UIImage imageNamed:img];
     [self.mixPicLock lock];
@@ -587,7 +596,7 @@ static int const kTestSessionPicID = 50;
     [self.mixPicLock unlock];
     
     @ls_weakify(self);
-    // 15fps Timer
+    // 15fps 的 Timer
     [_pushMixPicTimer schedualTimerWithIdentifier:@"push_mix_pic_indentifier"
                                       interval:1.0/15
                                               queue:nil
@@ -602,7 +611,7 @@ static int const kTestSessionPicID = 50;
         CMTime pts = CMTimeMake(value, timeScale);
         [self.mixPicLock lock];
         if (self.mixPicPixelBuffer != NULL) {
-            // 将图片推入采集模块
+            // 将图片推入采集模块 - ID: kTestSessionPicID
             [self.engine.liveCapture pushVideoBuffer:self.mixPicPixelBuffer withCMTime:pts toLayer:kTestSessionPicID];
         }
         [self.mixPicLock unlock];
@@ -611,12 +620,14 @@ static int const kTestSessionPicID = 50;
 
 - (void) stopPushMixPicBuffer
 {
+    // 释放Timer
     if (_pushMixPicTimer) {
         [_pushMixPicTimer cancelTimerWithName:@"push_mix_pic_indentifier"];
         _pushMixPicTimer = nil;
     }
     
     [self.mixPicLock lock];
+    // 释放PixelBuffer
     if (self.mixPicPixelBuffer != NULL) {
         CVPixelBufferRelease(self.mixPicPixelBuffer);
         self.mixPicPixelBuffer = NULL;
