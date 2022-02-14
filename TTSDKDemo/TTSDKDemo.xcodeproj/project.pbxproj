@@ -131,6 +131,10 @@
 		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
 		841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 841F762626207F5400A17EF7 /* doubleTracks.m4a */; };
 		84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84226913271DA1060027699F /* StreamingKTVControllBox.xib */; };
+		8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */; };
+		8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86427A3D611009CFB43 /* LSPlayController.m */; };
+		84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; };
+		84B02C2827B503BD00443BF0 /* VolcEngineRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +145,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				84B02C2827B503BD00443BF0 /* VolcEngineRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +381,11 @@
 		841F76232620701100A17EF7 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		841F762626207F5400A17EF7 /* doubleTracks.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleTracks.m4a; sourceTree = "<group>"; };
 		84226913271DA1060027699F /* StreamingKTVControllBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingKTVControllBox.xib; sourceTree = "<group>"; };
+		8456E86027A3D1D0009CFB43 /* StreamingViewController+MTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+MTV.h"; sourceTree = "<group>"; };
+		8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+MTV.m"; sourceTree = "<group>"; };
+		8456E86327A3D611009CFB43 /* LSPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSPlayController.h; sourceTree = "<group>"; };
+		8456E86427A3D611009CFB43 /* LSPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSPlayController.m; sourceTree = "<group>"; };
+		84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VolcEngineRTC.framework; sourceTree = "<group>"; };
 		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
 		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -390,6 +400,7 @@
 			files = (
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
+				84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +435,7 @@
 		831E378423D0177B00A9F7A9 /* Push */ = {
 			isa = PBXGroup;
 			children = (
+				8456E85F27A3D124009CFB43 /* MTV */,
 				84FCCD9A2620413B0065FB4F /* KTV */,
 				83795AEA23E2C92F00E87A4A /* Effects */,
 				831E379623D0180E00A9F7A9 /* SettingsViewController */,
@@ -589,6 +601,7 @@
 		83C44393243E492A00081EA1 /* extern */ = {
 			isa = PBXGroup;
 			children = (
+				84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */,
 				83C44394243E492A00081EA1 /* EffectSDK */,
 			);
 			path = extern;
@@ -904,6 +917,17 @@
 			path = License;
 			sourceTree = "<group>";
 		};
+		8456E85F27A3D124009CFB43 /* MTV */ = {
+			isa = PBXGroup;
+			children = (
+				8456E86027A3D1D0009CFB43 /* StreamingViewController+MTV.h */,
+				8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */,
+				8456E86327A3D611009CFB43 /* LSPlayController.h */,
+				8456E86427A3D611009CFB43 /* LSPlayController.m */,
+			);
+			path = MTV;
+			sourceTree = "<group>";
+		};
 		84FCCD9A2620413B0065FB4F /* KTV */ = {
 			isa = PBXGroup;
 			children = (
@@ -1094,6 +1118,7 @@
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
 				84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */,
 				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
+				8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */,
 				83A304A324F6AED600209D0A /* BDImageOptionView.m in Sources */,
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
 				83A304A524F6AED600209D0A /* BDImageDetailViewController.m in Sources */,
@@ -1127,6 +1152,7 @@
 				83C443BA243E492A00081EA1 /* BERender.mm in Sources */,
 				83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */,
 				83A304A424F6AED600209D0A /* BDImageAdapter.m in Sources */,
+				8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */,
 				83C4446C243F8E2B00081EA1 /* UIColor+Hex.m in Sources */,
 				831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */,
 				83C44483243F8E2B00081EA1 /* VodDemoViewController.m in Sources */,
