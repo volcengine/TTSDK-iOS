@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
 #import <TTSDKFramework/LCKaraokeMovie.h>
+#define USE_FRAMEWORK 1
 #else
 #import <TTSDK/LCKaraokeMovie.h>
+#define USE_FRAMEWORK 0
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
