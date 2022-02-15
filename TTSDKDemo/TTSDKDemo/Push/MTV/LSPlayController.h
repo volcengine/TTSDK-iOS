@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKFramework/LCKaraokeMovie.h>
+#else
 #import <TTSDK/LCKaraokeMovie.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
