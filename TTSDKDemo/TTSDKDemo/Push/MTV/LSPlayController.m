@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "LSPlayController.h"
+#if USE_FRAMEWORK
+#import <TTSDKFramework/TTVideoEngine+Audio.h>
+#import <TTSDKFramework/TTVideoEngine+Video.h>
+#else
 #import <TTSDK/TTVideoEngine+Audio.h>
 #import <TTSDK/TTVideoEngine+Video.h>
+#endif
 
 #import <Masonry/Masonry.h>
 
