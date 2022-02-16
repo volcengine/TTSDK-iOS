@@ -138,8 +138,8 @@
       subspec.dependency 'TTSDK/LivePull'
     end
 
-    spec.subspec 'LivePush' do |subspec|
-      subspec.public_header_files = [
+    spec.subspec 'LivePush-RTC' do |subspec|
+    	subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
         'TTSDK/LiveCore/**/*.h',
@@ -153,9 +153,6 @@
         "TTSDK/LiveStreamFramework/**/libLiveStreamFramework_{base,glbase,session,webrtc,base_webrtc,ntp,audio-effect}_ios.a",
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePush_ios.a',
         'TTSDK/libyuv-iOS/**/*.a'
-      ]
-      subspec.vendored_frameworks = [
-        'TTSDK/ByteAudio/*.framework',
       ]
       subspec.frameworks = [
         'VideoToolBox',
@@ -171,6 +168,13 @@
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/TTFFmpeg'
       subspec.libraries = 'stdc++'
+    end
+
+    spec.subspec 'LivePush' do |subspec|
+      subspec.dependency 'TTSDK/LivePush-RTC'
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteAudio/*.framework',
+      ]
     end
 
     spec.subspec 'Player' do |subspec|
