@@ -136,6 +136,8 @@
 		84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; };
 		84B02C2827B503BD00443BF0 /* VolcEngineRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */; };
+		84B15C8027BDF4EA006FF374 /* StreamingInteractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B15C7D27BDF4EA006FF374 /* StreamingInteractManager.m */; };
+		84B15C8127BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C7E27BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib */; };
 		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
@@ -388,6 +390,9 @@
 		8456E86427A3D611009CFB43 /* LSPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSPlayController.m; sourceTree = "<group>"; };
 		84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VolcEngineRTC.framework; sourceTree = "<group>"; };
 		84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wenlouhaifeng.mp4; sourceTree = "<group>"; };
+		84B15C7D27BDF4EA006FF374 /* StreamingInteractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingInteractManager.m; sourceTree = "<group>"; };
+		84B15C7E27BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingInteractManagerPreviewContainer.xib; sourceTree = "<group>"; };
+		84B15C7F27BDF4EA006FF374 /* StreamingInteractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingInteractManager.h; sourceTree = "<group>"; };
 		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
 		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -437,6 +442,7 @@
 		831E378423D0177B00A9F7A9 /* Push */ = {
 			isa = PBXGroup;
 			children = (
+				84B15C7C27BDF4EA006FF374 /* Interact */,
 				8456E85F27A3D124009CFB43 /* MTV */,
 				84FCCD9A2620413B0065FB4F /* KTV */,
 				83795AEA23E2C92F00E87A4A /* Effects */,
@@ -931,6 +937,16 @@
 			path = MTV;
 			sourceTree = "<group>";
 		};
+		84B15C7C27BDF4EA006FF374 /* Interact */ = {
+			isa = PBXGroup;
+			children = (
+				84B15C7D27BDF4EA006FF374 /* StreamingInteractManager.m */,
+				84B15C7E27BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib */,
+				84B15C7F27BDF4EA006FF374 /* StreamingInteractManager.h */,
+			);
+			path = Interact;
+			sourceTree = "<group>";
+		};
 		84FCCD9A2620413B0065FB4F /* KTV */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1036,7 @@
 				5C5CA2732628139500317338 /* test44.ttf in Resources */,
 				83A3049E24F6AED600209D0A /* stop@2x.png in Resources */,
 				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
+				84B15C8127BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib in Resources */,
 				83A304A024F6AED600209D0A /* setting.png in Resources */,
 				83A3049524F6AED600209D0A /* play@3x.png in Resources */,
 				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
@@ -1113,6 +1130,7 @@
 				83C44488243F8E2B00081EA1 /* NavigationViewController.m in Sources */,
 				831E379D23D0180E00A9F7A9 /* StreamConfigurationModel.m in Sources */,
 				83C44481243F8E2B00081EA1 /* TTVideoDownloadController.m in Sources */,
+				84B15C8027BDF4EA006FF374 /* StreamingInteractManager.m in Sources */,
 				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
 				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
