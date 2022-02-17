@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.25.1.0-alpha.11"
+    spec.version      = "1.25.1.2602"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -186,7 +186,13 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
       subspec.vendored_libraries = [
