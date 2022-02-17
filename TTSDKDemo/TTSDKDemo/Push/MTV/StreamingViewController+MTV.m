@@ -57,14 +57,14 @@
     int y = superRect.size.height * region.origin.y;
     int w = superRect.size.width * region.size.width;
     int h = superRect.size.width / 16 * 9 * region.size.height;
-    self.mvView.frame = CGRectMake(x, y, w, h);
+//    self.mvView.frame = CGRectMake(x, y, w, h);
 //    [self.karaokeMovieInstance setMovieRenderView:self.mvView];
 //    [self.view addSubview:self.mvView];
     [self.engine setPreviewMode:LCPreviewMode_GameInteract];
     [self.karaokeMovieInstance play];
   
     [self.karaokeMovieInstance setKaraokeVideoMixerDescription:0 zOrder:0 withPosition:CGRectMake( 0, 0, 1, 1)];
-    [self.karaokeMovieInstance setKaraokeVideoMixerDescription:1 zOrder:1 withPosition:CGRectMake(0.5, 0, 0.5, 1.0)];
+    [self.karaokeMovieInstance setKaraokeVideoMixerDescription:1 zOrder:1 withPosition:CGRectMake(0.5, 0, 0.5, 0.5)];
 }
 
 - (void) p_stopMVInternal:(UIButton *)sender
@@ -85,7 +85,7 @@
 - (void)mvButtonClicked:(UIButton *)sender
 {
     if ([sender.titleLabel.text isEqual:kMVStart]) {
-        NSURL *url =  [[NSBundle mainBundle] URLForResource:@"test.mp4" withExtension:nil];
+        NSURL *url =  [[NSBundle mainBundle] URLForResource:@"wenlouhaifeng.mp4" withExtension:nil];
         [self p_startMVPlay:url];
         [sender setTitle:kMVStop forState:UIControlStateNormal];
     } else if ([sender.titleLabel.text isEqual:kMVStop]) {
