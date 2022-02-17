@@ -15,6 +15,9 @@
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
 
+//连麦
+#import "StreamingInteractManager.h"
+
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
     TVLLiveStatusEnd,
@@ -50,6 +53,8 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 @property (nonatomic, strong) UIButton *rotationButton;
 
+@property (nonatomic, strong) UIButton *interactButton;
+
 @property (nonatomic, strong) UISlider *slider;
 
 @property (nonatomic, strong) PlayConfiguration *playConfiguration;
@@ -65,6 +70,10 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 @property (nonatomic, strong) TVLPlayerItem *playerItem;
 
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
+
+//MARK: 连麦
+@property (nonatomic, strong) StreamingInteractManager *interactManager;
+@property (nonatomic, assign) BOOL isInteracting;
 
 @end
 
@@ -155,6 +164,8 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [super viewWillDisappear:animated];
     [self destoryLiveManager];
     [self archiveLogs];
+    [self.interactManager dismiss];
+    self.interactManager = nil;
     [UIApplication.sharedApplication.keyWindow hideAllToasts];
 }
 
@@ -376,8 +387,13 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [rotationButton setTitle:@"🔄" forState:UIControlStateNormal];
     self.rotationButton = rotationButton;
     
+    UIButton *interactButton = [[UIButton alloc] init];
+    [interactButton addTarget:self action:@selector(interactButtonDidTounch:) forControlEvents:UIControlEventTouchUpInside];
+    [interactButton setTitle:@"👬" forState:UIControlStateNormal];
+    self.interactButton = interactButton;
+    
     // 按照数组中的顺序布局按钮位置
-    NSArray *buttons = @[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton];
+    NSArray *buttons = @[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton, interactButton];
     CGFloat buttonDimension = 40.f;
     CGFloat buttonMargin = 24.f;
     for (NSInteger index = 0; index < buttons.count; index++) {
@@ -536,6 +552,29 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
+- (void)interactButtonDidTounch:(UIButton *)sender {
+    if (!self.isInteracting) {
+        __weak typeof(self) wself = self;
+        UIAlertController *alert = [StreamingInteractManager joinRoomRequestIsHost:NO configurations:NULL completeBlock:^(StreamingInteractManager * _Nonnull obj) {
+            __strong typeof(wself) sself = wself;
+            [sself.liveManager stop];
+            [sself.liveManager.playerView removeFromSuperview];
+            sself.interactManager = obj;
+            [sself.interactManager joinChannel];
+            [sself.view insertSubview:sself.interactManager.previewContainer atIndex:0];
+            sself.isInteracting = YES;
+        }];
+        [self presentViewController:alert animated:YES completion: nil];
+    } else {
+        self.isInteracting = NO;
+        [self.interactManager.previewContainer removeFromSuperview];
+        [self.interactManager dismiss];
+        self.interactManager = nil;
+        [self.view insertSubview:self.liveManager.playerView atIndex:0];
+        [self.liveManager play];
+    }
+}
+
 - (void)infoSwitchButtonDidTouch {
     self.infoTextView.hidden = !self.infoTextView.hidden;
     if (!self.infoTextView.hidden) {
@@ -611,7 +650,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)manager:(TVLManager *)manager didReceiveSEI:(NSDictionary *)SEI {
-    NSLog(@"%s\n%@", __FUNCTION__, SEI);
+   // NSLog(@"%s\n%@", __FUNCTION__, SEI);
 }
 
 - (void)manager:(TVLManager *)manager playerItemStatusDidChange:(TVLPlayerItemStatus)status {
