@@ -689,6 +689,10 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     if (error.code == -499896 && self.liveManager.ipMappingTable.count != 0) {
         NSString *errorMessage = @"IP mapping table settings may be wrong";
         [self.view makeToast:errorMessage duration:5.f position:CSToastPositionBottom title:nil image:nil style:nil completion:nil];
+    } else if (error.code == -499594) {
+        // RTC 会话超时，重新连接
+        [self.liveManager stop];
+        [self.liveManager play];
     } else {
         [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
     }
