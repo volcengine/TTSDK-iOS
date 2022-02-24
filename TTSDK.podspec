@@ -118,6 +118,7 @@
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
@@ -126,6 +127,12 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+    end
+
+    spec.subspec 'Live-RTC' do |subspec|
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteRtcSDK/VolcEngineRTC.xcframework/ios-arm64_armv7/*.framework',
+      ]
     end
 
     spec.subspec 'LivePull-RTS' do |subspec|
@@ -138,7 +145,7 @@
       subspec.dependency 'TTSDK/LivePull'
     end
 
-    spec.subspec 'LivePush-RTC' do |subspec|
+    spec.subspec 'LivePush-Lite' do |subspec|
     	subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
@@ -171,7 +178,7 @@
     end
 
     spec.subspec 'LivePush' do |subspec|
-      subspec.dependency 'TTSDK/LivePush-RTC'
+      subspec.dependency 'TTSDK/LivePush-Lite'
       subspec.vendored_frameworks = [
         'TTSDK/ByteAudio/*.framework',
       ]
