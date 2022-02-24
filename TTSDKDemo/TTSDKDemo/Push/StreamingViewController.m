@@ -18,6 +18,9 @@
 #import "TTEffectsViewModel.h"
 #import <Photos/Photos.h>
 
+//连麦
+#import "StreamingInteractManager.h"
+
 static NSString *const kRecordingText = @"录制中";
 static NSString *const kRecordText = @"录制";
 #define kSessionMixPic         @"加图片"
@@ -80,6 +83,10 @@ static int const kTestSessionPicID = 60;
 //MARK:
 @property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
 
+//MARK: 连麦
+@property (nonatomic, strong) StreamingInteractManager *interactManager;
+@property (nonatomic, assign) BOOL isInteracting;
+
 @end
 
 @implementation StreamingViewController
@@ -87,6 +94,8 @@ static int const kTestSessionPicID = 60;
 - (instancetype)initWithConfiguration:(StreamConfigurationModel *)configuraitons {
     if (self = [super init]) {
         self.configuraitons = configuraitons;
+        _interactManager = nil;
+        _isInteracting = NO;
     }
     return self;
 }
@@ -237,6 +246,9 @@ static int const kTestSessionPicID = 60;
         if (sself.dumpRecording) {
             [sself.recorder processVideoPixelbuf:buffer presentationTime:pts sourceType:LSRawDataSourceTypeH264];
         }
+        if (sself.isInteracting && sself.interactManager) {
+            [sself.interactManager processVideoPixelbuf:buffer presentationTime:pts];
+        }
     }];
     [_engine startVideoCapture];
     [_engine startAudioCapture];
@@ -347,10 +359,11 @@ static int const kTestSessionPicID = 60;
     //[_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
     
-    [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
+    //[_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
+    //[_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"耳返开" target:self action:@selector(onHeadphoneBackButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"连麦" target:self action:@selector(onInteractButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:kRecordText target:self action:@selector(onRecordButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:kSessionMixPic target:self action:@selector(mixPicButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"开mv" target:self action:@selector(mvButtonClicked:)]];
@@ -487,7 +500,10 @@ static int const kTestSessionPicID = 60;
         NSLog(@"Streaming Error: AVDEVICE IS UNAUTHORIZED");
         return;
     }
-    
+    if (self.isInteracting) {
+        [LiveHelper arertMessage:@"请先关闭连麦"];
+        return;
+    }
     NSLog(@"开始推流: %@",_configuraitons.streamURL);
     _infoView.text = [NSString stringWithFormat:@"Start Stream Connecting ... "];
     [_engine startStreaming];
@@ -736,17 +752,34 @@ static int const kTestSessionPicID = 60;
     }
 }
 
-- (void)onSendSEIMsgButtonClicked:(UIButton *)sender{
-    if (self.engine) {
-        //测试数据
-        NSTimeInterval a=[[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970]*1000;
-        NSString *timeString = [NSString stringWithFormat:@"当前时间%f", a];
-//        NSDictionary * appDict = @{@"ver":[[self.liveSession class] getSdkVersion],@"time":timeString,@"statistic":[self.liveSession getStatistics]};
-//        [self.liveSession sendSEIMsgWithKey:@"info" value:appDict repeatTimes:2];
-//        [self.liveSession sendSEIMsgWithKey:@"testInt" value:[NSNumber numberWithInteger:111222333] repeatTimes:2];
-//        [self.liveSession sendSEIMsgWithKey:@"testBool" value:[NSNumber numberWithBool:YES] repeatTimes:2];
-//        [self.liveSession sendSEIMsgWithKey:@"testBoolNO" value:[NSNumber numberWithBool:NO] repeatTimes:2];
-        [self.engine sendSEIMsgWithKey:@"testDouble" value:[NSNumber numberWithDouble:111222.333] repeatTimes:2];
+- (void)onInteractButtonClicked:(UIButton *)sender {
+    if (!self.isInteracting) {
+        if (!self.engine.isStreaming) {
+            [LiveHelper arertMessage:@"请先开启推流"];
+            return;
+        }
+        __weak typeof(self) wself = self;
+        UIAlertController *alert = [StreamingInteractManager joinRoomRequestIsHost:YES configurations:_configuraitons completeBlock:^(StreamingInteractManager * _Nonnull obj) {
+            __strong typeof(wself) sself = wself;
+            [sender setTitle:@"连麦中" forState:UIControlStateNormal];
+            [sself onStopButtonClicked:sender];
+            [sself.engine setPreviewView:nil];
+            [sself.engine stopAudioCapture];
+            sself.interactManager = obj;
+            [sself.interactManager joinChannel];
+            [sself.cameraPreviewContainerView addSubview:self.interactManager.previewContainer];
+            sself.isInteracting = YES;
+        }];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        [sender setTitle:@"连麦" forState:UIControlStateNormal];
+        self.isInteracting = NO;
+        [self.engine setPreviewView:self.cameraPreviewContainerView];
+        [self.interactManager.previewContainer removeFromSuperview];
+        [self.interactManager dismiss];
+        self.interactManager = nil;
+        [self.engine startAudioCapture];
+        [self onStartButtonClicked:sender];
     }
 }
 
