@@ -133,11 +133,9 @@
 		84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84226913271DA1060027699F /* StreamingKTVControllBox.xib */; };
 		8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */; };
 		8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86427A3D611009CFB43 /* LSPlayController.m */; };
-		84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; };
-		84B02C2827B503BD00443BF0 /* VolcEngineRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */; };
 		84B15C8027BDF4EA006FF374 /* StreamingInteractManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B15C7D27BDF4EA006FF374 /* StreamingInteractManager.m */; };
 		84B15C8127BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C7E27BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib */; };
+		84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */; };
 		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
@@ -148,7 +146,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84B02C2827B503BD00443BF0 /* VolcEngineRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,11 +385,10 @@
 		8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+MTV.m"; sourceTree = "<group>"; };
 		8456E86327A3D611009CFB43 /* LSPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSPlayController.h; sourceTree = "<group>"; };
 		8456E86427A3D611009CFB43 /* LSPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSPlayController.m; sourceTree = "<group>"; };
-		84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VolcEngineRTC.framework; sourceTree = "<group>"; };
-		84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wenlouhaifeng.mp4; sourceTree = "<group>"; };
 		84B15C7D27BDF4EA006FF374 /* StreamingInteractManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingInteractManager.m; sourceTree = "<group>"; };
 		84B15C7E27BDF4EA006FF374 /* StreamingInteractManagerPreviewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingInteractManagerPreviewContainer.xib; sourceTree = "<group>"; };
 		84B15C7F27BDF4EA006FF374 /* StreamingInteractManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingInteractManager.h; sourceTree = "<group>"; };
+		84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wenlouhaifeng.mp4; sourceTree = "<group>"; };
 		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
 		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -407,7 +403,6 @@
 			files = (
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
-				84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,7 +605,6 @@
 		83C44393243E492A00081EA1 /* extern */ = {
 			isa = PBXGroup;
 			children = (
-				84B02C2527B4EA4500443BF0 /* VolcEngineRTC.framework */,
 				83C44394243E492A00081EA1 /* EffectSDK */,
 			);
 			path = extern;
