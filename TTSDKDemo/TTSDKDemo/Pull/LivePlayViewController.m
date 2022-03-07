@@ -14,6 +14,7 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
+#import "Reachability.h"
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -65,6 +66,8 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 @property (nonatomic, strong) TVLPlayerItem *playerItem;
 
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
+
+@property (nonatomic, strong) Reachability *reachability;
 
 @end
 
@@ -140,8 +143,31 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
         [wself.liveManager pause];
     }];
     [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        if ([wself isNetworkReachable]) {
         [wself.liveManager play];
+        }
     }];
+    
+    [NSNotificationCenter.defaultCenter addObserverForName:kReachabilityChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        NSLog(@"网络状态变化：%d", [wself isNetworkReachable]);
+        if ([wself isNetworkReachable]) {
+            if (wself.playConfiguration.playerItem) {
+                [wself.liveManager replaceCurrentItemWithPlayerItem:wself.playConfiguration.playerItem];
+            }
+            [wself.liveManager play];
+        }
+    }];
+    self.reachability = [Reachability  reachabilityForInternetConnection];
+    [self.reachability  startNotifier];
+}
+
+- (BOOL) isNetworkReachable {
+    NetworkStatus status = [self.reachability currentReachabilityStatus];
+    if (status == NotReachable) {
+        //没有联网
+        return NO;
+    }
+    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -151,11 +177,17 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [self destoryLiveManager];
     [self archiveLogs];
     [UIApplication.sharedApplication.keyWindow hideAllToasts];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    [self destoryLiveManager];
+//    [self archiveLogs];
+//    [UIApplication.sharedApplication.keyWindow hideAllToasts];
 }
 
 - (void)archiveLogs {
@@ -306,17 +338,17 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }];
     
     UIButton *backButton = [[UIButton alloc] init];
-    [backButton setTitle:@"🔙" forState:UIControlStateNormal];
+   [backButton setTitle:@"返回" forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonDidTouch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
-    [backButton.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(backButton);
-    }];
+//    [backButton.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_equalTo(backButton);
+//    }];
     [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).mas_offset(32.f);
         make.left.mas_equalTo(self.view).mas_offset(16.f);
-        make.width.mas_equalTo(40.f);
-        make.height.mas_equalTo(24.f);
+        make.width.mas_equalTo(60.f);
+        make.height.mas_equalTo(64.f);
     }];
     self.backButton = backButton;
     
@@ -544,10 +576,14 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)destoryLiveManager {
+    if (self.liveManager) {
+        NSLog(@"------ 开始销毁播放器 ------");
+        [self removeObservations];
     [self.liveManager stop];
     [self.liveManager close];
-    [self removeObservations];
     self.liveManager = nil;
+        NSLog(@"------ 已经销毁播放器 ------");
+    }
 }
 
 - (void)backButtonDidTouch {
@@ -784,6 +820,12 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.infoTextView.text = formattedDebugInfo;
     });
+}
+
+- (void)dealloc {
+    NSLog(@"%@ dealloc ", self.class);
+    [self.reachability stopNotifier];
+    [[NSNotificationCenter  defaultCenter]removeObserver:self];
 }
 
 @end
