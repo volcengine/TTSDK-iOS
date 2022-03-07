@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DE3D5B4D68EA18143ACCF9 /* libPods-TTSDKDemo.a */; };
-		1FAC4EE027D60A4F000E2D5D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC4EDE27D60A4F000E2D5D /* Reachability.m */; };
 		2B44FB062549D040002CC02A /* TTFileUploadDemoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */; };
 		2B44FB0A254B0B72002CC02A /* uploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB09254B0B72002CC02A /* uploadController.m */; };
 		2B44FB0E254C394E002CC02A /* UIBlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB0D254C394E002CC02A /* UIBlockButton.m */; };
@@ -155,8 +154,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1FAC4EDE27D60A4F000E2D5D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		1FAC4EDF27D60A4F000E2D5D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2B44FB052549D040002CC02A /* TTFileUploadDemoUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTFileUploadDemoUtil.m; sourceTree = "<group>"; };
 		2B44FB072549D066002CC02A /* TTFileUploadDemoUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTFileUploadDemoUtil.h; sourceTree = "<group>"; };
 		2B44FB09254B0B72002CC02A /* uploadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uploadController.m; sourceTree = "<group>"; };
@@ -413,15 +410,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1FAC4EDD27D60A4F000E2D5D /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				1FAC4EDE27D60A4F000E2D5D /* Reachability.m */,
-				1FAC4EDF27D60A4F000E2D5D /* Reachability.h */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		2B44FB08254AFE7D002CC02A /* Uploader */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,7 +493,6 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1FAC4EDD27D60A4F000E2D5D /* Network */,
 				84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */,
 				84060462261425D3003B389D /* License */,
 				83797AEC25EBFAA5003C10F2 /* Common */,
@@ -1130,7 +1117,6 @@
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
 				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
 				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
-				1FAC4EE027D60A4F000E2D5D /* Reachability.m in Sources */,
 				83797AEF25EBFAA5003C10F2 /* AppInfoViewController.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,

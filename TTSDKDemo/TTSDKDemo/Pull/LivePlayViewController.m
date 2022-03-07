@@ -14,7 +14,6 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
-#import "Reachability.h"
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -66,8 +65,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 @property (nonatomic, strong) TVLPlayerItem *playerItem;
 
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
-
-@property (nonatomic, strong) Reachability *reachability;
 
 @end
 
@@ -143,31 +140,8 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
         [wself.liveManager pause];
     }];
     [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-        if ([wself isNetworkReachable]) {
-        [wself.liveManager play];
-        }
-    }];
-    
-    [NSNotificationCenter.defaultCenter addObserverForName:kReachabilityChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        NSLog(@"网络状态变化：%d", [wself isNetworkReachable]);
-        if ([wself isNetworkReachable]) {
-            if (wself.playConfiguration.playerItem) {
-                [wself.liveManager replaceCurrentItemWithPlayerItem:wself.playConfiguration.playerItem];
-            }
             [wself.liveManager play];
-        }
     }];
-    self.reachability = [Reachability  reachabilityForInternetConnection];
-    [self.reachability  startNotifier];
-}
-
-- (BOOL) isNetworkReachable {
-    NetworkStatus status = [self.reachability currentReachabilityStatus];
-    if (status == NotReachable) {
-        //没有联网
-        return NO;
-    }
-    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -824,8 +798,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 
 - (void)dealloc {
     NSLog(@"%@ dealloc ", self.class);
-    [self.reachability stopNotifier];
-    [[NSNotificationCenter  defaultCenter]removeObserver:self];
 }
 
 @end
