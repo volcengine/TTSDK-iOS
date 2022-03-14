@@ -14,6 +14,7 @@
 		2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */; };
 		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
+		2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE5B56527DEDEB900B44A12 /* WebKit.framework */; };
 		5C5CA2452627E54600317338 /* test33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2442627E54600317338 /* test33.JPG */; };
 		5C5CA2732628139500317338 /* test44.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2462627E55100317338 /* test44.ttf */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
@@ -165,6 +166,7 @@
 		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
+		2BE5B56527DEDEB900B44A12 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C5CA2442627E54600317338 /* test33.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test33.JPG; sourceTree = "<group>"; };
 		5C5CA2462627E55100317338 /* test44.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test44.ttf; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */,
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
 				84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */,
@@ -522,6 +525,7 @@
 		8378B5D723C486230075E05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BE5B56527DEDEB900B44A12 /* WebKit.framework */,
 				841F76232620701100A17EF7 /* CoreML.framework */,
 				841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */,
 				83A3054724F6B89C00209D0A /* Foundation.framework */,
