@@ -4,7 +4,7 @@ source 'https://github.com/volcengine/volcengine-specs.git'
 
 install! 'cocoapods', :deterministic_uuids => false
 
-platform :ios, "8.0"
+platform :ios, "9.0"
 
 inhibit_all_warnings!
 
@@ -32,7 +32,7 @@ def common_pods
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
-  pod 'RangersAppLog', '< 6.0.0', :subspecs=>['Core', 'Host']
+  pod 'RangersAppLog', '6.8.0', :subspecs=>['Core', 'Host']
   pod 'MWPhotoBrowser'
 end
 
