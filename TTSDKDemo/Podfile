@@ -32,7 +32,7 @@ def common_pods
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
-  pod 'RangersAppLog', '< 6.0.0', :subspecs=>['Core', 'Host']
+  pod 'RangersAppLog', '< 7.0.0', :subspecs=>['Core', 'Host']
   pod 'MWPhotoBrowser'
 end
 
