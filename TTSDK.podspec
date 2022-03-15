@@ -450,5 +450,36 @@
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
-  end
+    spec.subspec 'TTNet-Strip' do |subspec| 
+      subspec.vendored_libraries = [
+        'TTSDK/protobuf_lite/**/*.a',
+        'TTSDK/TTNetworkManager_strip/**/*.a'
+      ]
+    end
 
+    spec.subspec 'Image-Strip' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/BDWebImageToB/**/*.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/BDWebImageToB/**/*',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/BDWebImageToB/**/*.a',
+        'TTSDK/libttheif_ios/**/*.a',
+        'TTSDK/BDSword/ios-arch-iphone/*.a',
+        'TTSDK/protobuf_lite/**/*.a',
+        'TTSDK/lib_h_dec/**/*.a',
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/TTNet-Strip'
+      # Third
+      subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore', 'Accelerate'
+      subspec.libraries = "c++", "resolv", 'stdc++', 'z', 'xml2', 'iconv'
+      subspec.dependency 'libwebp'
+      subspec.dependency 'MMKV'
+      subspec.dependency 'libdav1d', '0.8.0'
+      subspec.dependency 'libavif/libdav1d', '0.9.1'
+    end
+    
+  end
