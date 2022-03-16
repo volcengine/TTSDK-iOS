@@ -194,7 +194,7 @@
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
+      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
@@ -214,7 +214,7 @@
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
+      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
@@ -254,7 +254,7 @@
         'TTSDK/TTFileUploadClientb/**/*',
       ]
       subspec.vendored_libraries = [
-        "TTSDK/{TTVideoSetting,TTFileUploadClientb}/**/*.a"
+        "TTSDK/{TTFileUploadClientb}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/Tools'
@@ -294,7 +294,7 @@
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature,TTVideoSetting"
+      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
@@ -331,7 +331,7 @@
       subspec.exclude_files = [
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec,TTVideoSetting"
+      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
