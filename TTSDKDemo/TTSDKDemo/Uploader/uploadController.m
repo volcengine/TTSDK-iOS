@@ -77,6 +77,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, copy) NSString* mateCategory;
 @property (nonatomic, copy) NSString* mAKSKJsonStr;
 @property (nonatomic, copy) NSString* spaceName;
+@property (nonatomic ,copy) NSDictionary* dictionaryInfo;
 
 @end
 @implementation uploadController
@@ -307,6 +308,17 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
             [self.videoUploadClientTop setRequestParameter:[self requestParameter]];
             [self.imageUploadClientTop setRequestParameter:[self requestParameter]];
             [self.mateUploadClientTop setRequestParameter:[self requestParameter]];
+            
+            NSDictionary *optionInfo = result[@"OptionInfo"];
+            NSString *fileName = result[@"FileName"];
+            if (optionInfo.count > 0) {
+                [self.videoUploadClientTop setOptionInfo:optionInfo];
+            }
+            if (fileName.length > 0) {
+                [self.videoUploadClientTop setRequestParameter:@{TTFileUploadVideoFileName:fileName}];
+            }
+            
+            
         }
     }
 }
@@ -478,6 +490,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     self.videoUploadClientTop = [TTFileUploadDemoUtil videoUploadClientTop:path delegate:self authParameter:[self authorizationParameter]];
     
     [self.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
+    [self.videoUploadClientTop setOptionInfo:self.dictionaryInfo];
     //[[TTVideoUploadEventManager sharedManager] popAllEvents];
     
 }
