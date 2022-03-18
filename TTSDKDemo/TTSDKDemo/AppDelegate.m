@@ -44,7 +44,8 @@ void uncaughtExceptionHandler(NSException*exception){
     [self addLicenseObserver];
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
-    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
+    NSString *region = [[NSUserDefaults standardUserDefaults] stringForKey:@"TTSDK-Service-Vendor"];
+    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = [region isEqualToString:@"SG"] ? TTSDKServiceVendorSG : TTSDKServiceVendorCN;
     self.ttsdkShouldInitAppLog = YES;
     if (self.ttsdkShouldInitAppLog) {
         [self initAppLog];
@@ -120,7 +121,7 @@ void uncaughtExceptionHandler(NSException*exception){
     BDAutoTrackConfig *config = [BDAutoTrackConfig configWithAppID:[[TTDemoSDKEnvironmentManager shareEvnironment] appId]];
     config.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
     config.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
-    config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorVA;
+    config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorSG;
     config.autoTrackEnabled = NO;
 #if DEBUG
     config.showDebugLog = YES;      // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES

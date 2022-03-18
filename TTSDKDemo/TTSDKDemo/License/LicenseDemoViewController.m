@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIButton  *contentBtn;
 @property (nonatomic, strong) UIButton  *checkLicenseBtn;
 @property (nonatomic, strong) UIButton  *cleanCacheBtn;
+@property (nonatomic, strong) UIButton  *regionButton;
 
 @end
 
@@ -75,6 +76,15 @@
         make.top.equalTo(_checkLicenseBtn.mas_bottom).offset(16);
         make.centerX.width.height.equalTo(_checkLicenseBtn);
     }];
+    
+    _regionButton = [self createButtonWithTitle:@"切换上报区域"];
+    [_regionButton addTarget:self action:@selector(changeRegion) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_regionButton];
+    [_regionButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_cleanCacheBtn.mas_bottom).offset(16);
+        make.centerX.width.height.equalTo(_cleanCacheBtn);
+    }];
+    
 }
 
 - (void)handleRemoteLicense {
@@ -156,6 +166,20 @@
     [vc.view addSubview:label];
     [vc.view setBackgroundColor:UIColor.whiteColor];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+static NSString *const service_vendor_key = @"TTSDK-Service-Vendor";
+
+- (void)changeRegion {
+    NSUserDefaults *pref = [NSUserDefaults standardUserDefaults];
+    NSString *region = [pref stringForKey:service_vendor_key];
+    if ([region isEqualToString:@"SG"]) {
+        [pref setObject:@"CN" forKey:service_vendor_key];
+        [self makeToast:@"已切换到CN,重启App生效"];
+    } else {
+        [pref setObject:@"SG" forKey:service_vendor_key];
+        [self makeToast:@"已切换到SG,重启App生效"];
+    }
 }
 
 @end
