@@ -62,7 +62,7 @@
 //    [self.view addSubview:self.mvView];
     [self.engine setPreviewMode:LCPreviewMode_GameInteract];
     [self.karaokeMovieInstance play];
-  
+    [self.playerController mute:NO];//这里需要手动将视频设置为非静音状态
     [self.karaokeMovieInstance setKaraokeVideoMixerDescription:0 zOrder:0 withPosition:CGRectMake( 0, 0, 1, 1)];
     [self.karaokeMovieInstance setKaraokeVideoMixerDescription:1 zOrder:1 withPosition:CGRectMake(0.5, 0, 0.5, 0.5)];
 }
