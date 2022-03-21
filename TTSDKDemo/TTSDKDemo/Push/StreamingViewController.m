@@ -174,6 +174,7 @@ static int const kTestSessionPicID = 60;
     _liveConfig.streamLogTimeInterval = 5;
     _liveConfig.gopSec = 4;                         // gop 4s
     // 是允许后台推流
+    _liveConfig.backgroundImage = [UIImage imageNamed:@"test1.png"];//使用后台模式时，一定要设置图片
     _liveConfig.enableBackgroundMode = _configuraitons.enableBackgroundMode;
     _liveConfig.audioChannelCount = 2;
     _liveConfig.aCodec = [self getCodecType:_configuraitons.audioCodecType];
