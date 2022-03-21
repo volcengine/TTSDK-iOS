@@ -167,6 +167,7 @@ static int const kTestSessionPicID = 60;
     _liveConfig.minBitrate = _configuraitons.videoBitrate * 1000 * 2 / 5;
     _liveConfig.maxBitrate = _configuraitons.videoBitrate * 1000 * 5 / 3;
     _liveConfig.audioSource = LiveStreamAudioSourceMic;
+    _liveConfig.enableSetOpenGOP = NO;
  
     // 推流地址
     _liveConfig.URLs = @[_configuraitons.streamURL];
