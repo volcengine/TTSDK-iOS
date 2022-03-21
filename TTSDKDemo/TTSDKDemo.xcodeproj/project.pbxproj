@@ -14,6 +14,10 @@
 		2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */; };
 		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
+		2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C8CFB3242F2AE00078C7EA /* MetalKit.framework */; };
+		2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */; };
+		2BD5A7A027E88CF4001335A1 /* MetalPerformanceShadersGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */; };
+		2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD5A79F27E88CF4001335A1 /* Metal.framework */; };
 		2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE5B56527DEDEB900B44A12 /* WebKit.framework */; };
 		5C5CA2452627E54600317338 /* test33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2442627E54600317338 /* test33.JPG */; };
 		5C5CA2732628139500317338 /* test44.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2462627E55100317338 /* test44.ttf */; };
@@ -166,6 +170,8 @@
 		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
+		2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShadersGraph.framework; path = System/Library/Frameworks/MetalPerformanceShadersGraph.framework; sourceTree = SDKROOT; };
+		2BD5A79F27E88CF4001335A1 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		2BE5B56527DEDEB900B44A12 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C5CA2442627E54600317338 /* test33.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test33.JPG; sourceTree = "<group>"; };
 		5C5CA2462627E55100317338 /* test44.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test44.ttf; sourceTree = "<group>"; };
@@ -403,8 +409,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */,
+				2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */,
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
+				2BD5A7A027E88CF4001335A1 /* MetalPerformanceShadersGraph.framework in Frameworks */,
+				2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */,
+				2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */,
 				84B02C2727B503BD00443BF0 /* VolcEngineRTC.framework in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
@@ -525,6 +535,8 @@
 		8378B5D723C486230075E05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2BD5A79F27E88CF4001335A1 /* Metal.framework */,
+				2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */,
 				2BE5B56527DEDEB900B44A12 /* WebKit.framework */,
 				841F76232620701100A17EF7 /* CoreML.framework */,
 				841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */,
@@ -968,6 +980,8 @@
 				8378B5B923C4860F0075E05C /* Resources */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
 				83A2D22025F9250F00043E3E /* Embed Frameworks */,
+				3B299F555FEB12EEF2476452 /* [CP] Embed Pods Frameworks */,
+				2BD5A85827E8A084001335A1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1058,6 +1072,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2BD5A85827E8A084001335A1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nRESOURCE_PATH=${SRCROOT}/extern/TTSDKFramework.framework/ttplayer.metallib\nif [ -f \"${RESOURCE_PATH}\" ]; then\n    echo \"Build using dynamic lib, and copy bundle resources\"\n    FILENAME_IN_BUNDLE=ttplayer.metallib\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\n    cp \"$RESOURCE_PATH\" \"$BUILD_APP_DIR/$FILENAME_IN_BUNDLE\"\nfi\n";
+		};
+		3B299F555FEB12EEF2476452 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
