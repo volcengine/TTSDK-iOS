@@ -22,7 +22,7 @@ static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
     defaultConfiguration.shouldAutoPlay = YES;
     defaultConfiguration.shouldUseLiveDNS = YES;
     defaultConfiguration.nodeOptimizingEnabled = NO;
-    defaultConfiguration.hardwareDecodeEnabled = NO;
+    defaultConfiguration.hardwareDecodeEnabled = YES;
     defaultConfiguration.allowsAudioRendering = YES;
     defaultConfiguration.fillMode = TVLViewScalingModeAspectFit;
     defaultConfiguration.preferredToHTTPDNS = NO;
@@ -63,6 +63,23 @@ static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
     if (self.domainName.length > 0) {
         [[NSUserDefaults standardUserDefaults] setValue:[self.domainName copy] forKey:DOMAIN_NAME];
     }
+}
+
+- (void)setEnableNNSR:(BOOL)enableNNSR {
+    _enableNNSR = enableNNSR;
+    NSMutableDictionary *dic = [NSMutableDictionary new];
+    if (self.settingsData && [self.settingsData isKindOfClass:NSDictionary.class]) {
+        [dic addEntriesFromDictionary:self.settingsData];
+    }
+    if (enableNNSR) {
+        dic[TVLSettingsItemKeySuperResolutionEnabled] = @(1);
+        dic[TVLSettingsItemKeyPlayerViewRenderType] = @(1);
+        self.hardwareDecodeEnabled = YES;
+    } else {
+        dic[TVLSettingsItemKeySuperResolutionEnabled] = @(0);
+    }
+    
+    self.settingsData = [dic copy];
 }
 
 @end
