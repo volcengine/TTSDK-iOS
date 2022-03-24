@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *retryTimeLimitTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *SDKDNSSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *DNSMethodSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISwitch *nnsrSwitch;//超分支持
 // IP Mapping
 @property (weak, nonatomic) IBOutlet UITextField *ipAddressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *domainTextField;
@@ -59,6 +60,7 @@
     self.retryTimeLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeLimit];
     self.ipAddressTextField.text = self.currentConfiguration.ipAddress;
     self.domainTextField.text = self.currentConfiguration.domainName;
+    self.nnsrSwitch.on = self.currentConfiguration.enableNNSR;
     
     @weakify(self);
     [[self.hardwareDecodeSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
@@ -123,6 +125,11 @@
     self.confirmButton.rac_command = self.confirmCommand;
     
     self.cancelButton.rac_command = self.cancelCommand;
+    
+    [[self.nnsrSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
+        @strongify(self);
+        self.currentConfiguration.enableNNSR = aSwitch.isOn;
+    }];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
