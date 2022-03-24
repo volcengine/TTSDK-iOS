@@ -32,6 +32,7 @@
 @property (nonatomic, assign) BOOL shouldArchiveLogs;
 @property (nonatomic, copy) NSDictionary *settingsData;
 @property (nonatomic, copy) NSDictionary *nodeOptimizeInfo;
+@property (nonatomic) BOOL enableNNSR;//是否开启超分
 //
 @property (nonatomic, copy) NSString *ipAddress;
 @property (nonatomic, copy) NSString *domainName;

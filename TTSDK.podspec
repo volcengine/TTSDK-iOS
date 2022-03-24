@@ -115,12 +115,14 @@
       subspec.public_header_files = [
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
+        'TTSDK/TTVideoLive/**/libTTVideoLive_VideoProcessing_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_TTLiveSetting_ios.a',
       ]
