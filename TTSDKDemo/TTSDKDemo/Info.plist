@@ -62,5 +62,7 @@
 	<string>master</string>
 	<key>commitID</key>
 	<string>4242a91</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
