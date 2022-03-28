@@ -13,6 +13,8 @@
 #import <Masonry.h>
 #import "UIColor+Hex.h"
 #import <UIView+Toast.h>
+#import <TTSDK/TTLiveURLComposer.h>
+#import <TTSDK/TVLPlayerItem+TTSDK.h>
 
 @interface LivePlaySettingsViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *IndustryName;
@@ -220,8 +222,15 @@
         }
         config.playerItem = item;
     } else if ([[playURL lowercaseString] hasPrefix:@"http"] || [[playURL lowercaseString] hasPrefix:@"rtmp"] || [playURL hasPrefix:@"/"]) {
-        // Basic usage.
-        config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];
+        if (config.enableNNSR) {
+            TTLiveURLComposer *composer = [TTLiveURLComposer new];
+            [composer addUrl:playURL forFormat:TVLMediaFormatTypeFLV];
+            composer.enableSR = YES;
+            config.playerItem = [TVLPlayerItem playerItemWithComposer:composer];
+        } else {
+            // Basic usage.
+            config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];
+        }
     }
     
     if (config.playerItem) {
