@@ -595,7 +595,11 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 // MARK: TVLSettingsManagerDataSource Methods
 
 - (NSDictionary *)currentSettings {
-    return self.playConfiguration.settingsData;
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc]initWithDictionary: [[TVLSettingsManager defaultManager] currentSettings]];
+    if (self.playConfiguration.settingsData && [self.playConfiguration.settingsData isKindOfClass:NSDictionary.class]) {
+        [settings addEntriesFromDictionary:self.playConfiguration.settingsData];
+    }
+    return [settings copy];
 }
 
 // MARK: TVLDelegate Methods

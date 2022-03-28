@@ -129,6 +129,9 @@
     [[self.nnsrSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
         @strongify(self);
         self.currentConfiguration.enableNNSR = aSwitch.isOn;
+        if (aSwitch.isOn) {
+            self.hardwareDecodeSwitch.on = YES;
+        }
     }];
 }
 
