@@ -65,21 +65,5 @@ static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
     }
 }
 
-- (void)setEnableNNSR:(BOOL)enableNNSR {
-    _enableNNSR = enableNNSR;
-    NSMutableDictionary *dic = [NSMutableDictionary new];
-    if (self.settingsData && [self.settingsData isKindOfClass:NSDictionary.class]) {
-        [dic addEntriesFromDictionary:self.settingsData];
-    }
-    if (enableNNSR) {
-        dic[TVLSettingsItemKeySuperResolutionEnabled] = @(1);
-        dic[TVLSettingsItemKeyPlayerViewRenderType] = @(1);
-        self.hardwareDecodeEnabled = YES;
-    } else {
-        dic[TVLSettingsItemKeySuperResolutionEnabled] = @(0);
-    }
-    
-    self.settingsData = [dic copy];
-}
 
 @end
