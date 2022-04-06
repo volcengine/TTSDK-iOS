@@ -119,6 +119,7 @@
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
