@@ -218,7 +218,13 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
       subspec.vendored_libraries = [
@@ -335,7 +341,13 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
       subspec.vendored_libraries = [
