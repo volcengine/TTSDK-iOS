@@ -131,6 +131,7 @@
         self.currentConfiguration.enableNNSR = aSwitch.isOn;
         if (aSwitch.isOn) {
             self.hardwareDecodeSwitch.on = YES;
+            self.currentConfiguration.hardwareDecodeEnabled = YES;
         }
     }];
 }
