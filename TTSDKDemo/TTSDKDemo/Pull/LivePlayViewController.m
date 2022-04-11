@@ -237,6 +237,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [TVLSettingsManager.defaultManager updateCurrentSettings];
     TVLManager *liveManager = [[TVLManager alloc] initWithOwnPlayer:YES];
     [liveManager setDelegate:self];                                                 // TVLProtocol代理设置
+    liveManager.playerViewRenderType = TVLPlayerViewRenderTypeMetal;
     [liveManager setProjectKey:self.playConfiguration.projectKey];                  // 标识产品
     [liveManager setRetryTimeInternal:self.playConfiguration.retryTimeInternal];    // 重试间隔
     [liveManager setRetryCountLimit:self.playConfiguration.retryCountLimit];        // 重试最大次数
@@ -254,6 +255,11 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
     [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
     [liveManager setShouldReportAudioFrame:YES];
+    
+    TVLManager.logCallback = ^(TVLLogLevel level, NSString *tag, NSString *log) {
+        NSLog(@"TVLManager level: %d\ttag: %@\tlog: %@", level, tag, log);
+    };
+    
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
