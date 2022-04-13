@@ -14,6 +14,7 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
+#import "TVLManager+VideoProcessing.h"
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -389,7 +390,15 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     self.rotationButton = rotationButton;
     
     // 按照数组中的顺序布局按钮位置
-    NSArray *buttons = @[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton];
+    NSMutableArray *buttons = [@[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton] mutableCopy];
+    
+    if (self.playConfiguration.enableNNSR) {
+        UIButton *srButton = [UIButton new];
+        [srButton setTitle:@"⬆️" forState:UIControlStateNormal];
+        [srButton addTarget:self action:@selector(srButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+        [buttons addObject:srButton];
+    }
+    
     CGFloat buttonDimension = 40.f;
     CGFloat buttonMargin = 24.f;
     for (NSInteger index = 0; index < buttons.count; index++) {
@@ -546,6 +555,20 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     } else {
         [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
     }
+}
+
+- (void)srButtonDidTouch:(UIButton *)sender {
+    self.playConfiguration.enableNNSR = !self.playConfiguration.enableNNSR;
+    NSDictionary *attributes = nil;
+    if (!self.playConfiguration.enableNNSR) {
+        attributes = @{
+            NSStrikethroughStyleAttributeName: @(NSUnderlineStyleThick | NSUnderlinePatternSolid),
+            NSStrikethroughColorAttributeName: UIColor.redColor,
+        };
+    }
+    NSString *title = sender.titleLabel.text;
+    sender.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
+    self.liveManager.enableVideoProcess = self.playConfiguration.enableNNSR;
 }
 
 - (void)infoSwitchButtonDidTouch {

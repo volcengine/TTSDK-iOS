@@ -6,6 +6,8 @@
 //
 
 #import "ConfiguringViewController.h"
+#import "TVLManager+External.h"
+#import "UIView+Toast.h"
 
 @interface ConfiguringViewController ()
 
@@ -128,6 +130,11 @@
     
     [[self.nnsrSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
         @strongify(self);
+        if ((aSwitch.isOn && ![TVLManager isSupportSR])) {
+            [UIApplication.sharedApplication.keyWindow makeToast:@"该机型不支持超分" duration:1 position:@(self.view.center)];
+            aSwitch.on = NO;
+            return;
+        }
         self.currentConfiguration.enableNNSR = aSwitch.isOn;
         if (aSwitch.isOn) {
             self.hardwareDecodeSwitch.on = YES;
