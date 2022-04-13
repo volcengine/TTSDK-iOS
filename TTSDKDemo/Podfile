@@ -12,10 +12,10 @@ def ttsdk_pods
   pod 'TTSDK', '1.26.2.4-standard', :subspecs => [
     'Core',
     'TTFFmpeg',
-    'PlayerCore',
+    # 'PlayerCore',
     'LivePull-RTS',
     'LivePush',
-    'Player',
+    'Player-SR',
     'Image',
     'Uploader',
   ]

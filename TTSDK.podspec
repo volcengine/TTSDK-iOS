@@ -114,14 +114,15 @@
     spec.subspec 'LivePull' do |subspec|
       class_name = 'lens,videoprocessor'
       subspec.public_header_files = [
-        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
         'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
         "TTSDK/{#{class_name}}/**/*.h"
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
-        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.vendored_libraries = [
@@ -132,7 +133,7 @@
         "TTSDK/{#{class_name}}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/PlayerCore'
+      subspec.dependency 'TTSDK/PlayerCore-SR'
     end
 
     spec.subspec 'LivePull-RTS' do |subspec|
