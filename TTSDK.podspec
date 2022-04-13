@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.26.2.4-standard"
+    spec.version      = "1.27.1.2801"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -220,7 +220,13 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
       subspec.vendored_libraries = [
@@ -337,7 +343,13 @@
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
         'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
       lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
       subspec.vendored_libraries = [
