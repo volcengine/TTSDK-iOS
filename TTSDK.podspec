@@ -183,23 +183,17 @@
     end
 
     spec.subspec 'LivePull-VE' do |subspec|
-      class_name = 'lens,videoprocessor'
       subspec.public_header_files = [
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
-        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
-        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
-        "TTSDK/{#{class_name}}/**/*.h"
+        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h'
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
-        "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
-        'TTSDK/TTVideoLive/**/libTTVideoLive_VideoProcessing_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_TTLiveSetting_ios.a',
-        "TTSDK/{#{class_name}}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-VE'
