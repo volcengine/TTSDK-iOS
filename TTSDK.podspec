@@ -142,6 +142,7 @@
         'TTSDK/ByteRtsSDK/*.framework',
       ]
       subspec.dependency 'TTSDK/LivePull'
+      subspec.dependency 'TTSDK/RTC-Framework'
     end
 
     spec.subspec 'LivePush-RTC' do |subspec|
@@ -232,6 +233,12 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-SR'
+    end
+
+    spec.subspec 'RTC-Framework' do |subspec|
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteRtcSDK/*.framework',
+      ]
     end
 
     spec.subspec 'Image' do |subspec|
