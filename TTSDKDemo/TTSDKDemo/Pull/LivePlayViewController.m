@@ -14,7 +14,11 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
-#import "TVLManager+VideoProcessing.h"
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKFramework/TVLManager+VideoProcessing.h>
+#else
+#import <TTSDK/TVLManager+VideoProcessing.h>
+#endif
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
