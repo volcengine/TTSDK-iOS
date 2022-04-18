@@ -6,7 +6,12 @@
 //
 
 #import "ConfiguringViewController.h"
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKFramework/TVLManager+External.h>
+#else
 #import "TVLManager+External.h"
+#endif
+
 #import "UIView+Toast.h"
 
 @interface ConfiguringViewController ()
