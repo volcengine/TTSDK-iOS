@@ -19,6 +19,7 @@ Pod::Spec.new do |spec|
   spec.resources = ['TTSDKFramework.framework/ttplayer.metallib']
   spec.vendored_frameworks = [
     "TTSDKFramework.framework",
-    "byteaudio.framework"
+    "byteaudio.framework",
+    "VolcEngineRTC.framework"
   ]
 end
