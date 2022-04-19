@@ -207,6 +207,7 @@
         'TTSDK/ByteRtsSDK/*.framework',
       ]
       subspec.dependency 'TTSDK/LivePull'
+      subspec.dependency 'TTSDK/RTC-Framework'
     end
 
     spec.subspec 'LivePull-RTS-VE' do |subspec|
@@ -292,9 +293,7 @@
 
     spec.subspec 'LivePush-VE' do |subspec|
       subspec.dependency 'TTSDK/LivePush-RTC-VE'
-      subspec.vendored_frameworks = [
-        'TTSDK/ByteAudio/*.framework',
-      ]
+      subspec.dependency 'VEVideoKit/VolcEngineAudio', '0.0.2-alpha.10.1.binary'
     end
 
     spec.subspec 'Player' do |subspec|
@@ -371,6 +370,12 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-SR'
+    end
+
+    spec.subspec 'RTC-Framework' do |subspec|
+      subspec.vendored_frameworks = [
+        'TTSDK/ByteRtcSDK/*.framework',
+      ]
     end
 
     spec.subspec 'Image' do |subspec|
