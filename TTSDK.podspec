@@ -169,6 +169,8 @@
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
         "TTSDK/{#{class_name}}/**/*"
       ]
       subspec.vendored_libraries = [
@@ -184,11 +186,14 @@
 
     spec.subspec 'LivePull-VE' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
-        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h'
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
+        'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
