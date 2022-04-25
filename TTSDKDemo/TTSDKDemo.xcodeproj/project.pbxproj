@@ -16,7 +16,6 @@
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
 		2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C8CFB3242F2AE00078C7EA /* MetalKit.framework */; };
 		2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */; };
-		2BD5A7A027E88CF4001335A1 /* MetalPerformanceShadersGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */; };
 		2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD5A79F27E88CF4001335A1 /* Metal.framework */; };
 		2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE5B56527DEDEB900B44A12 /* WebKit.framework */; };
 		5C5CA2452627E54600317338 /* test33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2442627E54600317338 /* test33.JPG */; };
@@ -408,7 +407,6 @@
 				2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */,
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
-				2BD5A7A027E88CF4001335A1 /* MetalPerformanceShadersGraph.framework in Frameworks */,
 				2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */,
 				2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
