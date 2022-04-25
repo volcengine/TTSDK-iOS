@@ -14,6 +14,11 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
+#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
+#import <TTSDKFramework/TVLManager+VideoProcessing.h>
+#else
+#import <TTSDK/TVLManager+VideoProcessing.h>
+#endif
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -237,6 +242,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [TVLSettingsManager.defaultManager updateCurrentSettings];
     TVLManager *liveManager = [[TVLManager alloc] initWithOwnPlayer:YES];
     [liveManager setDelegate:self];                                                 // TVLProtocol代理设置
+    liveManager.playerViewRenderType = TVLPlayerViewRenderTypeMetal;
     [liveManager setProjectKey:self.playConfiguration.projectKey];                  // 标识产品
     [liveManager setRetryTimeInternal:self.playConfiguration.retryTimeInternal];    // 重试间隔
     [liveManager setRetryCountLimit:self.playConfiguration.retryCountLimit];        // 重试最大次数
@@ -254,6 +260,11 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
     [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
     [liveManager setShouldReportAudioFrame:YES];
+    
+    TVLManager.logCallback = ^(TVLLogLevel level, NSString *tag, NSString *log) {
+        NSLog(@"TVLManager level: %d\ttag: %@\tlog: %@", level, tag, log);
+    };
+    
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -383,7 +394,15 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     self.rotationButton = rotationButton;
     
     // 按照数组中的顺序布局按钮位置
-    NSArray *buttons = @[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton];
+    NSMutableArray *buttons = [@[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton] mutableCopy];
+    
+    if (self.playConfiguration.enableNNSR) {
+        UIButton *srButton = [UIButton new];
+        [srButton setTitle:@"⬆️" forState:UIControlStateNormal];
+        [srButton addTarget:self action:@selector(srButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
+        [buttons addObject:srButton];
+    }
+    
     CGFloat buttonDimension = 40.f;
     CGFloat buttonMargin = 24.f;
     for (NSInteger index = 0; index < buttons.count; index++) {
@@ -540,6 +559,20 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     } else {
         [[UIDevice currentDevice] setValue:@(UIDeviceOrientationPortrait) forKey:@"orientation"];
     }
+}
+
+- (void)srButtonDidTouch:(UIButton *)sender {
+    self.playConfiguration.enableNNSR = !self.playConfiguration.enableNNSR;
+    NSDictionary *attributes = nil;
+    if (!self.playConfiguration.enableNNSR) {
+        attributes = @{
+            NSStrikethroughStyleAttributeName: @(NSUnderlineStyleThick | NSUnderlinePatternSolid),
+            NSStrikethroughColorAttributeName: UIColor.redColor,
+        };
+    }
+    NSString *title = sender.titleLabel.text;
+    sender.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
+    self.liveManager.enableVideoProcess = self.playConfiguration.enableNNSR;
 }
 
 - (void)infoSwitchButtonDidTouch {

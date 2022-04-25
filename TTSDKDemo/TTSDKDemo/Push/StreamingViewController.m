@@ -297,9 +297,9 @@ static int const kTestSessionPicID = 60;
     CMTime pts = CMSampleBufferGetPresentationTimeStamp(videoBuffer);
 
     double timeStamp = (double)(pts.value / pts.timescale);
-//    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
-//    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
-    [_capture pushVideoBuffer:buffer andCMTime:pts];
+    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
+    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
+//    [_capture pushVideoBuffer:buffer andCMTime:pts];
 }
 
 - (void)setupUIComponent {

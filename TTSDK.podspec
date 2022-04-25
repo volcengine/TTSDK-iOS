@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.26.2.1-premium.alpha01"
+    spec.version      = "1.27.2.1-premium"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -47,7 +47,7 @@
       subspec.vendored_libraries = [
         'TTSDK/lib_h_dec/**/*.a'
       ]
-      subspec.dependency 'VEVideoKit/boringssl', '0.0.2-alpha.10.1.binary'
+      subspec.dependency 'VEVideoKit/boringssl', '0.0.2-alpha.15.1.binary'
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
@@ -69,7 +69,7 @@
       subspec.vendored_libraries = [
         'TTSDK/protobuf_lite/**/*.a',
       ]
-      subspec.dependency 'VEVideoKit/TTNetworkManager', '0.0.2-alpha.10.1.binary'
+      subspec.dependency 'VEVideoKit/TTNetworkManager', '0.0.2-alpha.15.1.binary'
     end
 
     spec.subspec 'TTFFmpeg' do |subspec|
@@ -101,7 +101,7 @@
         'SystemConfiguration',
       ]
       subspec.dependency 'TTSDK/Tools-VE'
-      subspec.dependency 'VEVideoKit/TTFFmpeg', '0.0.2-alpha.10.1.binary'
+      subspec.dependency 'VEVideoKit/TTFFmpeg', '0.0.2-alpha.15.1.binary'
     end
 
     spec.subspec 'PlayerCore' do |subspec|
@@ -162,7 +162,7 @@
     spec.subspec 'LivePull' do |subspec|
       class_name = 'lens,videoprocessor'
       subspec.public_header_files = [
-        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK}.h',
+        'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
         'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
         "TTSDK/{#{class_name}}/**/*.h"
@@ -181,7 +181,7 @@
         "TTSDK/{#{class_name}}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/PlayerCore'
+      subspec.dependency 'TTSDK/PlayerCore-SR'
     end
 
     spec.subspec 'LivePull-VE' do |subspec|
@@ -223,6 +223,7 @@
         'TTSDK/ByteRtsSDK/*.framework',
       ]
       subspec.dependency 'TTSDK/LivePull-VE'
+      subspec.dependency 'TTSDK/RTC-Framework-VE'
     end
 
     spec.subspec 'LivePush-RTC' do |subspec|
@@ -298,7 +299,7 @@
 
     spec.subspec 'LivePush-VE' do |subspec|
       subspec.dependency 'TTSDK/LivePush-RTC-VE'
-      subspec.dependency 'VEVideoKit/VolcEngineAudio', '0.0.2-alpha.10.1.binary'
+      subspec.dependency 'VEVideoKit/VolcEngineAudio', '0.0.2-alpha.15.1.binary'
     end
 
     spec.subspec 'Player' do |subspec|
@@ -381,6 +382,10 @@
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtcSDK/*.framework',
       ]
+    end
+
+    spec.subspec 'RTC-Framework-VE' do |subspec|
+      subspec.dependency 'VolcEngineAudio', '3.34.102-alpha.0'
     end
 
     spec.subspec 'Image' do |subspec|
