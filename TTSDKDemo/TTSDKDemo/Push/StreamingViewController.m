@@ -148,7 +148,6 @@ static int const kTestSessionPicID = 60;
             return;
         }
         __strong typeof(wself) sself = wself;
-        [sself setupProcessor];
     }];
     
     _capture.cameraPosition = AVCaptureDevicePositionFront ;
@@ -270,10 +269,12 @@ static int const kTestSessionPicID = 60;
 }
 
 - (void)setupProcessor {
-    _processor = [[BEFrameProcessor alloc] initWithContext:[_capture getGLContext] resourceDelegate:nil];
-    NSLog(@"%@", _processor.availableFeatures);
-    [_processor setComposerMode:1];
-    [_processor updateComposerNodes:@[]];
+    if (!_processor) {
+        _processor = [[BEFrameProcessor alloc] initWithContext:[_capture getGLContext] resourceDelegate:nil];
+        NSLog(@"%@", _processor.availableFeatures);
+        [_processor setComposerMode:1];
+        [_processor updateComposerNodes:@[]];
+    }
 }
 
 - (void)requestAuthorization {
@@ -297,9 +298,12 @@ static int const kTestSessionPicID = 60;
     CMTime pts = CMSampleBufferGetPresentationTimeStamp(videoBuffer);
 
     double timeStamp = (double)(pts.value / pts.timescale);
-    BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
-    [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
-//    [_capture pushVideoBuffer:buffer andCMTime:pts];
+    if (_processor) {
+        BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
+        [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
+    } else {
+        [_capture pushVideoBuffer:buffer andCMTime:pts];
+    }
 }
 
 - (void)setupUIComponent {
@@ -384,18 +388,22 @@ static int const kTestSessionPicID = 60;
     __weak typeof(self) weakSelf = self;
     effectsViewModel.composerNodesChangedBlock = ^(NSArray<NSString *> * _Nonnull currentComposerNodes) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf setupProcessor];
         [strongSelf.processor updateComposerNodes:currentComposerNodes];
     };
     effectsViewModel.composerNodeIntensityChangedBlock = ^(NSString * _Nonnull path, NSString * _Nonnull key, CGFloat intensity) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf setupProcessor];
         [strongSelf.processor updateComposerNodeIntensity:path key:key intensity:intensity];
     };
     effectsViewModel.stickerChangedBlock = ^(NSString * _Nonnull path) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf setupProcessor];
         [strongSelf.processor setStickerPath:path];
     };
     effectsViewModel.filterChangedBlock = ^(NSString * _Nonnull path) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf setupProcessor];
         [strongSelf.processor setFilterPath:path];
     };
     TTControlsBox *controlsBox = [[TTControlsBox alloc] initWithViewModel:effectsViewModel];
