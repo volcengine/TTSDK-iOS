@@ -22,7 +22,9 @@
 #import <TTSDK/LiveStreamMultiTimerManager.h>
 //拉流
 #import <TTSDK/TTVideoLive.h>
+#ifndef __cplusplus
 #import <TTSDK/BDWebImage.h>
+#endif
 #import <TTSDK/TTFileUploader.h>
 #endif
 
