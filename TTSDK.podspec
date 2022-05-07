@@ -30,8 +30,10 @@
       subspec.vendored_libraries = [
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
       ]
-      subspec.dependency 'RangersAppLog/Core', '>= 6.8.0', '< 7.0.0'
-      subspec.dependency 'RangersAppLog/Host/CN', '>= 6.8.0', '< 7.0.0'
+      
+      subspec.dependency 'RangersAppLog/Core', '~> 6.9.1'
+      subspec.dependency 'RangersAppLog/Host/CN', '~> 6.9.1'
+
       subspec.libraries = 'stdc++'
     end
 
@@ -47,7 +49,7 @@
       subspec.vendored_libraries = [
         'TTSDK/lib_h_dec/**/*.a'
       ]
-      subspec.dependency 'VEVideoKit/boringssl', '0.0.2-alpha.15.1.binary'
+      subspec.dependency 'VEVideoKit/boringssl', '0.0.2'
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
@@ -69,7 +71,7 @@
       subspec.vendored_libraries = [
         'TTSDK/protobuf_lite/**/*.a',
       ]
-      subspec.dependency 'VEVideoKit/TTNetworkManager', '0.0.2-alpha.15.1.binary'
+      subspec.dependency 'VEVideoKit/TTNetworkManager', '0.0.2'
     end
 
     spec.subspec 'TTFFmpeg' do |subspec|
@@ -101,7 +103,7 @@
         'SystemConfiguration',
       ]
       subspec.dependency 'TTSDK/Tools-VE'
-      subspec.dependency 'VEVideoKit/TTFFmpeg', '0.0.2-alpha.15.1.binary'
+      subspec.dependency 'VEVideoKit/TTFFmpeg', '0.0.2'
     end
 
     spec.subspec 'PlayerCore' do |subspec|
@@ -299,7 +301,7 @@
 
     spec.subspec 'LivePush-VE' do |subspec|
       subspec.dependency 'TTSDK/LivePush-RTC-VE'
-      subspec.dependency 'VEVideoKit/VolcEngineAudio', '0.0.2-alpha.15.1.binary'
+      subspec.dependency 'VEVideoKit/VolcEngineAudio', '0.0.2'
     end
 
     spec.subspec 'Player' do |subspec|
