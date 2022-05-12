@@ -1,6 +1,6 @@
 ## TTSDK
 
-A demo project for [TTSDK](https://github.com/volcengine/volcengine-specs/tree/master/TTSDK). 
+A **iOS** demo project for [TTSDK](https://github.com/volcengine/volcengine-specs/tree/master/TTSDK). 
 
 ## Download
 
