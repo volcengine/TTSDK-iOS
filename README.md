@@ -1,8 +1,5 @@
 ## TTSDK
 
-|Platform|Build Status|
-|:------:|:----------:|
-
 A demo project for [TTSDK](https://github.com/volcengine/volcengine-specs/tree/master/TTSDK). 
 
 ## Download
