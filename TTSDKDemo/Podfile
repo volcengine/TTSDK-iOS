@@ -1,0 +1,46 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/bytedance/cocoapods_sdk_source_repo.git'
+source 'https://github.com/volcengine/volcengine-specs.git'
+
+install! 'cocoapods', :deterministic_uuids => false
+
+platform :ios, "9.0"
+
+inhibit_all_warnings!
+
+def ttsdk_pods
+  pod 'TTSDK', '1.28.1.1-standard', :subspecs => [
+    'Core',
+    'TTFFmpeg',
+    # 'PlayerCore',
+    'LivePull-RTS',
+    'LivePush',
+    'Player-SR',
+    'Image',
+    'Uploader',
+  ]
+end
+
+def common_pods
+  pod 'CocoaAsyncSocket', :path => '../Pods-Cache'
+  pod 'Masonry'
+  pod 'ReactiveObjC'
+  pod 'FLEX'
+  pod 'Toast', '~> 4.0.0'
+  pod 'YYCategories'
+  pod 'AFNetworking', '~> 2.0'
+  pod 'SDWebImage'
+  pod 'MJExtension'
+  pod 'IQKeyboardManager'
+  pod 'RangersAppLog', '6.9.1', :subspecs=>['Core', 'Host/CN', 'Host/SG']
+  pod 'MWPhotoBrowser'
+end
+
+target 'TTSDKDemo' do
+  ttsdk_pods
+  common_pods
+end
+
+post_install do |installer|
+  system("bash Scripts/update_git_info.sh")
+end

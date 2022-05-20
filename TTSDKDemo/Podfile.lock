@@ -1,0 +1,171 @@
+PODS:
+  - AFgzipRequestSerializer (0.0.2):
+    - AFNetworking (~> 2.0)
+    - Godzippa (~> 1.0)
+  - AFNetworking (2.7.0):
+    - AFNetworking/NSURLConnection (= 2.7.0)
+    - AFNetworking/NSURLSession (= 2.7.0)
+    - AFNetworking/Reachability (= 2.7.0)
+    - AFNetworking/Security (= 2.7.0)
+    - AFNetworking/Serialization (= 2.7.0)
+    - AFNetworking/UIKit (= 2.7.0)
+  - AFNetworking/NSURLConnection (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.7.0)
+  - AFNetworking/Security (2.7.0)
+  - AFNetworking/Serialization (2.7.0)
+  - AFNetworking/UIKit (2.7.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.4)
+  - DACircularProgress (2.3.1)
+  - FLEX (3.0.0)
+  - Godzippa (1.1.0)
+  - IQKeyboardManager (6.5.6)
+  - libwebp (1.2.0):
+    - libwebp/demux (= 1.2.0)
+    - libwebp/mux (= 1.2.0)
+    - libwebp/webp (= 1.2.0)
+  - libwebp/demux (1.2.0):
+    - libwebp/webp
+  - libwebp/mux (1.2.0):
+    - libwebp/demux
+  - libwebp/webp (1.2.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (0.9.2)
+  - MJExtension (3.2.4)
+  - MMKV (1.1.2):
+    - MMKVCore (~> 1.1.2)
+  - MMKVCore (1.1.2)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - "SDWebImage (!= 3.7.2, ~> 3.7)"
+  - RangersAppLog (5.3.1):
+    - RangersAppLog/Core (= 5.3.1)
+    - RangersAppLog/Log (= 5.3.1)
+    - RangersAppLog/Picker (= 5.3.1)
+    - RangersAppLog/UITracker (= 5.3.1)
+  - RangersAppLog/Core (5.3.1)
+  - RangersAppLog/Log (5.3.1):
+    - RangersAppLog/Core
+  - RangersAppLog/Picker (5.3.1):
+    - RangersAppLog/Log
+    - RangersAppLog/UITracker
+  - RangersAppLog/UITracker (5.3.1):
+    - RangersAppLog/Core
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SDWebImage (3.8.3):
+    - SDWebImage/Core (= 3.8.3)
+  - SDWebImage/Core (3.8.3)
+  - Toast (4.0.0)
+  - TTSDK/Core (1.14.0.9-standard):
+    - RangersAppLog (>= 3.2.5)
+  - TTSDK/Image (1.14.0.9-standard):
+    - AFgzipRequestSerializer
+    - AFNetworking
+    - libwebp
+    - MMKV
+  - TTSDK/LivePull (1.14.0.9-standard):
+    - CocoaAsyncSocket (~> 7.6.4)
+    - TTSDK/Core
+    - TTSDK/PlayerCore
+  - TTSDK/LivePush (1.14.0.9-standard):
+    - TTSDK/Core
+  - TTSDK/Player (1.14.0.9-standard):
+    - TTSDK/Core
+    - TTSDK/PlayerCore
+  - TTSDK/PlayerCore (1.14.0.9-standard):
+    - TTSDK/TTFFmpeg
+  - TTSDK/TTFFmpeg (1.14.0.9-standard)
+  - TTSDK/Uploader (1.14.0.9-standard):
+    - TTSDK/Core
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.0)
+  - FLEX
+  - IQKeyboardManager
+  - Masonry
+  - MJExtension
+  - MWPhotoBrowser
+  - RangersAppLog/Core (~> 5.3.1)
+  - ReactiveCocoa (= 2.5)
+  - SDWebImage
+  - Toast (~> 4.0.0)
+  - TTSDK/Core (from `../`)
+  - TTSDK/Image (from `../`)
+  - TTSDK/LivePull (from `../`)
+  - TTSDK/LivePush (from `../`)
+  - TTSDK/Player (from `../`)
+  - TTSDK/PlayerCore (from `../`)
+  - TTSDK/TTFFmpeg (from `../`)
+  - TTSDK/Uploader (from `../`)
+  - YYCategories
+
+SPEC REPOS:
+  https://github.com/bytedance/cocoapods_sdk_source_repo.git:
+    - RangersAppLog
+  https://github.com/CocoaPods/Specs.git:
+    - AFgzipRequestSerializer
+    - AFNetworking
+    - CocoaAsyncSocket
+    - DACircularProgress
+    - FLEX
+    - Godzippa
+    - IQKeyboardManager
+    - libwebp
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MMKV
+    - MMKVCore
+    - MWPhotoBrowser
+    - ReactiveCocoa
+    - SDWebImage
+    - Toast
+    - YYCategories
+
+EXTERNAL SOURCES:
+  TTSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFgzipRequestSerializer: 329638fc8ed023a15188dc03dd2f1a930da30ea4
+  AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
+  Godzippa: 21621e8ddc2f1521db473a72b48148c3f0e79d76
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  libwebp: e90b9c01d99205d03b6bb8f2c8c415e5a4ef66f0
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: 88e0900751b6cac8de1cf724ca9838a0b28d5acb
+  MMKV: 319aede3b690572ad00bada5831146c63da3d009
+  MMKVCore: ae976ab3f019a3e4448f884353e0557b324ff136
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  RangersAppLog: 94522d9fcdac9604a98728cd200a788421eaa329
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  TTSDK: a28391da0693ee8829a1ce9974d43490a68c4944
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+
+PODFILE CHECKSUM: c3f11a65309a5f80eada897a90b71652e345664d
+
+COCOAPODS: 1.9.3
