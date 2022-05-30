@@ -38,7 +38,8 @@
     spec.subspec 'Tools' do |subspec| 
       subspec.vendored_libraries = [
         'TTSDK/boringssl/**/*.a',
-        'TTSDK/lib_h_dec/**/*.a'
+        'TTSDK/lib_h_dec/**/*.a',
+        'TTSDK/BVCParser/**/*.a'
       ]
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
