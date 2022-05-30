@@ -1,11 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-<<<<<<< HEAD
-    spec.version      = "1.29.100.1-standard"
-=======
     spec.version      = "1.28.1.1-standard"
->>>>>>> b21afe5 (Initial commit)
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -35,19 +31,16 @@
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
       ]
       subspec.dependency 'RangersAppLog/Core', '~> 6.9.1'
-<<<<<<< HEAD
-      subspec.dependency 'RangersAppLog/Host/SG', '~> 6.9.1'
-=======
       subspec.dependency 'RangersAppLog/Host/CN', '~> 6.9.1'
->>>>>>> b21afe5 (Initial commit)
       subspec.libraries = 'stdc++'
     end
 
     spec.subspec 'Tools' do |subspec| 
       subspec.vendored_libraries = [
-        'TTSDK/boringssl/**/*.a',
-        'TTSDK/lib_h_dec/**/*.a',
-        'TTSDK/BVCParser/**/*.a'
+        'TTSDK/lib_h_dec/**/*.a'
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/boringssl/*.framework'
       ]
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
@@ -67,8 +60,8 @@
     end
 
     spec.subspec 'TTFFmpeg' do |subspec|
-      subspec.vendored_libraries = [
-        'TTSDK/TTFFmpeg/**/*.a',
+      subspec.vendored_frameworks = [
+        'TTSDK/TTFFmpeg/*.framework',
       ]
       subspec.frameworks = [
         'CoreMotion',
@@ -104,18 +97,18 @@
     # Support Super Resolution
     spec.subspec 'PlayerCore-SR' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.source_files = [
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.vendored_libraries = [
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
       ]
       subspec.resources = [
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
       subspec.dependency 'TTSDK/TTFFmpeg'
     end
@@ -147,7 +140,7 @@
 
     spec.subspec 'LivePull-RTS' do |subspec|
       subspec.vendored_libraries = [
-        'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_ios.a',
+        'TTSDK/TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_ios.a',
       ]
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtsSDK/*.framework',
@@ -350,172 +343,23 @@
 
     # MARK: - Stripped Pod Spec , Use With Caution! If there is no ssl symbol conflict, Should not intergrate subspecs below.
 
-    spec.subspec 'Player-Strip' do |subspec|
-      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
-      subspec.public_header_files = [
-        "TTSDK/{#{class_name}}/**/*.h"
-      ]
-      subspec.source_files = [
-        "TTSDK/{#{class_name}}/**/*"
-      ]
-      subspec.exclude_files = [
-        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
-        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
-        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
-        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
-        'TTSDK/VCPreloadStrategy/sources/**/*',
-        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
-        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
-      ]
-      lib_name = "#{class_name},MDLMediaDataLoader_strip,VCNVCloudNetwork_strip,TTTopSignature,lib_h_dec"
-      subspec.vendored_libraries = [
-        "TTSDK/{#{lib_name}}/**/*.a"
-      ]
-      subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/PlayerCore-Strip'
+    spec.subspec 'Player-Strip' do |subspec| 
+      subspec.dependency 'TTSDK/Player'
     end
     
-    spec.subspec 'LivePull-Strip' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/TTVideoLive/**/*.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/TTVideoLive/**/*',
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/TTVideoLive/**/*.a',
-        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
-      ]
-      subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/PlayerCore-Strip'
-      subspec.dependency 'CocoaAsyncSocket', '~> 7.6.4'
+    spec.subspec 'LivePull-Strip' do |subspec| 
+      subspec.dependency 'TTSDK/LivePull'
     end
 
     spec.subspec 'LivePush-Strip' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
-        'TTSDK/LiveStreamFramework/prj/ios/LiveStreamAudioEffect/**/*.h',
-        'TTSDK/LiveCore/**/*.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/LiveCore/**/*',
-        'TTSDK/LiveStreamFramework/**/*'
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/LiveCore/**/*.a',
-        "TTSDK/LiveStreamFramework/**/libLiveStreamFramework_{base,glbase,session,webrtc,base_webrtc,ntp,audio-effect}_ios.a",
-        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePush_ios.a',
-        'TTSDK/libyuv-iOS/**/*.a'
-      ]
-      subspec.vendored_frameworks = [
-        'TTSDK/ByteAudio/*.framework',
-      ]
-      subspec.frameworks = [
-        'SystemConfiguration',
-        'GLKit',
-        'imageIO',
-        'MetalPerformanceShaders'
-      ]
-      subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/TTFFmpeg-Strip'
-      subspec.libraries = 'stdc++'
+      subspec.dependency 'TTSDK/LivePush'
     end
 
     spec.subspec 'Uploader-Strip' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/TTFileUploadClientb/**/*.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/TTFileUploadClientb/**/*',
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/{TTVideoSetting,TTFileUploadClientb}/**/*.a',
-        'TTSDK/protobuf_lite/**/*.a',
-        'TTSDK/lib_h_dec/**/*.a',
-        'TTSDK/VCNVCloudNetwork_strip/**/*.a'
-      ]
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
-      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/Uploader'
     end
 
-    spec.subspec 'PlayerCore-Strip' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/TTPlayerSDK/**/*.a',
-        'TTSDK/audiosdk/**/*.a',
-      ]
-      subspec.resources = [
-        'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
-      ]
-      subspec.frameworks = [
-        'CoreMotion',
-        'CoreMedia',
-        'MetalKit',
-        'OpenAL',
-        'VideoToolBox',
-        'AudioToolBox',
-        'AVFoundation',
-        'SystemConfiguration',
-      ]
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
-      subspec.dependency 'TTSDK/TTFFmpeg-Strip'
+    spec.subspec 'Image-Strip' do |subspec| 
+      subspec.dependency 'TTSDK/Image'
     end
-
-    spec.subspec 'TTFFmpeg-Strip' do |subspec|
-      subspec.vendored_libraries = [
-        'TTSDK/boringssl/**/libcrcrypto.a',
-        'TTSDK/TTFFmpeg_strip/**/*.a',
-      ]
-      subspec.frameworks = [
-        'CoreMotion',
-        'CoreMedia',
-        'MetalKit',
-        'OpenAL',
-        'VideoToolBox',
-        'AudioToolBox',
-        'AVFoundation',
-        'SystemConfiguration',
-      ]
-      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
-    end
-
-    spec.subspec 'TTNet-Strip' do |subspec| 
-      subspec.vendored_libraries = [
-        'TTSDK/protobuf_lite/**/*.a',
-        'TTSDK/TTNetworkManager_strip/**/*.a'
-      ]
-    end
-
-    spec.subspec 'Image-Strip' do |subspec|
-      subspec.public_header_files = [
-        'TTSDK/BDWebImageToB/**/*.h',
-      ]
-      subspec.source_files = [
-        'TTSDK/BDWebImageToB/**/*',
-      ]
-      subspec.vendored_libraries = [
-        'TTSDK/BDWebImageToB/**/*.a',
-        'TTSDK/libttheif_ios/**/*.a',
-        'TTSDK/BDSword/ios-arch-iphone/*.a',
-        'TTSDK/protobuf_lite/**/*.a',
-        'TTSDK/lib_h_dec/**/*.a',
-      ]
-      subspec.dependency 'TTSDK/Core'
-      subspec.dependency 'TTSDK/TTNet-Strip'
-      # Third
-      subspec.ios.frameworks = 'CFNetwork', 'MobileCoreServices', 'SystemConfiguration', 'JavaScriptCore', 'Accelerate'
-      subspec.libraries = "c++", "resolv", 'stdc++', 'z', 'xml2', 'iconv'
-      subspec.dependency 'libwebp'
-      subspec.dependency 'MMKV'
-      subspec.dependency 'libdav1d', '0.8.0'
-      subspec.dependency 'libavif/libdav1d', '0.9.1'
-    end
-    
   end
