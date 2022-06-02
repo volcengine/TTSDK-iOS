@@ -14,10 +14,6 @@
 		2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44FB13254F3187002CC02A /* UIBlockSegmentedControl.m */; };
 		2B44FB1625515BD9002CC02A /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B44FB1525515BD9002CC02A /* test1.png */; };
 		2B58E8B7253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */; };
-		2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C8CFB3242F2AE00078C7EA /* MetalKit.framework */; };
-		2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */; };
-		2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD5A79F27E88CF4001335A1 /* Metal.framework */; };
-		2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE5B56527DEDEB900B44A12 /* WebKit.framework */; };
 		5C5CA2452627E54600317338 /* test33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2442627E54600317338 /* test33.JPG */; };
 		5C5CA2732628139500317338 /* test44.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C5CA2462627E55100317338 /* test44.ttf */; };
 		830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */ = {isa = PBXBuildFile; fileRef = 830EA318246940C1004DC739 /* ttsdkdemo.license */; };
@@ -135,9 +131,6 @@
 		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
 		841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 841F762626207F5400A17EF7 /* doubleTracks.m4a */; };
 		84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84226913271DA1060027699F /* StreamingKTVControllBox.xib */; };
-		8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */; };
-		8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86427A3D611009CFB43 /* LSPlayController.m */; };
-		84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */; };
 		84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */; };
 /* End PBXBuildFile section */
 
@@ -166,9 +159,6 @@
 		2B44FB1525515BD9002CC02A /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		2B58E8B5253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTDemoSDKEnvironmentManager.m; sourceTree = "<group>"; };
 		2B58E8B6253EDC8500FB5892 /* TTDemoSDKEnvironmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTDemoSDKEnvironmentManager.h; sourceTree = "<group>"; };
-		2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShadersGraph.framework; path = System/Library/Frameworks/MetalPerformanceShadersGraph.framework; sourceTree = SDKROOT; };
-		2BD5A79F27E88CF4001335A1 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		2BE5B56527DEDEB900B44A12 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		5C5CA2442627E54600317338 /* test33.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test33.JPG; sourceTree = "<group>"; };
 		5C5CA2462627E55100317338 /* test44.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test44.ttf; sourceTree = "<group>"; };
 		830EA318246940C1004DC739 /* ttsdkdemo.license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdkdemo.license; sourceTree = "<group>"; };
@@ -386,11 +376,6 @@
 		841F76232620701100A17EF7 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		841F762626207F5400A17EF7 /* doubleTracks.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleTracks.m4a; sourceTree = "<group>"; };
 		84226913271DA1060027699F /* StreamingKTVControllBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingKTVControllBox.xib; sourceTree = "<group>"; };
-		8456E86027A3D1D0009CFB43 /* StreamingViewController+MTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+MTV.h"; sourceTree = "<group>"; };
-		8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+MTV.m"; sourceTree = "<group>"; };
-		8456E86327A3D611009CFB43 /* LSPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSPlayController.h; sourceTree = "<group>"; };
-		8456E86427A3D611009CFB43 /* LSPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSPlayController.m; sourceTree = "<group>"; };
-		84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wenlouhaifeng.mp4; sourceTree = "<group>"; };
 		84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+KTV.h"; sourceTree = "<group>"; };
 		84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+KTV.m"; sourceTree = "<group>"; };
 		AF9013582D14F7AF54457593 /* Pods-TTSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -403,12 +388,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */,
-				2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */,
 				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
-				2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */,
-				2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */,
 				17846A900D0D10A1549B0D73 /* libPods-TTSDKDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,7 +424,6 @@
 		831E378423D0177B00A9F7A9 /* Push */ = {
 			isa = PBXGroup;
 			children = (
-				8456E85F27A3D124009CFB43 /* MTV */,
 				84FCCD9A2620413B0065FB4F /* KTV */,
 				83795AEA23E2C92F00E87A4A /* Effects */,
 				831E379623D0180E00A9F7A9 /* SettingsViewController */,
@@ -499,7 +479,6 @@
 		8378B5BD23C4860F0075E05C /* TTSDKDemo */ = {
 			isa = PBXGroup;
 			children = (
-				84B15C8627BE8276006FF374 /* wenlouhaifeng.mp4 */,
 				84060462261425D3003B389D /* License */,
 				83797AEC25EBFAA5003C10F2 /* Common */,
 				2B44FB08254AFE7D002CC02A /* Uploader */,
@@ -528,9 +507,6 @@
 		8378B5D723C486230075E05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2BD5A79F27E88CF4001335A1 /* Metal.framework */,
-				2BD5A79E27E88CF4001335A1 /* MetalPerformanceShadersGraph.framework */,
-				2BE5B56527DEDEB900B44A12 /* WebKit.framework */,
 				841F76232620701100A17EF7 /* CoreML.framework */,
 				841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */,
 				83A3054724F6B89C00209D0A /* Foundation.framework */,
@@ -928,17 +904,6 @@
 			path = License;
 			sourceTree = "<group>";
 		};
-		8456E85F27A3D124009CFB43 /* MTV */ = {
-			isa = PBXGroup;
-			children = (
-				8456E86027A3D1D0009CFB43 /* StreamingViewController+MTV.h */,
-				8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */,
-				8456E86327A3D611009CFB43 /* LSPlayController.h */,
-				8456E86427A3D611009CFB43 /* LSPlayController.m */,
-			);
-			path = MTV;
-			sourceTree = "<group>";
-		};
 		84FCCD9A2620413B0065FB4F /* KTV */ = {
 			isa = PBXGroup;
 			children = (
@@ -972,8 +937,7 @@
 				8378B5B923C4860F0075E05C /* Resources */,
 				43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */,
 				83A2D22025F9250F00043E3E /* Embed Frameworks */,
-				3B299F555FEB12EEF2476452 /* [CP] Embed Pods Frameworks */,
-				2BD5A85827E8A084001335A1 /* ShellScript */,
+				C056D7256A60A327D6C535CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1048,7 +1012,6 @@
 				83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */,
 				83A3049624F6AED600209D0A /* 配置@3x.png in Resources */,
 				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
-				84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */,
 				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
 				83A3049C24F6AED600209D0A /* search.png in Resources */,
 				841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */,
@@ -1064,40 +1027,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BD5A85827E8A084001335A1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nRESOURCE_PATH=${SRCROOT}/extern/TTSDKFramework.framework/ttplayer.metallib\nif [ -f \"${RESOURCE_PATH}\" ]; then\n    echo \"Build using dynamic lib, and copy bundle resources\"\n    FILENAME_IN_BUNDLE=ttplayer.metallib\n    BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\n    cp \"$RESOURCE_PATH\" \"$BUILD_APP_DIR/$FILENAME_IN_BUNDLE\"\nfi\n";
-		};
-		3B299F555FEB12EEF2476452 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		43FC6A3019F7BD7C48B3A51F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1137,6 +1066,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C056D7256A60A327D6C535CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTSDKDemo/Pods-TTSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1166,7 +1112,6 @@
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
 				84FCD570262049190065FB4F /* StreamingViewController+KTV.m in Sources */,
 				83C4448A243F8E2B00081EA1 /* TTVideoPlayerControlsController.m in Sources */,
-				8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */,
 				83A304A324F6AED600209D0A /* BDImageOptionView.m in Sources */,
 				83C4446A243F8E2B00081EA1 /* PreferencesViewController.m in Sources */,
 				83A304A524F6AED600209D0A /* BDImageDetailViewController.m in Sources */,
@@ -1200,7 +1145,6 @@
 				83C443BA243E492A00081EA1 /* BERender.mm in Sources */,
 				83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */,
 				83A304A424F6AED600209D0A /* BDImageAdapter.m in Sources */,
-				8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */,
 				83C4446C243F8E2B00081EA1 /* UIColor+Hex.m in Sources */,
 				831E379423D017E700A9F7A9 /* LiveHelper.m in Sources */,
 				83C44483243F8E2B00081EA1 /* VodDemoViewController.m in Sources */,

@@ -58,11 +58,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>buildBranch</key>
-	<string>feature/liuke/nnsr</string>
+	<string>release/ios_1.21.1-bitcode</string>
 	<key>commitID</key>
-	<string>4a8a6a6</string>
+	<string>b21afe5</string>
 </dict>
 </plist>

@@ -22,7 +22,7 @@ static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
     defaultConfiguration.shouldAutoPlay = YES;
     defaultConfiguration.shouldUseLiveDNS = YES;
     defaultConfiguration.nodeOptimizingEnabled = NO;
-    defaultConfiguration.hardwareDecodeEnabled = YES;
+    defaultConfiguration.hardwareDecodeEnabled = NO;
     defaultConfiguration.allowsAudioRendering = YES;
     defaultConfiguration.fillMode = TVLViewScalingModeAspectFit;
     defaultConfiguration.preferredToHTTPDNS = NO;
@@ -64,6 +64,5 @@ static NSString *DOMAIN_NAME = @"DomainNameUserDefaultKey";
         [[NSUserDefaults standardUserDefaults] setValue:[self.domainName copy] forKey:DOMAIN_NAME];
     }
 }
-
 
 @end

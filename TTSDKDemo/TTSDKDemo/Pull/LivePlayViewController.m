@@ -14,11 +14,6 @@
 #import <UIView+Toast.h>
 #import "PreferencesViewController.h"
 #import "LogViewController.h"
-#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
-#import <TTSDKFramework/TVLManager+VideoProcessing.h>
-#else
-#import <TTSDK/TVLManager+VideoProcessing.h>
-#endif
 
 typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     TVLLiveStatusUnknow,
@@ -145,7 +140,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
         [wself.liveManager pause];
     }];
     [NSNotificationCenter.defaultCenter addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            [wself.liveManager play];
+        [wself.liveManager play];
     }];
 }
 
@@ -156,17 +151,11 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self destoryLiveManager];
     [self archiveLogs];
     [UIApplication.sharedApplication.keyWindow hideAllToasts];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    [self destoryLiveManager];
-//    [self archiveLogs];
-//    [UIApplication.sharedApplication.keyWindow hideAllToasts];
 }
 
 - (void)archiveLogs {
@@ -242,7 +231,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [TVLSettingsManager.defaultManager updateCurrentSettings];
     TVLManager *liveManager = [[TVLManager alloc] initWithOwnPlayer:YES];
     [liveManager setDelegate:self];                                                 // TVLProtocol代理设置
-    liveManager.playerViewRenderType = TVLPlayerViewRenderTypeMetal;
     [liveManager setProjectKey:self.playConfiguration.projectKey];                  // 标识产品
     [liveManager setRetryTimeInternal:self.playConfiguration.retryTimeInternal];    // 重试间隔
     [liveManager setRetryCountLimit:self.playConfiguration.retryCountLimit];        // 重试最大次数
@@ -260,11 +248,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     [liveManager setOptionValue:@(TVLOptionByteVC1CodecTypeJX) forIdentifier:@(TVLPlayerOptionByteVC1CodecType)];
     [liveManager setIpMappingTable:[self.playConfiguration.ipMapping copy]];
     [liveManager setShouldReportAudioFrame:YES];
-    
-    TVLManager.logCallback = ^(TVLLogLevel level, NSString *tag, NSString *log) {
-        NSLog(@"TVLManager level: %d\ttag: %@\tlog: %@", level, tag, log);
-    };
-    
     @weakify(self);
     TVLOptimumNodeInfoRequest optimumNodeInfoRequest = ^NSDictionary *(NSString *playURL) {
         @strongify(self);
@@ -323,17 +306,17 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }];
     
     UIButton *backButton = [[UIButton alloc] init];
-   [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    [backButton setTitle:@"🔙" forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonDidTouch) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
-//    [backButton.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(backButton);
-//    }];
+    [backButton.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(backButton);
+    }];
     [backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).mas_offset(32.f);
         make.left.mas_equalTo(self.view).mas_offset(16.f);
-        make.width.mas_equalTo(60.f);
-        make.height.mas_equalTo(64.f);
+        make.width.mas_equalTo(40.f);
+        make.height.mas_equalTo(24.f);
     }];
     self.backButton = backButton;
     
@@ -394,15 +377,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     self.rotationButton = rotationButton;
     
     // 按照数组中的顺序布局按钮位置
-    NSMutableArray *buttons = [@[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton] mutableCopy];
-    
-    if (self.playConfiguration.enableNNSR) {
-        UIButton *srButton = [UIButton new];
-        [srButton setTitle:@"⬆️" forState:UIControlStateNormal];
-        [srButton addTarget:self action:@selector(srButtonDidTouch:) forControlEvents:UIControlEventTouchUpInside];
-        [buttons addObject:srButton];
-    }
-    
+    NSArray *buttons = @[playbackButton, infoSwitchButton, muteButton, brightnessButton, rotationButton];
     CGFloat buttonDimension = 40.f;
     CGFloat buttonMargin = 24.f;
     for (NSInteger index = 0; index < buttons.count; index++) {
@@ -561,20 +536,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     }
 }
 
-- (void)srButtonDidTouch:(UIButton *)sender {
-    self.playConfiguration.enableNNSR = !self.playConfiguration.enableNNSR;
-    NSDictionary *attributes = nil;
-    if (!self.playConfiguration.enableNNSR) {
-        attributes = @{
-            NSStrikethroughStyleAttributeName: @(NSUnderlineStyleThick | NSUnderlinePatternSolid),
-            NSStrikethroughColorAttributeName: UIColor.redColor,
-        };
-    }
-    NSString *title = sender.titleLabel.text;
-    sender.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
-    self.liveManager.enableVideoProcess = self.playConfiguration.enableNNSR;
-}
-
 - (void)infoSwitchButtonDidTouch {
     self.infoTextView.hidden = !self.infoTextView.hidden;
     if (!self.infoTextView.hidden) {
@@ -583,14 +544,10 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 }
 
 - (void)destoryLiveManager {
-    if (self.liveManager) {
-        NSLog(@"------ 开始销毁播放器 ------");
-        [self removeObservations];
     [self.liveManager stop];
     [self.liveManager close];
+    [self removeObservations];
     self.liveManager = nil;
-        NSLog(@"------ 已经销毁播放器 ------");
-    }
 }
 
 - (void)backButtonDidTouch {
@@ -628,11 +585,7 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
 // MARK: TVLSettingsManagerDataSource Methods
 
 - (NSDictionary *)currentSettings {
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc]initWithDictionary: [[TVLSettingsManager defaultManager] currentSettings]];
-    if (self.playConfiguration.settingsData && [self.playConfiguration.settingsData isKindOfClass:NSDictionary.class]) {
-        [settings addEntriesFromDictionary:self.playConfiguration.settingsData];
-    }
-    return [settings copy];
+    return self.playConfiguration.settingsData;
 }
 
 // MARK: TVLDelegate Methods
@@ -736,10 +689,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     if (error.code == -499896 && self.liveManager.ipMappingTable.count != 0) {
         NSString *errorMessage = @"IP mapping table settings may be wrong";
         [self.view makeToast:errorMessage duration:5.f position:CSToastPositionBottom title:nil image:nil style:nil completion:nil];
-    } else if (error.code == -499594) {
-        // RTC 会话超时，重新连接
-        [self.liveManager stop];
-        [self.liveManager play];
     } else {
         [self.view makeToast:[NSString stringWithFormat:@"%@", error]];
     }
@@ -831,10 +780,6 @@ typedef NS_ENUM(NSUInteger, TVLLiveStatus) {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.infoTextView.text = formattedDebugInfo;
     });
-}
-
-- (void)dealloc {
-    NSLog(@"%@ dealloc ", self.class);
 }
 
 @end

@@ -11,8 +11,6 @@
 #import "NavigationViewController.h"
 #import "HomeViewController.h"
 #import <RangersAppLog/RangersAppLogCore.h>
-#import <RangersAppLog/RangersAppLog.h>
-#import <RangersAppLog/BDAutoTrackURLHostItemCN.h>
 #import "TTDemoSDKEnvironmentManager.h"
 #import "LicenseAssociatedConst.h"
 
@@ -43,8 +41,7 @@ void uncaughtExceptionHandler(NSException*exception){
     [self addLicenseObserver];
     
     NSLog(@"TTSDK version: %@", TTSDKManager.SDKVersionString);
-    NSString *region = [[NSUserDefaults standardUserDefaults] stringForKey:@"TTSDK-Service-Vendor"];
-    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = [region isEqualToString:@"SG"] ? TTSDKServiceVendorSG : TTSDKServiceVendorCN;
+    [TTDemoSDKEnvironmentManager shareEvnironment].serviceVendor = TTSDKServiceVendorCN;
     self.ttsdkShouldInitAppLog = YES;
     if (self.ttsdkShouldInitAppLog) {
         [self initAppLog];
@@ -115,27 +112,28 @@ void uncaughtExceptionHandler(NSException*exception){
 
 
 - (void)initAppLog {
-#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
-    // 必须配置
-    BDAutoTrackConfig *config = [BDAutoTrackConfig configWithAppID:[[TTDemoSDKEnvironmentManager shareEvnironment] appId]];
-    config.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
-    config.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
-    config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorSG;
-    config.autoTrackEnabled = NO;
-#if DEBUG
-    config.showDebugLog = YES;      // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES
-    config.logNeedEncrypt = NO;     // 日志上报是否加密，默认加密，release版本请勿设置为NO
-#else
-    config.showDebugLog = NO;       // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES
-    config.logNeedEncrypt = YES;    // 日志上报是否加密，默认加密，release版本请勿设置为NO
-#endif
-    config.logger = ^(NSString * _Nullable log) {
-        NSLog(@"report log: %@", log);
-    };
-    config.gameModeEnable = NO;     // 游戏模式，会开始playSession上报
-    [BDAutoTrack setCurrentUserUniqueID:@"10352432926"];
-    [BDAutoTrack startTrackWithConfig:config];
-#endif
+//#if __has_include(<RangersAppLog/RangersAppLogCore.h>)
+//    BDAutoTrackConfig *config = [BDAutoTrackConfig new];
+//    // 必须配置
+//    config.appID = [[TTDemoSDKEnvironmentManager shareEvnironment] appId];
+//    config.appName = [[TTDemoSDKEnvironmentManager shareEvnironment] appName];
+//    config.channel = [[TTDemoSDKEnvironmentManager shareEvnironment] channel];
+//    config.serviceVendor = TTSDKServiceVendorCN == [[TTDemoSDKEnvironmentManager shareEvnironment] serviceVendor] ? BDAutoTrackServiceVendorCN : BDAutoTrackServiceVendorSG;
+//    config.autoTrackEnabled = NO;
+//#if DEBUG
+//    config.showDebugLog = YES;      // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES
+//    config.logNeedEncrypt = NO;     // 日志上报是否加密，默认加密，release版本请勿设置为NO
+//#else
+//    config.showDebugLog = NO;       // YES则会在控制台输出日志，仅仅调试使用，release版本请勿设置为YES
+//    config.logNeedEncrypt = YES;    // 日志上报是否加密，默认加密，release版本请勿设置为NO
+//#endif
+//    config.logger = ^(NSString * _Nullable log) {
+//        NSLog(@"report log: %@", log);
+//    };
+//    config.gameModeEnable = NO;     // 游戏模式，会开始playSession上报
+//    [BDAutoTrack setCurrentUserUniqueID:@"10352432926"];
+//    [BDAutoTrack startTrackWithConfig:config];
+//#endif
 }
 
 - (void)initBDImageManager

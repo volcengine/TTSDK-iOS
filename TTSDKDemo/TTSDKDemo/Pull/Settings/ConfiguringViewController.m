@@ -6,13 +6,6 @@
 //
 
 #import "ConfiguringViewController.h"
-#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
-#import <TTSDKFramework/TVLManager+External.h>
-#else
-#import "TVLManager+External.h"
-#endif
-
-#import "UIView+Toast.h"
 
 @interface ConfiguringViewController ()
 
@@ -27,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *retryTimeLimitTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *SDKDNSSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *DNSMethodSegmentedControl;
-@property (weak, nonatomic) IBOutlet UISwitch *nnsrSwitch;//超分支持
 // IP Mapping
 @property (weak, nonatomic) IBOutlet UITextField *ipAddressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *domainTextField;
@@ -67,7 +59,6 @@
     self.retryTimeLimitTextField.text = [NSString stringWithFormat:@"%ld", (long)self.currentConfiguration.retryTimeLimit];
     self.ipAddressTextField.text = self.currentConfiguration.ipAddress;
     self.domainTextField.text = self.currentConfiguration.domainName;
-    self.nnsrSwitch.on = self.currentConfiguration.enableNNSR;
     
     @weakify(self);
     [[self.hardwareDecodeSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
@@ -132,20 +123,6 @@
     self.confirmButton.rac_command = self.confirmCommand;
     
     self.cancelButton.rac_command = self.cancelCommand;
-    
-    [[self.nnsrSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(UISwitch *aSwitch) {
-        @strongify(self);
-        if ((aSwitch.isOn && ![TVLManager isSupportSR])) {
-            [UIApplication.sharedApplication.keyWindow makeToast:@"该机型不支持超分" duration:1 position:@(self.view.center)];
-            aSwitch.on = NO;
-            return;
-        }
-        self.currentConfiguration.enableNNSR = aSwitch.isOn;
-        if (aSwitch.isOn) {
-            self.hardwareDecodeSwitch.on = YES;
-            self.currentConfiguration.hardwareDecodeEnabled = YES;
-        }
-    }];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

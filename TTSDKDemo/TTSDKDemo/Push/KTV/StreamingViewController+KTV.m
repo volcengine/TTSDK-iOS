@@ -101,11 +101,11 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)buttonDidClick:(UIButton *)buttn {
-    if (buttn == self.pauseMusicBtn) {
-        [self.engine pauseBgMusic];
-    } else if (buttn == self.continueMusicBtn) {
-        [self.engine resumeBgMusic];
-    }
+//    if (buttn == self.pauseMusicBtn) {
+//        [self.engine pauseBgMusic];
+//    } else if (buttn == self.continueMusicBtn) {
+//        [self.engine resumeBgMusic];
+//    }
 }
 
 - (void)sliderValueDidChange:(UISlider *)slider {
@@ -150,11 +150,11 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+//
+//@implementation LSLiveAudioUnitConfig (TTSDK)
+//
+//- (BOOL)newPlayerMode {
+//    return YES;
+//}
 
-@implementation LSLiveAudioUnitConfig (TTSDK)
-
-- (BOOL)newPlayerMode {
-    return YES;
-}
-
-@end
+//@end

@@ -1,13 +1,11 @@
 source 'https://rubygems.byted.org'
 
-gem 'cocoapods', '1.8.4'
+gem 'cocoapods', '1.9.3'
 
-gem "fastlane", '~> 2.198.1'
+gem "fastlane"
 
-gem "cocoapods-packager", '~> 1.5.1'
+gem "cocoapods-packager"
 
-gem "xcodeproj", '>= 1.21.0', '< 2.0'
+gem "xcodeproj"
 
-gem "CFPropertyList", '3.0.5'
-
-gem 'bd_pod_extentions', '6.4.1'
+gem "CFPropertyList"

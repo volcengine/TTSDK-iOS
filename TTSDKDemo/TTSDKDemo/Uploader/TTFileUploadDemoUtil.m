@@ -145,6 +145,9 @@
 
     NSString* hostName;
     hostName = @"imagex.volcengineapi.com";
+    [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
+    TTFileUploadFileTypeStr:@"image",
+    }];
     [clientTop setImageHostName:hostName];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
     

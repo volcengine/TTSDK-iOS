@@ -19,7 +19,6 @@
 #import <TTSDK/LiveCore+Capture.h>
 #import <TTSDK/LiveStreamHelper.h>
 #import <TTSDK/LiveStreamRawDataHelper.h>
-#import <TTSDK/LiveStreamMultiTimerManager.h>
 //拉流
 #import <TTSDK/TTVideoLive.h>
 #ifndef __cplusplus
@@ -33,12 +32,11 @@
 #endif
 
 //MARK: 音效相关
-#define USE_EFFECT 1
+#define USE_EFFECT 0
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
     #import <TTSDKFramework/LiveCore+KTV.h>
     #import <TTSDKFramework/LSLiveAudioUnitProcess.h>
-    #import <TTSDKFramework/LiveStreamMultiTimerManager.h>
     #else
     #import <TTSDK/LiveCore+KTV.h>
     #import <TTSDK/LSLiveAudioUnitProcess.h>
