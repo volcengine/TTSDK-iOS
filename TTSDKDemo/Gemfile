@@ -1,11 +1,20 @@
 source 'https://rubygems.byted.org'
 
-gem 'cocoapods', '1.9.3'
+# required version 1.8.4 by plugin `cocoapods-bytedance-duplication`
+gem 'cocoapods', '1.8.4'
 
-gem "fastlane"
+gem 'bd_pod_extentions', '6.4.1'
 
-gem "cocoapods-packager"
+gem "fastlane", '~> 2.198.1'
 
-gem "xcodeproj"
+gem "cocoapods-packager",  '~> 1.5.1'
 
-gem "CFPropertyList"
+gem "xcodeproj", '1.19.0'
+
+gem "CFPropertyList", '3.0.5'
+
+gem 'rqrcode',  '2.1.0'
+
+gem 'rqrcode_png', '0.1.5'
+
+gem 'cocoapods-optimize', '2.1.24'
