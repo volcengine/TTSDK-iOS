@@ -51,6 +51,9 @@
         'TTSDK/VCNVCloudNetwork/**/*.a',
         'TTSDK/protobuf_lite/**/*.a'
       ]
+      subspec.vendored_frameworks = [
+        'TTSDK/VCNVCloudNetwork/products/framework/*.framework',
+      ]
     end
 
     spec.subspec 'TTNet' do |subspec| 
@@ -206,12 +209,13 @@
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
+      lib_name = "#{class_name},MDLMediaDataLoader,TTTopSignature"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+      subspec.dependency 'TTSDK/VCN'
     end
 
     # Support Super Resolution
@@ -232,12 +236,13 @@
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
         'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
       ]
-      lib_name = "#{class_name},MDLMediaDataLoader,VCNVCloudNetwork,TTTopSignature"
+      lib_name = "#{class_name},MDLMediaDataLoader,TTTopSignature"
       subspec.vendored_libraries = [
         "TTSDK/{#{lib_name}}/**/*.a"
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-SR'
+      subspec.dependency 'TTSDK/VCN'
     end
     
     spec.subspec 'RTC-Framework' do |subspec|
