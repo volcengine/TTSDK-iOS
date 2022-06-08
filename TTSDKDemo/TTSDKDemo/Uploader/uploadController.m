@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
-@interface uploadController ()
+@interface uploadController () <UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *uploadButton;
 @property (nonatomic, weak) IBOutlet UILabel *progressLabel;
@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, strong) UIView* segmentContainViewMate;
 @property (nonatomic, strong) UIView* buttonsContainView;
 @property (nonatomic, strong) UIView* fileButtonContainView;
+@property (nonatomic, strong) UITextField* textfiled;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *thumbs;
 @property (nonatomic, strong) NSMutableArray *assets;
@@ -224,6 +225,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 - (void)initUI{
     [self initSegmaent];
     [self initMateSegment];
+    [self initAKSKText];
     [self initButtons];
     [self initsetImages];
     _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -395,9 +397,22 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     [containViewMate addSubview:netWorkControllMate];
 }
 
+- (void)initAKSKText{
+    UITextField *text = [[UITextField alloc]initWithFrame:CGRectMake(0, _segmentContainViewMate.bottom + 30, WIDTH, 100)];
+    text.borderStyle = UITextBorderStyleRoundedRect;
+    text.placeholder = @"AccessKey SecretKey .. JsonStr";
+    text.font = [UIFont fontWithName:@"Arial" size:15.0f];
+    text.textColor = [UIColor redColor];
+    text.clearsOnBeginEditing = YES;
+
+    _textfiled = text;
+    _textfiled.delegate = self;
+    [self.view addSubview:text];
+}
+
 - (void)initButtons{
     
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _segmentContainViewMate.bottom + 60, WIDTH, 170)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _textfiled.bottom + 30, WIDTH, 170)];
 //    containView.backgroundColor = [UIColor grayColor];
     _buttonsContainView = containView;
     [self.view addSubview:containView];
