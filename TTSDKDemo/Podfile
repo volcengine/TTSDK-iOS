@@ -10,9 +10,6 @@ inhibit_all_warnings!
 
 def ttsdk_pods
   pod 'TTSDK', '1.29.100.1-standard', :subspecs => [
-    'Core',
-    'TTFFmpeg',
-    # 'PlayerCore',
     'LivePull-RTS',
     'LivePush',
     'Player-SR',
