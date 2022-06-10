@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/bytedance/cocoapods_sdk_source_repo.git'
 source 'https://github.com/volcengine/volcengine-specs.git'
 
-install! 'cocoapods', :deterministic_uuids => false
+# install! 'cocoapods', :deterministic_uuids => false
 
 platform :ios, "9.0"
 
