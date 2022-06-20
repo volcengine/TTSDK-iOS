@@ -30,6 +30,7 @@ def common_pods
   pod 'MJExtension'
   pod 'IQKeyboardManager'
   pod 'RangersAppLog', '6.9.1', :subspecs=>['Core', 'Host/CN', 'Host/SG']
+  pod 'OneKit', '1.3.7'
   pod 'MWPhotoBrowser'
 end
 
