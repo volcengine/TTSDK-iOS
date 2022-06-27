@@ -16,7 +16,7 @@
 
     spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
     
-    spec.default_subspecs = 'Core', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
+    spec.default_subspecs = 'Core', 'Effect', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
 
     spec.static_framework = true
     
@@ -37,6 +37,19 @@
       subspec.libraries = 'stdc++'
     end
 
+    spec.subspec "Effect" do |subspec|
+      subspec.public_header_files = [
+        "TTSDK/VCloudPandora/**/TTSDKEffectManager.h",
+      ]
+      subspec.source_files = [
+        "TTSDK/VCloudPandora/**/TTSDKEffectManager.h",
+      ]
+      subspec.vendored_libraries = [
+        "TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Effect_ios.a",
+      ]
+      subspec.libraries = "stdc++"
+    end
+    
     spec.subspec 'Tools' do |subspec| 
       subspec.vendored_libraries = [
         'TTSDK/lib_h_dec/**/*.a',
