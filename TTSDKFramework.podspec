@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "TTSDKFramework"
-  spec.version      = "1.28.1.1-standard"
+  spec.version      = "1.30.1.0-test"
   spec.summary      = "A comprehensive multimedia SDK"
   spec.description  = <<-DESC
     A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -20,6 +20,7 @@ Pod::Spec.new do |spec|
   spec.vendored_frameworks = [
     "TTSDKFramework.framework",
     "byteaudio.framework",
-    "VolcEngineRTC.framework"
+    "VolcEngineRTC.framework",
+    "effect-sdk.framework"
   ]
 end
