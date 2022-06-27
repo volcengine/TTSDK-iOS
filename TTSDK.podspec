@@ -48,6 +48,15 @@
       subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
     end
 
+    spec.subspec 'Tools-VE' do |subspec| 
+      subspec.vendored_libraries = [
+        'TTSDK/lib_h_dec/**/*.a',
+        'TTSDK/BVCParser/**/*.a'
+      ]
+      subspec.dependency 'VEVideoKit/boringssl', '0.2.1'
+      subspec.libraries = 'stdc++', 'z', 'xml2', 'iconv'
+    end
+
     spec.subspec 'VCN' do |subspec|
       subspec.vendored_libraries = [
         'TTSDK/VCNVCloudNetwork/**/*.a',
@@ -65,6 +74,13 @@
       ]
     end
 
+    spec.subspec 'TTNet-VE' do |subspec| 
+      subspec.vendored_libraries = [
+        'TTSDK/protobuf_lite/**/*.a',
+      ]
+      subspec.dependency 'VEVideoKit/TTNetworkManager', '0.2.1'
+    end
+
     spec.subspec 'TTFFmpeg' do |subspec|
       subspec.vendored_frameworks = [
         'TTSDK/TTFFmpeg/*.framework',
@@ -80,6 +96,21 @@
         'SystemConfiguration',
       ]
       subspec.dependency 'TTSDK/Tools'
+    end
+
+    spec.subspec 'TTFFmpeg-VE' do |subspec|
+      subspec.frameworks = [
+        'CoreMotion',
+        'CoreMedia',
+        'MetalKit',
+        'OpenAL',
+        'VideoToolBox',
+        'AudioToolBox',
+        'AVFoundation',
+        'SystemConfiguration',
+      ]
+      subspec.dependency 'TTFFmpeg', '0.1.8-tob-test1.1.binary'
+      subspec.dependency 'TTSDK/Tools-VE'
     end
 
     spec.subspec 'PlayerCore' do |subspec|
@@ -101,6 +132,27 @@
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
       subspec.dependency 'TTSDK/TTFFmpeg'
+    end
+
+    spec.subspec 'PlayerCore-VE' do |subspec|
+      subspec.public_header_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.source_files = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+      ]
+      subspec.vendored_libraries = [
+        'TTSDK/TTPlayerSDK/**/*.a',
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ffmpeg_dashdec_iOS/*.framework',
+      ]
+      subspec.resources = [
+        'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+      ]
+      subspec.dependency 'TTSDK/TTFFmpeg-VE'
     end
 
     # Support Super Resolution
@@ -220,6 +272,32 @@
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore'
+      subspec.dependency 'TTSDK/VCN'
+    end
+
+    spec.subspec 'Player-VE' do |subspec|
+      class_name = 'TTVideoEngine,ABRInterface,VCPreloadStrategy,TTNetworkPredict,VCVodSettings,BDHTTPDNS'
+      subspec.public_header_files = [
+        "TTSDK/{#{class_name}}/**/*.h"
+      ]
+      subspec.source_files = [
+        "TTSDK/{#{class_name}}/**/*"
+      ]
+      subspec.exclude_files = [
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/DualCore/**/*',
+        'TTSDK/TTVideoEngine/TTVideoEngine/Classes/License/TTLicenseManager.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCUtilBridge.h',
+        'TTSDK/VCPreloadStrategy/ios/bridge/VCVodStrategyBridge.h',
+        'TTSDK/VCPreloadStrategy/sources/**/*',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsExportResult.h',
+        'TTSDK/BDHTTPDNS/BDHTTPDNS/TTDnsResolver.h',
+      ]
+      lib_name = "#{class_name},MDLMediaDataLoader,TTTopSignature"
+      subspec.vendored_libraries = [
+        "TTSDK/{#{lib_name}}/**/*.a"
+      ]
+      subspec.dependency 'TTSDK/Core'
+      subspec.dependency 'TTSDK/PlayerCore-VE'
       subspec.dependency 'TTSDK/VCN'
     end
 
