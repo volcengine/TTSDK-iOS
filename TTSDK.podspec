@@ -46,6 +46,7 @@
       ]
       subspec.vendored_libraries = [
         "TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Effect_ios.a",
+        "TTSDK/EffectSDK/libeffect-sdk.a",
       ]
       subspec.libraries = "stdc++"
     end
