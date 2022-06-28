@@ -48,10 +48,10 @@
         "TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Effect_ios.a",
         "TTSDK/EffectSDK/libeffect-sdk.a",
       ]
-      # subspec.vendored_frameworks = 'TTSDK/EffectSDK/effect-sdk.framework'
       subspec.pod_target_xcconfig = {
         'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) TTSDK_ENABLE_EFFECT=1'
       }
+      subspec.dependency 'SSZipArchive'
       subspec.libraries = "stdc++"
       subspec.frameworks = 'CoreML'
     end
