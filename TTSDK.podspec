@@ -216,6 +216,7 @@
       subspec.dependency 'TTSDK/LivePush-RTC'
       subspec.vendored_frameworks = [
         'TTSDK/ByteAudio/*.framework',
+        'TTSDK/ByteAudio/*.xcframework',
       ]
     end
 
@@ -275,6 +276,7 @@
     spec.subspec 'RTC-Framework' do |subspec|
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtcSDK/*.framework',
+        'TTSDK/ByteRtcSDK/*.xcframework',
       ]
     end
     
