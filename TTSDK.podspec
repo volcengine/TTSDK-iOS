@@ -232,6 +232,17 @@
       subspec.dependency 'TTSDK/RTC-Framework'
     end
 
+    spec.subspec 'LivePull-RTS-VE' do |subspec|
+      subspec.vendored_libraries = [
+      'TTSDK/bytedance_dup_TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_ios.a',
+      ]
+      subspec.vendored_frameworks = [
+      'TTSDK/ByteRtsSDK/*.framework',
+      ]
+      subspec.dependency 'TTSDK/LivePull-VE'
+      subspec.dependency 'VolcEngineRTC'
+    end
+
     spec.subspec 'LivePush-RTC' do |subspec|
     	subspec.public_header_files = [
         'TTSDK/LiveStreamFramework/prj/ios/LiveStreamFramework/**/*.h',
@@ -300,6 +311,7 @@
       subspec.dependency 'TTSDK/LivePush-RTC'
       subspec.vendored_frameworks = [
         'TTSDK/ByteAudio/*.framework',
+        'TTSDK/ByteAudio/*.xcframework',
       ]
     end
 
@@ -390,6 +402,7 @@
     spec.subspec 'RTC-Framework' do |subspec|
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtcSDK/*.framework',
+        'TTSDK/ByteRtcSDK/*.xcframework',
       ]
     end
     
