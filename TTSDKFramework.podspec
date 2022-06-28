@@ -21,6 +21,11 @@ Pod::Spec.new do |spec|
     "TTSDKFramework.framework",
     "byteaudio.framework",
     "VolcEngineRTC.framework",
-    "effect-sdk.framework"
+    "effect-sdk.framework",
+    "TTFFmpeg.framework",
+    "boringssl.framework",
+    "crypto.framework",
+    "libvcn.framework",
+    "ffmepg_dashdec.framework"
   ]
 end
