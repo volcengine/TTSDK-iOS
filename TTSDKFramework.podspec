@@ -26,5 +26,6 @@ Pod::Spec.new do |spec|
     "crypto.framework",
     "libvcn.framework",
     "ffmepg_dashdec.framework",
+    "effect-sdk.framework"
   ]
 end
