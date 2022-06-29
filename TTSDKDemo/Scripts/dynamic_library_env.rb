@@ -30,7 +30,6 @@ else
     "crypto.framework",
     "libvcn.framework",
     "ffmpeg_dashdec.framework",
-    "effect-sdk.framework",
   ]
 
   #
