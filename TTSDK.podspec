@@ -94,6 +94,9 @@
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
       ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ffmpeg_dashdec_iOS/*.framework',
+      ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
@@ -112,6 +115,9 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ffmpeg_dashdec_iOS/*.framework',
       ]
       subspec.resources = [
         'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
