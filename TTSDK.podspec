@@ -50,6 +50,7 @@
       subspec.pod_target_xcconfig = {
         'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) TTSDK_ENABLE_EFFECT=1'
       }
+      subspec.libraries = "stdc++"
     end
     
     spec.subspec 'Tools' do |subspec| 
