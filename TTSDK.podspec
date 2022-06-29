@@ -1,7 +1,7 @@
   Pod::Spec.new do |spec|
 
     spec.name         = "TTSDK"
-    spec.version      = "1.29.2.3-standard"
+    spec.version      = "1.29.100.11-premium"
     spec.summary      = "A comprehensive multimedia SDK."
     spec.description  = <<-DESC
       A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
@@ -33,7 +33,7 @@
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_SG_ios.a',
       ]
       subspec.dependency 'RangersAppLog/Core', '~> 6.9.1'
-      subspec.dependency 'RangersAppLog/Host/CN', '~> 6.9.1'
+      subspec.dependency 'RangersAppLog/Host/SG', '~> 6.9.1'
       subspec.libraries = 'stdc++'
     end
 
