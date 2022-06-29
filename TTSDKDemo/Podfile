@@ -9,7 +9,7 @@ platform :ios, "9.0"
 inhibit_all_warnings!
 
 def ttsdk_pods
-  pod 'TTSDK', '1.29.100.11-standard', :subspecs => [
+  pod 'TTSDK', '1.29.2.3-premium', :subspecs => [
     'LivePull-RTS',
     'LivePush',
     'Player-SR',
@@ -22,7 +22,7 @@ def common_pods
   pod 'CocoaAsyncSocket', :path => '../Pods-Cache'
   pod 'Masonry'
   pod 'ReactiveObjC'
-  pod 'FLEX'
+  pod 'FLEX', '3.0.0'
   pod 'Toast', '~> 4.0.0'
   pod 'YYCategories'
   pod 'AFNetworking', '~> 2.0'
@@ -37,8 +37,4 @@ end
 target 'TTSDKDemo' do
   ttsdk_pods
   common_pods
-end
-
-post_install do |installer|
-  system("bash Scripts/update_git_info.sh")
 end
