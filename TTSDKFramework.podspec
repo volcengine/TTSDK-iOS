@@ -25,7 +25,6 @@ Pod::Spec.new do |spec|
     "boringssl.framework",
     "crypto.framework",
     "libvcn.framework",
-    "ffmepg_dashdec.framework",
-    "effect-sdk.framework"
+    "ffmepg_dashdec.framework"
   ]
 end
