@@ -29,6 +29,8 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Core_ios.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_CN_ios.a',
+        'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_SG_ios.a',
       ]
       subspec.dependency 'RangersAppLog/Core', '~> 6.9.1'
       subspec.dependency 'RangersAppLog/Host/SG', '~> 6.9.1'
@@ -92,6 +94,9 @@
       subspec.vendored_libraries = [
         'TTSDK/TTPlayerSDK/**/*.a',
       ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ffmpeg_dashdec_iOS/*.framework',
+      ]
       subspec.resources = [
         'TTSDK/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
@@ -110,6 +115,9 @@
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
+      ]
+      subspec.vendored_frameworks = [
+        'TTSDK/ffmpeg_dashdec_iOS/*.framework',
       ]
       subspec.resources = [
         'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
