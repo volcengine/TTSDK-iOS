@@ -125,7 +125,7 @@
         'AVFoundation',
         'SystemConfiguration',
       ]
-      subspec.dependency 'TTFFmpeg', '0.1.8-tob-test1.1.binary'
+      subspec.dependency 'TTFFmpeg', '1.25.86.131-tob-dynamic-biz'
       subspec.dependency 'TTSDK/Tools-VE'
     end
 
