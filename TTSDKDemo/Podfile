@@ -37,6 +37,9 @@ def common_pods
   pod 'IQKeyboardManager'
   pod 'RangersAppLog', '6.9.1', :subspecs => ['Core', 'Log', 'Host/CN']
   pod 'MWPhotoBrowser'
+  pod 'libwebp', '1.2.1'
+  pod 'libavif', '0.9.1'
+  pod 'libdav1d', '0.8.0'
 end
 
 target 'TTSDKDemo' do
