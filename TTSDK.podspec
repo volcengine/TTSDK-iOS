@@ -229,17 +229,23 @@
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
         'TTSDK/TTVideoLive/TTVideoLiv VEe/Classes/**/*.h',
         'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VR/**/*.h',
       ]
       subspec.source_files = [
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*',
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
         'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VR/**/*.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
         'TTSDK/TTVideoLive/**/libTTVideoLive_VideoProcessing_ios.a',
+        'TTSDK/TTVideoLive/**/libTTVideoLive_VR_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_TTLiveSetting_ios.a',
+      ]
+      subspec.resources = [
+        'TTSDK/videoprocessor/videoprocessor/metal/processor.metallib',
       ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-VE'
