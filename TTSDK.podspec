@@ -270,7 +270,7 @@
       'TTSDK/ByteRtsSDK/*.framework',
       ]
       subspec.dependency 'TTSDK/LivePull-VE'
-      subspec.dependency 'VolcEngineRTC'
+      subspec.dependency 'VolcEngineRTC-VE', '~> 3.37.153'
     end
 
     spec.subspec 'LivePush-RTC' do |subspec|
