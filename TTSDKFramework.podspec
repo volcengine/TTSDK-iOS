@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "TTSDKFramework"
-  spec.version      = "1.30.1.5-standard"
+  spec.version      = "1.30.1.5-premium"
   spec.summary      = "A comprehensive multimedia SDK"
   spec.description  = <<-DESC
     A comprehensive multimedia SDK which provides live streaming, VOD and the other related abilities.
