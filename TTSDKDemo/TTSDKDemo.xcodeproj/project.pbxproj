@@ -58,21 +58,6 @@
 		83A304A524F6AED600209D0A /* BDImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A3049024F6AED600209D0A /* BDImageDetailViewController.m */; };
 		83A304A624F6AED600209D0A /* BDImageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A3049224F6AED600209D0A /* BDImageCollectionViewController.m */; };
 		83A304A724F6AED600209D0A /* BDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A3049324F6AED600209D0A /* BDSettingsViewController.m */; };
-		83C443B5243E492A00081EA1 /* BEEffectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C4439F243E492A00081EA1 /* BEEffectManager.mm */; };
-		83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */; };
-		83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A2243E492A00081EA1 /* BEStudioConstants.m */; };
-		83C443B8243E492A00081EA1 /* BEResourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A3243E492A00081EA1 /* BEResourceHelper.m */; };
-		83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443A5243E492A00081EA1 /* BERenderHelper.m */; };
-		83C443BA243E492A00081EA1 /* BERender.mm in Sources */ = {isa = PBXBuildFile; fileRef = 83C443AA243E492A00081EA1 /* BERender.mm */; };
-		83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AC243E492A00081EA1 /* ModelResource.bundle */; };
-		83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */; };
-		83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */; };
-		83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443AF243E492A00081EA1 /* BeautyResource.bundle */; };
-		83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B0243E492A00081EA1 /* ReshapeResource.bundle */; };
-		83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B1243E492A00081EA1 /* StickerResource.bundle */; };
-		83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B2243E492A00081EA1 /* LicenseBag.bundle */; };
-		83C443C2243E492A00081EA1 /* FilterResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83C443B3243E492A00081EA1 /* FilterResource.bundle */; };
-		83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83C4439C243E492A00081EA1 /* libeffect-sdk.a */; };
 		83C44462243F8E2B00081EA1 /* LivePlaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */; };
 		83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C443E2243F8E2A00081EA1 /* LogViewController.xib */; };
 		83C44464243F8E2B00081EA1 /* ConfiguringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */; };
@@ -133,7 +118,6 @@
 		83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44460243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m */; };
 		83C8D054242F3F9D0078C7EA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 83C8D053242F3F9D0078C7EA /* test.mp4 */; };
 		8406046526142676003B389D /* LicenseDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406046426142676003B389D /* LicenseDemoViewController.m */; };
-		841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 841F762626207F5400A17EF7 /* doubleTracks.m4a */; };
 		84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84226913271DA1060027699F /* StreamingKTVControllBox.xib */; };
 		8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */; };
 		8456E86527A3D611009CFB43 /* LSPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456E86427A3D611009CFB43 /* LSPlayController.m */; };
@@ -232,33 +216,6 @@
 		83A3049224F6AED600209D0A /* BDImageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImageCollectionViewController.m; sourceTree = "<group>"; };
 		83A3049324F6AED600209D0A /* BDSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDSettingsViewController.m; sourceTree = "<group>"; };
 		83A3054724F6B89C00209D0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		83C44397243E492A00081EA1 /* bef_effect_ai_public_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_public_define.h; sourceTree = "<group>"; };
-		83C44398243E492A00081EA1 /* bef_effect_ai_yuv_process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_yuv_process.h; sourceTree = "<group>"; };
-		83C44399243E492A00081EA1 /* byted_effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = byted_effect.h; sourceTree = "<group>"; };
-		83C4439A243E492A00081EA1 /* bef_effect_ai_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_api.h; sourceTree = "<group>"; };
-		83C4439B243E492A00081EA1 /* bef_effect_ai_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bef_effect_ai_version.h; sourceTree = "<group>"; };
-		83C4439C243E492A00081EA1 /* libeffect-sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libeffect-sdk.a"; sourceTree = "<group>"; };
-		83C4439E243E492A00081EA1 /* BERenderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BERenderHelper.h; sourceTree = "<group>"; };
-		83C4439F243E492A00081EA1 /* BEEffectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BEEffectManager.mm; sourceTree = "<group>"; };
-		83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BEFrameProcessor.mm; sourceTree = "<group>"; };
-		83C443A1243E492A00081EA1 /* BEFrameProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEFrameProcessor.h; sourceTree = "<group>"; };
-		83C443A2243E492A00081EA1 /* BEStudioConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEStudioConstants.m; sourceTree = "<group>"; };
-		83C443A3243E492A00081EA1 /* BEResourceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEResourceHelper.m; sourceTree = "<group>"; };
-		83C443A4243E492A00081EA1 /* BEMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMacro.h; sourceTree = "<group>"; };
-		83C443A5243E492A00081EA1 /* BERenderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BERenderHelper.m; sourceTree = "<group>"; };
-		83C443A6243E492A00081EA1 /* BEEffectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEEffectManager.h; sourceTree = "<group>"; };
-		83C443A7243E492A00081EA1 /* BERender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BERender.h; sourceTree = "<group>"; };
-		83C443A8243E492A00081EA1 /* BEResourceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEResourceHelper.h; sourceTree = "<group>"; };
-		83C443A9243E492A00081EA1 /* BEStudioConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEStudioConstants.h; sourceTree = "<group>"; };
-		83C443AA243E492A00081EA1 /* BERender.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BERender.mm; sourceTree = "<group>"; };
-		83C443AC243E492A00081EA1 /* ModelResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ModelResource.bundle; sourceTree = "<group>"; };
-		83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BuildinMakeup.bundle; sourceTree = "<group>"; };
-		83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ComposeMakeup.bundle; sourceTree = "<group>"; };
-		83C443AF243E492A00081EA1 /* BeautyResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BeautyResource.bundle; sourceTree = "<group>"; };
-		83C443B0243E492A00081EA1 /* ReshapeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ReshapeResource.bundle; sourceTree = "<group>"; };
-		83C443B1243E492A00081EA1 /* StickerResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StickerResource.bundle; sourceTree = "<group>"; };
-		83C443B2243E492A00081EA1 /* LicenseBag.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LicenseBag.bundle; sourceTree = "<group>"; };
-		83C443B3243E492A00081EA1 /* FilterResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FilterResource.bundle; sourceTree = "<group>"; };
 		83C443E1243F8E2A00081EA1 /* LivePlaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePlaySettingsViewController.m; sourceTree = "<group>"; };
 		83C443E2243F8E2A00081EA1 /* LogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogViewController.xib; sourceTree = "<group>"; };
 		83C443E3243F8E2A00081EA1 /* ConfiguringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfiguringViewController.m; sourceTree = "<group>"; };
@@ -384,7 +341,6 @@
 		8406046426142676003B389D /* LicenseDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseDemoViewController.m; sourceTree = "<group>"; };
 		841F762126206FF300A17EF7 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 		841F76232620701100A17EF7 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
-		841F762626207F5400A17EF7 /* doubleTracks.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = doubleTracks.m4a; sourceTree = "<group>"; };
 		84226913271DA1060027699F /* StreamingKTVControllBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamingKTVControllBox.xib; sourceTree = "<group>"; };
 		8456E86027A3D1D0009CFB43 /* StreamingViewController+MTV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamingViewController+MTV.h"; sourceTree = "<group>"; };
 		8456E86127A3D1D0009CFB43 /* StreamingViewController+MTV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "StreamingViewController+MTV.m"; sourceTree = "<group>"; };
@@ -405,7 +361,6 @@
 			files = (
 				2BE5B56627DEDEB900B44A12 /* WebKit.framework in Frameworks */,
 				2BD5A7A127E88CF4001335A1 /* Metal.framework in Frameworks */,
-				83C443C3243E494A00081EA1 /* libeffect-sdk.a in Frameworks */,
 				831E37E323D0530C00A9F7A9 /* Accelerate.framework in Frameworks */,
 				2BD5A79D27E88CF4001335A1 /* MetalPerformanceShaders.framework in Frameworks */,
 				2BD5A79C27E88CF4001335A1 /* MetalKit.framework in Frameworks */,
@@ -480,7 +435,6 @@
 		8378B5B223C4860F0075E05C = {
 			isa = PBXGroup;
 			children = (
-				83C44393243E492A00081EA1 /* extern */,
 				8378B5BD23C4860F0075E05C /* TTSDKDemo */,
 				8378B5BC23C4860F0075E05C /* Products */,
 				8378B5D723C486230075E05C /* Frameworks */,
@@ -608,80 +562,6 @@
 				83A3048824F6AED600209D0A /* loop@3x.webp */,
 			);
 			path = images;
-			sourceTree = "<group>";
-		};
-		83C44393243E492A00081EA1 /* extern */ = {
-			isa = PBXGroup;
-			children = (
-				83C44394243E492A00081EA1 /* EffectSDK */,
-			);
-			path = extern;
-			sourceTree = "<group>";
-		};
-		83C44394243E492A00081EA1 /* EffectSDK */ = {
-			isa = PBXGroup;
-			children = (
-				83C44395243E492A00081EA1 /* ios_c_sdk */,
-				83C4439D243E492A00081EA1 /* SDK */,
-				83C443AB243E492A00081EA1 /* Resource */,
-			);
-			path = EffectSDK;
-			sourceTree = "<group>";
-		};
-		83C44395243E492A00081EA1 /* ios_c_sdk */ = {
-			isa = PBXGroup;
-			children = (
-				83C44396243E492A00081EA1 /* include */,
-				83C4439C243E492A00081EA1 /* libeffect-sdk.a */,
-			);
-			path = ios_c_sdk;
-			sourceTree = "<group>";
-		};
-		83C44396243E492A00081EA1 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				83C44397243E492A00081EA1 /* bef_effect_ai_public_define.h */,
-				83C44398243E492A00081EA1 /* bef_effect_ai_yuv_process.h */,
-				83C44399243E492A00081EA1 /* byted_effect.h */,
-				83C4439A243E492A00081EA1 /* bef_effect_ai_api.h */,
-				83C4439B243E492A00081EA1 /* bef_effect_ai_version.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		83C4439D243E492A00081EA1 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				83C4439E243E492A00081EA1 /* BERenderHelper.h */,
-				83C4439F243E492A00081EA1 /* BEEffectManager.mm */,
-				83C443A0243E492A00081EA1 /* BEFrameProcessor.mm */,
-				83C443A1243E492A00081EA1 /* BEFrameProcessor.h */,
-				83C443A2243E492A00081EA1 /* BEStudioConstants.m */,
-				83C443A3243E492A00081EA1 /* BEResourceHelper.m */,
-				83C443A4243E492A00081EA1 /* BEMacro.h */,
-				83C443A5243E492A00081EA1 /* BERenderHelper.m */,
-				83C443A6243E492A00081EA1 /* BEEffectManager.h */,
-				83C443A7243E492A00081EA1 /* BERender.h */,
-				83C443A8243E492A00081EA1 /* BEResourceHelper.h */,
-				83C443A9243E492A00081EA1 /* BEStudioConstants.h */,
-				83C443AA243E492A00081EA1 /* BERender.mm */,
-			);
-			path = SDK;
-			sourceTree = "<group>";
-		};
-		83C443AB243E492A00081EA1 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				83C443AC243E492A00081EA1 /* ModelResource.bundle */,
-				83C443AD243E492A00081EA1 /* BuildinMakeup.bundle */,
-				83C443AE243E492A00081EA1 /* ComposeMakeup.bundle */,
-				83C443AF243E492A00081EA1 /* BeautyResource.bundle */,
-				83C443B0243E492A00081EA1 /* ReshapeResource.bundle */,
-				83C443B1243E492A00081EA1 /* StickerResource.bundle */,
-				83C443B2243E492A00081EA1 /* LicenseBag.bundle */,
-				83C443B3243E492A00081EA1 /* FilterResource.bundle */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		83C443DF243F8E2A00081EA1 /* Pull */ = {
@@ -943,7 +823,6 @@
 			isa = PBXGroup;
 			children = (
 				84226913271DA1060027699F /* StreamingKTVControllBox.xib */,
-				841F762626207F5400A17EF7 /* doubleTracks.m4a */,
 				84FCD56D262045A00065FB4F /* StreamingViewController+KTV.h */,
 				84FCD56E262046270065FB4F /* StreamingViewController+KTV.m */,
 			);
@@ -1021,22 +900,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83C443C2243E492A00081EA1 /* FilterResource.bundle in Resources */,
 				83C44466243F8E2B00081EA1 /* LivePlaySettingsViewController.xib in Resources */,
-				83C443BC243E492A00081EA1 /* BuildinMakeup.bundle in Resources */,
 				8378B5CE23C486100075E05C /* LaunchScreen.storyboard in Resources */,
 				83A3049D24F6AED600209D0A /* 手动暂停.png in Resources */,
 				83C44463243F8E2B00081EA1 /* LogViewController.xib in Resources */,
 				5C5CA2732628139500317338 /* test44.ttf in Resources */,
 				83A3049E24F6AED600209D0A /* stop@2x.png in Resources */,
-				83C443BB243E492A00081EA1 /* ModelResource.bundle in Resources */,
 				83A304A024F6AED600209D0A /* setting.png in Resources */,
 				83A3049524F6AED600209D0A /* play@3x.png in Resources */,
-				83C443BD243E492A00081EA1 /* ComposeMakeup.bundle in Resources */,
 				83C44469243F8E2B00081EA1 /* ConfiguringViewController.xib in Resources */,
 				84226914271DA1060027699F /* StreamingKTVControllBox.xib in Resources */,
 				5C5CA2452627E54600317338 /* test33.JPG in Resources */,
-				83C443BF243E492A00081EA1 /* ReshapeResource.bundle in Resources */,
 				2B44FB1625515BD9002CC02A /* test1.png in Resources */,
 				8378B5CB23C486100075E05C /* Assets.xcassets in Resources */,
 				8378B5C923C4860F0075E05C /* Main.storyboard in Resources */,
@@ -1045,15 +919,11 @@
 				83A3049A24F6AED600209D0A /* play@2x.png in Resources */,
 				83A3049B24F6AED600209D0A /* 手动播放.png in Resources */,
 				83A3049924F6AED600209D0A /* 配置@2x.png in Resources */,
-				83C443C0243E492A00081EA1 /* StickerResource.bundle in Resources */,
 				83A3049624F6AED600209D0A /* 配置@3x.png in Resources */,
-				83C443BE243E492A00081EA1 /* BeautyResource.bundle in Resources */,
 				84B15C8727BE8276006FF374 /* wenlouhaifeng.mp4 in Resources */,
 				831E379E23D0180E00A9F7A9 /* SettingsViewController.xib in Resources */,
 				83A3049C24F6AED600209D0A /* search.png in Resources */,
-				841F762726207F5400A17EF7 /* doubleTracks.m4a in Resources */,
 				830EA319246940C1004DC739 /* ttsdkdemo.license in Resources */,
-				83C443C1243E492A00081EA1 /* LicenseBag.bundle in Resources */,
 				83A3049724F6AED600209D0A /* 永久循环.png in Resources */,
 				83C44467243F8E2B00081EA1 /* PreferencesViewController.xib in Resources */,
 				83A3049F24F6AED600209D0A /* stop@3x.png in Resources */,
@@ -1146,7 +1016,6 @@
 			files = (
 				83C4446B243F8E2B00081EA1 /* LivePlayViewController.m in Sources */,
 				83A3049424F6AED600209D0A /* BDRootViewController.m in Sources */,
-				83C443B6243E492A00081EA1 /* BEFrameProcessor.mm in Sources */,
 				83C44497243F8E2B00081EA1 /* TTVideoPlayerSliderView.m in Sources */,
 				83C4449A243F8E2B00081EA1 /* TTVideoPlayerLoadingView.m in Sources */,
 				83C4448C243F8E2B00081EA1 /* TTVideoDownloadCell.m in Sources */,
@@ -1160,7 +1029,6 @@
 				83C44486243F8E2B00081EA1 /* BaseViewController.m in Sources */,
 				83C44496243F8E2B00081EA1 /* BaseView.m in Sources */,
 				838DE2A125C1BE3300757EC5 /* BDSRDetailViewController.m in Sources */,
-				83C443B9243E492A00081EA1 /* BERenderHelper.m in Sources */,
 				83797AEF25EBFAA5003C10F2 /* AppInfoViewController.m in Sources */,
 				83795AED23E2C92F00E87A4A /* TTControlsBox.m in Sources */,
 				831E37A123D01B8400A9F7A9 /* StreamingViewController.m in Sources */,
@@ -1174,11 +1042,8 @@
 				8406046526142676003B389D /* LicenseDemoViewController.m in Sources */,
 				2B44FB14254F3187002CC02A /* UIBlockSegmentedControl.m in Sources */,
 				83C44472243F8E2B00081EA1 /* UIImageView+TTVideo.m in Sources */,
-				83C443B7243E492A00081EA1 /* BEStudioConstants.m in Sources */,
-				83C443B8243E492A00081EA1 /* BEResourceHelper.m in Sources */,
 				83C4449B243F8E2B00081EA1 /* TTVideoPlayerControlBottomView.m in Sources */,
 				83C44487243F8E2B00081EA1 /* BaseContainerViewController.m in Sources */,
-				83C443B5243E492A00081EA1 /* BEEffectManager.mm in Sources */,
 				83C44474243F8E2B00081EA1 /* TTVideoDownloadModel.m in Sources */,
 				83C44462243F8E2B00081EA1 /* LivePlaySettingsViewController.m in Sources */,
 				83C44498243F8E2B00081EA1 /* TTVideoPlayerControlTopView.m in Sources */,
@@ -1197,7 +1062,6 @@
 				83C44490243F8E2B00081EA1 /* TTVideoListCell.m in Sources */,
 				83C4447D243F8E2B00081EA1 /* TTVideoVidController.m in Sources */,
 				83C4446E243F8E2B00081EA1 /* TTVideoPreloaderHelper.m in Sources */,
-				83C443BA243E492A00081EA1 /* BERender.mm in Sources */,
 				83C44484243F8E2B00081EA1 /* TTVideoLogController.m in Sources */,
 				83A304A424F6AED600209D0A /* BDImageAdapter.m in Sources */,
 				8456E86227A3D1D0009CFB43 /* StreamingViewController+MTV.m in Sources */,
