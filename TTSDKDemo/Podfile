@@ -9,7 +9,7 @@ platform :ios, "9.0"
 inhibit_all_warnings!
 
 def ttsdk_pods
-  pod 'TTSDK', '1.30.1.5-premium', :subspecs => [
+  pod 'TTSDK', '1.30.2.1-standard', :subspecs => [
     'LivePull-RTS',
     'LivePush',
     'Player-SR',
