@@ -406,10 +406,10 @@ static int const kTestSessionPicID = 60;
         [strongSelf setupProcessor];
 //        [strongSelf.processor setFilterPath:path];
     };
-    TTControlsBox *controlsBox = [[TTControlsBox alloc] initWithViewModel:effectsViewModel];
-    [self.view addSubview:controlsBox.view];
-    controlsBox.view.hidden = YES;
-    self.controlsBox = controlsBox;
+//    TTControlsBox *controlsBox = [[TTControlsBox alloc] initWithViewModel:effectsViewModel];
+//    [self.view addSubview:controlsBox.view];
+//    controlsBox.view.hidden = YES;
+//    self.controlsBox = controlsBox;
 }
 
 /* ......... */
