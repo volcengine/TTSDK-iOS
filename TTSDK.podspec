@@ -16,7 +16,7 @@
 
     spec.source       = { :http => "https://sf3-ttcdn-tos.pstatp.com/obj/volcengine/TTSDK/#{spec.version}/TTSDK.zip" }
     
-    spec.default_subspecs = 'Core', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
+    spec.default_subspecs = 'Core', 'Effect', 'TTFFmpeg', 'PlayerCore', 'LivePull', 'LivePush', 'Player', 'Image'
 
     spec.static_framework = true
     
@@ -37,10 +37,25 @@
       subspec.libraries = 'stdc++'
     end
 
+    spec.subspec "Effect" do |subspec|
+      subspec.public_header_files = [
+        "TTSDK/VCloudPandora/**/TTSDKEffectManager.h",
+      ]
+      subspec.source_files = [
+        "TTSDK/VCloudPandora/**/TTSDKEffectManager.h",
+      ]
+      subspec.vendored_libraries = [
+        "TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_Effect_ios.a",
+      ]
+      subspec.pod_target_xcconfig = {
+        'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) TTSDK_ENABLE_EFFECT=1'
+      }
+      subspec.libraries = "stdc++"
+    end
+
     spec.subspec 'Tools' do |subspec| 
       subspec.vendored_libraries = [
-        'TTSDK/lib_h_dec/**/*.a',
-        'TTSDK/BVCParser/**/*.a'
+        'TTSDK/lib_h_dec/**/*.a'
       ]
       subspec.vendored_frameworks = [
         'TTSDK/boringssl/*.framework'
@@ -106,12 +121,12 @@
     # Support Super Resolution
     spec.subspec 'PlayerCore-SR' do |subspec|
       subspec.public_header_files = [
-        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.source_files = [
-        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
-        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayer/TTPlayerDef.h',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayer/TTAVPlayerLoadControlInterface.h',
       ]
       subspec.vendored_libraries = [
         'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/**/*.a',
@@ -120,7 +135,7 @@
         'TTSDK/ffmpeg_dashdec_iOS/*.framework',
       ]
       subspec.resources = [
-        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/TTPlayerSDK/Assets/ttplayer.metallib',
+        'TTSDK/TTSDK_dup/Pods/TTPlayerSDK/Assets/ttplayer.metallib',
       ]
       subspec.dependency 'TTSDK/TTFFmpeg'
     end
@@ -131,6 +146,7 @@
         'TTSDK/VCloudPandora/**/{TTLiveURLComposer,TVLPlayerItem+TTSDK,TVLManager+External}.h',
         'TTSDK/TTVideoLive/TTVideoLive/Classes/**/*.h',
         'TTSDK/TTVideoLive/TTVideoLive/VideoProcessing/**/*.h',
+        'TTSDK/TTVideoLive/TTVideoLive/VR/**/*.h',
         "TTSDK/{#{class_name}}/**/*.h"
       ]
       subspec.source_files = [
@@ -142,17 +158,24 @@
       subspec.vendored_libraries = [
         'TTSDK/TTVideoLive/**/libTTVideoLive_Wrapper_ios.a',
         'TTSDK/TTVideoLive/**/libTTVideoLive_VideoProcessing_ios.a',
+        'TTSDK/TTVideoLive/**/libTTVideoLive_VR_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_LivePull_ios.a',
         'TTSDK/VCloudPandora/ios-arch-iphone/libVCloudPandora_TTLiveSetting_ios.a',
         "TTSDK/{#{class_name}}/**/*.a"
       ]
+      subspec.resources = [
+        'TTSDK/videoprocessor/videoprocessor/metal/processor.metallib',
+      ]
       subspec.dependency 'TTSDK/Core'
       subspec.dependency 'TTSDK/PlayerCore-SR'
+      subspec.frameworks = [
+        'MetalPerformanceShaders'
+      ]
     end
 
     spec.subspec 'LivePull-RTS' do |subspec|
       subspec.vendored_libraries = [
-        'TTSDK/TTSDK_dup/Pods/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_ios.a',
+        'TTSDK/TTVideoLive/ios-arch-iphone/libTTVideoLive_RTC_ios.a',
       ]
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtsSDK/*.framework',
@@ -197,6 +220,7 @@
       subspec.dependency 'TTSDK/LivePush-RTC'
       subspec.vendored_frameworks = [
         'TTSDK/ByteAudio/*.framework',
+        'TTSDK/ByteAudio/*.xcframework',
       ]
     end
 
@@ -256,6 +280,7 @@
     spec.subspec 'RTC-Framework' do |subspec|
       subspec.vendored_frameworks = [
         'TTSDK/ByteRtcSDK/*.framework',
+        'TTSDK/ByteRtcSDK/*.xcframework',
       ]
     end
     
