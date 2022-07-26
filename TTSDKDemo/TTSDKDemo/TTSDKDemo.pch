@@ -14,17 +14,9 @@
 #else
 #import <TTSDK/TTSDKManager.h>
 #import <TTSDK/TTVideoEngineHeader.h>
-//推流
-#import <TTSDK/LiveCore.h>
-#import <TTSDK/LiveCore+Capture.h>
-#import <TTSDK/LiveStreamHelper.h>
-#import <TTSDK/LiveStreamRawDataHelper.h>
-#import <TTSDK/LiveStreamMultiTimerManager.h>
-//拉流
+#import <TTSDK/LiveStreamLibrary.h>
 #import <TTSDK/TTVideoLive.h>
-#ifndef __cplusplus
 #import <TTSDK/BDWebImage.h>
-#endif
 #import <TTSDK/TTFileUploader.h>
 #endif
 
@@ -32,16 +24,13 @@
 #import <TTSDKImageFramework/TTSDKImageFramework.h>
 #endif
 
-//MARK: 音效相关
 #define USE_EFFECT 1
 #if USE_EFFECT
     #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
-    #import <TTSDKFramework/LiveCore+KTV.h>
-    #import <TTSDKFramework/LSLiveAudioUnitProcess.h>
-    #import <TTSDKFramework/LiveStreamMultiTimerManager.h>
+    //
     #else
-    #import <TTSDK/LiveCore+KTV.h>
     #import <TTSDK/LSLiveAudioUnitProcess.h>
+    #import <TTSDK/LSLiveAudioEffectFormat.h>
     #endif
 #endif
 

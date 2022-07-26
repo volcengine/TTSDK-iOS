@@ -58,7 +58,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
+	<key>buildBranch</key>
+	<string>master</string>
+	<key>commitID</key>
+	<string>4242a91</string>
 </dict>
 </plist>

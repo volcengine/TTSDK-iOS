@@ -38,11 +38,15 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *ExtensionSwitcher;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *videoCodecSegControl;
+@property (weak, nonatomic) IBOutlet UISwitch *rtmpkOnlySwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *enableBFrameswitcher;
 
 @property (weak, nonatomic) IBOutlet UISwitch *backgrounModeBtn;
 
 @property (weak, nonatomic) IBOutlet UISwitch *audioStreamSwitcher;
+
+
+@property (weak, nonatomic) IBOutlet UISwitch *ntpSwitcher;
 
 /** 输入数据源 */
 @property (nonatomic, strong) AVCaptureDeviceInput *input;
@@ -79,6 +83,21 @@
     [self.startStreamingButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
+- (IBAction)didNodeProbeStateChanged:(UISwitch *)sender {
+#if LIVE_NODE_PROBER_TEST
+    if (sender.isOn) {
+        [[LiveNodeSortManager sharedManager] setSortCompletion:^(NSError *error, NSString *host, NSArray<NSString *> *ipList, NSString *elevatorSymbol) {
+            NSLog(@"host: %@ ip: %@", host, ipList);
+        }];
+        // 开启节点优选服务
+        [[LiveNodeSortManager sharedManager] setAppId:32];
+        [[LiveNodeSortManager sharedManager] start];
+    } else {
+        [[LiveNodeSortManager sharedManager] stop];
+    }
+#endif
+}
+
 - (IBAction)onStartStreamingButtonClicked:(UIButton *)sender {
     StreamConfigurationModel *model = [StreamConfigurationModel defaultConfigurationModel];
     // stream url
@@ -99,8 +118,10 @@
     
     // debug
     model.registExtension = _ExtensionSwitcher.isOn;
+    model.rtmpkOnly = _rtmpkOnlySwitcher.isOn;
     model.enableBFrame = _enableBFrameswitcher.isOn;
     model.enableBackgroundMode = _backgrounModeBtn.isOn;
+    model.ntpEnabled = _ntpSwitcher.isOn;
     model.glMultiThreaded = _glMultiThreaded.isOn;
     model.enableAudioStream = _audioStreamSwitcher.isOn;
     StreamingViewController *streamVC = [[StreamingViewController alloc] initWithConfiguration:model];

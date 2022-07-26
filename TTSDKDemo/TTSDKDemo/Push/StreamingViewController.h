@@ -24,12 +24,14 @@
 
 @interface StreamingViewController : UIViewController
 @property (nonatomic) LiveStreamCapture *capture;
-@property (nonatomic, strong) LiveCore *engine;
-@property (nonatomic, assign, readonly) BOOL isMixPicRunning;
 #if HAVE_AUDIO_EFFECT
+@property (nonatomic, strong) LSLiveAudioUnitProcess *audioUnit;
 @property (nonatomic, strong) UIButton *karaokeButton;
 @property (nonatomic, strong) UIButton *musicTypeButton;
+@property (nonatomic) LiveStreamSession *liveSession;
 #endif
-
+@property (nonatomic, strong) UISlider *recordVolumeSlider;
+@property (nonatomic, strong) UISlider *musicVolumeSlider;
+@property (nonatomic, strong) UIView *karaokeControllersContainer;
 - (instancetype)initWithConfiguration:(StreamConfigurationModel *)configuraitons;
 @end

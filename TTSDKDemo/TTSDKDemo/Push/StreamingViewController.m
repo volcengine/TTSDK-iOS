@@ -6,13 +6,13 @@
 
 #import "StreamingViewController.h"
 #import "StreamingViewController+KTV.h"
-#import "StreamingViewController+MTV.h"
+#import "LSCamera.h"
 #import "LiveHelper.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-//#import "BEEffectManager.h"
-//#import "BEFrameProcessor.h"
+#import "BEEffectManager.h"
+#import "BEFrameProcessor.h"
 
 #import "TTControlsBox.h"
 #import "TTEffectsViewModel.h"
@@ -20,65 +20,71 @@
 
 static NSString *const kRecordingText = @"录制中";
 static NSString *const kRecordText = @"录制";
-#define kSessionMixPic         @"加图片"
-#define kSessionRemovePic      @"删图片"
-static int const kTestSessionPicID = 60;
 
+@interface StreamingViewController () <LiveStreamSessionProtocol>
 
-@interface StreamingViewController () <LCCameraOutputDelegate, LiveStreamSessionProtocol>
-
-//MARK: UI
 @property (nonatomic) UIView *controlView;
 @property (nonatomic) UIButton *startButton;
 @property (nonatomic) UIButton *stopButton;
 @property (nonatomic) UIButton *cameraButton;
 @property (nonatomic) UIButton *muteButton;
-@property (nonatomic, strong) UIButton *mixPicButton; //端上合流加上一个图片
+@property (nonatomic) UIButton *echoCancellationButton;
 
 @property (nonatomic) UIView *canvasView;
 
+@property (nonatomic, strong) LSCamera *camera;
+
+@property (nonatomic, strong) UIButton *headphonesMonitoringButton;
+
+@property (nonatomic, strong) UIButton *beautifyButton;
+@property (nonatomic, strong) UIButton *beautifyButton2;
+@property (nonatomic, strong) UIButton *mattingSwitchButton;
+@property (nonatomic, strong) UIButton *mirrorOutputButton;
+@property (nonatomic, strong) UIButton *captureImageButton;
+@property (nonatomic, strong) UISlider *shrinkSlider;
+@property (nonatomic, strong) UILabel *shrinkLable;
+@property (nonatomic, strong) UISlider *filterSlider;
+@property (nonatomic, strong) UILabel *filterLable;
+@property (nonatomic, strong) UISlider *whitenSlider;
+@property (nonatomic, strong) UILabel *whitenLable;
+@property (nonatomic, strong) UILabel *beautifyLable;
+@property (nonatomic, strong) UILabel *countLabel;
 @property (nonatomic, strong) NSMutableArray *observerArray;
 
-@property (nonatomic, strong) UIView *cameraPreviewContainerView;
-
-@property (nonatomic) UILabel *infoView;
-@property (nonatomic, strong) UITapGestureRecognizer *effectsTapGesture;
-@property (nonatomic, strong) UILabel *tipsLabel;
-
-//MARK: Status - 状态
 @property (nonatomic, assign) BOOL senceTime;
 @property (nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) LiveStreamConfiguration *liveConfig;
+
 
 @property (nonatomic, assign) BOOL effectSDK;
 @property (nonatomic, assign) CGFloat recordRate;
 
 @property (nonatomic, assign) BOOL audioMute;
-@property (nonatomic, assign) BOOL dumpRecording;
-//MARK: 媒体混流
-@property (nonatomic, strong) NSLock* mixPicLock;
-@property (nonatomic, strong) LiveStreamMultiTimerManager *pushMixPicTimer;
-@property (nonatomic, assign) CVPixelBufferRef mixPicPixelBuffer;
 
+@property (nonatomic, assign) BOOL isPhotoMovie;//测试照片电影
 
-//MARK: Streaming - 推流配置
-@property (nonatomic, strong) LiveStreamConfiguration *liveConfig;
+@property (nonatomic, strong) UIButton *changCameraConfButton;
+@property (nonatomic, strong) UIView *cameraPreviewContainerView;
+
+@property (nonatomic) UILabel *infoView;
 
 @property (nonatomic) StreamConfigurationModel *configuraitons;
 @property (nonatomic, assign) CGSize captureSize;
 
 @property (nonatomic, copy) NSString *did_str;
 
-//MARK: Effect
-//@property (nonatomic, strong) BEFrameProcessor *processor;
-//@property (nonatomic, strong) BEEffectManager *effectManager;
+@property (nonatomic, assign) BOOL is_gamimg;
+@property (nonatomic, assign) BOOL is_game_playing;
+@property (nonatomic, assign) BOOL dumpRecording;
+
+@property (nonatomic, strong) UITapGestureRecognizer *effectsTapGesture;
+@property (nonatomic, strong) UILabel *tipsLabel;
+
+@property (nonatomic, strong) BEFrameProcessor *processor;
+@property (nonatomic, strong) BEEffectManager *effectManager;
 
 @property (nonatomic, strong) TTControlsBox *controlsBox;
-
-//MARK: 录屏
-@property (nonatomic, strong) LiveStreamRawDataHelper *recorder;
-
-//MARK:
-@property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
 
 @end
 
@@ -92,19 +98,16 @@ static int const kTestSessionPicID = 60;
 }
 
 - (void)dealloc {
-    if (self.engine) {
-        [self stopStreaming];
-        [self.engine stopAudioCapture];
-        self.engine = nil;
-    }
+    _liveSession = nil;
     NSLog(@"\n--------------stream view controller dealloc---------------");
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 
-    if (_engine) {
+    if (self.liveSession) {
         [self stopStreaming];
     }
     
@@ -114,9 +117,12 @@ static int const kTestSessionPicID = 60;
     [_capture applyEffect:@"" type:LSLiveEffectFilter];
 #endif
     
-    if (_engine) {
-        [self.engine stopVideoCapture];
-    }
+    [_camera stopCameraCapture];
+    _camera = nil;
+    
+    [_capture resetRecording];
+    [_capture stopVideoCapture];
+    _capture = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
@@ -125,6 +131,8 @@ static int const kTestSessionPicID = 60;
 
     [_timer invalidate];
     _timer = nil;
+    _liveSession.delegate = nil;
+
 }
 
 - (void)viewDidLoad {
@@ -133,11 +141,19 @@ static int const kTestSessionPicID = 60;
 //    _did_str = [TTInstallIDManager sharedInstance].deviceID;
     [self requestAuthorization];
     [self setupUIComponent];
+    _is_gamimg = NO;
+    _is_game_playing = NO;
     _audioMute = NO;
-    
-    //MARK: 1. 创建采集模块
     _captureSize = _configuraitons.captureResolution;
+
+    // 1. camera
+    _camera = [[LSCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
+    _camera.outputPixelFmt = kCVPixelFormatType_32BGRA;
+    _camera.frameRate = _configuraitons.fps;
+    
+    // 2. effect & preview
     LiveStreamCaptureConfig * captureConfig = [LiveStreamCaptureConfig defaultConfig];
+    captureConfig.useNewEffectLabAPI = YES;
     _capture = [[LiveStreamCapture alloc] initWithMode:LSCaptureEffectMode config:captureConfig];
     [_capture setOutputSize:_liveConfig.outputSize];
     
@@ -148,14 +164,15 @@ static int const kTestSessionPicID = 60;
             return;
         }
         __strong typeof(wself) sself = wself;
+        [sself setupProcessor];
     }];
-    
     _capture.cameraPosition = AVCaptureDevicePositionFront ;
     _capture.inPixelFmt = kCVPixelFormatType_32BGRA;
-    [_capture setEnableEffect:NO];
+//    [_capture setEnableEffect:YES];
     [_capture resetPreviewView:self.cameraPreviewContainerView];
+    [_capture startVideoCapture];
     
-    //MARK: 2. 配置网路推流模块设置
+    // 3. liveStreamConfiguration
     _liveConfig = [LiveStreamConfiguration defaultConfiguration];
     _liveConfig.enableBFrame = _configuraitons.enableBFrame;
     _liveConfig.outputSize = _configuraitons.streamResolution;
@@ -166,54 +183,40 @@ static int const kTestSessionPicID = 60;
     _liveConfig.minBitrate = _configuraitons.videoBitrate * 1000 * 2 / 5;
     _liveConfig.maxBitrate = _configuraitons.videoBitrate * 1000 * 5 / 3;
     _liveConfig.audioSource = LiveStreamAudioSourceMic;
-    _liveConfig.enableSetOpenGOP = NO;
- 
-    // 推流地址
-    _liveConfig.URLs = @[_configuraitons.streamURL];
+    _liveConfig.rtmpURL = _configuraitons.streamURL;
     _liveConfig.audioSampleRate = 44100;
     _liveConfig.streamLogTimeInterval = 5;
     _liveConfig.gopSec = 4;                         // gop 4s
-    // 是允许后台推流
-    _liveConfig.backgroundImage = [UIImage imageNamed:@"test1.png"];//使用后台模式时，一定要设置图片
+    _liveConfig.project_key = @"ttlive";            // 用于区分app 上报日志
+    // 后台推流
     _liveConfig.enableBackgroundMode = _configuraitons.enableBackgroundMode;
+    // 后台推流背景图，默认后台推流推最后一帧
+//    NSString *img = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpeg"];
+//    _liveConfig.backgroundImage = [UIImage imageWithContentsOfFile:img];
     _liveConfig.audioChannelCount = 2;
     _liveConfig.aCodec = [self getCodecType:_configuraitons.audioCodecType];
-    if (_configuraitons.enableAudioStream) {
-        _liveConfig.streamMode = LiveStreamModeAudioANDDarkFrame;
-    }
-    //MARK: 3. 创建LiveCore
-    _engine = [[LiveCore alloc] initWithMode:LiveCoreModuleCapture | LiveCoreModuleLiveStreaming];
-    if (_configuraitons.enableAudioStream) {
-        _engine.captureMode = LiveCoreCaptureModeANDDarkFrame;
-    }
-    [_engine setEnableAudioCaptureInBackground:_configuraitons.enableBackgroundMode];
-    [_engine setEnableExternalAU:YES];
-    [_engine setReconnectCount:10];
-    [_engine setLogLevel:LiveStreamLogLevelWarning];
+    _liveConfig.enableBlueToothEarMonitoring = YES;
     
-    //MARK: 4. 传入推流网路配置到 LiveCore
-    [_engine setupLiveSessionWithConfig:_liveConfig];
+    // 4. LiveStreamSession
+    _liveSession = [[LiveStreamSession alloc] initWithConfig:_liveConfig];
+    [_liveSession setLogLevel:LiveStreamLogLevelWarning];
+    _liveSession.delegate = self;
+    // 自动重连
+    _liveSession.reconnectTimeInterval = NSIntegerMax;
+    _liveSession.shouldAutoReconnect = NO;
+    _liveSession.reconnectCount = 0;
+    // 日志上报
+    _liveSession.streamLogTimeInterval = 5;
     
-    //MARK: 3.1 LiveCore + 视频采集
-    [_engine setLiveCapture:_capture];
+    _liveSession.didCapturedAudioBufferList = nil;
+    _capture.session = _liveSession;
+#if ENABLE_LIVE_NODE_PROBER
+    _liveSession.shouldUpdateOptimumIPAddress = ^(NSString *host) {
+        return [[LiveNodeSortManager sharedManager] bestIPForHost:host];
+    };
+#endif
     
-    //MARK: 3.2 LiveCore + 音频采集
-    // 如果需要
-    LiveAudioConfiguration *audioConfig = [[LiveAudioConfiguration alloc] init];
-    [_engine setupAudioCaptureWithConfig:audioConfig];
-
-    //MARK: 5. 设置日志回调与状态通知
-    // 网路状况回调
-    [_engine setNetworkQualityCallback:^(LiveCoreNetworkQuality networkQuality) {
-        NSLog(@"CurrentNetworkQuility = %ld", networkQuality);
-    }];
-    
-    [_engine setDebugLogBlock:^(NSString *log) {
-        NSLog(@"%@", log);
-    }];
-
-    // 推流日志
-    [_engine setStreamLogCallback:^(NSDictionary *log) {
+    _liveSession.streamLogCallback = ^(NSDictionary *log) {
         __strong typeof(wself) sself = wself;
         if (!sself) {
             return;
@@ -221,30 +224,25 @@ static int const kTestSessionPicID = 60;
         NSMutableDictionary *log_dict = [NSMutableDictionary dictionaryWithDictionary:log];
         [log_dict addEntriesFromDictionary:[sself->_capture getStatisticInfo]];
         NSLog(@"<<<<< log <<<<< %@", log_dict);
-    }];
-
-    // 推流状态回调
-    [_engine setStatusChangedBlock:^(LiveStreamSessionState state, LiveStreamErrorCode errCode) {
-        if (state) {
-            [wself streamSession:wself.engine.liveSession onStatusChanged:state];
-        } else if (errCode) {
-            [wself streamSession:wself.engine.liveSession onError:errCode];
-        }
-    }];
-  
-    //MARK: Final. 开始采集
-    [_engine setDidCapturedVideoFrame:^(CVPixelBufferRef  _Nonnull buffer, CMTime pts) {
-        __strong typeof(wself) sself = wself;
-        if (sself.dumpRecording) {
-            [sself.recorder processVideoPixelbuf:buffer presentationTime:pts sourceType:LSRawDataSourceTypeH264];
-        }
-    }];
-    [_engine startVideoCapture];
-    [_engine startAudioCapture];
+    };
     
-    //MARK: 若需要美颜，需要接管摄影机采集
-    self.engine.camera.outputPixelFmt = kCVPixelFormatType_32BGRA;
-    self.engine.camera.outputDelegate = self;
+    // 5. video graph: camera -> caputre -> session
+    [self.camera setVideoProcessingCallback:^(CMSampleBufferRef sampleBuffer) {
+        CVPixelBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+        
+        double timeStamp = (double)(pts.value / pts.timescale);
+        BEProcessResult *result = [wself.processor process:buffer timeStamp:timeStamp];
+
+        [wself.capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
+//        [wself.capture pushVideoBuffer:buffer andCMTime:pts];
+    }];
+    
+    [self.capture setVideoProcessedCallback:^(CVPixelBufferRef buffer, int32_t textureId, CMTime pts) {
+        [wself.liveSession pushVideoBuffer:buffer texture:textureId andCMTime:pts];
+    }];
+    
+    [_camera startCameraCapture];
     
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
 
@@ -269,12 +267,10 @@ static int const kTestSessionPicID = 60;
 }
 
 - (void)setupProcessor {
-//    if (!_processor) {
-//        _processor = [[BEFrameProcessor alloc] initWithContext:[_capture getGLContext] resourceDelegate:nil];
-//        NSLog(@"%@", _processor.availableFeatures);
-//        [_processor setComposerMode:1];
-//        [_processor updateComposerNodes:@[]];
-//    }
+    _processor = [[BEFrameProcessor alloc] initWithContext:[_liveSession getEAGLContext] resourceDelegate:nil];
+    NSLog(@"%@", _processor.availableFeatures);
+    [_processor setComposerMode:1];
+    [_processor updateComposerNodes:@[]];
 }
 
 - (void)requestAuthorization {
@@ -290,20 +286,6 @@ static int const kTestSessionPicID = 60;
             }
         }];
     }
-}
-
-//MARK: 美颜特效
-- (void)didCaptureVideoSampleBuffer:(CMSampleBufferRef)videoBuffer {
-    CVPixelBufferRef buffer = CMSampleBufferGetImageBuffer(videoBuffer);
-    CMTime pts = CMSampleBufferGetPresentationTimeStamp(videoBuffer);
-
-//    double timeStamp = (double)(pts.value / pts.timescale);
-//    if (_processor) {
-//        BEProcessResult *result = [self.processor process:buffer timeStamp:timeStamp];
-//        [_capture pushVideoBuffer:result.pixelBuffer ?: buffer andCMTime:pts];
-//    } else {
-        [_capture pushVideoBuffer:buffer andCMTime:pts];
-//    }
 }
 
 - (void)setupUIComponent {
@@ -344,22 +326,33 @@ static int const kTestSessionPicID = 60;
     [_controlView addSubview:_cameraButton];
     [_controlView addSubview:_muteButton];
     
+    _headphonesMonitoringButton = [LiveHelper createButton:@"耳返: 关" target:self action:@selector(onHeadphonesMonitoringButtonClicked:)];
+    [_controlView addSubview:_headphonesMonitoringButton];
+    
 #if HAVE_AUDIO_EFFECT
+    //MARK: 伴奏 + KTV功能
+    #if LIVECORE_ENABLE
+    _karaokeButton = [LiveHelper createButton:@"K歌: 关" target:self action:@selector(onKaraokeButtonClicked:)];
+    [_controlView addSubview:_karaokeButton];
+    UILongPressGestureRecognizer *longPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressKaraokeAction)];
+    [_karaokeButton addGestureRecognizer:longPressGR];
+    [_controlView addSubview:[LiveHelper createButton:@"音效" target:self action:@selector(switchAudioEffectButtonClicked:)]];
+    //
+    _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(onMusicTypeButtonClicked:)];
+    _musicTypeButton.hidden = YES;
+    #else
     _musicTypeButton = [LiveHelper createButton:@"伴奏" target:self action:@selector(setupAudioUnitProcess:)];
+    #endif
     [_controlView addSubview:_musicTypeButton];
-    [self initKTVView];
 #endif
     
-    //[_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
+    [_controlView addSubview:[LiveHelper createButton:@"测试SEI" target:self action:@selector(onSendSEIMsgButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"回声消除: 关" target:self action:@selector(onEchoCancellationButtonClicked:)]];
     
     [_controlView addSubview:[LiveHelper createButton:@"特效" target:self action:@selector(onEffectButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"贴纸" target:self action:@selector(onStickerButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:@"镜像" target:self action:@selector(onMirrorButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:@"耳返开" target:self action:@selector(onHeadphoneBackButtonClicked:)]];
     [_controlView addSubview:[LiveHelper createButton:kRecordText target:self action:@selector(onRecordButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:kSessionMixPic target:self action:@selector(mixPicButtonClicked:)]];
-    [_controlView addSubview:[LiveHelper createButton:@"开mv" target:self action:@selector(mvButtonClicked:)]];
     [self.view addSubview:self.infoView];
     
     // layout
@@ -384,44 +377,71 @@ static int const kTestSessionPicID = 60;
     self.tipsLabel.frame = CGRectMake(CGRectGetMinX(content)+5, CGRectGetMaxY(lastControlFrame)+10, CGRectGetMaxX(content)-10, 20);
     [_controlView addSubview:self.tipsLabel];
     
+    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 160);
+    UIView *karaokeControllersContainer = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - karaokeControllersContainerSize.height, karaokeControllersContainerSize.width, karaokeControllersContainerSize.height)];
+    karaokeControllersContainer.backgroundColor = UIColor.whiteColor;
+    karaokeControllersContainer.alpha = .7;
+    [self.view addSubview:karaokeControllersContainer];
+    self.karaokeControllersContainer = karaokeControllersContainer;
+    
+    UILabel *recordVolumeLabel = [[UILabel alloc] init];
+    recordVolumeLabel.text = @"人声";
+    recordVolumeLabel.textAlignment = NSTextAlignmentCenter;
+    [karaokeControllersContainer addSubview:recordVolumeLabel];
+    UISlider *recordVolumeSlider = [[UISlider alloc] init];
+    recordVolumeSlider.value = .5;
+    [recordVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    [karaokeControllersContainer addSubview:recordVolumeSlider];
+    self.recordVolumeSlider = recordVolumeSlider;
+    UILabel *musicVolumeLabel = [[UILabel alloc] init];
+    musicVolumeLabel.text = @"伴奏";
+    musicVolumeLabel.textAlignment = NSTextAlignmentCenter;
+    [karaokeControllersContainer addSubview:musicVolumeLabel];
+    UISlider *musicVolumeSlider = [[UISlider alloc] init];
+    musicVolumeSlider.value = .5;
+    musicVolumeSlider.tag = 1;
+    [musicVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    [karaokeControllersContainer addSubview:musicVolumeSlider];
+    self.musicVolumeSlider = musicVolumeSlider;
+    NSInteger rows = karaokeControllersContainer.subviews.count;
+    CGFloat rowHeight = karaokeControllersContainerSize.height / rows;
+    CGFloat rowWidth = self.view.bounds.size.width;
+    for (NSInteger row = 0; row < rows; row++) {
+        CGFloat width = rowWidth * 0.9;
+        CGFloat originX = (rowWidth - width) / 2;
+        CGRect frame = CGRectMake(originX, rowHeight * row, rowWidth * 0.9, rowHeight);
+        UIView *view = karaokeControllersContainer.subviews[row];
+        view.frame = frame;
+    }
+    karaokeControllersContainer.hidden = YES;
+    
     TTEffectsViewModel *effectsViewModel = [[TTEffectsViewModel alloc] initWithModel:TTEffectsModel.defaultModel];
     __weak typeof(self) weakSelf = self;
     effectsViewModel.composerNodesChangedBlock = ^(NSArray<NSString *> * _Nonnull currentComposerNodes) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf setupProcessor];
-//        [strongSelf.processor updateComposerNodes:currentComposerNodes];
+        [strongSelf.processor updateComposerNodes:currentComposerNodes];
     };
     effectsViewModel.composerNodeIntensityChangedBlock = ^(NSString * _Nonnull path, NSString * _Nonnull key, CGFloat intensity) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf setupProcessor];
-//        [strongSelf.processor updateComposerNodeIntensity:path key:key intensity:intensity];
+        [strongSelf.processor updateComposerNodeIntensity:path key:key intensity:intensity];
     };
     effectsViewModel.stickerChangedBlock = ^(NSString * _Nonnull path) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf setupProcessor];
-//        [strongSelf.processor setStickerPath:path];
+        [strongSelf.processor setStickerPath:path];
     };
     effectsViewModel.filterChangedBlock = ^(NSString * _Nonnull path) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf setupProcessor];
-//        [strongSelf.processor setFilterPath:path];
+        [strongSelf.processor setFilterPath:path];
     };
-//    TTControlsBox *controlsBox = [[TTControlsBox alloc] initWithViewModel:effectsViewModel];
-//    [self.view addSubview:controlsBox.view];
-//    controlsBox.view.hidden = YES;
-//    self.controlsBox = controlsBox;
+    TTControlsBox *controlsBox = [[TTControlsBox alloc] initWithViewModel:effectsViewModel];
+    [self.view addSubview:controlsBox.view];
+    controlsBox.view.hidden = YES;
+    self.controlsBox = controlsBox;
 }
 
 /* ......... */
 - (void)timerStatistics {
-    //
-    if (self.engine && self.engine.musicIsPlaying) {
-        float progress = [self.engine currentPlayTime] / [self.engine musicDuration];
-        [self.timeSeekSlider setValue:progress];
-    }
-    
-    //
-    NSDictionary *dic = [_engine.liveSession getStatistics];
+    NSDictionary *dic = [_liveSession getStatistics];
     if(!dic) {
         return;
     }
@@ -470,6 +490,11 @@ static int const kTestSessionPicID = 60;
 }
 
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 #pragma mark - device auth check
 - (BOOL)isAudioAuthorized {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
@@ -489,9 +514,7 @@ static int const kTestSessionPicID = 60;
     return YES;
 }
 
-#pragma mark - Streaming (推流控制)
-
-//MARK: 开始推流
+#pragma mark - Streaming
 - (void)startStreaming {
     if (![self isAudioAuthorized] || ![self isVideoAuthorized]) {
         NSLog(@"Streaming Error: AVDEVICE IS UNAUTHORIZED");
@@ -500,25 +523,23 @@ static int const kTestSessionPicID = 60;
     
     NSLog(@"开始推流: %@",_configuraitons.streamURL);
     _infoView.text = [NSString stringWithFormat:@"Start Stream Connecting ... "];
-    [_engine startStreaming];
+
+    [_liveSession start];
 }
 
-//MARK: 停止推流
 - (void)stopStreaming {
     NSLog(@"stop begin --->");
-    [_engine stopBgMusic];
-    [_engine stopStreaming];
+    [_liveSession stop];
     NSLog(@"stop end --->");
 }
 
-//MARK: 切换设像头
 - (void)switchCamera {
-    if(self.engine.camera) {
-        [self.engine.camera switchCamera];
+    if(self.camera) {
+        [self.camera rotateCamera];
     }
 }
 
-// 静音
+// pause audio capture
 - (void)muteAudio {
     NSLog(@"---%s", __FUNCTION__);
     if(!_audioMute) {
@@ -527,7 +548,7 @@ static int const kTestSessionPicID = 60;
         [self.muteButton setTitle:@"mute..." forState:UIControlStateNormal];
     }
     _audioMute = !_audioMute;
-    [_engine setAudioMute:_audioMute];
+    [_liveSession setAudioMute:_audioMute];
 }
 
 // pause video capture
@@ -556,131 +577,41 @@ static int const kTestSessionPicID = 60;
     [self.capture setStreamMirror:button.selected];
 }
 
-- (void)onHeadphoneBackButtonClicked:(UIButton *)button {
-    if (self.engine.isHeadphonesMonitoringEnabled) {
-        [button setTitle:@"耳返开" forState:UIControlStateNormal];
-        [self.engine setHeadphonesMonitoringEnabled:NO];
-    } else {
-        [button setTitle:@"耳返关" forState:UIControlStateNormal];
-        [self.engine setHeadphonesMonitoringEnabled:YES];
-    }
-}
-
-//MARK: 添加图片媒体混流
-- (BOOL)isMixPicRunning {
-    return _pushMixPicTimer != nil;
-}
-
-- (void)mixPicButtonClicked:(UIButton *)button
-{
-    if ([button.titleLabel.text isEqual:kSessionMixPic]) {
-        [self startPushMixPicBuffer];
-        // 添加视频流，LayerID: kTestSessionPicID
-        [self.engine.liveCapture addVideoInput:CGRectMake(0, 0, 0.5, 0.40625) fillMode:LSRenderModeScaleAspectFill zOrder:100 forLayer:kTestSessionPicID rotation:LSRotateModeNoRotation];
-        // 设置本地可预览
-        [self.engine setPreviewMode:LCPreviewMode_GameInteract];
-        [button setTitle:kSessionRemovePic forState:UIControlStateNormal];
-    } else if ([button.titleLabel.text isEqual:kSessionRemovePic]) {
-        // 移除视频流
-        [self.engine.liveCapture removeVideoInput:kTestSessionPicID];
-        if (!self.isMVRunning) {
-            [self.engine setPreviewMode:LCPreviewMode_Normal];
-        }
-        [self stopPushMixPicBuffer];
-        [button setTitle:kSessionMixPic forState:UIControlStateNormal];
-    }
-}
-
-- (void) startPushMixPicBuffer
-{
-    if (!_pushMixPicTimer) {
-        // 创建Timer
-        _pushMixPicTimer = [[LiveStreamMultiTimerManager alloc] init];
-    }
-    // 本地图片
-    NSString *img = [[NSBundle mainBundle] pathForResource:@"test1" ofType:@"png"];
-    UIImage *mixImage = [UIImage imageNamed:img];
-    [self.mixPicLock lock];
-    // 将图片保存成PixelBuffer
-    self.mixPicPixelBuffer = [LSIHelper imageBufferFromImage:mixImage];
-    [self.mixPicLock unlock];
-    
-    @ls_weakify(self);
-    // 15fps 的 Timer
-    [_pushMixPicTimer schedualTimerWithIdentifier:@"push_mix_pic_indentifier"
-                                      interval:1.0/15
-                                              queue:nil
-                                          repeats:YES
-                                             action:^{
-       @ls_strongify(self);
-        if (!self) {
-           return;
-        }
-        int64_t value = (int64_t)(CACurrentMediaTime() * 1000000000);
-        int32_t timeScale = 1000000000;
-        CMTime pts = CMTimeMake(value, timeScale);
-        [self.mixPicLock lock];
-        if (self.mixPicPixelBuffer != NULL) {
-            // 将图片推入采集模块 - ID: kTestSessionPicID
-            [self.engine.liveCapture pushVideoBuffer:self.mixPicPixelBuffer withCMTime:pts toLayer:kTestSessionPicID];
-        }
-        [self.mixPicLock unlock];
-    }];
-}
-
-- (void) stopPushMixPicBuffer
-{
-    // 释放Timer
-    if (_pushMixPicTimer) {
-        [_pushMixPicTimer cancelTimerWithName:@"push_mix_pic_indentifier"];
-        _pushMixPicTimer = nil;
-    }
-    
-    [self.mixPicLock lock];
-    // 释放PixelBuffer
-    if (self.mixPicPixelBuffer != NULL) {
-        CVPixelBufferRelease(self.mixPicPixelBuffer);
-        self.mixPicPixelBuffer = NULL;
-    }
-    [self.mixPicLock unlock];
-}
-
-//MARK: MTV
-- (void)mvButtonClicked:(UIButton *)button {
-    [self mvButtonClicked:button];
-}
-
 //MARK: 录制
 - (void)onRecordButtonClicked:(UIButton *)button {
     if (self.dumpRecording) {
-        [LiveHelper arertMessage:@"视频录置中，请稍后"];
+        [LiveHelper arertMessage:@"正在录制，耐心等待结束"];
         return;
-    }
-    if (!(self.capture && [_engine isStreaming])) {
+    } if (!(self.capture && [_liveSession isRunning])) {
         [LiveHelper arertMessage:@"需要先开启推流"];
         return;
     }
     [button setTitle:kRecordingText forState:UIControlStateNormal];
     self.dumpRecording = YES;
-    if (!self.recorder) {
-        self.recorder = [[LiveStreamRawDataHelper alloc] init];
-    }
-    __weak typeof(self) weakself = self;
-    [self.recorder startRawRecordingWithFileName:@"originMp4" maxProcessVideoBufCount:10 * 15 CompletionHandler:^(NSError * _Nonnull error, LSRawDataSourceType type, NSURL * _Nonnull url) {
-        __strong typeof(weakself) sself = weakself;
-        sself.dumpRecording = NO;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [sself didRecordingFinished:url error:error];
-            [button setTitle:kRecordText forState:UIControlStateNormal];
-        });
+    __weak typeof(self)weakSelf = self;
+    [_capture startRecordingWithDuration:5 delay:1 fps:30 WithCompletionHandler:^(NSError * _Nonnull error, int type, NSURL * _Nonnull url) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if([strongSelf.capture dumpIsFinished]){
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [button setTitle:kRecordText forState:UIControlStateNormal];
+                strongSelf.dumpRecording = NO;
+                NSString *errDesc =@"";
+                if (error || !url) {
+                    errDesc = [NSString stringWithFormat:@",出错了: %@",[error description]];
+                    return;
+                }
+                __weak typeof(self)weakSelf = strongSelf;
+                [StreamingViewController saveURL:url error:error];
+            });
+        }
     }];
+    [_capture setValue:@NO forKey:@"shouldUpdateMetadata"];
 }
 
-- (void)didRecordingFinished:(NSURL *)path error:(nonnull NSError *)error {
-    NSLog(@"[Recorder] did finished recording:%@", path);
++ (void)saveURL:(NSURL *)videoURL error:(NSError *)error {
     [LiveHelper arertMessage:[NSString stringWithFormat:@"录制结束!返回进沙盒目录导出%@",error]];
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:path];
+        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:videoURL];
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         if(success) {
             NSLog(@"saved down");
@@ -689,12 +620,19 @@ static int const kTestSessionPicID = 60;
         }
     }];
 }
-//MARK: 推流控制
+
+- (void)onHeadphonesMonitoringButtonClicked:(UIButton *)sender {
+    _liveSession.headphonesMonitoringEnabled = !_liveSession.isHeadphonesMonitoringEnabled;
+    NSString *buttonText = [NSString stringWithFormat:@"耳返: %@", _liveSession.isHeadphonesMonitoringEnabled ? @"开" : @"关"];
+    [sender setTitle:buttonText forState:UIControlStateNormal];
+}
+
 - (void)onStartButtonClicked:(UIButton *)sender {
     _startButton.hidden = YES;
-    if(_engine) {
+    if(_liveSession) {
         [self startStreaming];
     }
+   // _stopButton.hidden = NO;
 }
 
 - (void)onStopButtonClicked:(UIButton *)sender {
@@ -736,18 +674,21 @@ static int const kTestSessionPicID = 60;
 
 - (void)onQuitButtonClicked:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+#if HAVE_AUDIO_EFFECT
+    [self longPressKaraokeAction];
+#endif
 }
 
 - (void)onEchoCancellationButtonClicked:(UIButton *)sender {
-    if (self.engine) {
-        self.engine.echoCancellationEnabled = !self.engine.isEchoCancellationEnabled;
-        NSLog(@"echo cancellation turn %@", self.engine.isEchoCancellationEnabled ? @"on" : @"off");
-        [sender setTitle:[NSString stringWithFormat:@"回声消除: %@", self.engine.isEchoCancellationEnabled ? @"开" : @"关"] forState:UIControlStateNormal];
+    if (self.liveSession) {
+        self.liveSession.echoCancellationEnabled = !self.liveSession.isEchoCancellationEnabled;
+        NSLog(@"echo cancellation turn %@", self.liveSession.isEchoCancellationEnabled ? @"on" : @"off");
+        [sender setTitle:[NSString stringWithFormat:@"回声消除: %@", self.liveSession.isEchoCancellationEnabled ? @"开" : @"关"] forState:UIControlStateNormal];
     }
 }
 
 - (void)onSendSEIMsgButtonClicked:(UIButton *)sender{
-    if (self.engine) {
+    if (self.liveSession) {
         //测试数据
         NSTimeInterval a=[[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970]*1000;
         NSString *timeString = [NSString stringWithFormat:@"当前时间%f", a];
@@ -756,7 +697,7 @@ static int const kTestSessionPicID = 60;
 //        [self.liveSession sendSEIMsgWithKey:@"testInt" value:[NSNumber numberWithInteger:111222333] repeatTimes:2];
 //        [self.liveSession sendSEIMsgWithKey:@"testBool" value:[NSNumber numberWithBool:YES] repeatTimes:2];
 //        [self.liveSession sendSEIMsgWithKey:@"testBoolNO" value:[NSNumber numberWithBool:NO] repeatTimes:2];
-        [self.engine sendSEIMsgWithKey:@"testDouble" value:[NSNumber numberWithDouble:111222.333] repeatTimes:2];
+        [self.liveSession sendSEIMsgWithKey:@"testDouble" value:[NSNumber numberWithDouble:111222.333] repeatTimes:2];
     }
 }
 
@@ -829,7 +770,7 @@ static int const kTestSessionPicID = 60;
     return _infoView;
 }
 
-// MARK: - 状态处理与分析
+// MARK: - LiveStreamSessionProtocol
 - (void)streamSession:(LiveStreamSession *)session onStatusChanged:(LiveStreamSessionState)state {
     NSLog(@"liveSessionState:%ld\n", (long)state);
 //    LiveStreamStateStarting,
@@ -859,7 +800,6 @@ static int const kTestSessionPicID = 60;
                 break;
             case LiveStreamSessionStateReconnecting:
                 NSLog(@"// reconnect // %@", [NSDate date]);
-                
                 break;
             default:
                 break;
@@ -883,5 +823,4 @@ static int const kTestSessionPicID = 60;
     _stopButton.hidden = YES;
     
 }
-
 @end

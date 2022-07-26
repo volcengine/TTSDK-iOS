@@ -13,14 +13,6 @@
 #import <Masonry.h>
 #import "UIColor+Hex.h"
 #import <UIView+Toast.h>
-#if __has_include(<TTSDKFramework/TTSDKFramework.h>)
-#import <TTSDKFramework/TTLiveURLComposer.h>
-#import <TTSDKFramework/TVLPlayerItem+TTSDK.h>
-#else
-#import <TTSDK/TTLiveURLComposer.h>
-#import <TTSDK/TVLPlayerItem+TTSDK.h>
-#endif
-
 
 @interface LivePlaySettingsViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *IndustryName;
@@ -51,6 +43,8 @@
     
     _playURLTextField.text = [NSBundle.mainBundle pathForResource:@"resolution_change" ofType:@"flv"];
     _playURLTextField.text = @"https://pull-stream-cn.poizon.com/dewuApp/release-328490-1612312266.m3u8?auth_key=1612398666-0-0-ee56f1d42e3ae8456f8dbe1b661b6db1&aliyunols=on&lhs_start_unix_s_0=1612317160";
+//    _playURLTextField.text = @"http://pull-flv-l11.douyincdn.com/stage/stream-396561264399876241.flv";
+//    _playURLTextField.text = @"请输入或扫码获取播放地址";
     [self setupUIComponent];
 }
 
@@ -203,38 +197,9 @@
     // Configure player item.
     LivePlayViewController *vc = [[LivePlayViewController alloc] initWithConfiguration:config];
     NSString *playURL = config.playURL;
-    NSError *error = nil;
-    NSDictionary *infoData = [NSJSONSerialization JSONObjectWithData:[playURL dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-    BOOL isJSONData = !error && infoData;
-    BOOL isStreamData = isJSONData && [infoData.allKeys containsObject:@"stream_data"];
-    if (isStreamData) {
-        id rawStreamData = [infoData objectForKey:@"stream_data"];
-        if ([rawStreamData isKindOfClass:NSString.class]) {
-            rawStreamData = [NSJSONSerialization JSONObjectWithData:[rawStreamData dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
-        }
-        TVLPlayerItem *item = [TVLPlayerItem playerItemWithStreamData:rawStreamData];
-        NSLog(@"Stream data supported preferences: %@", item.supportedPreferences);
-        NSLog(@"Stream data supported resolutions: %@", item.supportedResolutionTypes);
-        for (TVLPlayerItemPreferences *preferences in item.supportedPreferences) {
-            //优先跳选主流/源流
-            if ([preferences.sourceType isEqualToString:TVLMediaSourceTypeMain]
-                && [preferences.resolutionType isEqualToString:TVLMediaResolutionTypeOrigin]
-                && [preferences.formatType isEqualToString:TVLMediaFormatTypeFLV]) {
-                item.preferences = preferences;
-                break;
-            }
-        }
-        config.playerItem = item;
-    } else if ([[playURL lowercaseString] hasPrefix:@"http"] || [[playURL lowercaseString] hasPrefix:@"rtmp"] || [playURL hasPrefix:@"/"]) {
-        if (config.enableNNSR) {
-            TTLiveURLComposer *composer = [TTLiveURLComposer new];
-            [composer addUrl:playURL forFormat:TVLMediaFormatTypeFLV];
-            composer.enableSR = YES;
-            config.playerItem = [TVLPlayerItem playerItemWithComposer:composer];
-        } else {
-            // Basic usage.
-            config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];
-        }
+    if ([[playURL lowercaseString] hasPrefix:@"http"] || [[playURL lowercaseString] hasPrefix:@"rtmp"] || [playURL hasPrefix:@"/"]) {
+        // Basic usage.
+        config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];
     }
     
     if (config.playerItem) {

@@ -10,15 +10,12 @@
 #define StreamingViewController_KTV_h
 #import "StreamingViewController.h"
 
-@interface StreamingKTVControllBox : UIView
-
-@end
-
 @interface StreamingViewController (KTV)
-@property (nonatomic, strong) StreamingKTVControllBox *karaokeControllersContainer;
-@property (nonatomic, readonly) UISlider *timeSeekSlider;
-- (void)initKTVView;
 - (void)switchAudioEffectButtonClicked:(UIButton *)sender;
+- (void)onMusicTypeButtonClicked:(UIButton *)sender;
+- (void)onKaraokeButtonClicked:(UIButton *)sender;
+- (void)longPressKaraokeAction;
+//- (void)startKTVWithStartTime:(NSTimeInterval)startTime musicType:(LCKTVMusicType)musicType;
 
 @end
 

@@ -145,6 +145,9 @@
 
     NSString* hostName;
     hostName = @"imagex.volcengineapi.com";
+    [clientTop setRequestParameter: @{TTFileUploadSpace:@"19tz3ytenx",
+    TTFileUploadFileTypeStr:@"image",
+    }];
     [clientTop setImageHostName:hostName];
     [clientTop setSeverParameter:@"key1=value1&key2=value2"];
     
@@ -157,18 +160,12 @@
     NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
     [clientTop setProcessActionType:processAction parameter:params];
     
-    NSString* imagePathKey1 = @"red";
-    NSString* imagePathKey2 = @"yellow";
-    NSString* imagePathKey3 = @"blue";
-    NSArray* imagePathKeys = @[imagePathKey1,imagePathKey2,imagePathKey3];
-    
     NSDictionary* config = @{
                              TTFileUploadFileRetryCount:@1,
                              TTFileUploadSliceTimeout:@40,
                              TTFileUploadSocketNum:@1,
                              TTFileUploadDeviceID:@3424321,
-                             TTFileUploadTraceId:@"asdf",
-                             TTFileUploadImagePathKey:imagePathKeys
+                             TTFileUploadTraceId:@"asdf"
                              };
     [clientTop setUploadConfig:config];
     [clientTop setImageHostName:@"imagex.volcengineapi.com"];

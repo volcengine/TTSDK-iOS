@@ -10,151 +10,121 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "StreamingViewController+KTV.h"
 
-@interface StreamingKTVControllBox ()
-
-@property (strong, nonatomic) IBOutlet UIView *rootView;
-@property (weak, nonatomic) IBOutlet UISlider *recordVolumeSlider;
-@property (weak, nonatomic) IBOutlet UISlider *musicVolumeSlider;
-@property (weak, nonatomic) IBOutlet UISlider *timeSeekSlider;
-
-@property (weak, nonatomic) IBOutlet UIButton *pauseMusic;
-@property (weak, nonatomic) IBOutlet UIButton *continueMusic;
-
--(void)resetUI;
-
-@end
-
-@implementation StreamingKTVControllBox
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self initSubViewWithNib];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self initSubViewWithNib];
-    }
-    return self;
-}
-
--(void)initSubViewWithNib {
-    [[NSBundle mainBundle] loadNibNamed:@"StreamingKTVControllBox" owner:self options:NULL];
-    [self addSubview:self.rootView];
-    [self.rootView setFrame:self.bounds];
-}
-
-- (void)resetUI {
-    self.recordVolumeSlider.value = 0.5;
-    self.musicVolumeSlider.value = 0.5;
-    self.timeSeekSlider.value = 0;
-}
-
-@end
 
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation StreamingViewController (KTV)
 
--(UISlider *)recordVolumeSlider {
-    return self.karaokeControllersContainer.recordVolumeSlider;
-}
-
--(UISlider *)musicVolumeSlider {
-    return self.karaokeControllersContainer.musicVolumeSlider;
-}
-
--(UISlider *)timeSeekSlider {
-    return self.karaokeControllersContainer.timeSeekSlider;
-}
-
--(UIButton *)pauseMusicBtn {
-    return self.karaokeControllersContainer.pauseMusic;
-}
-
--(UIButton *)continueMusicBtn {
-    return self.karaokeControllersContainer.continueMusic;
-}
-
-- (void)initKTVView {
-    //MARK: K歌相关
-    CGSize karaokeControllersContainerSize = CGSizeMake(self.view.bounds.size.width, 240);
-    StreamingKTVControllBox *karaokeControllersContainer = [[StreamingKTVControllBox alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - karaokeControllersContainerSize.height, karaokeControllersContainerSize.width, karaokeControllersContainerSize.height)];
-    karaokeControllersContainer.backgroundColor = UIColor.whiteColor;
-    karaokeControllersContainer.alpha = .7;
-    [self.view addSubview:karaokeControllersContainer];
-    self.karaokeControllersContainer = karaokeControllersContainer;
-    
-    [self.recordVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
-    [self.musicVolumeSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
-    [self.timeSeekSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
-    //
-    [self.pauseMusicBtn addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.continueMusicBtn addTarget:self action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
-    karaokeControllersContainer.hidden = YES;
-}
-
-- (void)buttonDidClick:(UIButton *)buttn {
-    if (buttn == self.pauseMusicBtn) {
-        [self.engine pauseBgMusic];
-    } else if (buttn == self.continueMusicBtn) {
-        [self.engine resumeBgMusic];
-    }
-}
-
 - (void)sliderValueDidChange:(UISlider *)slider {
 #if HAVE_AUDIO_EFFECT
     if (slider == self.musicVolumeSlider) {
-        [self.engine setMusicVolume:slider.value];
+        [self.audioUnit setMusicVolume:slider.value];
     } else if (slider == self.recordVolumeSlider) {
-        [self.engine setAudioVolume:slider.value];
-    } else if (slider == self.timeSeekSlider) {
-        NSTimeInterval musicD = [self.engine musicDuration];
-        NSTimeInterval expectD = musicD * slider.value;
-        [self.engine seekToTime:expectD];
+        [self.audioUnit setRecordVolume:slider.value];
     }
 #endif
+}
+
+- (BOOL)ktvAllowed {
+    //ktv不支持蓝牙耳机接入的情况
+    AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
+    for (AVAudioSessionPortDescription *desc in [route outputs]) {
+        if ([[desc portType] isEqualToString:AVAudioSessionPortBluetoothA2DP]
+            || [[desc portType] isEqualToString:AVAudioSessionPortBluetoothHFP]
+            || [[desc portType] isEqualToString:AVAudioSessionPortBluetoothLE])
+            return NO;
+        }
+    
+    return YES;
 }
 
 #if HAVE_AUDIO_EFFECT
 // 播放伴奏
 - (void)setupAudioUnitProcess:(UIButton *)sender {
-    if (self.engine.musicIsPlaying) {
-        [self.engine stopBgMusic];
+    if (self.audioUnit) {
+        [self.audioUnit stopProcess];
+        self.audioUnit = nil;
         self.karaokeControllersContainer.hidden = YES;
     } else {
+        LSLiveAudioReverb2Format *reverb2Format = [[LSLiveAudioReverb2Format alloc] init];
+        reverb2Format.sampleRate  = 44100;
+        reverb2Format.oversamplefactor = 2;
+        reverb2Format.ertolate = 0.20f;
+        reverb2Format.erefwet = -9.0f;
+        reverb2Format.dry = -8;
+        reverb2Format.ereffactor = 8.5f;
+        reverb2Format.erefwidth = 0.7f;
+        reverb2Format.width = 1.0f;
+        reverb2Format.wet = -8;
+        reverb2Format.wander = 0.20f;
+        reverb2Format.bassb = 0.20f;
+        reverb2Format.spin = 0.5f;
+        reverb2Format.inputlpf = 18000;
+        reverb2Format.basslpf = 400;
+        reverb2Format.damplpf = 5000;
+        reverb2Format.outputlpf = 7000;
+        reverb2Format.rt60 = 4.2f;
+        reverb2Format.delay = 0.018f;
         NSURL *musicURL = [[NSBundle mainBundle] URLForResource:@"doubleTracks.m4a" withExtension:nil];
-        __weak typeof(self) wself = self;
-        [self.engine playBgMusicWithURL:musicURL loop:YES volume:20 createPlayerCompletion:^(BOOL success, NSError * _Nonnull error) {
-            __strong typeof(wself) sself = wself;
-            if (success) {
-                sself.karaokeControllersContainer.hidden = NO;
-                [sself.karaokeControllersContainer resetUI];
-                [sself.engine setAudioVolume:0.5];
-                [sself.engine setMusicVolume:0.5];
-                [sself.timeSeekSlider setValue:0];
-            }
-        } completionBlock:^{
-            
-        }];
+        LSLiveAudioUnitConfig *config = [[LSLiveAudioUnitConfig alloc] init];
+        config.musicURL = musicURL;
+        //config.musicStartTime = KTVConfig.musicStartTime;
+        config.musicType = LSMusicTypeAccompany;
+        config.asbd = [self.liveSession audioStreamBasicDescription];
+        if (YES) {
+            config.numberOfLoops = NSIntegerMax;
+        }
+        self.audioUnit = [[LSLiveAudioUnitProcess alloc] initWithConfig:config];
+        if (self.capture.isEchoCancellationEnabled) {
+           [self.capture setEchoCancellationEnabled:NO];
+        }
+        [self.audioUnit startProcess];
+        self.karaokeControllersContainer.hidden = NO;
     }
 }
 #endif
 
+//MARK: K歌相關特效, 與LiveCore耦合
+
+//MARK: 音效
+- (void)switchAudioEffectButtonClicked:(UIButton *)sender {
+#if LIVECORE_ENABLE
+  
+#endif
+}
+
+//MARK: 伴奏
+- (void)onMusicTypeButtonClicked:(UIButton *)sender {
+#if LIVECORE_ENABLE
+
+#endif
+}
+
+- (void)onKaraokeButtonClicked:(UIButton *)sender {
+#if LIVECORE_ENABLE
+
+#else
+    
+#endif
+}
+
+- (void)longPressKaraokeAction {
+#if HAVE_AUDIO_EFFECT
+   
+#endif
+}
+
+#if LIVECORE_ENABLE
+- (void)startKTVWithStartTime:(NSTimeInterval)startTime musicType:(LCKTVMusicType)musicType {
+   
+}
+#endif
+
+- (void)playBgMusicWithConfig:(NSURL *)musicURL completion:(void (^)(void))completionBlock {
+   
+}
+
+
 @end
 
 NS_ASSUME_NONNULL_END
-
-@implementation LSLiveAudioUnitConfig (TTSDK)
-
-- (BOOL)newPlayerMode {
-    return YES;
-}
-
-@end

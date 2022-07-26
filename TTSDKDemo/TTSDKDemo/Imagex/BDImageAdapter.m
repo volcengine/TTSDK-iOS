@@ -3296,35 +3296,7 @@
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/9fa03905340d47d3a908049b925d8b83~tplv-n41c8j48qt-image.image",
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/326c95ab7772448fa22e6276828f370b~tplv-n41c8j48qt-image.image",
     @"http://imagex.e7e7e7.com/tos-cn-i-n41c8j48qt/2276fa11788e44e9b8f9f33d7c71927e~tplv-n41c8j48qt-image.image"];
-    NSArray *avif = @[@"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avis/Chimera-AV1-10bit-480x270.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avis/alpha_video.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.monochrome.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.monochrome.odd-height.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.monochrome.odd-width.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.monochrome.odd-width.odd-height.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.odd-height.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.odd-width.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.10bpc.yuv420.odd-width.odd-height.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.8bpc.yuv420.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Link-U/fox.profile0.8bpc.yuv420.monochrome.odd-height.avif",
-          
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Microsoft/Chimera_8bit_cropped_480x256.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Microsoft/Irvine_CA.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Microsoft/Mexico_YUV444.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Microsoft/kids_720p.avif",
-          
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Apple/multilayer_examples/animals_00_multilayer_grid_a1lx.avif",
-          
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avif/hdr_cosmos01000_cicp9-16-0_lossless.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avif/hdr_cosmos01000_cicp9-16-9_yuv420_limited_qp40.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avif/hdr_cosmos01650_cicp9-16-9_yuv420_limited_qp10.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avif/hdr_cosmos01650_cicp9-16-9_yuv420_limited_qp40.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Netflix/avif/hdr_cosmos07296_cicp9-16-0_lossless.avif",
-                      
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Xiph/abandoned_filmgrain.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Xiph/fruits_2layer_thumbsize.avif",
-          @"https://raw.githubusercontent.com/AOMediaCodec/av1-avif/master/testFiles/Xiph/tiger_3layer_1res.avif",];
-    return @{@"SR": all, @"awebp": awebp, @"gif": gif, @"heif": heif, @"avif": avif};
+    return @{@"SR": all, @"awebp": awebp, @"gif": gif, @"heif": heif};
 }
 
 @end
