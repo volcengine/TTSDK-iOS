@@ -11,7 +11,10 @@
 
 #if __has_include(<TTSDKFramework/TTSDKFramework.h>)
 #import <TTSDKFramework/TTSDKFramework.h>
+#import <TTSDKFramework/BDImageView.h>
+#import <TTSDKFramework/BDWebImageToB.h>
 #else
+
 #import <TTSDK/TTSDKManager.h>
 #import <TTSDK/TTVideoEngineHeader.h>
 //推流
@@ -23,9 +26,17 @@
 //拉流
 #import <TTSDK/TTVideoLive.h>
 #ifndef __cplusplus
+#if __has_include(<TTSDK/BDWebImage.h>)
 #import <TTSDK/BDWebImage.h>
+#elif __has_include(<TTSDK/BDWebImageToB.h>)
+#import <TTSDK/BDWebImageToB.h>
 #endif
+#endif
+
+#if __has_include(<TTSDK/TTFileUploader.h>)
 #import <TTSDK/TTFileUploader.h>
+#endif
+
 #endif
 
 #if __has_include(<TTSDKImageFramework/TTSDKImageFramework.h>)

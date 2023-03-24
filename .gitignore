@@ -15,3 +15,5 @@ ruby
 TTSDKDemoBuild
 TTSDKDemo/Scripts/package_info
 TTSDKDemo/extern/TTSDKFramework.framework
+TTQuickStartDemo/Pods
+TTQuickStartDemo/TTQuickStartDemo.xcworkspace

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#if __has_include(<TTSDK/TTFileUploader.h>)
+
 @interface TTFileUploadDemoUtil : NSObject
 
 + (void)configTaskWithURL:(NSString *)urlString params:(NSDictionary *)params headers:(NSDictionary *)headers completion:(void (^)(id _Nullable jsonObject, NSError * _Nullable error))completionHandler;
@@ -28,3 +30,6 @@ authParameter:(NSString*)parameter;
 
 + (NSString*)dictionaryToJson:(NSDictionary *)dic;
 @end
+
+
+#endif

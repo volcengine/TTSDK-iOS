@@ -6,6 +6,8 @@
 //  Copyright © 2020 ByteDance. All rights reserved.
 //
 
+#if __has_include(<TTSDK/TTFileUploader.h>)
+
 #import "TTFileUploadDemoUtil.h"
 
 @implementation TTFileUploadDemoUtil
@@ -154,12 +156,12 @@
     
     
     //[clientTop setAuthorizationParameter:parameter];
-    NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
-    [clientTop setProcessActionType:processAction parameter:params];
+    // NSDictionary *params = @{@"TTFileUploadEncryptionConfig":@{@"copies":@"both"}};
+    // [clientTop setProcessActionType:processAction parameter:params];
     
-    NSString* imagePathKey1 = @"red";
-    NSString* imagePathKey2 = @"yellow";
-    NSString* imagePathKey3 = @"blue";
+    NSString* imagePathKey1 = @"redttstest";
+    NSString* imagePathKey2 = @"yellowttstest";
+    NSString* imagePathKey3 = @"bluettstest";
     NSArray* imagePathKeys = @[imagePathKey1,imagePathKey2,imagePathKey3];
     
     NSDictionary* config = @{
@@ -189,3 +191,5 @@ return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 @end
+
+#endif

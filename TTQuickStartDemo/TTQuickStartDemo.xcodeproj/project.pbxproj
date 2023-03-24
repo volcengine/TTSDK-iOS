@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B223F9B29A60BDE00DE05F6 /* VeLiveAnchorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B223F9A29A60BDE00DE05F6 /* VeLiveAnchorManager.m */; };
+		2B223F9E29A60BED00DE05F6 /* VeLiveAudienceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B223F9D29A60BED00DE05F6 /* VeLiveAudienceManager.m */; };
+		2B47FCED29B06D9100717A22 /* VeLiveConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B47FCEC29B06D9100717A22 /* VeLiveConfig.m */; };
+		2B47FCFF29B0743600717A22 /* VeLiveAnchorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B47FCF429B0743600717A22 /* VeLiveAnchorViewController.m */; };
+		2B47FD0029B0743600717A22 /* VeLiveAudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B47FCF629B0743600717A22 /* VeLiveAudienceViewController.m */; };
+		2B47FD0129B0743600717A22 /* VeLivePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B47FCFA29B0743600717A22 /* VeLivePushViewController.m */; };
+		2B47FD0229B0743600717A22 /* VeLivePullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B47FCFE29B0743600717A22 /* VeLivePullViewController.m */; };
+		2B6AFFA229B98F27001FA1EC /* ttsdk.lic in Resources */ = {isa = PBXBuildFile; fileRef = 2B6AFFA129B98F27001FA1EC /* ttsdk.lic */; };
+		2BE65E2A28FE86F5005448A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE65E2928FE86F5005448A3 /* AppDelegate.m */; };
+		2BE65E3028FE86F5005448A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE65E2F28FE86F5005448A3 /* ViewController.m */; };
+		2BE65E3328FE86F5005448A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE65E3128FE86F5005448A3 /* Main.storyboard */; };
+		2BE65E3528FE86F6005448A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE65E3428FE86F6005448A3 /* Assets.xcassets */; };
+		2BE65E3828FE86F6005448A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE65E3628FE86F6005448A3 /* LaunchScreen.storyboard */; };
+		2BE65E3B28FE86F6005448A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE65E3A28FE86F6005448A3 /* main.m */; };
+		307A5141671BAA2F5B91A52A /* libPods-TTQuickStartDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC0B33817FDCEFDAAD1DD88 /* libPods-TTQuickStartDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B223F9929A60BDE00DE05F6 /* VeLiveAnchorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeLiveAnchorManager.h; sourceTree = "<group>"; };
+		2B223F9A29A60BDE00DE05F6 /* VeLiveAnchorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeLiveAnchorManager.m; sourceTree = "<group>"; };
+		2B223F9C29A60BED00DE05F6 /* VeLiveAudienceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeLiveAudienceManager.h; sourceTree = "<group>"; };
+		2B223F9D29A60BED00DE05F6 /* VeLiveAudienceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeLiveAudienceManager.m; sourceTree = "<group>"; };
+		2B47FCEB29B06D9100717A22 /* VeLiveConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VeLiveConfig.h; sourceTree = "<group>"; };
+		2B47FCEC29B06D9100717A22 /* VeLiveConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VeLiveConfig.m; sourceTree = "<group>"; };
+		2B47FCF329B0743600717A22 /* VeLiveAnchorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeLiveAnchorViewController.h; sourceTree = "<group>"; };
+		2B47FCF429B0743600717A22 /* VeLiveAnchorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeLiveAnchorViewController.m; sourceTree = "<group>"; };
+		2B47FCF629B0743600717A22 /* VeLiveAudienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeLiveAudienceViewController.m; sourceTree = "<group>"; };
+		2B47FCF729B0743600717A22 /* VeLiveAudienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeLiveAudienceViewController.h; sourceTree = "<group>"; };
+		2B47FCFA29B0743600717A22 /* VeLivePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeLivePushViewController.m; sourceTree = "<group>"; };
+		2B47FCFB29B0743600717A22 /* VeLivePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeLivePushViewController.h; sourceTree = "<group>"; };
+		2B47FCFD29B0743600717A22 /* VeLivePullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VeLivePullViewController.h; sourceTree = "<group>"; };
+		2B47FCFE29B0743600717A22 /* VeLivePullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VeLivePullViewController.m; sourceTree = "<group>"; };
+		2B6AFFA129B98F27001FA1EC /* ttsdk.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ttsdk.lic; sourceTree = "<group>"; };
+		2BE65E2528FE86F5005448A3 /* TTQuickStartDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTQuickStartDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BE65E2828FE86F5005448A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2BE65E2928FE86F5005448A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2BE65E2E28FE86F5005448A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2BE65E2F28FE86F5005448A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2BE65E3228FE86F5005448A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BE65E3428FE86F6005448A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BE65E3728FE86F6005448A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BE65E3928FE86F6005448A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BE65E3A28FE86F6005448A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2BE6603B290249DD005448A3 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		3216AA9008B30D2C24903B38 /* libPods-TTQuickStartSwiftDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTQuickStartSwiftDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BC0B33817FDCEFDAAD1DD88 /* libPods-TTQuickStartDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TTQuickStartDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51BE8754AD3E03FA4E860A52 /* Pods-TTQuickStartDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTQuickStartDemo.debug.xcconfig"; path = "Target Support Files/Pods-TTQuickStartDemo/Pods-TTQuickStartDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		A309DF4F307D13F4B978D4CE /* Pods_TTQuickStartSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTQuickStartSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E1432047463098830D1273 /* Pods-TTQuickStartDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTQuickStartDemo.release.xcconfig"; path = "Target Support Files/Pods-TTQuickStartDemo/Pods-TTQuickStartDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BE65E2228FE86F5005448A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				307A5141671BAA2F5B91A52A /* libPods-TTQuickStartDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E07F6AC5CEA23AB9AC77F94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BC0B33817FDCEFDAAD1DD88 /* libPods-TTQuickStartDemo.a */,
+				A309DF4F307D13F4B978D4CE /* Pods_TTQuickStartSwiftDemo.framework */,
+				3216AA9008B30D2C24903B38 /* libPods-TTQuickStartSwiftDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B47FCEE29B0718D00717A22 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCEB29B06D9100717A22 /* VeLiveConfig.h */,
+				2B47FCEC29B06D9100717A22 /* VeLiveConfig.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2B47FCF029B0743600717A22 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCF129B0743600717A22 /* LiveInteract */,
+				2B47FCF829B0743600717A22 /* Live */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2B47FCF129B0743600717A22 /* LiveInteract */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCF229B0743600717A22 /* Anchor */,
+				2B47FCF529B0743600717A22 /* Audience */,
+			);
+			path = LiveInteract;
+			sourceTree = "<group>";
+		};
+		2B47FCF229B0743600717A22 /* Anchor */ = {
+			isa = PBXGroup;
+			children = (
+				2B223F9929A60BDE00DE05F6 /* VeLiveAnchorManager.h */,
+				2B223F9A29A60BDE00DE05F6 /* VeLiveAnchorManager.m */,
+				2B47FCF329B0743600717A22 /* VeLiveAnchorViewController.h */,
+				2B47FCF429B0743600717A22 /* VeLiveAnchorViewController.m */,
+			);
+			path = Anchor;
+			sourceTree = "<group>";
+		};
+		2B47FCF529B0743600717A22 /* Audience */ = {
+			isa = PBXGroup;
+			children = (
+				2B223F9C29A60BED00DE05F6 /* VeLiveAudienceManager.h */,
+				2B223F9D29A60BED00DE05F6 /* VeLiveAudienceManager.m */,
+				2B47FCF729B0743600717A22 /* VeLiveAudienceViewController.h */,
+				2B47FCF629B0743600717A22 /* VeLiveAudienceViewController.m */,
+			);
+			path = Audience;
+			sourceTree = "<group>";
+		};
+		2B47FCF829B0743600717A22 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCF929B0743600717A22 /* Anchor */,
+				2B47FCFC29B0743600717A22 /* Audience */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		2B47FCF929B0743600717A22 /* Anchor */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCFA29B0743600717A22 /* VeLivePushViewController.m */,
+				2B47FCFB29B0743600717A22 /* VeLivePushViewController.h */,
+			);
+			path = Anchor;
+			sourceTree = "<group>";
+		};
+		2B47FCFC29B0743600717A22 /* Audience */ = {
+			isa = PBXGroup;
+			children = (
+				2B47FCFD29B0743600717A22 /* VeLivePullViewController.h */,
+				2B47FCFE29B0743600717A22 /* VeLivePullViewController.m */,
+			);
+			path = Audience;
+			sourceTree = "<group>";
+		};
+		2BE65E1C28FE86F5005448A3 = {
+			isa = PBXGroup;
+			children = (
+				2BE65E2728FE86F5005448A3 /* TTQuickStartDemo */,
+				2BE65E2628FE86F5005448A3 /* Products */,
+				CDD28D357CF6828EBA93CC17 /* Pods */,
+				1E07F6AC5CEA23AB9AC77F94 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2BE65E2628FE86F5005448A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BE65E2528FE86F5005448A3 /* TTQuickStartDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BE65E2728FE86F5005448A3 /* TTQuickStartDemo */ = {
+			isa = PBXGroup;
+			children = (
+				2BE65E2828FE86F5005448A3 /* AppDelegate.h */,
+				2BE65E2928FE86F5005448A3 /* AppDelegate.m */,
+				2BE65E2E28FE86F5005448A3 /* ViewController.h */,
+				2BE65E2F28FE86F5005448A3 /* ViewController.m */,
+				2B6AFFA129B98F27001FA1EC /* ttsdk.lic */,
+				2BE6603B290249DD005448A3 /* Constant.h */,
+				2B47FCEE29B0718D00717A22 /* Common */,
+				2B47FCF029B0743600717A22 /* Scenes */,
+				2BE65E3128FE86F5005448A3 /* Main.storyboard */,
+				2BE65E3428FE86F6005448A3 /* Assets.xcassets */,
+				2BE65E3628FE86F6005448A3 /* LaunchScreen.storyboard */,
+				2BE65E3928FE86F6005448A3 /* Info.plist */,
+				2BE65E3A28FE86F6005448A3 /* main.m */,
+			);
+			path = TTQuickStartDemo;
+			sourceTree = "<group>";
+		};
+		CDD28D357CF6828EBA93CC17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				51BE8754AD3E03FA4E860A52 /* Pods-TTQuickStartDemo.debug.xcconfig */,
+				C5E1432047463098830D1273 /* Pods-TTQuickStartDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BE65E2428FE86F5005448A3 /* TTQuickStartDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BE65E3E28FE86F6005448A3 /* Build configuration list for PBXNativeTarget "TTQuickStartDemo" */;
+			buildPhases = (
+				9D311651072130D355238AFB /* [CP] Check Pods Manifest.lock */,
+				2BE65E2128FE86F5005448A3 /* Sources */,
+				2BE65E2228FE86F5005448A3 /* Frameworks */,
+				2BE65E2328FE86F5005448A3 /* Resources */,
+				C6CAED5DADAE600B129F4ADD /* [CP] Embed Pods Frameworks */,
+				CDC15B83D1768AEFDF84B8A8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TTQuickStartDemo;
+			productName = TTQuickStartDemo;
+			productReference = 2BE65E2528FE86F5005448A3 /* TTQuickStartDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BE65E1D28FE86F5005448A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					2BE65E2428FE86F5005448A3 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 2BE65E2028FE86F5005448A3 /* Build configuration list for PBXProject "TTQuickStartDemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BE65E1C28FE86F5005448A3;
+			productRefGroup = 2BE65E2628FE86F5005448A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BE65E2428FE86F5005448A3 /* TTQuickStartDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BE65E2328FE86F5005448A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BE65E3828FE86F6005448A3 /* LaunchScreen.storyboard in Resources */,
+				2B6AFFA229B98F27001FA1EC /* ttsdk.lic in Resources */,
+				2BE65E3528FE86F6005448A3 /* Assets.xcassets in Resources */,
+				2BE65E3328FE86F5005448A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D311651072130D355238AFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TTQuickStartDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6CAED5DADAE600B129F4ADD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTQuickStartDemo/Pods-TTQuickStartDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDC15B83D1768AEFDF84B8A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTQuickStartDemo/Pods-TTQuickStartDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BE65E2128FE86F5005448A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BE65E3028FE86F5005448A3 /* ViewController.m in Sources */,
+				2B47FD0029B0743600717A22 /* VeLiveAudienceViewController.m in Sources */,
+				2BE65E2A28FE86F5005448A3 /* AppDelegate.m in Sources */,
+				2B47FCFF29B0743600717A22 /* VeLiveAnchorViewController.m in Sources */,
+				2B223F9E29A60BED00DE05F6 /* VeLiveAudienceManager.m in Sources */,
+				2BE65E3B28FE86F6005448A3 /* main.m in Sources */,
+				2B47FD0229B0743600717A22 /* VeLivePullViewController.m in Sources */,
+				2B223F9B29A60BDE00DE05F6 /* VeLiveAnchorManager.m in Sources */,
+				2B47FD0129B0743600717A22 /* VeLivePushViewController.m in Sources */,
+				2B47FCED29B06D9100717A22 /* VeLiveConfig.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2BE65E3128FE86F5005448A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BE65E3228FE86F5005448A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BE65E3628FE86F6005448A3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BE65E3728FE86F6005448A3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BE65E3C28FE86F6005448A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2BE65E3D28FE86F6005448A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BE65E3F28FE86F6005448A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51BE8754AD3E03FA4E860A52 /* Pods-TTQuickStartDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TTQuickStartDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "使用摄像头";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.ttsdk.quicstart.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BE65E4028FE86F6005448A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5E1432047463098830D1273 /* Pods-TTQuickStartDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TTQuickStartDemo/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "使用摄像头";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "使用麦克风";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.ttsdk.quicstart.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BE65E2028FE86F5005448A3 /* Build configuration list for PBXProject "TTQuickStartDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE65E3C28FE86F6005448A3 /* Debug */,
+				2BE65E3D28FE86F6005448A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BE65E3E28FE86F6005448A3 /* Build configuration list for PBXNativeTarget "TTQuickStartDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE65E3F28FE86F6005448A3 /* Debug */,
+				2BE65E4028FE86F6005448A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BE65E1D28FE86F5005448A3 /* Project object */;
+}

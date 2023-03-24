@@ -108,7 +108,11 @@ static NSString * const reuseIdentifier = @"BDImageCell";
     __weak BDImageCollectionViewCell *weakCell = cell;
     BDBaseTransformer *transformer = nil;
     if ([self.title isEqualToString:@"SR"]) {
+#if __has_include("BDSuperResolutionTransformer.h")
         transformer = [BDSuperResolutionTransformer new];
+#else
+        transformer = nil;
+#endif
     }
     [cell.imageView bd_setImageWithURL:url placeholder:nil options:[BDImageAdapter sharedAdapter].options transformer:transformer progress:NULL completion:^(BDWebImageRequest *request, UIImage *image, NSData *data, NSError *error, BDWebImageResultFrom from) {
         if ([image isKindOfClass:[BDImage class]] && ((BDImage *)image).isAnimateImage) {
