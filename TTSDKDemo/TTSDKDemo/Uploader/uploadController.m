@@ -6,6 +6,8 @@
 //  Copyright © 2020 ByteDance. All rights reserved.
 //
 
+#if __has_include(<TTSDK/TTFileUploader.h>)
+
 #import "uploadController.h"
 #import "TTFileUploadDemoUtil.h"
 #import "UIBlockSegmentedControl.h"
@@ -16,6 +18,12 @@
 typedef NS_ENUM(NSInteger,AlbumPickType){
     AlbumPickTypeVideo,
     AlbumPickTypePhoto,
+};
+
+typedef NS_ENUM(NSInteger, UploadConfigValueType) {
+    UploadConfigValueTypeNone,
+    UploadConfigValueTypeTranTimeout,
+    UploadConfigValueTypeSliceTimeout,
 };
 
 #define BUTTONWIDTH 80
@@ -78,6 +86,8 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 @property (nonatomic, copy) NSString* mAKSKJsonStr;
 @property (nonatomic, copy) NSString* spaceName;
 @property (nonatomic ,copy) NSDictionary* dictionaryInfo;
+@property (nonatomic, assign) NSInteger tranTimeout;
+@property (nonatomic, assign) NSInteger sliceTimeout;
 
 @end
 @implementation uploadController
@@ -119,7 +129,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                @"handleBlock": ^{
                 __strong typeof(weakSelf) self = weakSelf;
                 if (self.imageUploadClientTop == nil) {
-                    [self alertViewController:@"请重新选择图片！！！" title:@"错误"];
+                    [self alertViewController:@"请重新选择图片！！！" title:@"错误" input:UploadConfigValueTypeNone];
                 }
                 self.startTime = [[NSDate date] timeIntervalSince1970];
                 [self.imageUploadClientTop start];
@@ -148,7 +158,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                @"handleBlock": ^{
                    __strong typeof(weakSelf) self = weakSelf;
                     if (self.videoUploadClientTop == nil) {
-                        [self alertViewController:@"请重新选择视频！！！" title:@"错误"];
+                        [self alertViewController:@"请重新选择视频！！！" title:@"错误" input:UploadConfigValueTypeNone];
                     }
                    self.startTime = [[NSDate date] timeIntervalSince1970];
                    [self.videoUploadClientTop start];
@@ -178,7 +188,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
                @"handleBlock": ^{
                    __strong typeof(weakSelf) self = weakSelf;
                     if (self.mateUploadClientTop == nil) {
-                        [self alertViewController:@"请重新选择素材！！！" title:@"错误"];
+                        [self alertViewController:@"请重新选择素材！！！" title:@"错误" input:UploadConfigValueTypeNone];
                     }
                     self.startTime = [[NSDate date] timeIntervalSince1970];
                     [self.mateUploadClientTop start];
@@ -200,10 +210,66 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     
 }
 
-- (void)alertViewController:(NSString*)message title:(NSString*)title{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+- (void)setSliceTimeout:(NSInteger)sliceTimeout {
+    _sliceTimeout = sliceTimeout;
+    if (sliceTimeout > 0 && self.videoUploadClientTop) {
+        [self.videoUploadClientTop setUploadConfig:@{
+            TTFileUploadSliceTimeout: @(sliceTimeout)
+        }];
+    }
+}
 
+- (void)setTranTimeout:(NSInteger)tranTimeout {
+    _tranTimeout = tranTimeout;
+    if (tranTimeout > 0 && self.videoUploadClientTop) {
+        [self.videoUploadClientTop setUploadConfig:@{
+            TTFileUploadTranTimeOutUnit: @(tranTimeout)
+        }];
+    }
+}
+
+- (NSArray *)videoUploadConfigButtonDescription
+{
+    __weak typeof(self) weakSelf = self;
+    return @[
+        @{@"title": @"TranTimeout",
+          @"handleBlock": ^{
+              __strong typeof(weakSelf) self = weakSelf;
+              [self alertViewController:@"" title:@"TranTimeout" input:UploadConfigValueTypeTranTimeout];
+          },
+        },
+        @{@"title": @"SliceTimeout",
+          @"handleBlock": ^{
+              __strong typeof(weakSelf) self = weakSelf;
+              [self alertViewController:@"" title:@"SliceTimeout" input:UploadConfigValueTypeSliceTimeout];
+          }
+        }
+    ];
+}
+
+
+- (void)alertViewController:(NSString*)message title:(NSString*)title input:(UploadConfigValueType)inputType {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    if (inputType > UploadConfigValueTypeNone) {
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+        }];
+    }
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (inputType > UploadConfigValueTypeNone && alertController.textFields.count > 0) {
+            UITextField *textField = alertController.textFields[0];
+            switch (inputType) {
+                case UploadConfigValueTypeTranTimeout:
+                    self.tranTimeout = [textField.text intValue];
+                    break;
+                    
+                case UploadConfigValueTypeSliceTimeout:
+                    self.sliceTimeout = [textField.text intValue];
+                    break;
+                default:
+                    break;
+            }
+        }
     }];
     [alertController addAction:action];
     [self presentViewController:alertController animated:NO completion:nil];
@@ -247,7 +313,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     if (messageStr) {
         message = [NSString stringWithFormat:@"%@\n%@",messageStr,message?:@""];
     }
-    [self alertViewController:message title:title];
+    [self alertViewController:message title:title input:UploadConfigValueTypeNone];
 }
 
 -(NSString *)descriptionOther:(id)model{
@@ -412,7 +478,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 - (void)initButtons{
     
-    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _textfiled.bottom + 30, WIDTH, 170)];
+    UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _textfiled.bottom + 30, WIDTH, 300)];
 //    containView.backgroundColor = [UIColor grayColor];
     _buttonsContainView = containView;
     [self.view addSubview:containView];
@@ -437,6 +503,15 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
         UIBlockButton* button = [UIBlockButton buttonFrame:frame titile:title action:obj[@"handleBlock"]];
         [containView addSubview:button];
     }];
+    
+    NSArray * configButtons = [self videoUploadConfigButtonDescription];
+    [configButtons enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect frame = CGRectMake(20+(BUTTONWIDTH+40)*idx, BUTTONHEIGHT + 140, BUTTONWIDTH, BUTTONHEIGHT);
+        NSString* title = obj[@"title"];
+        UIBlockButton* button = [UIBlockButton buttonFrame:frame titile:title action:obj[@"handleBlock"]];
+        [containView addSubview:button];
+    }];
+    
 }
 - (void)initsetImages{
     UIView* containView = [[UIView alloc] initWithFrame:CGRectMake(0, _buttonsContainView.bottom + 80, WIDTH, HEIGHT-_buttonsContainView.bottom - 20)];
@@ -492,12 +567,11 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
     [self.videoUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
     [self.videoUploadClientTop setOptionInfo:self.dictionaryInfo];
     //[[TTVideoUploadEventManager sharedManager] popAllEvents];
-    
 }
 
 - (void)initMateUploader{
     if (_mateFilePath == nil || _mateFileType == nil || _mateCategory == nil) {
-        [self alertViewController:@"请先选择素材类型！！！！" title:@"提示"];
+        [self alertViewController:@"请先选择素材类型！！！！" title:@"提示" input:UploadConfigValueTypeNone];
     }
     self.mateUploadClientTop = [TTFileUploadDemoUtil mateUploadClientTop:_mateFilePath delegate:self authParameter:[self authorizationParameter] fileType:_mateFileType category:_mateCategory];
     [self.mateUploadClientTop setAuthorizationParameter:[self authorizationParameter]];
@@ -521,7 +595,7 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
        
     }
     else {
-        [self alertViewController:@"上传失败" title:@"上传失败"];
+        [self alertViewController:@"上传失败" title:@"上传失败" input:UploadConfigValueTypeNone];
         NSLog(@"error = %@",error);
     }
     [self requestSign];
@@ -560,3 +634,4 @@ typedef NS_ENUM(NSInteger,AlbumPickType){
 
 @end
 
+#endif

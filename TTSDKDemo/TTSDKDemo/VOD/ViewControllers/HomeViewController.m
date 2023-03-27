@@ -87,7 +87,8 @@
         make.top.equalTo(_pullBtn.mas_bottom).offset(TT_BASE_375(30));
         make.width.height.centerX.equalTo(_vodBtn);
     }];
-
+    
+#if __has_include(<TTSDK/TTFileUploader.h>)
     _uploadBtn = [self createButtonWithTitle:@"上传测试"];
     [_uploadBtn addTarget:self action:@selector(_uploadDemoViewController) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:_uploadBtn];
@@ -95,12 +96,13 @@
         make.top.equalTo(_imageBtn.mas_bottom).offset(TT_BASE_375(30));
         make.width.height.centerX.equalTo(_vodBtn);
     }];
+#endif
     
     _licenseBtn = [self createButtonWithTitle:@"配置License"];
     [_licenseBtn addTarget:self action:@selector(_enterLicenseDemoViewController) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:_licenseBtn];
     [_licenseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_uploadBtn.mas_bottom).offset(TT_BASE_375(30));
+        make.top.equalTo(_uploadBtn ? _uploadBtn.mas_bottom : _imageBtn.mas_bottom).offset(TT_BASE_375(30));
         make.width.height.centerX.equalTo(_vodBtn);
     }];
     
@@ -160,6 +162,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#if __has_include(<TTSDK/TTFileUploader.h>)
+
 - (void)_uploadDemoViewController {
     uploadController *uploadvc = [[uploadController alloc] init];
     [self.navigationController pushViewController:uploadvc animated:YES];
@@ -168,5 +172,6 @@
 - (void)uploadDidFinish:(TTUploadImageInfoTop *)imageInfo error:(NSError *)error{
     NSLog(@"uploadDidFinish:OK");
 }
+#endif
 
 @end

@@ -79,7 +79,16 @@
         make.height.mas_equalTo(width * 2 / 3);
     }];
     _imageView2.userInteractionEnabled = YES;
-    [_imageView2 bd_setImageWithURL:[NSURL URLWithString:_url] placeholder:nil options:BDImageRequestIgnoreCache transformer:[BDSuperResolutionTransformer new] progress:NULL completion:^(BDWebImageRequest *request, UIImage *image, NSData *data, NSError *error, BDWebImageResultFrom from) {
+    [_imageView2 bd_setImageWithURL:[NSURL URLWithString:_url]
+                        placeholder:nil
+                            options:BDImageRequestIgnoreCache
+#if __has_include("BDSuperResolutionTransformer.h")
+                        transformer:[BDSuperResolutionTransformer new]
+#else
+                        transformer:nil
+#endif
+                           progress:NULL
+                         completion:^(BDWebImageRequest *request, UIImage *image, NSData *data, NSError *error, BDWebImageResultFrom from) {
         label2.text = [label2.text stringByAppendingFormat:@"(size:%@)", NSStringFromCGSize(image.size)];
         wself.request2 = request;
     }];

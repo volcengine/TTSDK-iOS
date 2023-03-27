@@ -231,6 +231,10 @@
             [composer addUrl:playURL forFormat:TVLMediaFormatTypeFLV];
             composer.enableSR = YES;
             config.playerItem = [TVLPlayerItem playerItemWithComposer:composer];
+        } else if ([playURL containsString:@".sdp"]) {
+            TTLiveURLComposer *composer = [TTLiveURLComposer new];
+            [composer addUrl:playURL forFormat:TVLMediaFormatTypeLLS];
+            config.playerItem = [TVLPlayerItem playerItemWithComposer:composer];
         } else {
             // Basic usage.
             config.playerItem = [TVLPlayerItem playerItemWithURL:[NSURL URLWithString:playURL]];

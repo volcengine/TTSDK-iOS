@@ -15,6 +15,7 @@
 #import <RangersAppLog/BDAutoTrackURLHostItemCN.h>
 #import "TTDemoSDKEnvironmentManager.h"
 #import "LicenseAssociatedConst.h"
+#import <MMKV/MMKV.h>
 
 FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseDidAdd;
 FOUNDATION_EXTERN NSString * const TTLicenseNotificationLicenseInfoDidUpdate;;
@@ -38,6 +39,7 @@ void uncaughtExceptionHandler(NSException*exception){
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [MMKV initializeMMKV:nil];
     // Override point for customization after application launch.
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     [self addLicenseObserver];

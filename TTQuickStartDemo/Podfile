@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+source 'https://github.com/volcengine/volcengine-specs.git'
+source 'https://cdn.cocoapods.org/'
+platform :ios, '9.0'
+install! 'cocoapods',
+         :deterministic_uuids => false,
+         :disable_input_output_paths => true
+use_modular_headers!
+inhibit_all_warnings!
+
+target 'TTQuickStartDemo' do
+  # 集成推拉流功能
+  pod 'TTSDK', '1.36.3.5-premium', :subspecs => %w[LivePull-RTS LivePush-RTS]
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    # Fix bundle targets Signing
+    if target.respond_to?(:product_type) and target.product_type == 'com.apple.product-type.bundle'
+      target.build_configurations.each do |config|
+        config.build_settings['CODE_SIGN_IDENTITY'] = '-'
+        config.build_settings['CODE_SIGN_ENTITLEMENTS'] = '-'
+        config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+        config.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+      end
+    end
+  end
+end

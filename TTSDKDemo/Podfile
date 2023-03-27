@@ -9,9 +9,9 @@ platform :ios, "9.0"
 inhibit_all_warnings!
 
 def ttsdk_pods
-  pod 'TTSDK', '1.30.2.1-standard', :subspecs => [
+  pod 'TTSDK', '1.36.3.5-premium', :subspecs => [
     'LivePull-RTS',
-    'LivePush',
+    'LivePush-RTS',
     'Player-SR',
     'Image',
     'Uploader',
@@ -29,8 +29,8 @@ def common_pods
   pod 'SDWebImage'
   pod 'MJExtension'
   pod 'IQKeyboardManager'
-  pod 'RangersAppLog', '6.9.1', :subspecs=>['Core', 'Host/CN', 'Host/SG']
-  pod 'OneKit', '1.3.7'
+  pod 'RangersAppLog', '~> 6.13.0', :subspecs=>['Core', 'Host/CN', 'Host/SG']
+  pod 'OneKit', '~> 1.3.7'
   pod 'MWPhotoBrowser'
 end
 
