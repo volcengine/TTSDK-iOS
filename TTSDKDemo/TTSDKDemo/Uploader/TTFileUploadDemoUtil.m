@@ -122,9 +122,6 @@
     }
     
     clientTop.delegate = delegate;
-    /**boe*/
-    //NSString* hostName = @"volcengineapi-boe.byted.org";
-    /**online*/
     NSString* hostName = @"vod.volcengineapi.com";
     [clientTop setMateHostName:hostName];
     [clientTop setAuthorizationParameter:parameter];
